@@ -28,7 +28,7 @@ defmodule RaggedClient.MixProject do
     [
       {:httpotion, "~> 3.1.0"},
       {:elixir_feed_parser, "~> 2.1.0"},
-      {:exvcr, "~> 0.10", only: :test}
+      {:exvcr, "~> 0.10", only: [:test]}
     ]
   end
 end

@@ -4,4 +4,8 @@
 
 - [x] Add ragged_web
 - [x] Create ragged layout
-- [ ] Add ragged_client
+- [x] Add ragged_client
+
+- [ ] get ragged_client#get to return data
+- [ ] get probe to work
+- [ ] setup VCR for ragged_client

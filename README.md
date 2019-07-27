@@ -1,2 +1,4 @@
-# ragged
-RSS Aggregator, Elixir Dashboard
+# Ragged
+
+**TODO: Add description**
+

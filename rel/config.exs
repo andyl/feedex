@@ -31,13 +31,13 @@ environment :dev do
   # dev mode.
   set dev_mode: true
   set include_erts: false
-  set cookie: :"g/cxN&n9H}fKAY]7W8]6Y>~;Y!(/@xU5LA^L0[K=}&sWvb)V)m^4;%%69j2u]FE@"
+  set cookie: :"Pl!.)jG2&PfpzqNaqM(3gwA|M*JS^N$kCR{0<cSm*fWRkOh0:rK!gk*{O*8G!Zve"
 end
 
 environment :prod do
   set include_erts: true
   set include_src: false
-  set cookie: :"[2_s2EE=F2tscaW^le={C_(u]_it<wm<pweQ}ZWF)J[SLsKoE$)H5gIRV!WwcZF4"
+  set cookie: :"*;X`^W!iZF1/T3:RV`eijOYG&369s=n1?[288M_laBEvw8s^QrAm)sV*C8q8b}{O"
   set vm_args: "rel/vm.args"
 end
 
@@ -50,6 +50,7 @@ release :ragged do
   set version: "0.1.0"
   set applications: [
     :runtime_tools,
+    ragged_client: :permanent,
     ragged_web: :permanent
   ]
 end

@@ -1,0 +1,18 @@
+{
+  "apps/ragged_client/lib/*.ex": {
+    "alternate": "apps/ragged_client/test/{}_test.exs",
+    "type": "src"
+  },
+  "apps/ragged_client/test/*_test.exs": {
+    "alternate": "apps/ragged_client/lib/{}.ex",
+    "type": "src"
+  },
+  "apps/ragged_web/lib/*.ex": {
+    "alternate": "apps/ragged_web/test/{}_test.exs",
+    "type": "src"
+  },
+  "apps/ragged_web/test/*_test.exs": {
+    "alternate": "apps/ragged_web/lib/{}.ex",
+    "type": "src"
+  }
+}

@@ -1,6 +1,8 @@
 defmodule RaggedClient do
   @moduledoc """
-  Documentation for RaggedClient.
+  An Elixir Client that pulls RSS Documents.
+
+
   """
 
   @doc """
@@ -8,11 +10,11 @@ defmodule RaggedClient do
 
   ## Examples
 
-      iex> RaggedClient.probe()
+      iex> RaggedClient.probe("https://ragged.io")
       :ok
 
   """
-  def probe do
+  def probe(_url) do
     :ok
   end
 
@@ -21,11 +23,11 @@ defmodule RaggedClient do
 
   ## Examples
 
-      iex> RaggedClient.get()
+      iex> RaggedClient.get("https://ragged.io/feed")
       :ok 
 
   """
-  def get do
+  def get(_url) do
     :ok 
   end
 end

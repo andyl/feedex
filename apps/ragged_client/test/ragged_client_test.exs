@@ -3,10 +3,10 @@ defmodule RaggedClientTest do
   doctest RaggedClient
 
   test "#probe/0" do
-    assert RaggedClient.probe() == :ok 
+    assert RaggedClient.probe("url") == :ok 
   end
 
   test "#get/0" do
-    assert RaggedClient.get() == :ok 
+    assert RaggedClient.get("url") == :ok 
   end
 end

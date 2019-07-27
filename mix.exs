@@ -25,15 +25,16 @@ defmodule Ragged.MixProject do
   # defp elixirc_paths(:test), do: ["lib", "test/support"]
   # defp elixirc_paths(_), do: ["lib"]
 
-  # Specifies your project dependencies.
-  #
-  # Type `mix help deps` for examples and options.
   defp deps do
     [
       # ----- deployment
       {:distillery, "~> 2.1", warn_missing: false},
+      # ----- static analyzers
+      {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0.0-rc.6", only: [:dev], runtime: false},
       # ----- development and test
-      {:mix_test_watch, "~> 0.8", only: :dev}
+      {:mix_test_watch, "~> 0.8", only: :dev},
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
     ]
   end
 end

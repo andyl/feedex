@@ -9,6 +9,10 @@
 # move said applications out of the umbrella.
 import Config
 
+# Configure Mix tasks and generators
+config :ragged_data,
+  ecto_repos: [RaggedData.Repo]
+
 config :ragged_web,
   generators: [context_app: false]
 

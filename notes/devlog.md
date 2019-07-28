@@ -9,14 +9,13 @@
 - [x] Get probe to work
 - [x] Setup VCR for ragged_client
 - [x] Setup VCR for ragged_client.url
+- [x] Add ragged_data
+- [x] Build first ragged_data tests
+
+- [ ] Add ragged_jobs
 
 # TBD
 
-- [ ] Add ragged_data
-- [ ] Build out ragged_data tests
-
 - [ ] Expand scan-list for ragged_client
-
-- [ ] Add ragged_jobs
 
 - [ ] Setup CI

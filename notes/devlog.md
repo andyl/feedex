@@ -13,10 +13,18 @@
 - [x] Build first ragged_data tests
 - [x] Add ragged_jobs
 
+# 2019-Jul-30 TUE
+
+- [ ] Update RaggedData migration
+- [ ] Add RaggedJobs.add_url(url)
+- [ ] Add RaggedJobs.update_url(url)
+
 # TBD
 
 - [ ] Add login / logout / account
 - [ ] Add current_user
+
+- [ ] Add RaggedJob scheduler
 
 - [ ] Expand scan-list for ragged_client
 - [ ] Setup CI

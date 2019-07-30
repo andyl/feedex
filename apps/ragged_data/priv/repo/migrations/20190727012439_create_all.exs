@@ -20,8 +20,6 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
     end
 
     create table(:feeds) do
-      add(:user_id,    references(:users))
-      add(:folder_id,  references(:folders))
       add(:name,       :string)
       add(:url_input,  :string)
       add(:url_active, :string)
@@ -30,11 +28,18 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
     end
 
     create table(:posts) do
-      add(:feed_id,  references(:feeds))
-      add(:body,     :string)
-      add(:was_read, :boolean, default: false)
-      add(:jfields,  :map, default: "{}")
+      add(:feed_id, references(:feeds))
+      add(:body,    :string)
+      add(:jfields, :map, default: "{}")
       timestamps()
     end
+
+    create table(:feed_logs) do
+      add(:folder_id,  references(:folders))
+      add(:feed_id,    references(:feeds))
+      add(:read_posts, :map, default: "[]")
+      timestamps()
+    end
+
   end
 end

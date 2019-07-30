@@ -1,18 +1,11 @@
 defmodule RaggedJob do
-  @moduledoc """
-  Documentation for RaggedJob.
-  """
+  def sync(url) do
+    url
+    |> RaggedClient.get()
+    |> handle_data()
+  end
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> RaggedJob.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  defp handle_data(result) do
+    result
   end
 end

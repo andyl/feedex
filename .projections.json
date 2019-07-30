@@ -15,6 +15,14 @@
     "alternate": "apps/ragged_data/lib/{}.ex",
     "type": "src"
   },
+  "apps/ragged_job/lib/*.ex": {
+    "alternate": "apps/ragged_job/test/{}_test.exs",
+    "type": "src"
+  },
+  "apps/ragged_job/test/*_test.exs": {
+    "alternate": "apps/ragged_job/lib/{}.ex",
+    "type": "src"
+  },
   "apps/ragged_web/lib/*.ex": {
     "alternate": "apps/ragged_web/test/{}_test.exs",
     "type": "src"

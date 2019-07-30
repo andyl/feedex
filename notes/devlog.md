@@ -11,11 +11,12 @@
 - [x] Setup VCR for ragged_client.url
 - [x] Add ragged_data
 - [x] Build first ragged_data tests
-
-- [ ] Add ragged_jobs
+- [x] Add ragged_jobs
 
 # TBD
 
-- [ ] Expand scan-list for ragged_client
+- [ ] Add login / logout / account
+- [ ] Add current_user
 
+- [ ] Expand scan-list for ragged_client
 - [ ] Setup CI

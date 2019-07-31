@@ -15,7 +15,8 @@
 
 # 2019-Jul-30 TUE
 
-- [ ] Update RaggedData migration
+- [x] Update RaggedData migration
+
 - [ ] Add RaggedJobs.add_url(url)
 - [ ] Add RaggedJobs.update_url(url)
 

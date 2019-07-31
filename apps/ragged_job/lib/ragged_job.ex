@@ -1,4 +1,7 @@
 defmodule RaggedJob do
+  def add(url) do
+  end
+
   def sync(url) do
     url
     |> RaggedClient.get()

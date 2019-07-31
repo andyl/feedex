@@ -58,6 +58,14 @@ defmodule RaggedData.Ctx.Account.UserTest do
       assert Repo.one(cqry) == 1
     end
 
+    test "inserting two entities" do
+      cqry = from(t in "users", select: count(t.id))
+      assert Repo.one(cqry) == 0
+      assert insert(:user)
+      assert insert(:user)
+      assert Repo.one(cqry) == 2
+    end
+
     test "uses alternate attrs" do
       cqry = from(t in "users", select: count(t.id))
       altname = "NEWNAME"

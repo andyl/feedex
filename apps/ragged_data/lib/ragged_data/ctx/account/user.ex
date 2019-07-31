@@ -3,6 +3,7 @@ defmodule RaggedData.Ctx.Account.User do
   User DataModel.
   """
   use Ecto.Schema
+  alias RaggedData.Ctx.Account
   import Ecto.Changeset
 
   schema "users" do
@@ -10,13 +11,16 @@ defmodule RaggedData.Ctx.Account.User do
     field(:email, :string)
     field(:jfields, :map)
     timestamps(type: :utc_datetime)
+
+    has_many :folders, Account.Folder
+    has_many :feed_logs, through: [:folders, :feed_logs]
   end
 
-  def changeset(tracker, attrs) do
+  def changeset(user, attrs) do
     required_fields = [:name]
     optional_fields = [:email, :jfields]
 
-    tracker
+    user
     |> cast(attrs, required_fields ++ optional_fields)
     |> validate_required(required_fields)
     |> unique_constraint(:uuid)

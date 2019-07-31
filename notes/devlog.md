@@ -22,8 +22,8 @@
 
 # 2019-Jul-31 WED
 
-- [ ] Build all schemas
-- [ ] Add tests for schemas
+- [x] Build Account schemas
+- [x] Add tests for Account schemas
 - [ ] Build seed-data function
 
 # TBD

@@ -1,9 +1,5 @@
-alias RaggedData.Ctx.Account.User
-# alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
-# alias RaggedData.Ctx.News.{Feed, Post}
+import RaggedData.Factory
 
-RaggedData.Repo.insert! %User{
-  name: "user1",
-  email: "asdf@qwer.com"
-}
-
+if Mix.env() == :dev do
+  insert_list(5, :feed_log)
+end

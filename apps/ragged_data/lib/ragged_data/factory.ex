@@ -1,6 +1,21 @@
 defmodule RaggedData.Factory do
   use ExMachina.Ecto, repo: RaggedData.Repo
   alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
+  alias RaggedData.Ctx.News.{Feed, Post}
+
+  def feed_factory do
+    %Feed{
+      name: sequence(:name, &"feed_#{&1}"),
+      url: sequence(:url, &"http://test_dom.com/path_#{&1}")
+    }
+  end
+
+  def post_factory do
+    %Post{
+      body: sequence(:body, &"body_#{&1}"),
+      exid: sequence(:exid, &"exid_#{&1}"),
+    }
+  end
 
   def user_factory do
     %User{

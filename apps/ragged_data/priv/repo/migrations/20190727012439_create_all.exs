@@ -4,15 +4,16 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
   def change do
     # News.Feed
     create table(:feeds) do
-      add(:url_input,  :string)
-      add(:url_active, :string)
-      add(:jfields,    :map, default: "{}")
+      add(:url,     :string)
+      add(:name,    :string)
+      add(:jfields, :map, default: "{}")
       timestamps()
     end
 
     # News.Post
     create table(:posts) do
       add(:feed_id, references(:feeds))
+      add(:exid,    :string)
       add(:body,    :string)
       add(:jfields, :map, default: "{}")
       timestamps()
@@ -43,6 +44,7 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
     create table(:feed_logs) do
       add(:folder_id,  references(:folders))
       add(:feed_id,    references(:feeds))
+      add(:url,        :string)
       add(:name,       :string)
       add(:read_posts, :map, default: "[]")
       add(:jfields,    :map, default: "{}")

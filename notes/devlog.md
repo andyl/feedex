@@ -24,15 +24,27 @@
 
 - [x] Build Account schemas
 - [x] Add tests for Account schemas
-- [ ] Build seed-data function
+- [x] Build seed-data function
+- [x] Build News schemas
+- [x] Add tests for News schemas
+- [x] Add factories for News schemas
 
 # TBD
 
 - [ ] Design UI
-- [ ] Build out UI
+- [ ] Design News Context
+- [ ] Design Account Context
+
+- [ ] Build Account Context
+- [ ] Test Account Context
+
+- [ ] Build News Context
+- [ ] Test News Context
 
 - [ ] Add RaggedJobs.add_url(url)
 - [ ] Add RaggedJobs.update_url(url)
+
+- [ ] Build out UI
 
 - [ ] Add login / logout / account
 - [ ] Add current_user

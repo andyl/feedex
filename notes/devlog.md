@@ -16,11 +16,23 @@
 # 2019-Jul-30 TUE
 
 - [x] Update RaggedData migration
+- [x] Take "Mastering SQL" course
+- [x] Read Ecto Boo
+- [x] Add ecto-data contexts
+
+# 2019-Jul-31 WED
+
+- [ ] Build all schemas
+- [ ] Add tests for schemas
+- [ ] Build seed-data function
+
+# TBD
+
+- [ ] Design UI
+- [ ] Build out UI
 
 - [ ] Add RaggedJobs.add_url(url)
 - [ ] Add RaggedJobs.update_url(url)
-
-# TBD
 
 - [ ] Add login / logout / account
 - [ ] Add current_user

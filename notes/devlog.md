@@ -28,28 +28,28 @@
 - [x] Build News schemas
 - [x] Add tests for News schemas
 - [x] Add factories for News schemas
+- [x] Design UI
+- [x] Design News Context
+- [x] Design Account Context
+- [x] Build Account Context
+- [x] Test Account Context
+- [x] Build News Context
+- [x] Test News Context
+- [x] Add RaggedJobs.scan(url)
+- [x] Add RaggedJobs.update(url)
+
+- [ ] Add RaggedRunner
+- [ ] Add RaggedRunner.start()
+- [ ] Add RaggedRunner.stop()
+- [ ] Add RaggedRunner.config_show()
+- [ ] Add RaggedRunner.config_update()
 
 # TBD
-
-- [ ] Design UI
-- [ ] Design News Context
-- [ ] Design Account Context
-
-- [ ] Build Account Context
-- [ ] Test Account Context
-
-- [ ] Build News Context
-- [ ] Test News Context
-
-- [ ] Add RaggedJobs.add_url(url)
-- [ ] Add RaggedJobs.update_url(url)
 
 - [ ] Build out UI
 
 - [ ] Add login / logout / account
 - [ ] Add current_user
-
-- [ ] Add RaggedJob scheduler
 
 - [ ] Expand scan-list for ragged_client
 - [ ] Setup CI

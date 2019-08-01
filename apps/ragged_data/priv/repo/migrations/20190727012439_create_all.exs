@@ -2,6 +2,7 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
   use Ecto.Migration
 
   def change do
+
     # News.Feed
     create table(:feeds) do
       add(:url,     :string)
@@ -28,6 +29,7 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
       add(:pwd_digest,   :string)
       add(:auth_token,   :string)
       add(:last_seen_at, :utc_datetime)
+      add(:uistate,      :map, default: "{}")
       add(:jfields,      :map, default: "{}")
       timestamps()
     end

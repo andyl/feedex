@@ -7,7 +7,8 @@
 | - ragged_api    | new.phx.web ragged_api   | GraphQL API          |
 | x ragged_client | mix new ragged_client    | HTML Client          |
 | x ragged_data   | new.phx.ecto ragged_data | Ecto Interface       |
-| x ragged_job    | mix new ragged_job       | Job Scheduler/Runner |
+| x ragged_job    | mix new ragged_job       | RSS Update Jobs      |
+| x ragged_runner | mix new ragged_runner    | Job Scheduler/Runner |
 | - ragged_term   | mix new ragged_term      | Terminal UI          |
 | x ragged_web    | new.phx.web ragged_web   | Web UI               |
 

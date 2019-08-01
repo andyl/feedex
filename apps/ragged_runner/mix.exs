@@ -1,9 +1,9 @@
-defmodule RaggedJob.MixProject do
+defmodule RaggedRunner.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :ragged_job,
+      app: :ragged_runner,
       version: "0.0.1",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
@@ -23,8 +23,8 @@ defmodule RaggedJob.MixProject do
 
   defp deps do
     [
-      {:ragged_client, in_umbrella: true},
-      {:ragged_data, in_umbrella: true}
+      {:oban, "~> 0.6.0"},
+      {:ragged_job, in_umbrella: true}
     ]
   end
 end

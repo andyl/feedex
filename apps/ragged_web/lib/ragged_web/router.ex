@@ -18,13 +18,12 @@ defmodule RaggedWeb.Router do
     pipe_through :browser
 
     get "/",       HomeController, :index
-    get "/urls",   HomeController, :urls
-    get "/logs",   HomeController, :logs
-    get "/stats",  HomeController, :stats
     get "/login",  HomeController, :login
     get "/signup", HomeController, :signup
+    get "/abt",    HomeController, :about
 
     live "/demo", Demo
+    live "/news", News
   end
 
   scope "/api", RaggedWeb do

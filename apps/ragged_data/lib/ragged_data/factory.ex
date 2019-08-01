@@ -20,7 +20,8 @@ defmodule RaggedData.Factory do
   def user_factory do
     %User{
       name: sequence(:name, &"user_#{&1}"),
-      email: sequence(:email, &"user_#{&1}@test_domain.com")
+      email: sequence(:email, &"user_#{&1}@test_domain.com"),
+      pwd: "welcome"
     }
   end
 

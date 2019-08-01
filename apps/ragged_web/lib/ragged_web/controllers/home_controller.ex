@@ -5,16 +5,8 @@ defmodule RaggedWeb.HomeController do
     render(conn, "index.html")
   end
 
-  def urls(conn, _params) do
-    render(conn, "urls.html")
-  end
-
-  def logs(conn, _params) do
-    render(conn, "logs.html")
-  end
-
-  def stats(conn, _params) do
-    render(conn, "stats.html")
+  def about(conn, _params) do
+    render(conn, "about.html")
   end
 
   def login(conn, _params) do

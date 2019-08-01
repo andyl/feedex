@@ -24,7 +24,7 @@
         <ul class="navbar-nav mr-auto">
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-          <%= hdr_link(@conn, "ABOUT",  "/urls") %>
+          <%= hdr_link(@conn, "ABOUT",  "/abt") %>
           <%= hdr_link(@conn, "LOGIN",  "/login") %>
           <%= hdr_link(@conn, "SIGNUP", "/signup") %>
         </ul>
@@ -44,6 +44,7 @@
         <ul class="nav justify-content-center">
           <%= ftr_link(@conn, "Demo", "/demo") %>
           <%= ftr_lbl_time(@conn) %>
+          <%= ftr_link(@conn, "News", "/news") %>
         </ul>
         </small>
     </div>

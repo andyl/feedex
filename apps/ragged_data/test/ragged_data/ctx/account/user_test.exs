@@ -42,6 +42,17 @@ defmodule RaggedData.Ctx.Account.UserTest do
     end
   end
 
+  describe "signup" do
+    test "adds a user with password" do
+      attr = %{name: "asdf", email: "qwer.com", pwd: "bingbing"}
+      cset = User.signup_changeset(%User{}, attr)
+      cqry = from(t in "users", select: count(t.id))
+      assert Repo.one(cqry) == 0
+      assert {:ok, trak} = Repo.insert(cset)
+      assert Repo.one(cqry) == 1 
+    end
+  end
+
   describe "using Factory" do
     test "building an entity" do
       assert build(:user)

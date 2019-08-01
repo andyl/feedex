@@ -42,9 +42,11 @@
 - [x] Add RaggedRunner.stop()
 - [x] Add RaggedRunner.config_show()
 - [x] Add RaggedRunner.config_update()
+- [x] Add News page
+- [x] Update ragged nav
 
-- [ ] Add login / logout (Pragmatic Studios, Phoenix Book)
-- [ ] Add current_user
+- [ ] Add current_user (Phoenix Book)
+- [ ] Add login / logout (Phoenix Book)
 
 # TBD
 

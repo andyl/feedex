@@ -20,7 +20,7 @@ defmodule RaggedData.Ctx.Account.User do
 
   def changeset(user, attrs) do
     required_fields = [:name, :email]
-    optional_fields = [:jfields]
+    optional_fields = [:jfields, :pwd]
 
     user
     |> cast(attrs, required_fields ++ optional_fields)
@@ -37,10 +37,10 @@ defmodule RaggedData.Ctx.Account.User do
     |> cast(params, [:pwd])
     |> validate_required([:pwd])
     |> validate_length(:pwd, min: 2, max: 100)
-    |> put_pass_hash()
+    |> set_pwd_hash()
   end
 
-  defp put_pass_hash(changeset) do
+  defp set_pwd_hash(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{pwd: pass}} ->
         put_change(changeset, :pwd_hash, Pbkdf2.hash_pwd_salt(pass))

@@ -20,7 +20,7 @@ defmodule RaggedData.Ctx.Account.User do
 
   def changeset(user, attrs) do
     required_fields = [:name, :email]
-    optional_fields = [:jfields, :pwd]
+    optional_fields = [:jfields, :pwd, :pwd_hash]
 
     user
     |> cast(attrs, required_fields ++ optional_fields)

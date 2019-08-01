@@ -45,11 +45,15 @@
 - [x] Add News page
 - [x] Update ragged nav
 
-- [ ] Add current_user (Phoenix Book)
+# 2019-Jul-31 WED
+
+- [ ] Make sure we generate a pwd_hash
 - [ ] Add login / logout (Phoenix Book)
+- [ ] Add current_user (AuthPlug Phoenix Book)
+- [ ] Study LiveView
+- [ ] Build out UI
 
 # TBD
 
-- [ ] Build out UI
 - [ ] Expand scan-list for ragged_client
 - [ ] Setup CI

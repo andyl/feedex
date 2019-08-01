@@ -18,10 +18,11 @@ defmodule RaggedData.Factory do
   end
 
   def user_factory do
+    pwd = "welcome"
     %User{
       name: sequence(:name, &"user_#{&1}"),
       email: sequence(:email, &"user_#{&1}@test_domain.com"),
-      pwd: "welcome"
+      pwd_hash: Pbkdf2.hash_pwd_salt(pwd) 
     }
   end
 

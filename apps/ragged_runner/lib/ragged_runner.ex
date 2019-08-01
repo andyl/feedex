@@ -11,6 +11,10 @@ defmodule RaggedRunner do
   Config params specified at startup.
   """
 
+  def hello do
+    :world
+  end
+
   @doc """
   Start the RaggedRunner.
   """

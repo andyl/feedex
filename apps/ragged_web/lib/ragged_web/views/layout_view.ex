@@ -16,4 +16,14 @@ defmodule RaggedWeb.LayoutView do
     </li>
     """
   end
+
+  def ftr_lbl_time(conn) do
+    ~e"""
+    <li class="nav-item">
+      <a class="nav-link disabled">
+        <%= live_render(conn, RaggedWeb.TimeLcl) %>
+      </a>
+    </li>
+    """
+  end
 end

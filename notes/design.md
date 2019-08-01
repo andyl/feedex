@@ -26,31 +26,11 @@
 ## ERD
 
 ```
-User
--< Folder
-  -< FeedLog 
-    >-< Feed
-       -< Post
+User -< Folder -< FeedLog >-< Feed -< Post
 ```
 
-Folder
-- user_id
-- name
-
-FeedLog
-- folder_id
-- feed_id
-- read_posts
-
-Feed
-- input_url
-- scan_url
-- last_update
-
-Post
-- feed_id
-- id
-- body
+Account: User / Folder / FeedLog
+News: Feed / Post
 
 ## API
 

@@ -37,19 +37,17 @@
 - [x] Test News Context
 - [x] Add RaggedJobs.scan(url)
 - [x] Add RaggedJobs.update(url)
+- [x] Add RaggedRunner
+- [x] Add RaggedRunner.start()
+- [x] Add RaggedRunner.stop()
+- [x] Add RaggedRunner.config_show()
+- [x] Add RaggedRunner.config_update()
 
-- [ ] Add RaggedRunner
-- [ ] Add RaggedRunner.start()
-- [ ] Add RaggedRunner.stop()
-- [ ] Add RaggedRunner.config_show()
-- [ ] Add RaggedRunner.config_update()
+- [ ] Add login / logout (Pragmatic Studios, Phoenix Book)
+- [ ] Add current_user
 
 # TBD
 
 - [ ] Build out UI
-
-- [ ] Add login / logout / account
-- [ ] Add current_user
-
 - [ ] Expand scan-list for ragged_client
 - [ ] Setup CI

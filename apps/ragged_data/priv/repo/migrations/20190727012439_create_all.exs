@@ -26,13 +26,14 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
       add(:email,        :string)
       add(:uuid,         :string)
       add(:admin,        :boolean)
-      add(:pwd_digest,   :string)
+      add(:pwd_hash,     :string)
       add(:auth_token,   :string)
       add(:last_seen_at, :utc_datetime)
       add(:uistate,      :map, default: "{}")
       add(:jfields,      :map, default: "{}")
       timestamps()
     end
+    create unique_index(:users, [:email, :uuid,])
 
     # Account.Folder
     create table(:folders) do

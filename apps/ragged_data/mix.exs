@@ -39,6 +39,7 @@ defmodule RaggedData.MixProject do
       {:ex_machina, "~> 2.3"},
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
+      {:pbkdf2_elixir, "~> 1.0"},
       {:jason, "~> 1.0"}
     ]
   end

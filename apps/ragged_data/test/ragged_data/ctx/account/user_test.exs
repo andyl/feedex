@@ -9,10 +9,6 @@ defmodule RaggedData.Ctx.Account.UserTest do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Repo)
   end
 
-  test "greet the world" do
-    assert "hello" == "hello"
-  end
-
   describe "changesets" do
     test "accepts valid input" do
       tmap = %User{}
@@ -25,7 +21,7 @@ defmodule RaggedData.Ctx.Account.UserTest do
   describe "inserting records" do
     test "adds a record" do
       tmap = %User{}
-      attr = %{name: "asdf"}
+      attr = %{name: "asdf", email: "qwer@asdf.com"}
       cset = User.changeset(tmap, attr)
       cqry = from(t in "users", select: count(t.id))
       assert Repo.one(cqry) == 0
@@ -36,7 +32,7 @@ defmodule RaggedData.Ctx.Account.UserTest do
     test "handling maps" do 
       lmap = %{a: 1, b: 2}
       tmap = %User{}
-      attr = %{name: "asdf", jfields: lmap}
+      attr = %{name: "asdf", jfields: lmap, email: "qwer@asdf.com"}
       cset = User.changeset(tmap, attr)
       cqry = from(t in "users", select: count(t.id))
       assert Repo.one(cqry) == 0

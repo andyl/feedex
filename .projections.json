@@ -23,6 +23,14 @@
     "alternate": "apps/ragged_job/lib/{}.ex",
     "type": "src"
   },
+  "apps/ragged_runner/lib/*.ex": {
+    "alternate": "apps/ragged_runner/test/{}_test.exs",
+    "type": "src"
+  },
+  "apps/ragged_runner/test/*_test.exs": {
+    "alternate": "apps/ragged_runner/lib/{}.ex",
+    "type": "src"
+  },
   "apps/ragged_web/lib/*.ex": {
     "alternate": "apps/ragged_web/test/{}_test.exs",
     "type": "src"

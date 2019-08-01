@@ -45,9 +45,12 @@
 - [x] Add News page
 - [x] Update ragged nav
 
-# 2019-Jul-31 WED
+# 2019-Aug-01 THU
 
-- [ ] Make sure we generate a pwd_hash
+- [x] Make sure we generate a pwd_hash in the factory
+- [x] Add a clear script
+- [ ] Add Accounts.create_user
+
 - [ ] Add login / logout (Phoenix Book)
 - [ ] Add current_user (AuthPlug Phoenix Book)
 - [ ] Study LiveView

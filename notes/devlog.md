@@ -61,10 +61,15 @@
 - [ ] LV - Basics / Router Rendering
 - [ ] LV - Basics / Controller Rendering (live_render)
 - [ ] LV - Basics / Tag Rendering (live_render)
+
 - [ ] LV - PSP / Using PubSub
 - [ ] LV - PSP / Using Channels
 - [ ] LV - PSP / Using PushState
+
 - [ ] LV - Nested / Nested Components (StateMgmt / assign_new)
+
+- [ ] LV - PushState / When updating docs
+
 - [ ] LV - Misc / What is `handle_info`?
 - [ ] LV - Misc / Table Nav up/down
 

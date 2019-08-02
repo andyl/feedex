@@ -41,6 +41,7 @@ defmodule RaggedWeb.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix_ecto, "~> 4.0.0"},
       # ----- phoenix view helpers
       {:phoenix_active_link, "~> 0.2.1"},
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
@@ -52,7 +53,9 @@ defmodule RaggedWeb.MixProject do
       {:observer_cli, "~> 1.5"},
       # ----- development and test
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:mix_test_watch, "~> 0.8", only: :dev}
+      {:mix_test_watch, "~> 0.8", only: :dev},
+      # ----- umbrella apps
+      {:ragged_data, in_umbrella: true}
     ]
   end
 end

@@ -1,6 +1,11 @@
 <div class="jumbotron text-center" style='padding: 1em;'>
   <h1>Ragged</h1>
   <p>RSS Aggregator, Elixir Dashboard</p>
+  <%= if @current_user do %>
+    LOGGED IN!
+  <% else %>
+    NOT LOGGED IN!
+  <% end %>
 </div>
 
 <div class="row">

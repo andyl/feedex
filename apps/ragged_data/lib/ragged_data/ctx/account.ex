@@ -1,16 +1,37 @@
 defmodule RaggedData.Ctx.Account do
-
   alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
   alias RaggedData.Repo
   import Ecto.Query, only: [from: 2]
 
-  def user_add(opts) do
-    %User{}
-    |> User.signup_changeset(opts)
-    |> Repo.insert
+  def user_list do
+    Repo.all(User)
   end
 
-  def user_update(_user_id, _opts) do
+  def user_get(user_id) do
+    Repo.get(User, user_id)
+  end
+
+  def user_get_by(params) do
+    Repo.get_by(User, params)
+  end
+
+  def user_add(opts) do
+    %User{}
+    |> User.changeset(opts)
+    |> Repo.insert()
+  end
+
+  def user_signup(opts) do
+    %User{}
+    |> User.signup_changeset(opts)
+    |> Repo.insert()
+  end
+
+  def user_changeset(%User{} = user) do
+    User.changeset(user, %{})
+  end
+
+  def user_change(_user_id) do
   end
 
   def user_change_pwd(_user_id, _newpwd) do
@@ -18,6 +39,24 @@ defmodule RaggedData.Ctx.Account do
 
   def user_delete(_user_id) do
   end
+
+  def user_auth_by_email_and_pwd(email, pwd) do
+    user = user_get_by(email: email)
+
+    cond do
+      user && Pbkdf2.verify_pass(pwd, user.pwd_hash) ->
+        {:ok, user}
+
+      user ->
+        {:error, :unauthorized}
+
+      true ->
+        Pbkdf2.no_user_verify()
+        {:error, :not_found}
+    end
+  end
+
+  # -----
 
   def folder_add do
   end
@@ -71,5 +110,4 @@ defmodule RaggedData.Ctx.Account do
     from(element in type, select: count(element.id))
     |> Repo.one()
   end
-
 end

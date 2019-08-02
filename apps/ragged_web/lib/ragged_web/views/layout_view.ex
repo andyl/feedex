@@ -9,6 +9,15 @@ defmodule RaggedWeb.LayoutView do
     """
   end
 
+  def logout_link(conn, user) do
+    path = Routes.session_path(conn, :delete, user)
+    ~e"""
+    <li class="nav-item">
+      <%= link "LOGOUT", to: path, method: "delete", class: "nav-link" %>
+    </li>
+    """
+  end
+
   def ftr_link(conn, lbl, path) do
     ~e"""
     <li class="nav-item">
@@ -21,7 +30,7 @@ defmodule RaggedWeb.LayoutView do
     ~e"""
     <li class="nav-item">
       <a class="nav-link disabled">
-        <%= live_render(conn, RaggedWeb.TimeLcl) %>
+        <%= live_render(conn, RaggedWeb.TimePstMin) %>
       </a>
     </li>
     """

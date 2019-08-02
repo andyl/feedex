@@ -49,14 +49,34 @@
 
 - [x] Make sure we generate a pwd_hash in the factory
 - [x] Add a clear script
-- [ ] Add Accounts.create_user
+- [x] Add Accounts.create_user
+- [x] Add login / logout (Phoenix Book)
+- [x] Add current_user (AuthPlug Phoenix Book)
+- [x] Study testing
 
-- [ ] Add login / logout (Phoenix Book)
-- [ ] Add current_user (AuthPlug Phoenix Book)
-- [ ] Study LiveView
-- [ ] Build out UI
+# 2019-Aug-02 FRI
+
+- [x] LV - DO / Add second clock to demo page
+
+- [ ] LV - Basics / Router Rendering
+- [ ] LV - Basics / Controller Rendering (live_render)
+- [ ] LV - Basics / Tag Rendering (live_render)
+- [ ] LV - PSP / Using PubSub
+- [ ] LV - PSP / Using Channels
+- [ ] LV - PSP / Using PushState
+- [ ] LV - Nested / Nested Components (StateMgmt / assign_new)
+- [ ] LV - Misc / What is `handle_info`?
+- [ ] LV - Misc / Table Nav up/down
 
 # TBD
 
+- [ ] Study LiveView
+- [ ] Build out UI
+
 - [ ] Expand scan-list for ragged_client
 - [ ] Setup CI
+
+- [ ] TEST - unit - RaggedData.Account
+- [ ] TEST - intc - login/logout 
+- [ ] TEST - intw - install HOUND 1.1.0
+- [ ] TEST - intw - login/logout 

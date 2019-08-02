@@ -8,6 +8,7 @@ defmodule RaggedWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug Phoenix.LiveView.Flash
+    plug RaggedWeb.Auth
   end
 
   pipeline :api do
@@ -20,7 +21,10 @@ defmodule RaggedWeb.Router do
     get "/",       HomeController, :index
     get "/login",  HomeController, :login
     get "/signup", HomeController, :signup
-    get "/abt",    HomeController, :about
+    get "/about",  HomeController, :about
+
+    resources "/users", UserController, only: [:index, :show, :new, :create]
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
 
     live "/demo", Demo
     live "/news", News

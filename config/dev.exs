@@ -64,3 +64,6 @@ config :ragged_web, RaggedWeb.Endpoint,
       ~r"lib/ragged_web/templates/.*(eex)$"
     ]
   ]
+
+config :mix_test_watch, clear: true
+

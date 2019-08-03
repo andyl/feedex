@@ -13,17 +13,18 @@ defmodule RaggedWeb.Demo2.FormShow do
     """
   end
 
-  def handle_event("update", text, socket) do
-    {:noreply, update(socket, :text, fn _ -> text end)}
-  end
+  # def handle_event("update", text, socket) do
+  #   {:noreply, update(socket, :text, fn _ -> text end)}
+  # end
 
   def handle_info(%{topic: "form_text", payload: state}, socket) do
-    IO.puts "##########################################"
-    IO.inspect state
-    IO.puts "##########################################"
-    IO.inspect socket
-    IO.puts "##########################################"
+    # IO.puts "##########################################"
+    # IO.inspect state
+    # IO.puts "##########################################"
+    # IO.inspect socket
+    # IO.puts "##########################################"
     IO.puts("HANDLE BROADCAST FOR #{state.text}")
     {:noreply, assign(socket, %{text: state.text})}
   end
 end
+###

@@ -16,8 +16,6 @@ config :ragged_data,
 config :ragged_web,
   generators: [context_app: false]
 
-config :mix_test_watch, clear: true
-
 # Configures the endpoint
 config :ragged_web, RaggedWeb.Endpoint,
   url: [host: "localhost"],

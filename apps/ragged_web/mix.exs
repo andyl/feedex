@@ -53,7 +53,6 @@ defmodule RaggedWeb.MixProject do
       {:observer_cli, "~> 1.5"},
       # ----- development and test
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:mix_test_watch, "~> 0.8", only: :dev},
       # ----- umbrella apps
       {:ragged_data, in_umbrella: true}
     ]

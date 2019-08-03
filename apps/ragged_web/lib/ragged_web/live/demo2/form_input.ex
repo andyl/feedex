@@ -16,13 +16,13 @@ defmodule RaggedWeb.Demo2.FormInput do
   end
 
   def handle_event(event, payload, socket) do
-    IO.puts "----------------------------"
-    IO.inspect event
-    IO.puts "----------------------------"
-    IO.inspect payload
-    IO.puts "----------------------------"
-    IO.inspect socket
-    IO.puts "----------------------------"
+    # IO.puts "----------------------------"
+    # IO.inspect event
+    # IO.puts "----------------------------"
+    # IO.inspect payload
+    # IO.puts "----------------------------"
+    # IO.inspect socket
+    # IO.puts "----------------------------"
     RaggedWeb.Endpoint.broadcast_from(self(), "form_text", payload["text"], %{text: payload["text"]})
     {:noreply, assign(socket, %{})}
   end

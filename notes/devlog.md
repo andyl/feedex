@@ -57,25 +57,20 @@
 # 2019-Aug-02 FRI
 
 - [x] LV - DO / Add second clock to demo page
+- [x] LV - Basics / Router Rendering
+- [x] LV - Basics / Controller Rendering (live_render)
+- [x] LV - Basics / Tag Rendering (live_render)
+- [x] LV - PSP / Using PubSub
+- [x] LV - PSP / Using Channels
+- [x] LV - Misc / What is `handle_info`?
+- [x] Study LiveView
 
-- [ ] LV - Basics / Router Rendering
-- [ ] LV - Basics / Controller Rendering (live_render)
-- [ ] LV - Basics / Tag Rendering (live_render)
+# 2019-Aug-03 SAT
 
-- [ ] LV - PSP / Using PubSub
-- [ ] LV - PSP / Using Channels
-- [ ] LV - PSP / Using PushState
-
-- [ ] LV - Nested / Nested Components (StateMgmt / assign_new)
-
-- [ ] LV - PushState / When updating docs
-
-- [ ] LV - Misc / What is `handle_info`?
-- [ ] LV - Misc / Table Nav up/down
+- [ ] Build LV PubSub demo
 
 # TBD
 
-- [ ] Study LiveView
 - [ ] Build out UI
 
 - [ ] Expand scan-list for ragged_client
@@ -85,3 +80,8 @@
 - [ ] TEST - intc - login/logout 
 - [ ] TEST - intw - install HOUND 1.1.0
 - [ ] TEST - intw - login/logout 
+
+- [ ] LV - PSP / Using PushState 
+- [ ] LV - Nested / Nested Components (StateMgmt / assign_new)
+- [ ] LV - PushState / When updating docs
+- [ ] LV - Misc / Table Nav up/down

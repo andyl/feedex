@@ -46,8 +46,9 @@
         <hr>
         <small>
           <ul class="nav justify-content-center">
-            <%= ftr_link(@conn, "Demo", "/demo") %>
-            <%= ftr_link(@conn, "News", "/news") %>
+            <%= ftr_link(@conn, "Demo1", "/demo1") %>
+            <%= ftr_link(@conn, "Demo2", "/demo2") %>
+            <%= ftr_link(@conn, "News",  "/news") %>
             <%= ftr_link(@conn, "Users", "/users") %>
             <%= ftr_lbl_time(@conn) %>
           </ul>

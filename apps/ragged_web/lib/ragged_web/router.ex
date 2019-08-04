@@ -23,12 +23,12 @@ defmodule RaggedWeb.Router do
     get "/signup", HomeController, :signup
     get "/about",  HomeController, :about
     get "/demo2",  Demo2Controller, :index
+    get "/news",   NewsController, :index
 
     resources "/users", UserController, only: [:index, :show, :new, :create]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
     live "/demo1", Demo1
-    live "/news", News
   end
 
   scope "/api", RaggedWeb do

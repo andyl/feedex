@@ -32,8 +32,28 @@ User -< Folder -< FeedLog >-< Feed -< Post
 Account: User / Folder / FeedLog
 News: Feed / Post
 
+## Queries
+
+- Account.folders(user_id)
+- News.posts
+
+
+
 ## API
 
 - User.Folders(user)
 - Folder.UnreadCounts(folder)
 - FeedLog.UnreadCount
+
+## UiState
+
+- part of RaggedWeb
+- backed by PersistentETS
+
+- ui_state:     view | edit | add_feed | add_folder
+- folder_id:    id | NIL
+- folder_state: open | closed
+- feed_id:      id | NIL
+- post_id:      id | NIL
+- post_state:   open | closed
+

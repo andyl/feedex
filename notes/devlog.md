@@ -67,11 +67,14 @@
 
 # 2019-Aug-03 SAT
 
-- [ ] Build LV PubSub demo
+- [x] Build LV PubSub demo
+- [x] Change news to normal render
+- [ ] Create `Live.News.Btn`
+- [ ] Create `Live.News.Tree`
+- [ ] Create `Live.News.Hdr`
+- [ ] Create `Live.News.Body`
 
 # TBD
-
-- [ ] Build out UI
 
 - [ ] Expand scan-list for ragged_client
 - [ ] Setup CI

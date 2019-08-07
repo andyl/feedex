@@ -69,12 +69,17 @@
 
 - [x] Build LV PubSub demo
 - [x] Change news to normal render
+
+# 2019-Aug-07 WED
+
+- [x] Configure Webpack
+
+# TBD
+
 - [ ] Create `Live.News.Btn`
 - [ ] Create `Live.News.Tree`
 - [ ] Create `Live.News.Hdr`
 - [ ] Create `Live.News.Body`
-
-# TBD
 
 - [ ] Expand scan-list for ragged_client
 - [ ] Setup CI

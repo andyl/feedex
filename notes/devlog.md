@@ -1,6 +1,6 @@
 # Ragged Devlog
 
-# 2019-Jul-27 SAT
+# 2019 Jul 27 SAT
 
 - [x] Add ragged_web
 - [x] Create ragged layout
@@ -13,14 +13,14 @@
 - [x] Build first ragged_data tests
 - [x] Add ragged_jobs
 
-# 2019-Jul-30 TUE
+# 2019 Jul 30 TUE
 
 - [x] Update RaggedData migration
 - [x] Take "Mastering SQL" course
 - [x] Read Ecto Boo
 - [x] Add ecto-data contexts
 
-# 2019-Jul-31 WED
+# 2019 Jul 31 WED
 
 - [x] Build Account schemas
 - [x] Add tests for Account schemas
@@ -45,7 +45,7 @@
 - [x] Add News page
 - [x] Update ragged nav
 
-# 2019-Aug-01 THU
+# 2019 Aug 01 THU
 
 - [x] Make sure we generate a pwd_hash in the factory
 - [x] Add a clear script
@@ -54,7 +54,7 @@
 - [x] Add current_user (AuthPlug Phoenix Book)
 - [x] Study testing
 
-# 2019-Aug-02 FRI
+# 2019 Aug 02 FRI
 
 - [x] LV - DO / Add second clock to demo page
 - [x] LV - Basics / Router Rendering
@@ -65,21 +65,27 @@
 - [x] LV - Misc / What is `handle_info`?
 - [x] Study LiveView
 
-# 2019-Aug-03 SAT
+# 2019 Aug 03 SAT
 
 - [x] Build LV PubSub demo
 - [x] Change news to normal render
 
-# 2019-Aug-07 WED
+# 2019 Aug 07 WED
 
 - [x] Configure Webpack
+- [x] Create `Live.News.Btn`
+- [x] Create `Live.News.Tree`
+- [x] Create `Live.News.Hdr`
+- [x] Create `Live.News.Body`
+- [x] Demo Nested Components
+- [x] Demo Nested Component PubSub
+
+# 2019 Aug 08 Thu
+
+- [ ] Add Pets
+- [ ] Add UI state
 
 # TBD
-
-- [ ] Create `Live.News.Btn`
-- [ ] Create `Live.News.Tree`
-- [ ] Create `Live.News.Hdr`
-- [ ] Create `Live.News.Body`
 
 - [ ] Expand scan-list for ragged_client
 - [ ] Setup CI

@@ -37,8 +37,6 @@ News: Feed / Post
 - Account.folders(user_id)
 - News.posts
 
-
-
 ## API
 
 - User.Folders(user)

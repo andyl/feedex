@@ -48,7 +48,8 @@ News: Feed / Post
 - part of RaggedWeb
 - backed by PersistentETS
 
-- ui_state:     view | edit | add_feed | add_folder
+- user_id: 
+- mode:         view | edit | add_feed | add_folder
 - folder_id:    id | NIL
 - folder_state: open | closed
 - feed_id:      id | NIL

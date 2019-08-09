@@ -82,7 +82,7 @@
 
 # 2019 Aug 08 Thu
 
-- [ ] Add Pets
+- [x] Add Pets
 - [ ] Add UI state
 
 # TBD

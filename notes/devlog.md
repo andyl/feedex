@@ -83,7 +83,15 @@
 # 2019 Aug 08 Thu
 
 - [x] Add Pets
-- [ ] Add UI state
+- [x] Define Pets testing process
+- [x] Refactor Pets
+
+# 2019 Aug 09 Fri
+
+- [x] Add UI state
+- [ ] Build ShowUiState component
+- [ ] Add ShowUiState component to body
+- [ ] Click Buttons to update UiState
 
 # TBD
 

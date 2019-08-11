@@ -1,6 +1,6 @@
 # Ragged Devlog
 
-# 2019 Jul 27 SAT
+# 2019 Jul 27 Sat
 
 - [x] Add ragged_web
 - [x] Create ragged layout
@@ -13,14 +13,14 @@
 - [x] Build first ragged_data tests
 - [x] Add ragged_jobs
 
-# 2019 Jul 30 TUE
+# 2019 Jul 30 Tue
 
 - [x] Update RaggedData migration
 - [x] Take "Mastering SQL" course
 - [x] Read Ecto Boo
 - [x] Add ecto-data contexts
 
-# 2019 Jul 31 WED
+# 2019 Jul 31 Wed
 
 - [x] Build Account schemas
 - [x] Add tests for Account schemas
@@ -45,7 +45,7 @@
 - [x] Add News page
 - [x] Update ragged nav
 
-# 2019 Aug 01 THU
+# 2019 Aug 01 Thu
 
 - [x] Make sure we generate a pwd_hash in the factory
 - [x] Add a clear script
@@ -54,7 +54,7 @@
 - [x] Add current_user (AuthPlug Phoenix Book)
 - [x] Study testing
 
-# 2019 Aug 02 FRI
+# 2019 Aug 02 Fri
 
 - [x] LV - DO / Add second clock to demo page
 - [x] LV - Basics / Router Rendering
@@ -65,12 +65,12 @@
 - [x] LV - Misc / What is `handle_info`?
 - [x] Study LiveView
 
-# 2019 Aug 03 SAT
+# 2019 Aug 03 Sat
 
 - [x] Build LV PubSub demo
 - [x] Change news to normal render
 
-# 2019 Aug 07 WED
+# 2019 Aug 07 Wed
 
 - [x] Configure Webpack
 - [x] Create `Live.News.Btn`
@@ -89,9 +89,19 @@
 # 2019 Aug 09 Fri
 
 - [x] Add UI state
-- [ ] Build ShowUiState component
-- [ ] Add ShowUiState component to body
+- [x] Build ShowUiState component
+- [x] Add ShowUiState component to body
+
+# 2019 Aug 10 Sat
+
+- [x] Fix Pets config (testing)
+- [x] Add Auth to news page
+
+# 2019 Aug 11 Sun
+
 - [ ] Click Buttons to update UiState
+- [ ] Add feed
+- [ ] Display feed
 
 # TBD
 

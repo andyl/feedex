@@ -1,7 +1,7 @@
-defmodule RaggedWeb.Data.UiStateTest do
+defmodule RaggedWeb.Cache.UiStateTest do
   use ExUnit.Case
 
-  alias RaggedWeb.Data.UiState
+  alias RaggedWeb.Cache.UiState
 
   setup do
     UiState.cleanup()

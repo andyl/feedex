@@ -58,6 +58,9 @@ defmodule RaggedData.Ctx.Account do
 
   # -----
 
+  def tree do
+  end
+
   def folder_add do
   end
 

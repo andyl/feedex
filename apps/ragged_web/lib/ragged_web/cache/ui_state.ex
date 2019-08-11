@@ -1,4 +1,4 @@
-defmodule RaggedWeb.Data.UiState do
+defmodule RaggedWeb.Cache.UiState do
 
   # modes: view, edit, add_feed, add_folder
   # folder_state: open, closed
@@ -14,7 +14,7 @@ defmodule RaggedWeb.Data.UiState do
     post_state:   "closed"          
   ]
 
-  alias RaggedWeb.Data.UiState
+  alias RaggedWeb.Cache.UiState
 
   @moduledoc """
   Persistent store for User's UiState.

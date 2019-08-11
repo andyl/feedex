@@ -1,7 +1,7 @@
 defmodule RaggedWeb.NewsController do
   use RaggedWeb, :controller
 
-  alias RaggedWeb.Data.UiState
+  alias RaggedWeb.Cache.UiState
 
   plug :authenticate when action in [:index]
 

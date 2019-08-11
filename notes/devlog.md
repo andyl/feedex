@@ -99,9 +99,34 @@
 
 # 2019 Aug 11 Sun
 
-- [ ] Click Buttons to update UiState
+- [x] Click Buttons to update UiState
+
+- [ ] Create treemap query 
+- [ ] Add treemap to controller
+- [ ] Add treemap to TREE/HDR/BODY
+
+- [ ] Generate test tree data
+- [ ] Display test trees in TREE/HDR/BODY
+
+- [ ] TREE open/close
+
+- [ ] BODY display: folder
+- [ ] BODY display: post
+
+- [ ] HDR display: folder
+- [ ] HDR display: post
+
+- [ ] Add folder
+- [ ] Remove folder
+- [ ] Edit folder
+
 - [ ] Add feed
-- [ ] Display feed
+- [ ] Remove feed
+- [ ] Edit feed
+
+- [ ] View post
+- [ ] Update post-read status
+- [ ] Update post-read stats in TREE
 
 # TBD
 
@@ -113,7 +138,4 @@
 - [ ] TEST - intw - install HOUND 1.1.0
 - [ ] TEST - intw - login/logout 
 
-- [ ] LV - PSP / Using PushState 
-- [ ] LV - Nested / Nested Components (StateMgmt / assign_new)
-- [ ] LV - PushState / When updating docs
-- [ ] LV - Misc / Table Nav up/down
+- [ ] LV - Hotkeys / Table Nav up/down

@@ -1,11 +1,17 @@
 defmodule RaggedWeb.News.Body do
   use Phoenix.LiveView
 
-  def mount(_session, socket) do
-    {:ok, assign(socket, %{})}
+  def mount(session, socket) do
+    # IO.puts "*****************************************"
+    # IO.inspect session.uistate
+    # IO.puts "*****************************************"
+    {:ok, assign(socket, %{uistate: session.uistate})}
   end
 
   def render(assigns) do
+    # IO.puts "#########################################"
+    # IO.inspect assigns
+    # IO.puts "#########################################"
     ~L"""
     <div>
       BODY

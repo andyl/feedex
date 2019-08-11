@@ -37,8 +37,10 @@ defmodule RaggedWeb.Data.UiState do
   Return the UiState for a given user_id.
   """
   def lookup(user_id) do
-    case Pets.lookup(sig(), user_id) do
-      [] -> %UiState{user_id: user_id}
+    result = Pets.lookup(sig(), user_id)
+    case result do
+      []  -> %UiState{user_id: user_id}
+      nil -> %UiState{user_id: user_id}
       [{_, uistate}] -> uistate
       _ -> raise("Error: badval")
     end

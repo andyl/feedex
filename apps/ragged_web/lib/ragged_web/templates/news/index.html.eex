@@ -4,8 +4,8 @@
     <%= live_render(@conn, RaggedWeb.News.Tree) %>
   </div>
   <div class="col-md-10">
-    <%= live_render(@conn, RaggedWeb.News.Hdr) %>
-    <%= live_render(@conn, RaggedWeb.News.Body) %>
+    <%= live_render(@conn, RaggedWeb.News.Hdr, session: %{uistate: @uistate}) %>
+    <%= live_render(@conn, RaggedWeb.News.Body, session: %{uistate: @uistate}) %>
   </div>
 </div>
 

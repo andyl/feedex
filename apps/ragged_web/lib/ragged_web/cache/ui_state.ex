@@ -1,18 +1,15 @@
 defmodule RaggedWeb.Cache.UiState do
-
   # modes: view, edit, add_feed, add_folder
   # folder_state: open, closed
   # post_state: open, closed
 
-  defstruct [
-    user_id:      nil               ,
-    mode:         "view"            ,
-    folder_id:    nil               ,
-    folder_state: "closed"          ,
-    feed_id:      nil               ,
-    post_id:      nil               ,
-    post_state:   "closed"          
-  ]
+  defstruct user_id: nil,
+            mode: "view",
+            folder_id: nil,
+            folder_state: "closed",
+            feed_id: nil,
+            post_id: nil,
+            post_state: "closed"
 
   alias RaggedWeb.Cache.UiState
 
@@ -28,7 +25,8 @@ defmodule RaggedWeb.Cache.UiState do
   Every time a link is accesses, save an event-payload into the log-store.
   """
   def save(state = %{}) do
-    payload = Map.merge(%UiState{}, state)
+    payload = struct(UiState, state)
+
     sig()
     |> Pets.insert({payload.user_id, payload})
   end
@@ -38,8 +36,9 @@ defmodule RaggedWeb.Cache.UiState do
   """
   def lookup(user_id) do
     result = Pets.lookup(sig(), user_id)
+
     case result do
-      []  -> %UiState{user_id: user_id}
+      [] -> %UiState{user_id: user_id}
       nil -> %UiState{user_id: user_id}
       [{_, uistate}] -> uistate
       _ -> raise("Error: badval")
@@ -52,7 +51,7 @@ defmodule RaggedWeb.Cache.UiState do
   def all do
     sig()
     |> Pets.all()
-    |> Enum.map(&(elem(&1, 1)))
+    |> Enum.map(&elem(&1, 1))
   end
 
   def cleanup do
@@ -63,7 +62,7 @@ defmodule RaggedWeb.Cache.UiState do
   @env Mix.env()
   defp sig do
     case @env do
-      :dev  -> %{filepath: "/tmp/uistate_dev.dat",  tablekey: :uistate_dev}
+      :dev -> %{filepath: "/tmp/uistate_dev.dat", tablekey: :uistate_dev}
       :test -> %{filepath: "/tmp/uistate_test.dat", tablekey: :uistate_test}
       :prod -> %{filepath: "/tmp/uistate_prod.dat", tablekey: :uistate_prod}
     end

@@ -12,6 +12,7 @@ defmodule RaggedData.Ctx.Account.FeedLog do
     timestamps(type: :utc_datetime)
 
     belongs_to :folder, Account.Folder
+    belongs_to :feed, News.Feed
   end
 
   def changeset(feed_log, attrs) do

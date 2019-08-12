@@ -1,7 +1,7 @@
 defmodule RaggedData.Ctx.Account do
   alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
   alias RaggedData.Repo
-  import Ecto.Query, only: [from: 2]
+  import Ecto.Query
 
   def user_list do
     Repo.all(User)
@@ -58,7 +58,11 @@ defmodule RaggedData.Ctx.Account do
 
   # -----
 
-  def tree do
+  def tree(user_id) do
+    from(f in Folder,
+      where: f.user_id == ^user_id,
+      preload: [:feeds])
+      |> Repo.all
   end
 
   def folder_add do

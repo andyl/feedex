@@ -13,6 +13,7 @@ defmodule RaggedData.Ctx.Account.Folder do
 
     belongs_to :user, Account.User
     has_many :feed_logs, Account.FeedLog
+    has_many :feeds, through: [:feed_logs, :feed]
   end
 
   def changeset(folder, attrs) do

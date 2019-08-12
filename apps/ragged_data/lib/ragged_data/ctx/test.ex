@@ -6,6 +6,14 @@ defmodule RaggedData.Ctx.Test do
 
   # ----- query functions -----
 
+  def treemap(user_id) do
+    from(
+      f in Folder,
+      where: f.user_id == ^user_id,
+      preload: [:feed_logs]
+    )
+  end
+
   def folder_qry(user_id) do
     from(
       f in Folder,

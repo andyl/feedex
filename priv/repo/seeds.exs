@@ -12,8 +12,8 @@ Repo.delete_all(Feed)
 Repo.delete_all(User)
 
 Repo.insert(%User{
-  name: "User1",
-  email: "user1@test.com",
+  name: "zzz",
+  email: "zzz",
   folders: [
     %Folder{
       name: "A_Folder1",
@@ -28,6 +28,20 @@ Repo.insert(%User{
               },
               %Post{
                 body: "A_Post2"
+              }
+            ]
+          }
+        },
+        %FeedLog{
+          name: "A_FeedLog2",
+          feed: %Feed{
+            name: "A_Feed2",
+            posts: [
+              %Post{
+                body: "A_Post3"
+              },
+              %Post{
+                body: "A_Post4"
               }
             ]
           }

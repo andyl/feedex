@@ -101,7 +101,12 @@
 
 - [x] Click Buttons to update UiState
 
+# 2019 Aug 12 Mon
+
 - [ ] Create treemap query 
+
+# TBD
+
 - [ ] Add treemap to controller
 - [ ] Add treemap to TREE/HDR/BODY
 
@@ -127,8 +132,6 @@
 - [ ] View post
 - [ ] Update post-read status
 - [ ] Update post-read stats in TREE
-
-# TBD
 
 - [ ] Expand scan-list for ragged_client
 - [ ] Setup CI

@@ -56,14 +56,39 @@ defmodule RaggedData.Ctx.Account do
     end
   end
 
-  # -----
+  # ----- tree -----
 
-  def tree(user_id) do
-    from(f in Folder,
-      where: f.user_id == ^user_id,
-      preload: [:feeds])
-      |> Repo.all
+  def cleantree(user_id) do
+    rawtree(user_id) 
+    |> Enum.map(&(cleanfolder(&1)))
+    # |> Enum.map(&(&1.name))
   end
+
+  defp cleanfolder(folder) do
+    cleanlogs = 
+      folder.feed_logs
+      |> Enum.map(&cleanlogs(&1))
+
+    folder
+    |> Map.take([:id, :name, :user_id])
+    |> Map.merge(%{feed_logs: cleanlogs})
+  end
+
+  defp cleanlogs(log) do
+    log
+    |> Map.take([:id, :name])
+  end
+
+  def rawtree(user_id) do
+    from(
+      f in Folder,
+      where: f.user_id == ^user_id,
+      preload: [:feeds]
+    )
+    |> Repo.all()
+  end
+
+  # ----- 
 
   def folder_add do
   end

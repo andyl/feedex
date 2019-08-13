@@ -40,10 +40,14 @@ defmodule RaggedData.Ctx.Account.User do
     |> set_pwd_hash()
   end
 
+  def pwd_hash(pass) do
+    Pbkdf2.hash_pwd_salt(pass)
+  end
+
   defp set_pwd_hash(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{pwd: pass}} ->
-        put_change(changeset, :pwd_hash, Pbkdf2.hash_pwd_salt(pass))
+        put_change(changeset, :pwd_hash, pwd_hash(pass))
 
       _ ->
         changeset

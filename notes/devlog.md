@@ -103,17 +103,17 @@
 
 # 2019 Aug 12 Mon
 
-- [ ] Create treemap query 
+- [x] Create treemap query 
+- [x] Add treemap to controller
+- [x] Generate test tree data
+
+# 2019 Aug 13 Tue
+
+- [ ] Add treemap to TREE/HDR/BODY
+- [ ] Display test trees in TREE/HDR/BODY
+- [ ] TREE open/close
 
 # TBD
-
-- [ ] Add treemap to controller
-- [ ] Add treemap to TREE/HDR/BODY
-
-- [ ] Generate test tree data
-- [ ] Display test trees in TREE/HDR/BODY
-
-- [ ] TREE open/close
 
 - [ ] BODY display: folder
 - [ ] BODY display: post

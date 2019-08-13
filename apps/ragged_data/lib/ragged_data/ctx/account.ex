@@ -1,6 +1,7 @@
 defmodule RaggedData.Ctx.Account do
   alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
   alias RaggedData.Repo
+  alias RaggedData.Util.UtilMap
   import Ecto.Query
 
   def user_list do
@@ -60,23 +61,7 @@ defmodule RaggedData.Ctx.Account do
 
   def cleantree(user_id) do
     rawtree(user_id) 
-    |> Enum.map(&(cleanfolder(&1)))
-    # |> Enum.map(&(&1.name))
-  end
-
-  defp cleanfolder(folder) do
-    cleanlogs = 
-      folder.feed_logs
-      |> Enum.map(&cleanlogs(&1))
-
-    folder
-    |> Map.take([:id, :name, :user_id])
-    |> Map.merge(%{feed_logs: cleanlogs})
-  end
-
-  defp cleanlogs(log) do
-    log
-    |> Map.take([:id, :name])
+    |> UtilMap.retake([:id, :name, :user_id, feed_logs: [:id, :name]])
   end
 
   def rawtree(user_id) do

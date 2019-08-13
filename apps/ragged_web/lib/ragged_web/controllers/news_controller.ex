@@ -8,12 +8,14 @@ defmodule RaggedWeb.NewsController do
   def index(conn, _params) do
     conn
     |> assign(:uistate, uistate(conn))
+    |> assign(:tree, treedata(conn))
     |> render("index.html")
   end
 
   defp uistate(conn) do
-    id = conn.assigns.current_user.id
-    UiState.lookup(id)
+    conn
+    |> userid()
+    |> UiState.lookup()
   end
 
   defp authenticate(conn, _opts) do
@@ -25,5 +27,15 @@ defmodule RaggedWeb.NewsController do
       |> redirect(to: Routes.home_path(conn, :index))
       |> halt()
     end
+  end
+
+  defp userid(conn) do
+    conn.assigns.current_user.id
+  end
+
+  defp treedata(conn) do
+    conn
+    |> userid()
+    |> RaggedData.Ctx.Account.cleantree()
   end
 end

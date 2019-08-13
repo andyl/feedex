@@ -17,7 +17,7 @@
 
 - [x] Update RaggedData migration
 - [x] Take "Mastering SQL" course
-- [x] Read Ecto Boo
+- [x] Read Ecto Book 
 - [x] Add ecto-data contexts
 
 # 2019 Jul 31 Wed
@@ -111,7 +111,6 @@
 
 - [x] Add treemap to TREE/HDR/BODY
 - [x] Display test trees in TREE/HDR/BODY
-
 - [x] click tree updates UIstate
 
 - [ ] HDR display: folder

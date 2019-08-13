@@ -109,17 +109,19 @@
 
 # 2019 Aug 13 Tue
 
-- [ ] Add treemap to TREE/HDR/BODY
-- [ ] Display test trees in TREE/HDR/BODY
-- [ ] TREE open/close
+- [x] Add treemap to TREE/HDR/BODY
+- [x] Display test trees in TREE/HDR/BODY
 
-# TBD
-
-- [ ] BODY display: folder
-- [ ] BODY display: post
+- [x] click tree updates UIstate
 
 - [ ] HDR display: folder
-- [ ] HDR display: post
+- [ ] HDR display: feed
+
+- [ ] BODY display: folder
+- [ ] BODY display: feed
+- [ ] BODY display: all
+
+# TBD
 
 - [ ] Add folder
 - [ ] Remove folder
@@ -132,6 +134,8 @@
 - [ ] View post
 - [ ] Update post-read status
 - [ ] Update post-read stats in TREE
+
+- [ ] TREE open/close
 
 - [ ] Expand scan-list for ragged_client
 - [ ] Setup CI

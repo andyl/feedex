@@ -8,7 +8,7 @@ defmodule RaggedWeb.NewsController do
   def index(conn, _params) do
     conn
     |> assign(:uistate, uistate(conn))
-    |> assign(:tree, treedata(conn))
+    |> assign(:treemap, treedata(conn))
     |> render("index.html")
   end
 

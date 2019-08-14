@@ -49,6 +49,37 @@ defmodule RaggedData.Ctx.Test do
     )
   end
 
+  def fff do
+    from( 
+      f in Folder,
+      select: %{name: f.name, id: f.id}
+    )
+  end
+  
+
+  def uu3 do
+    userid = first_user_id()
+
+    from(
+      u in User,
+      where: u.id == ^userid,
+      join: folder in assoc(u, :folders),
+      preload: [folders: ^fff]
+      # select: %{name: u.name, id: folder.id}
+    )
+  end
+
+  def uf do
+    from(
+      u in User,
+      join: f in assoc(u, :folders)
+    )
+  end
+
+  
+
+
+
   # ----- query runners -----
 
   def folder_data(user_id) do

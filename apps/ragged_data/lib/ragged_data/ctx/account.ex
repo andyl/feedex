@@ -1,7 +1,7 @@
 defmodule RaggedData.Ctx.Account do
   alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
   alias RaggedData.Repo
-  alias RaggedData.Util.UtilMap
+  alias Modex.AltMap
   import Ecto.Query
 
   def user_list do
@@ -61,7 +61,7 @@ defmodule RaggedData.Ctx.Account do
 
   def cleantree(user_id) do
     rawtree(user_id) 
-    |> UtilMap.retake([:id, :name, :user_id, feed_logs: [:id, :name]])
+    |> AltMap.retake([:id, :name, :user_id, feed_logs: [:id, :name]])
   end
 
   def rawtree(user_id) do

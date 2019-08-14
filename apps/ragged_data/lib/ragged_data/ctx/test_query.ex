@@ -1,4 +1,4 @@
-defmodule RaggedData.Ctx.Test do
+defmodule RaggedData.Ctx.TestQuery do
   alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
   alias RaggedData.Ctx.News.{Feed, Post}
   alias RaggedData.Repo
@@ -50,22 +50,26 @@ defmodule RaggedData.Ctx.Test do
   end
 
   def fff do
-    from( 
+    from(
       f in Folder,
       select: %{name: f.name, id: f.id}
     )
   end
-  
 
-  def uu3 do
-    userid = first_user_id()
+  def uuu(userid \\ first_user_id()) do
+    q1 =
+      from(f in Folder,
+        select: %{name: f.name, id: f.id}
+      )
 
-    from(
-      u in User,
-      where: u.id == ^userid,
-      join: folder in assoc(u, :folders),
-      preload: [folders: ^fff]
-      # select: %{name: u.name, id: folder.id}
+    q2 =
+      from(u in User,
+        where: u.id == ^userid
+        # merge_select: %{name: u.name, id: u.id}
+      )
+
+    from(u in q2,
+      preload: ^q1
     )
   end
 
@@ -75,10 +79,6 @@ defmodule RaggedData.Ctx.Test do
       join: f in assoc(u, :folders)
     )
   end
-
-  
-
-
 
   # ----- query runners -----
 

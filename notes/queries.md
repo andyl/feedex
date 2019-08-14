@@ -1,5 +1,15 @@
 # Queries
 
+## 2019 Aug 13 Tue
+
+- [x] Wrote retake - recursive take
+
+## 2019 Aug 14 Wed
+
+- [x] Failed
+
+
+
 ## CleanTree 1
 
 simple list of folders

@@ -15,10 +15,12 @@ defmodule RaggedData.Ctx.TestQuery do
   end
 
   def folder_qry(user_id) do
+    q = from(fl in FeedLog, select: %{id: fl.id, name: fl.name})
+
     from(
       f in Folder,
       where: f.user_id == ^user_id,
-      preload: [:feeds]
+      preload: [feed_logs: ^q]
     )
   end
 

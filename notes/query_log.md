@@ -11,6 +11,17 @@ Problems:
 Hack / Workaround
 - retake - recursive take
 
+Questions:
+- What is a CTE?
+- How do sub-queries work?
+- How to convert subqueries to hierarchical maps?
+- How to use Embedded Schemas?
+
+NS
+- retake SQL class
+- re-read SQL book
+- re-read ECTO book
+
 ## 2019 Aug 13 Tue
 
 - [x] Wrote retake - recursive take

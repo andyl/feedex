@@ -61,14 +61,17 @@ defmodule RaggedData.Ctx.Account do
 
   def cleantree(user_id) do
     rawtree(user_id) 
-    |> AltMap.retake([:id, :name, :user_id, feed_logs: [:id, :name]])
+    |> AltMap.retake([:id, :name, :user_id, :feed_logs])
+    |> IO.inspect
   end
 
   def rawtree(user_id) do
+    fq = from(fl in FeedLog, select: %{id: fl.id, name: fl.name})
+      
     from(
       f in Folder,
       where: f.user_id == ^user_id,
-      preload: [:feeds]
+      preload: [feed_logs: ^fq]
     )
     |> Repo.all()
   end

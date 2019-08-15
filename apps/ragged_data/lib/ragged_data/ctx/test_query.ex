@@ -50,10 +50,7 @@ defmodule RaggedData.Ctx.TestQuery do
   end
 
   def fff do
-    from(
-      f in Folder,
-      select: %{name: f.name, id: f.id}
-    )
+    from(f in Folder, select: %{name: f.name, id: f.id})
   end
 
   def uuu(userid \\ first_user_id()) do
@@ -70,6 +67,23 @@ defmodule RaggedData.Ctx.TestQuery do
 
     from(u in q2,
       preload: ^q1
+    )
+  end
+
+  def uz do
+    uid = first_user_id()
+
+    q1 =
+      from(f in Folder,
+        select: %{name: f.name, id: f.id, user_id: f.user_id}
+      )
+
+    from(
+      u in User,
+      # where: u.id == ^uid,
+      join: f in subquery(q1),
+      # on: u.id == f.user_id,
+      select: %{id: u.id, name: u.name, folders: f}
     )
   end
 

@@ -1,4 +1,15 @@
-# Queries
+# Query Log
+
+Problems:
+- preloading
+- joins
+- calculating report values (subcalculations)
+- efficient / minimal outputs
+- nested return values
+- preload and select don't seem to work together
+
+Hack / Workaround
+- retake - recursive take
 
 ## 2019 Aug 13 Tue
 
@@ -6,9 +17,7 @@
 
 ## 2019 Aug 14 Wed
 
-- [x] Failed
-
-
+- [x] Failed to generate desired results with Ecto
 
 ## CleanTree 1
 
@@ -77,4 +86,3 @@ simple list of folders with read/unread counts
 ]
 
 ```
-

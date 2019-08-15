@@ -26,51 +26,66 @@ defmodule RaggedData.Ctx.TestQuery do
     from(f in folder_qry(user_id), select: %{name: f.name})
   end
 
-  def uu1 do
-    userid = first_user_id()
-
-    from(
-      u in User,
-      where: u.id == ^userid,
-      join: f in assoc(u, :folders),
-      join: l in assoc(f, :feed_logs),
-      preload: [folders: {f, feed_logs: l}]
-    )
-  end
-
-  def uu2 do
-    userid = first_user_id()
-
-    from(
-      u in User,
-      where: u.id == ^userid,
-      join: f in assoc(u, :folders),
-      select: %{userid: u.id, folders: %{name: f.name}}
-    )
-  end
+  # def uu1 do
+  #   userid = first_user_id()
+  #
+  #   from(
+  #     u in User,
+  #     where: u.id == ^userid,
+  #     join: f in assoc(u, :folders),
+  #     join: l in assoc(f, :feed_logs),
+  #     preload: [folders: {f, feed_logs: l}]
+  #   )
+  # end
+  #
+  # def uu2 do
+  #   userid = first_user_id()
+  #
+  #   from(
+  #     u in User,
+  #     where: u.id == ^userid,
+  #     join: f in assoc(u, :folders),
+  #     select: %{userid: u.id, folders: %{name: f.name}}
+  #   )
+  # end
 
   def fff do
     from(f in Folder, select: %{name: f.name, id: f.id})
   end
 
-  def uuu(userid \\ first_user_id()) do
+  # def uuu(userid \\ first_user_id()) do
+  #   q1 =
+  #     from(f in Folder,
+  #       select: %{name: f.name, id: f.id}
+  #     )
+  #
+  #   q2 =
+  #     from(u in User,
+  #       where: u.id == ^userid
+  #       # merge_select: %{name: u.name, id: u.id}
+  #     )
+  #
+  #   from(u in q2,
+  #     preload: ^q1
+  #   )
+  # end
+
+  def gg1 do
+    uid = first_user_id()
+
     q1 =
       from(f in Folder,
         select: %{name: f.name, id: f.id}
       )
 
-    q2 =
-      from(u in User,
-        where: u.id == ^userid
-        # merge_select: %{name: u.name, id: u.id}
-      )
-
-    from(u in q2,
-      preload: ^q1
+    from(
+      u in User,
+      where: u.id == ^uid,
+      preload: [folders: ^q1]
     )
   end
 
-  def uz do
+  def gg2 do
     uid = first_user_id()
 
     q1 =
@@ -79,11 +94,12 @@ defmodule RaggedData.Ctx.TestQuery do
       )
 
     from(
-      u in User,
-      # where: u.id == ^uid,
-      join: f in subquery(q1),
-      # on: u.id == f.user_id,
-      select: %{id: u.id, name: u.name, folders: f}
+      u in "users",
+      join: f in "folders",
+      on: u.id == f.user_id,
+      where: u.id == ^uid,
+      select: %{id: u.id, name: u.name, folders: f},
+      preload: [folders: ^q1]
     )
   end
 

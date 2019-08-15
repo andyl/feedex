@@ -113,14 +113,18 @@
 - [x] Display test trees in TREE/HDR/BODY
 - [x] click tree updates UIstate
 
+# 2019 Aug 13 Wed
+
+- [x] Ecto Testing
+
+# TBD
+
 - [ ] HDR display: folder
 - [ ] HDR display: feed
 
 - [ ] BODY display: folder
 - [ ] BODY display: feed
 - [ ] BODY display: all
-
-# TBD
 
 - [ ] Add folder
 - [ ] Remove folder

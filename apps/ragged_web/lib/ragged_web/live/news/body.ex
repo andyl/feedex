@@ -15,7 +15,7 @@ defmodule RaggedWeb.News.Body do
     """
   end
 
-  def handle_info(state, socket) do
+  def handle_info(_state, socket) do
     {:noreply, assign(socket, %{})}
   end
 end

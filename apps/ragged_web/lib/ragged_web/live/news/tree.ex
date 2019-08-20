@@ -47,7 +47,7 @@ defmodule RaggedWeb.News.Tree do
     {:noreply, assign(socket, %{uistate: new_state, treemap: socket.assigns.treemap})}
   end
 
-  def handle_info(state, socket) do
+  def handle_info(_state, socket) do
     # IO.inspect(state)
     {:noreply, assign(socket, %{})}
   end

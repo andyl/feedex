@@ -20,5 +20,5 @@ secret_key_base =
     """
 
 config :ragged_web, RaggedWeb.Endpoint,
-  http: [:inet6, port: String.to_integer(System.get_env("PORT") || "5020")],
+  http: [:inet6, port: String.to_integer(System.get_env("PORT") || "5060")],
   secret_key_base: secret_key_base

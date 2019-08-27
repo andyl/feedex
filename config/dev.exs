@@ -16,7 +16,7 @@ config :ragged_data, RaggedData.Repo,
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :ragged_web, RaggedWeb.Endpoint,
-  http: [port: 4020],
+  http: [port: 4060],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,

@@ -117,22 +117,24 @@
 
 - [x] Ecto Testing
 
-# TBD
+# 2019 Aug 30 Fri
 
-- [ ] HDR display: folder
-- [ ] HDR display: feed
+- [x] HDR display: folder
+- [x] HDR display: feed
+
+# TBD
 
 - [ ] BODY display: folder
 - [ ] BODY display: feed
 - [ ] BODY display: all
 
+- [ ] Edit folder
 - [ ] Add folder
 - [ ] Remove folder
-- [ ] Edit folder
 
+- [ ] Edit feed
 - [ ] Add feed
 - [ ] Remove feed
-- [ ] Edit feed
 
 - [ ] View post
 - [ ] Update post-read status

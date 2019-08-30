@@ -19,6 +19,17 @@ defmodule RaggedWeb.News.Tree do
           -> <a href='#' phx-click='clk_feed' phx-value='<%= feedlog.id %>'><%= feedlog.name %></a><br/>
         <% end %>
       <% end %>
+      <small>
+      <table class='table table-sm' style='margin-top: 20px;'>
+        <tr><td>UserId</td><td><td><%= @uistate.user_id %></td></tr>
+        <tr><td>Mode</td><td><td><%= @uistate.mode %></td></tr>
+        <tr><td>FeedId</td><td><td><%= @uistate.feed_id %></td></tr>
+        <tr><td>FolderId</td><td><td><%= @uistate.folder_id %></td></tr>
+        <tr><td>Folder</td><td><td><%= @uistate.folder_state %></td></tr>
+        <tr><td>PostId</td><td><td><%= @uistate.post_id %></td></tr>
+        <tr><td>Post</td><td><td><%= @uistate.post_state %></td></tr>
+      </table>
+      </small>
     </div>
     """
   end

@@ -1,5 +1,5 @@
 defmodule RaggedData.Ctx.TestQuery do
-  alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
+  alias RaggedData.Ctx.Account.{User, Folder, Register}
   # alias RaggedData.Ctx.News.{Feed, Post}
   alias RaggedData.Repo
   import Ecto.Query
@@ -10,17 +10,17 @@ defmodule RaggedData.Ctx.TestQuery do
     from(
       f in Folder,
       where: f.user_id == ^user_id,
-      preload: [:feed_logs]
+      preload: [:registers]
     )
   end
 
   def folder_qry(user_id) do
-    q = from(fl in FeedLog, select: %{id: fl.id, name: fl.name})
+    q = from(fl in Register, select: %{id: fl.id, name: fl.name})
 
     from(
       f in Folder,
       where: f.user_id == ^user_id,
-      preload: [feed_logs: ^q]
+      preload: [registers: ^q]
     )
   end
 
@@ -35,8 +35,8 @@ defmodule RaggedData.Ctx.TestQuery do
   #     u in User,
   #     where: u.id == ^userid,
   #     join: f in assoc(u, :folders),
-  #     join: l in assoc(f, :feed_logs),
-  #     preload: [folders: {f, feed_logs: l}]
+  #     join: l in assoc(f, :registers),
+  #     preload: [folders: {f, registers: l}]
   #   )
   # end
   

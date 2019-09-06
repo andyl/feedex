@@ -1,11 +1,11 @@
 # Add application data
 # > mix run priv/repo/seeds.exs
 
-alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
+alias RaggedData.Ctx.Account.{User, Folder, Register}
 alias RaggedData.Ctx.News.{Feed, Post}
 alias RaggedData.Repo
 
-Repo.delete_all(FeedLog)
+Repo.delete_all(Register)
 Repo.delete_all(Folder)
 Repo.delete_all(Post)
 Repo.delete_all(Feed)
@@ -18,9 +18,9 @@ Repo.insert(%User{
   folders: [
     %Folder{
       name: "A_Folder1",
-      feed_logs: [
-        %FeedLog{
-          name: "A_FeedLog1",
+      registers: [
+        %Register{
+          name: "A_Register1",
           feed: %Feed{
             name: "A_Feed1",
             posts: [
@@ -33,8 +33,8 @@ Repo.insert(%User{
             ]
           }
         },
-        %FeedLog{
-          name: "A_FeedLog2",
+        %Register{
+          name: "A_Register2",
           feed: %Feed{
             name: "A_Feed2",
             posts: [
@@ -51,9 +51,9 @@ Repo.insert(%User{
     },
     %Folder{
       name: "B_Folder1",
-      feed_logs: [
-        %FeedLog{
-          name: "B_FeedLog1",
+      registers: [
+        %Register{
+          name: "B_Register1",
           feed: %Feed{
             name: "B_Feed1",
             posts: [

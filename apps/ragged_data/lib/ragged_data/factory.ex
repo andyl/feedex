@@ -1,6 +1,6 @@
 defmodule RaggedData.Factory do
   use ExMachina.Ecto, repo: RaggedData.Repo
-  alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
+  alias RaggedData.Ctx.Account.{User, Folder, Register}
   alias RaggedData.Ctx.News.{Feed, Post}
 
   def feed_factory do
@@ -33,9 +33,9 @@ defmodule RaggedData.Factory do
     }
   end
 
-  def feed_log_factory do
-    %FeedLog{
-      name: sequence(:name, &"feed_log_#{&1}"),
+  def register_factory do
+    %Register{
+      name: sequence(:name, &"register_#{&1}"),
       folder: insert(:folder)
     }
   end

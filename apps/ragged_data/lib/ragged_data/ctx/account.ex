@@ -1,5 +1,5 @@
 defmodule RaggedData.Ctx.Account do
-  alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
+  alias RaggedData.Ctx.Account.{User, Folder, Register}
   alias RaggedData.Repo
   alias Modex.AltMap
   import Ecto.Query
@@ -61,24 +61,27 @@ defmodule RaggedData.Ctx.Account do
 
   def cleantree(user_id) do
     rawtree(user_id) 
-    |> AltMap.retake([:id, :name, :user_id, :feed_logs])
-    |> IO.inspect
+    |> AltMap.retake([:id, :name, :user_id, :registers])
   end
 
   def rawtree(user_id) do
-    fq = from(fl in FeedLog, select: %{id: fl.id, name: fl.name})
+    fq = from(fl in Register, select: %{id: fl.id, name: fl.name})
       
     from(
       f in Folder,
       where: f.user_id == ^user_id,
-      preload: [feed_logs: ^fq]
+      preload: [registers: ^fq]
     )
     |> Repo.all()
   end
 
-  # ----- 
+  # ----- folders -----
 
   def folder_add do
+  end
+
+  def folder_get(id) do
+    Repo.get(Folder, id)
   end
 
   def folder_update do
@@ -86,6 +89,8 @@ defmodule RaggedData.Ctx.Account do
 
   def folder_delete do
   end
+  
+  # ----- feeds ----- 
 
   def feed_add do
   end
@@ -95,6 +100,8 @@ defmodule RaggedData.Ctx.Account do
 
   def feed_delete do
   end
+
+  # ----- registers -----
 
   @doc """
   Mark posts read.
@@ -107,13 +114,7 @@ defmodule RaggedData.Ctx.Account do
   def mark_read do
   end
 
-  @doc """
-  Update the UI state.
-
-  UI State is stored as a JSON field in `User.uistate`.
-  """
-  def update_ui do
-  end
+  # ----- utility functions -----
 
   @doc """
   Count number of elements in the database.
@@ -122,7 +123,7 @@ defmodule RaggedData.Ctx.Account do
     %{
       user: count(User),
       folder: count(Folder),
-      feed_log: count(FeedLog)
+      register: count(Register)
     }
   end
 

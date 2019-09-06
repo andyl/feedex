@@ -30,17 +30,17 @@ defmodule RaggedWeb.News.Hdr do
   defp title(state) do
     case {state.feed_id, state.folder_id} do
       {nil    , nil} -> "ALL"
-      {feed_id, nil} -> feed_title(feed_id)
-      {nil, fold_id} -> folder_title(fold_id)
+      {feed_id, nil} -> feed_name(feed_id)
+      {nil, fold_id} -> folder_name(fold_id)
     end
   end
 
-  defp feed_title(_feed_id) do
-    "FEED TITLE"
+  defp folder_name(folder_id) do
+    RaggedData.Ctx.Account.folder_get(folder_id).name
   end
 
-  defp folder_title(_folder_id) do
-    "FOLDER TITLE"
+  defp feed_name(feed_id) do
+    RaggedData.Ctx.News.feed_get(feed_id).name
   end
 
   defp btns(state) do

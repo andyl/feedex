@@ -1,6 +1,6 @@
 defmodule RaggedData.Ctx.News do
-  alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
-  # alias RaggedData.Ctx.News.{Feed, Post}
+  alias RaggedData.Ctx.Account.{User, Folder, Register}
+  alias RaggedData.Ctx.News.{Feed, Post}
 
   alias RaggedData.Repo
 
@@ -22,33 +22,15 @@ defmodule RaggedData.Ctx.News do
   def update do
   end
 
-  # ----- display queries
-
-  # def for_feed(_feed_id) do
-  #
-  # end
-
-  # def for_feed_log(_feed_log_id) do
-  #   # select * from posts p join feeds f on f.id = p.feed_id  where p.feed_id = 24;
-  #   from(
-  #     p in Post,
-  #     join
-  #   )
-  #   |> Repo.all()
-  # end
-
   def for_user(_user_id) do
   end
 
-  # ----- getters -----
-
-  def get_feed_log(id) do
-    Repo.get(FeedLog, id)
+  # ----- feeds -----
+  def feed_get(id) do
+    IO.inspect Repo.get(Feed, id)
   end
 
-  def get_feed(id) do
-    Repo.get(Feed, id)
-  end
+  # ----- posts -----
 
   def get_post(id) do
     Repo.get(Post, id)

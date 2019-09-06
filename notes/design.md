@@ -26,10 +26,10 @@
 ## ERD
 
 ```
-User -< Folder -< FeedLog >-< Feed -< Post
+User -< Folder -< Register >-< Feed -< Post
 ```
 
-Account: User / Folder / FeedLog
+Account: User / Folder / Register
 News: Feed / Post
 
 ## Queries
@@ -41,7 +41,7 @@ News: Feed / Post
 
 - User.Folders(user)
 - Folder.UnreadCounts(folder)
-- FeedLog.UnreadCount
+- Register.UnreadCount
 
 ## UiState
 

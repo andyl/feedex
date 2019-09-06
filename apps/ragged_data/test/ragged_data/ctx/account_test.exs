@@ -13,7 +13,7 @@ defmodule RaggedData.Ctx.AccountTest do
       counts = Account.count()
       assert counts.user == 0
       assert counts.folder == 0
-      assert counts.feed_log == 0
+      assert counts.register == 0
     end
   end
 

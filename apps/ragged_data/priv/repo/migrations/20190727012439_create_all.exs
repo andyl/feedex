@@ -29,7 +29,6 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
       add(:pwd_hash,     :string)
       add(:auth_token,   :string)
       add(:last_seen_at, :utc_datetime)
-      add(:uistate,      :map, default: "{}")
       add(:jfields,      :map, default: "{}")
       timestamps()
     end
@@ -43,8 +42,8 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
       timestamps()
     end
 
-    # Account.FeedLog
-    create table(:feed_logs) do
+    # Account.Register
+    create table(:register) do
       add(:folder_id,  references(:folders))
       add(:feed_id,    references(:feeds))
       add(:url,        :string)

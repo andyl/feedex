@@ -1,12 +1,12 @@
-defmodule RaggedData.Ctx.Account.FeedLog do
+defmodule RaggedData.Ctx.Account.Register do
   @moduledoc """
-  FeedLog DataModel.
+  Register DataModel.
   """
   use Ecto.Schema
   alias RaggedData.Ctx.{Account, News}
   import Ecto.Changeset
 
-  schema "feed_logs" do
+  schema "registers" do
     field(:name, :string)
     field(:jfields, :map)
     timestamps(type: :utc_datetime)
@@ -15,11 +15,11 @@ defmodule RaggedData.Ctx.Account.FeedLog do
     belongs_to :feed, News.Feed
   end
 
-  def changeset(feed_log, attrs) do
+  def changeset(register, attrs) do
     required_fields = [:name]
     optional_fields = [:folder_id]
 
-    feed_log
+    register
     |> cast(attrs, required_fields ++ optional_fields)
     |> validate_required(required_fields)
   end

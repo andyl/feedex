@@ -15,7 +15,7 @@ defmodule RaggedData.Ctx.Account.User do
     timestamps(type: :utc_datetime)
 
     has_many(:folders, Account.Folder)
-    has_many(:feed_logs, through: [:folders, :feed_logs])
+    has_many(:registers, through: [:folders, :registers])
   end
 
   def changeset(user, attrs) do

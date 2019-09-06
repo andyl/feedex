@@ -15,7 +15,7 @@ defmodule RaggedWeb.News.Tree do
         <a href='#' phx-click='clk_folder' phx-value='<%= folder.id %>'>
           <%= folder.name %>
         </a><br/>
-        <%= for feedlog <- folder.feed_logs do %>
+        <%= for feedlog <- folder.registers do %>
           -> <a href='#' phx-click='clk_feed' phx-value='<%= feedlog.id %>'><%= feedlog.name %></a><br/>
         <% end %>
       <% end %>
@@ -35,9 +35,6 @@ defmodule RaggedWeb.News.Tree do
   end
 
   def handle_event("clk_folder", payload, socket) do
-    IO.inspect "======================================="
-    IO.inspect payload
-    IO.inspect "======================================="
     opts = %{
       feed_id: nil,
       folder_id: Integer.parse(payload) |> elem(0)
@@ -50,9 +47,6 @@ defmodule RaggedWeb.News.Tree do
   end
 
   def handle_event("clk_feed", payload, socket) do
-    IO.inspect "+++++++++++++++++++++++++++++++++++++++"
-    IO.inspect payload
-    IO.inspect "+++++++++++++++++++++++++++++++++++++++"
     opts = %{
       feed_id: Integer.parse(payload) |> elem(0),
       folder_id: nil
@@ -65,7 +59,6 @@ defmodule RaggedWeb.News.Tree do
   end
 
   def handle_info(_state, socket) do
-    # IO.inspect(state)
     {:noreply, assign(socket, %{})}
   end
 end

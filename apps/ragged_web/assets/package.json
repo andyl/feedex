@@ -11,8 +11,8 @@
     "phoenix_live_view": "file:../../../deps/phoenix_live_view"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
     "@fortawesome/fontawesome-free": "^5.10.2",
     "babel-loader": "^8.0.0",
     "bootstrap": "^4.3.1",

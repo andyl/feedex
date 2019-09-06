@@ -23,7 +23,7 @@ defmodule RaggedRunner.MixProject do
 
   defp deps do
     [
-      {:oban, "~> 0.6.0"},
+      {:oban, "~> 0.7.0"},
       {:ragged_job, in_umbrella: true}
     ]
   end

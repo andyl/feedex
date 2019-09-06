@@ -2,6 +2,7 @@ defmodule RaggedWeb.News.Hdr do
   use Phoenix.LiveView
 
   alias Phoenix.HTML
+  # alias RaggedData.Ctx.News.
 
   def mount(session, socket) do
     RaggedWeb.Endpoint.subscribe("uistate")
@@ -27,7 +28,7 @@ defmodule RaggedWeb.News.Hdr do
   # ----- view helpers -----
   
   defp title(state) do
-    case IO.inspect({state.feed_id, state.folder_id}) do
+    case {state.feed_id, state.folder_id} do
       {nil    , nil} -> "ALL"
       {feed_id, nil} -> feed_title(feed_id)
       {nil, fold_id} -> folder_title(fold_id)
@@ -35,11 +36,11 @@ defmodule RaggedWeb.News.Hdr do
   end
 
   defp feed_title(_feed_id) do
-    "feed title"
+    "FEED TITLE"
   end
 
   defp folder_title(_folder_id) do
-    "folder title"
+    "FOLDER TITLE"
   end
 
   defp btns(state) do

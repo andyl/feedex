@@ -1,10 +1,10 @@
 defmodule RaggedData.Ctx.News do
-  # alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
+  alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
   # alias RaggedData.Ctx.News.{Feed, Post}
 
-  # alias RaggedData.Repo
+  alias RaggedData.Repo
 
-  # import Ecto.Query
+  import Ecto.Query
 
   @doc """
   Scan a URL, find the true url, return the RSS data.
@@ -38,5 +38,19 @@ defmodule RaggedData.Ctx.News do
   # end
 
   def for_user(_user_id) do
+  end
+
+  # ----- getters -----
+
+  def get_feed_log(id) do
+    Repo.get(FeedLog, id)
+  end
+
+  def get_feed(id) do
+    Repo.get(Feed, id)
+  end
+
+  def get_post(id) do
+    Repo.get(Post, id)
   end
 end

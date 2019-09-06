@@ -35,6 +35,9 @@ defmodule RaggedWeb.News.Tree do
   end
 
   def handle_event("clk_folder", payload, socket) do
+    IO.inspect "======================================="
+    IO.inspect payload
+    IO.inspect "======================================="
     opts = %{
       feed_id: nil,
       folder_id: Integer.parse(payload) |> elem(0)
@@ -47,6 +50,9 @@ defmodule RaggedWeb.News.Tree do
   end
 
   def handle_event("clk_feed", payload, socket) do
+    IO.inspect "+++++++++++++++++++++++++++++++++++++++"
+    IO.inspect payload
+    IO.inspect "+++++++++++++++++++++++++++++++++++++++"
     opts = %{
       feed_id: Integer.parse(payload) |> elem(0),
       folder_id: nil

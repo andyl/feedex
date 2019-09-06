@@ -124,9 +124,10 @@
 
 # 2019 Aug 30 Fri
 
-# TBD
+- [x] BASE: add scheme for caching UISTATE (uistate digest)
+- [x] BASE: convert news to liveview
 
-- [ ] BASE: add scheme for caching UISTATE (uistate digest)
+# TBD
 
 - [ ] BODY display: folder
 - [ ] BODY display: feed

@@ -24,7 +24,7 @@ defmodule RaggedWeb.Cache.PushState do
 
   Save a UiState into the store, and return the hash_key.
   """
-  def put(ui_state) do
+  def save(ui_state) do
     hash_key = gen_hash(ui_state)
 
     sig()
@@ -36,7 +36,7 @@ defmodule RaggedWeb.Cache.PushState do
   @doc """
   Return the PushState for a given lookup key.
   """
-  def get(hash_key, user_id \\ 1) do
+  def lookup(hash_key, user_id \\ 1) do
     result = Pets.lookup(sig(), hash_key)
 
     case result do
@@ -84,7 +84,7 @@ defmodule RaggedWeb.Cache.PushState do
   # note also that the user_id is encoded in the push_state
   defp gen_hash(ui_state) do
     :md5
-    |> :crypto.hash(ui_state)
+    |> :crypto.hash(inspect(ui_state))
     |> Base.url_encode64(padding: false)
     |> String.slice(1..6)
   end

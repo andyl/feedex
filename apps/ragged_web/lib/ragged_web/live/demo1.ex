@@ -1,4 +1,4 @@
-defmodule RaggedWeb.Demo1 do
+defmodule RaggedWeb.Live.Demo1 do
   use Phoenix.LiveView
   use Timex
   alias RaggedWeb.Demo1View

@@ -1,6 +1,6 @@
 defmodule RaggedWeb.Cache.PushState do
 
-  alias RaggedWeb.Cache.{PushState, UiState}
+  alias RaggedWeb.Cache.UiState
 
   @moduledoc """
   Persistent store for User's PushState.

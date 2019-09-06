@@ -1,6 +1,6 @@
 defmodule RaggedData.Ctx.TestQuery do
   alias RaggedData.Ctx.Account.{User, Folder, FeedLog}
-  alias RaggedData.Ctx.News.{Feed, Post}
+  # alias RaggedData.Ctx.News.{Feed, Post}
   alias RaggedData.Repo
   import Ecto.Query
 
@@ -39,7 +39,7 @@ defmodule RaggedData.Ctx.TestQuery do
   #     preload: [folders: {f, feed_logs: l}]
   #   )
   # end
-  #
+  
   # def uu2 do
   #   userid = first_user_id()
   #

@@ -25,7 +25,7 @@ defmodule RaggedWeb.Cache.UiStateTest do
 
     test "updates a UiState" do
       assert {id, ui_state} = UiState.save(%{user_id: 1, mode: "edit"})
-      assert ui_state.user_id      == 1
+     assert ui_state.user_id      == 1
       assert ui_state.mode         == "edit"
     end
   end

@@ -15,7 +15,9 @@ defmodule RaggedWeb.News.Body do
     """
   end
 
-  def handle_info(_state, socket) do
-    {:noreply, assign(socket, %{})}
+  # ----- pub/sub handlers -----
+
+  def handle_info(%{topic: "uistate", payload: new_state}, socket) do
+    {:noreply, assign(socket, %{uistate: new_state.uistate})}
   end
 end

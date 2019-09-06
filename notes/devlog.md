@@ -122,7 +122,11 @@
 - [x] HDR display: folder
 - [x] HDR display: feed
 
+# 2019 Aug 30 Fri
+
 # TBD
+
+- [ ] BASE: add scheme for caching UISTATE (uistate digest)
 
 - [ ] BODY display: folder
 - [ ] BODY display: feed

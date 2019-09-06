@@ -9,7 +9,8 @@ defmodule RaggedWeb.Cache.UiState do
             folder_state: "closed",
             feed_id: nil,
             post_id: nil,
-            post_state: "closed"
+            post_state: "closed",
+            timestamp: Timex.now()
 
   alias RaggedWeb.Cache.UiState
 

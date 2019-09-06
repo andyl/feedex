@@ -49,7 +49,6 @@
             <%= ftr_link(@conn, "Demo2", "/demo2") %>
             <%= ftr_link(@conn, "News",  "/news") %>
             <%= ftr_link(@conn, "Users", "/users") %>
-            <%= ftr_lbl_time(@conn) %>
           </ul>
         </small>
       </div>

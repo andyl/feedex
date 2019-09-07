@@ -47,8 +47,7 @@
           <ul class="nav justify-content-center">
             <%= ftr_link(@conn, "Demo1", "/demo1") %>
             <%= ftr_link(@conn, "Demo2", "/demo2") %>
-            <%= ftr_link(@conn, "News1", "/news1") %>
-            <%= ftr_link(@conn, "News2", "/news2") %>
+            <%= ftr_link(@conn, "News",  "/news")  %>
             <%= ftr_link(@conn, "Users", "/users") %>
           </ul>
         </small>

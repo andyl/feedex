@@ -2,7 +2,6 @@ defmodule RaggedWeb.News.Hdr do
   use Phoenix.LiveView
 
   alias Phoenix.HTML
-  # alias RaggedData.Ctx.News.
 
   def mount(session, socket) do
     RaggedWeb.Endpoint.subscribe("uistate")
@@ -28,9 +27,9 @@ defmodule RaggedWeb.News.Hdr do
   # ----- view helpers -----
   
   defp title(state) do
-    case {state.feed_id, state.folder_id} do
+    case {state.reg_id, state.fold_id} do
       {nil    , nil} -> "ALL"
-      {feed_id, nil} -> feed_name(feed_id)
+      {reg_id, nil}  -> register_name(reg_id)
       {nil, fold_id} -> folder_name(fold_id)
     end
   end
@@ -39,12 +38,12 @@ defmodule RaggedWeb.News.Hdr do
     RaggedData.Ctx.Account.folder_get(folder_id).name
   end
 
-  defp feed_name(feed_id) do
-    RaggedData.Ctx.News.feed_get(feed_id).name
+  defp register_name(register_id) do
+    RaggedData.Ctx.Account.register_get(register_id).name
   end
 
   defp btns(state) do
-    show_pencil = state.feed_id != nil || state.folder_id != nil
+    show_pencil = state.reg_id != nil || state.fold_id != nil
     pencil = 
       if show_pencil do
         "<i class='fa fa-pencil-alt'></i>"

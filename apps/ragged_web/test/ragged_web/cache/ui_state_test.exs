@@ -17,15 +17,15 @@ defmodule RaggedWeb.Cache.UiStateTest do
   describe "#save" do
     test "returns a UiState" do
       assert {id, ui_state} = UiState.save(%{user_id: 1})
-      assert ui_state.user_id      == 1
-      assert ui_state.mode         == "view"
-      assert ui_state.folder_state == "closed"
-      assert ui_state.post_state   == "closed"
+      assert ui_state.user_id    == 1
+      assert ui_state.mode       == "view"
+      assert ui_state.fold_state == "closed"
+      assert ui_state.post_state == "closed"
     end
 
     test "updates a UiState" do
       assert {id, ui_state} = UiState.save(%{user_id: 1, mode: "edit"})
-     assert ui_state.user_id      == 1
+      assert ui_state.user_id      == 1
       assert ui_state.mode         == "edit"
     end
   end

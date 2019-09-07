@@ -1,7 +1,6 @@
 defmodule RaggedData.Ctx.News do
-  alias RaggedData.Ctx.Account.{User, Folder, Register}
+  alias RaggedData.Ctx.Account.{Folder, Register}
   alias RaggedData.Ctx.News.{Feed, Post}
-
   alias RaggedData.Repo
 
   import Ecto.Query
@@ -27,12 +26,32 @@ defmodule RaggedData.Ctx.News do
 
   # ----- feeds -----
   def feed_get(id) do
-    IO.inspect Repo.get(Feed, id)
+    Repo.get(Feed, id)
   end
 
   # ----- posts -----
 
   def get_post(id) do
     Repo.get(Post, id)
+  end
+
+  def posts_for_folder(fold_id) do
+    from(
+      p in Post,
+      join: f in Feed, on: f.id == p.feed_id,
+      join: r in Register, on: f.id == r.feed_id,
+      where: r.folder_id == ^fold_id
+    )
+    |> Repo.all()
+  end
+
+  def posts_for_register(reg_id) do
+    from(
+      p in Post,
+      join: f in Feed, on: f.id == p.feed_id,
+      join: r in Register, on: f.id == r.feed_id,
+      where: r.id == ^reg_id
+    )
+    |> Repo.all()
   end
 end

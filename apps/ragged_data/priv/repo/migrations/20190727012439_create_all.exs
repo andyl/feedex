@@ -43,7 +43,7 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
     end
 
     # Account.Register
-    create table(:register) do
+    create table(:registers) do
       add(:folder_id,  references(:folders))
       add(:feed_id,    references(:feeds))
       add(:url,        :string)

@@ -10,7 +10,7 @@ defmodule RaggedWeb.News.Body do
     ~L"""
     <div>
       BODY
-      <%= live_render(@socket, RaggedWeb.Demo2.FormShow) %>
+      
     </div>
     """
   end

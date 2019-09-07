@@ -4,6 +4,8 @@ defmodule RaggedData.Ctx.Account do
   alias Modex.AltMap
   import Ecto.Query
 
+  # ----- users -----
+
   def user_list do
     Repo.all(User)
   end
@@ -65,12 +67,12 @@ defmodule RaggedData.Ctx.Account do
   end
 
   def rawtree(user_id) do
-    fq = from(fl in Register, select: %{id: fl.id, name: fl.name})
+    rq = from(r in Register, select: %{id: r.id, name: r.name})
       
     from(
       f in Folder,
       where: f.user_id == ^user_id,
-      preload: [registers: ^fq]
+      preload: [registers: ^rq]
     )
     |> Repo.all()
   end
@@ -90,18 +92,11 @@ defmodule RaggedData.Ctx.Account do
   def folder_delete do
   end
   
-  # ----- feeds ----- 
-
-  def feed_add do
-  end
-
-  def feed_update do
-  end
-
-  def feed_delete do
-  end
-
   # ----- registers -----
+
+  def register_get(id) do
+    IO.inspect Repo.get(Register, id)
+  end
 
   @doc """
   Mark posts read.
@@ -112,6 +107,17 @@ defmodule RaggedData.Ctx.Account do
     - post: <post_id>
   """
   def mark_read do
+  end
+  
+  # ----- feeds ----- 
+
+  def feed_add do
+  end
+
+  def feed_update do
+  end
+
+  def feed_delete do
   end
 
   # ----- utility functions -----

@@ -1,4 +1,5 @@
 defmodule RaggedWeb.News.Tree do
+  
   use Phoenix.LiveView
 
   def mount(session, socket) do
@@ -15,17 +16,17 @@ defmodule RaggedWeb.News.Tree do
         <a href='#' phx-click='clk_folder' phx-value='<%= folder.id %>'>
           <%= folder.name %>
         </a><br/>
-        <%= for feedlog <- folder.registers do %>
-          -> <a href='#' phx-click='clk_feed' phx-value='<%= feedlog.id %>'><%= feedlog.name %></a><br/>
+        <%= for register <- folder.registers do %>
+          -> <a href='#' phx-click='clk_feed' phx-value='<%= register.id %>'><%= register.name %></a><br/>
         <% end %>
       <% end %>
       <small>
       <table class='table table-sm' style='margin-top: 20px;'>
         <tr><td>UserId</td><td><td><%= @uistate.user_id %></td></tr>
         <tr><td>Mode</td><td><td><%= @uistate.mode %></td></tr>
-        <tr><td>FeedId</td><td><td><%= @uistate.feed_id %></td></tr>
-        <tr><td>FolderId</td><td><td><%= @uistate.folder_id %></td></tr>
-        <tr><td>Folder</td><td><td><%= @uistate.folder_state %></td></tr>
+        <tr><td>RegId</td><td><td><%= @uistate.reg_id %></td></tr>
+        <tr><td>FoldId</td><td><td><%= @uistate.fold_id %></td></tr>
+        <tr><td>Folder</td><td><td><%= @uistate.fold_state %></td></tr>
         <tr><td>PostId</td><td><td><%= @uistate.post_id %></td></tr>
         <tr><td>Post</td><td><td><%= @uistate.post_state %></td></tr>
       </table>
@@ -36,8 +37,8 @@ defmodule RaggedWeb.News.Tree do
 
   def handle_event("clk_folder", payload, socket) do
     opts = %{
-      feed_id: nil,
-      folder_id: Integer.parse(payload) |> elem(0)
+      reg_id: nil,
+      fold_id: Integer.parse(payload) |> elem(0)
     }
 
     new_state = Map.merge(socket.assigns.uistate, opts)
@@ -48,8 +49,8 @@ defmodule RaggedWeb.News.Tree do
 
   def handle_event("clk_feed", payload, socket) do
     opts = %{
-      feed_id: Integer.parse(payload) |> elem(0),
-      folder_id: nil
+      reg_id: Integer.parse(payload) |> elem(0),
+      fold_id: nil
     }
 
     new_state = Map.merge(socket.assigns.uistate, opts)

@@ -1,13 +1,13 @@
 defmodule RaggedWeb.Cache.UiState do
   # modes: view, edit, add_feed, add_folder
-  # folder_state: open, closed
-  # post_state: open, closed
+  # fold_state: open, closed
+  # reg_state: open, closed
 
   defstruct user_id: nil,
             mode: "view",
-            folder_id: nil,
-            folder_state: "closed",
-            feed_id: nil,
+            fold_id: nil,
+            fold_state: "closed",
+            reg_id: nil,
             post_id: nil,
             post_state: "closed",
             timestamp: Timex.now()

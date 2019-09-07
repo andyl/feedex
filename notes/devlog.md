@@ -126,12 +126,11 @@
 
 - [x] BASE: add scheme for caching UISTATE (uistate digest)
 - [x] BASE: convert news to liveview
+- [x] BODY display: folder
+- [x] BODY display: feed
+- [x] BODY display: all
 
 # TBD
-
-- [ ] BODY display: folder
-- [ ] BODY display: feed
-- [ ] BODY display: all
 
 - [ ] Edit folder
 - [ ] Add folder
@@ -143,7 +142,7 @@
 
 - [ ] View post
 - [ ] Update post-read status
-- [ ] Update post-read stats in TREE
+- [ ] Update post-read status in TREE
 
 - [ ] TREE open/close
 

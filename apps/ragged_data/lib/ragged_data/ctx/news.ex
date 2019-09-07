@@ -35,14 +35,22 @@ defmodule RaggedData.Ctx.News do
     Repo.get(Post, id)
   end
 
+  def posts_all() do
+    from(
+      p in Post,
+      select: %{id: p.id}
+    )
+    |> Repo.all()
+  end
+
   def posts_for_folder(fold_id) do
     from(
       p in Post,
       join: f in Feed, on: f.id == p.feed_id,
       join: r in Register, on: f.id == r.feed_id,
-      where: r.folder_id == ^fold_id
-    )
-    |> Repo.all()
+      where: r.folder_id == ^fold_id,
+      select: %{id: p.id}
+    ) |> Repo.all()
   end
 
   def posts_for_register(reg_id) do
@@ -50,8 +58,8 @@ defmodule RaggedData.Ctx.News do
       p in Post,
       join: f in Feed, on: f.id == p.feed_id,
       join: r in Register, on: f.id == r.feed_id,
-      where: r.id == ^reg_id
-    )
-    |> Repo.all()
+      where: r.id == ^reg_id,
+      select: %{id: p.id}
+    ) |> Repo.all()
   end
 end

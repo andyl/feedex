@@ -95,7 +95,7 @@ defmodule RaggedData.Ctx.Account do
   # ----- registers -----
 
   def register_get(id) do
-    IO.inspect Repo.get(Register, id)
+    Repo.get(Register, id)
   end
 
   @doc """

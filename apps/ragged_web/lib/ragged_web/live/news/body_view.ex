@@ -1,4 +1,4 @@
-defmodule RaggedWeb.News.Body do
+defmodule RaggedWeb.News.BodyView do
   alias RaggedData.Ctx.News
 
   use Phoenix.LiveView
@@ -11,14 +11,8 @@ defmodule RaggedWeb.News.Body do
   def render(assigns) do
     ~L"""
     <div>
-    BODY
+    BODY VIEW
     </div>
     """
-  end
-
-  # ----- pub/sub handlers -----
-
-  def handle_info(%{topic: "uistate", payload: new_state}, socket) do
-    {:noreply, assign(socket, %{uistate: new_state.uistate})}
   end
 end

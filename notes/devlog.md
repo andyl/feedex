@@ -111,7 +111,7 @@
 
 - [x] Add treemap to TREE/HDR/BODY
 - [x] Display test trees in TREE/HDR/BODY
-- [x] click tree updates UIstate
+- [x] Click tree updates UIstate
 
 # 2019 Aug 13 Wed
 

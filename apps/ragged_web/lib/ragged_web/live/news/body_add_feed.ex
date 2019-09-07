@@ -14,4 +14,10 @@ defmodule RaggedWeb.News.BodyAddFeed do
     </div>
     """
   end
+  
+  # ----- pub/sub handlers -----
+
+  def handle_info(_params, socket) do
+    {:noreply, socket}
+  end
 end

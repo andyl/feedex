@@ -22,11 +22,6 @@ defmodule RaggedWeb.News.Body do
   
   def render_body(socket, uistate) do
     session = [session: %{uistate: uistate}]
-    IO.inspect "======================================="
-    IO.inspect socket
-    IO.inspect "---------------------------------------"
-    IO.inspect uistate
-    IO.inspect "======================================="
     case uistate.mode do
       "view"        -> live_render(socket, BodyView,       session)
       "add_feed"    -> live_render(socket, BodyAddFeed,    session)

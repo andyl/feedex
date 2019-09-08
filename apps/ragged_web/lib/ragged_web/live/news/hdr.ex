@@ -16,7 +16,7 @@ defmodule RaggedWeb.News.Hdr do
       <%= title(@uistate) %>
     </div>
     <div class='col-md-6 text-right'>
-      <%= btns(@uistate) |> HTML.raw %>
+      <%= HTML.raw btns(@uistate) %>
     </div>
     </div>
     <hr/>
@@ -46,20 +46,39 @@ defmodule RaggedWeb.News.Hdr do
     show_pencil = state.reg_id != nil || state.fold_id != nil
     pencil = 
       if show_pencil do
-        "<i class='fa fa-pencil-alt'></i>"
+        """
+        <a href='#' phx-click='click-edit'>
+        <i class='fa fa-pencil-alt'></i>
+        </a>
+        """
       else
         ""
       end
 
     """
+    <a href='#'>
     <i class='fa fa-check' style='margin-right: 10px;'></i>
+    </a>
+    <a href='#'>
     <i class='fa fa-redo' style='margin-right: 10px;'></i>
+    </a>
     #{pencil}
     """
   end
   
   # ----- event handlers -----
   
+  def handle_event("click-edit", _click, socket) do
+    uistate = socket.assigns.uistate
+    new_mode = case {uistate.fold_id, uistate.reg_id} do
+      {_id, nil} -> "edit_folder"
+      {nil, _id} -> "edit_feed"
+    end
+    new_state = Map.merge(uistate, %{mode: new_mode})
+    payload = %{uistate: new_state}
+    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "click_#{new_mode}", payload)
+    {:noreply, assign(socket, %{uistate: new_state})}
+  end
   
   # ----- pub/sub handlers -----
 

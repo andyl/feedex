@@ -7,9 +7,11 @@ defmodule RaggedData.Ctx.News.Post do
   import Ecto.Changeset
 
   schema "posts" do
-    field(:name, :string)
-    field(:exid, :string)
-    field(:body, :string)
+    field(:exid,    :string)
+    field(:title,   :string)
+    field(:body,    :string)
+    field(:author,  :string)
+    field(:link,    :string)
     field(:jfields, :map)
     timestamps(type: :utc_datetime)
 

@@ -8,6 +8,15 @@ defmodule RaggedClientTest do
   end
 
   describe "#scan/1" do
+    test "valid resp valid data" do
+      use_cassette "scan_valid_resp_valid_data" do 
+        url_string = "https://www.reddit.com/r/elixir.rss"
+        {status, url, _data} = RaggedClient.scan(url_string)
+        assert status == :ok
+        assert url == url_string
+      end
+    end
+
     test "invalid resp invalid data" do
       use_cassette "scan_invalid_resp_invalid_data" do
         url_string = "https://zzz.reddit.com/z/elixir.rss"
@@ -19,15 +28,6 @@ defmodule RaggedClientTest do
       use_cassette "scan_valid_resp_invalid_data" do 
         url_string = "https://www.reddit.com/r/elixir"
         assert RaggedClient.scan(url_string) == {:error, "Not an RSS feed"}
-      end
-    end
-
-    test "valid resp valid data" do
-      use_cassette "scan_valid_resp_valid_data" do 
-        url_string = "https://www.reddit.com/r/elixir.rss"
-        {status, url, _data} = RaggedClient.scan(url_string)
-        assert status == :ok
-        assert url == url_string
       end
     end
   end

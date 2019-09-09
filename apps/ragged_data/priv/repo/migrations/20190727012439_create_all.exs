@@ -8,6 +8,7 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
       add(:url,     :string)
       add(:name,    :string)
       add(:jfields, :map, default: "{}")
+      add(:updated, :utc_datetime)
       timestamps()
     end
 
@@ -15,7 +16,10 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
     create table(:posts) do
       add(:feed_id, references(:feeds))
       add(:exid,    :string)
-      add(:body,    :string)
+      add(:title,   :string)
+      add(:body,    :text)
+      add(:author,  :string)
+      add(:link,    :string)
       add(:jfields, :map, default: "{}")
       timestamps()
     end

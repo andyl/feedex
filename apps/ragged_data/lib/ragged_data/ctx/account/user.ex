@@ -16,6 +16,7 @@ defmodule RaggedData.Ctx.Account.User do
 
     has_many(:folders, Account.Folder)
     has_many(:registers, through: [:folders, :registers])
+    has_many(:feeds, through: [:folders, :registers, :feeds])
   end
 
   def changeset(user, attrs) do

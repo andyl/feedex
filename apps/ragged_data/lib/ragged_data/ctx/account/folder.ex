@@ -1,4 +1,4 @@
-defmodule RaggedData.Ctx.Account.Folder do
+defmodule RaggedData.Ctx.Account.RegFeed do
   @moduledoc """
   Folder DataModel.
   """
@@ -6,22 +6,24 @@ defmodule RaggedData.Ctx.Account.Folder do
   alias RaggedData.Ctx.Account
   import Ecto.Changeset
 
-  schema "folders" do
+  embedded_schema do
+    field(:folder_id, :integer)
     field(:name, :string)
-    field(:jfields, :map)
-    timestamps(type: :utc_datetime)
-
-    belongs_to :user, Account.User
-    has_many :registers, Account.Register
-    has_many :feeds, through: [:registers, :feed]
+    field(:url, :string)
   end
 
-  def changeset(folder, attrs) do
-    required_fields = [:name]
-    optional_fields = [:user_id]
+  def changeset(reg_feed, attrs) do
+    required_fields = [:url]
+    optional_fields = [:name]
 
-    folder
+    reg_feed
     |> cast(attrs, required_fields ++ optional_fields)
     |> validate_required(required_fields)
+    |> validate_length(:name, min: 3, max: 10)
+    |> validate_length(:url, min: 6)
+  end
+
+  def new_changeset do
+    changeset(%Account.RegFeed{}, %{})
   end
 end

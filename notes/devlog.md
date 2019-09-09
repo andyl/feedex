@@ -122,27 +122,43 @@
 - [x] HDR display: folder
 - [x] HDR display: feed
 
-# 2019 Aug 30 Fri
+# 2019 Sep 07 Sat
 
 - [x] BASE: add scheme for caching UISTATE (uistate digest)
 - [x] BASE: convert news to liveview
 - [x] BODY display: folder
 - [x] BODY display: feed
 - [x] BODY display: all
+- [x] Add view layout for editing folders and feedds
 
-# TBD
+# 2019 Sep 08 Sun
 
-- [ ] Edit folder
-- [ ] Add folder
-- [ ] Remove folder
+Editing Design Notes:
+- copy form technique from purlex
+- a feed must be in a folder
+- there always has to be one folder
+- a folder can't be deleted if it contains a feed
 
-- [ ] Edit feed
-- [ ] Add feed
-- [ ] Remove feed
+- [x] Add Folder
+- [x] Add Feed
+- [x] Edit Folder
+- [x] Edit Feed
 
-- [ ] View post
-- [ ] Update post-read status
-- [ ] Update post-read status in TREE
+# Jobs
+
+- [ ] JOBS: Setup job execution
+- [ ] JOBS: Allow job control (on/off)
+- [ ] JOBS: Show statistics
+
+# Viewing
+
+- [ ] VIEWING: View post
+- [ ] VIEWING: Update post-read status
+- [ ] VIEWING: Update post-read status in TREE
+- [ ] VIEWING: Hotkeys | Table Nav up/down
+- [ ] VIEWING: Hotkeys | Folder/Feed Selection
+
+# Misc
 
 - [ ] TREE open/close
 
@@ -154,4 +170,3 @@
 - [ ] TEST - intw - install HOUND 1.1.0
 - [ ] TEST - intw - login/logout 
 
-- [ ] LV - Hotkeys / Table Nav up/down

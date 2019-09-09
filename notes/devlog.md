@@ -146,6 +146,8 @@ Editing Design Notes:
 
 # Jobs
 
+- [ ] Setup seeds with real URLs
+
 - [ ] JOBS: Setup job execution
 - [ ] JOBS: Allow job control (on/off)
 - [ ] JOBS: Show statistics

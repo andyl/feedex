@@ -17,34 +17,34 @@ Repo.insert(%User{
   pwd_hash: User.pwd_hash("zzz"),
   folders: [
     %Folder{
-      name: "A_Folder1",
+      name: "Elixir",
       registers: [
         %Register{
-          name: "A_Register1",
+          name: "Elixir Status",
           feed: %Feed{
-            name: "A_Feed1",
-            posts: [
-              %Post{
-                body: "A_Post1"
-              },
-              %Post{
-                body: "A_Post2"
-              }
-            ]
+            name: "Elixir Status Feed",
+            url:  "http://elixirstatus.com/rss"
           }
         },
         %Register{
-          name: "A_Register2",
+          name: "Elixir Forum",
           feed: %Feed{
-            name: "A_Feed2",
-            posts: [
-              %Post{
-                body: "A_Post3"
-              },
-              %Post{
-                body: "A_Post4"
-              }
-            ]
+            name: "Elixir Forum Feed",
+            url:  "https://elixirforum.com/posts.rss"
+          }
+        },
+        %Register{
+          name: "Plataformatec",
+          feed: %Feed{
+            name: "Plataformatec Feed",
+            url:  "http://blog.plataformatec.com.br/tag/elixir/feed"
+          }
+        },
+        %Register{
+          name: "Elixir Reddit",
+          feed: %Feed{
+            name: "Elixir Reddit Feed",
+            url:  "https://old.reddit.com/r/elixir/.rss"
           }
         }
       ]

@@ -10,26 +10,29 @@ defmodule RaggedWeb.News.Tree do
   def render(assigns) do
     ~L"""
     <div>
-      <hr/>
-      <b>TREE</b><br/>
+      <small>
       <%= for folder <- @treemap do %>
+        <p></p>
         <a href='#' phx-click='clk_folder' phx-value='<%= folder.id %>'>
           <%= folder.name %>
-        </a><br/>
+        </a>
         <%= for register <- folder.registers do %>
-          -> <a href='#' phx-click='clk_feed' phx-value='<%= register.id %>'><%= register.name %></a><br/>
+          <br/>
+          > <a href='#' phx-click='clk_feed' phx-value='<%= register.id %>'><%= register.name %></a>
         <% end %>
       <% end %>
+      </small>
+      <p></p>
       <small>
-      <table class='table table-sm' style='margin-top: 20px;'>
-        <tr><td>UserId</td><td><td><%= @uistate.user_id %></td></tr>
-        <tr><td>Mode</td><td><td><%= @uistate.mode %></td></tr>
-        <tr><td>RegId</td><td><td><%= @uistate.reg_id %></td></tr>
-        <tr><td>FoldId</td><td><td><%= @uistate.fold_id %></td></tr>
-        <tr><td>Folder</td><td><td><%= @uistate.fold_state %></td></tr>
-        <tr><td>PostId</td><td><td><%= @uistate.post_id %></td></tr>
-        <tr><td>Post</td><td><td><%= @uistate.post_state %></td></tr>
+      <table class='table table-sm'>
+        <tr><td>Mode</td> <td><%= @uistate.mode %>  </td></tr>
+        <tr><td>UsrId</td><td><%= @uistate.usr_id %></td></tr>
+        <tr><td>FldId</td><td><%= @uistate.fld_id %></td></tr>
+        <tr><td>RegId</td><td><%= @uistate.reg_id %></td></tr>
+        <tr><td>PstId</td><td><%= @uistate.pst_id %></td></tr>
       </table>
+      <p></p>
+      <%= live_render(@socket, RaggedWeb.TimePstSec) %>
       </small>
     </div>
     """
@@ -37,8 +40,9 @@ defmodule RaggedWeb.News.Tree do
 
   def handle_event("clk_folder", payload, socket) do
     opts = %{
+      fld_id: Integer.parse(payload) |> elem(0),
       reg_id: nil,
-      fold_id: Integer.parse(payload) |> elem(0)
+      pst_id: nil
     }
 
     new_state = Map.merge(socket.assigns.uistate, opts)
@@ -50,7 +54,8 @@ defmodule RaggedWeb.News.Tree do
   def handle_event("clk_feed", payload, socket) do
     opts = %{
       reg_id: Integer.parse(payload) |> elem(0),
-      fold_id: nil
+      fld_id: nil,
+      pst_id: nil
     }
 
     new_state = Map.merge(socket.assigns.uistate, opts)
@@ -59,7 +64,7 @@ defmodule RaggedWeb.News.Tree do
     {:noreply, assign(socket, %{uistate: new_state, treemap: socket.assigns.treemap})}
   end
 
-  def handle_info(_state, socket) do
-    {:noreply, assign(socket, %{})}
+  def handle_info(%{topic: "uistate", payload: new_state}, socket) do
+    {:noreply, assign(socket, %{uistate: new_state.uistate})}
   end
 end

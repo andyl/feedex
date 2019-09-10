@@ -4,7 +4,7 @@ defmodule RaggedData.Ctx.Account.UserTest do
   alias RaggedData.Ctx.Account.User
   import Ecto.Query, only: [from: 2]
   import RaggedData.Factory
-
+  
   setup do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Repo)
   end

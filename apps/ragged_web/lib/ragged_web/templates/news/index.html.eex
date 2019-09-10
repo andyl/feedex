@@ -9,4 +9,3 @@
   </div>
 </div>
 
-<%= live_render(@conn, RaggedWeb.TimePstSec) %>

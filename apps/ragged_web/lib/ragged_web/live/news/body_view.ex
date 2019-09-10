@@ -1,19 +1,36 @@
 defmodule RaggedWeb.News.BodyView do
   alias RaggedData.Ctx.News
+  alias Phoenix.HTML
 
   use Phoenix.LiveView
 
   def mount(session, socket) do
     RaggedWeb.Endpoint.subscribe("uistate")
-    {:ok, assign(socket, %{uistate: session.uistate})}
+    opts = %{
+      uistate: session.uistate,
+      post_id: nil
+    }
+    {:ok, assign(socket, opts)}
   end
 
   def render(assigns) do
     ~L"""
     <div>
     <table class="table table-sm">
-    <%= for r <- body_rows(@uistate) do %>
-      <tr><td>HELLO</td><td><%= r.id %></td></tr>
+    <%= for post <- posts_for(@uistate) do %>
+    <%= if @uistate.pst_id == post.id do %>
+      <tr style='background-color: lightgrey;'>
+      <td><b><%= HTML.raw id_link(post.id) %></b></td>
+      <td><b><a href='<%= post.link %>' target='_blank'><%= post.title %></a></b></td>
+      </tr>
+      <tr style='background-color: lightgrey;'><td colspan=2>
+      <small>
+      <%= HTML.raw post.body %>
+      </small>
+      </td></tr>
+    <% else %>
+    <tr><td><%= HTML.raw id_link(post.id) %></td><td><%= post.title %></td></tr>
+    <% end %>
     <% end %>
     </table>
     </div>
@@ -21,13 +38,37 @@ defmodule RaggedWeb.News.BodyView do
   end
 
   # ----- view helpers -----
+  
+  def id_link(id) do
+    """
+    <a href="#" phx-click='click-post' phx-value='#{id}'>
+    #{id}
+    </a>
+    """
+  end
 
-  def body_rows(uistate) do
-    case {uistate.reg_id, uistate.fold_id} do
-      {nil, nil   }  -> News.posts_all()
-      {reg_id, nil}  -> News.posts_for_register(reg_id)
-      {nil, fold_id} -> News.posts_for_folder(fold_id)
+
+  def posts_for(uistate) do
+    case {uistate.reg_id, uistate.fld_id} do
+      {nil, nil   } -> News.posts_all()
+      {reg_id, nil} -> News.posts_for_register(reg_id)
+      {nil, fld_id} -> News.posts_for_folder(fld_id)
     end
+  end
+
+  # ----- event handlers -----
+
+  def handle_event("click-post", payload, socket) do
+    post_id = String.to_integer(payload)
+    uistate = socket.assigns.uistate
+    new_id  = if uistate.pst_id == post_id, do: nil, else: post_id
+    opts =  %{pst_id: new_id}
+    newstate = 
+      socket.assigns.uistate
+      |> Map.merge(opts)
+    
+    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "CLICK_POST", %{uistate: newstate})
+    {:noreply, assign(socket, %{uistate: newstate})}
   end
   
   # ----- pub/sub handlers -----

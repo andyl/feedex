@@ -33,7 +33,7 @@ defmodule RaggedData.Ctx.Account.RegisterTest do
       assert Repo.one(cqry) == 1
     end
   end
-
+  
   describe "using Factory" do
     test "building an entity" do
       assert build(:register)

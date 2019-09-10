@@ -19,9 +19,11 @@ defmodule RaggedWeb.News.BodyEditFeed do
     post_count =
       from(p in Post, select: count(p.id), where: p.feed_id == ^register.feed_id)
       |> Repo.one()
+    feed       = Repo.get(Feed, register.feed_id)
     opts = %{
       register: register,
       feed_count: feed_count,
+      feed: feed,
       post_count: post_count,
       uistate: session.uistate
     }
@@ -30,17 +32,23 @@ defmodule RaggedWeb.News.BodyEditFeed do
 
   def render(assigns) do
     ~L"""
-    <div>
     <h1>EDIT FEED</h1>
-    Registry Name: <%= @register.name %><br/>
-    Registry ID: <%= @register.id %><br/>
-    Feed Count: <%= @feed_count %><br/>
-    Post Count: <%= @post_count %>
-    <p>
-    <%= if @feed_count == 1 do %>
-    <a href='#' phx-click='delete'>Delete Register</a>
-    <% end %>
+    <b>Reg Name:</b> <%= @register.name %><br/>
+    <b>Feed Url:</b> <%= @feed.url %><br/>
+    <div class="row" style='margin-top: 60px;'>
+    <div class="col-md-6">
+    <b>Registry ID:</b> <%= @register.id %><br/>
+    <b>Feed Count:</b> <%= @feed_count %><br/>
+    <b>Post Count:</b> <%= @post_count %>
+    </div>
+    <div class="col-md-6">
+    <p style='margin-bottom: 120px;'>
+    <button type="button" phx-click='resync' class="btn btn-primary">Sync Feed</button>
     </p>
+    <%= if @feed_count == 1 do %>
+    <button type="button" phx-click='delete' class="btn btn-danger">Delete Register</button>
+    <% end %>
+    </div>
     </div>
     """
   end
@@ -57,8 +65,16 @@ defmodule RaggedWeb.News.BodyEditFeed do
     Repo.delete(register)
     new_state = 
       socket.assigns.uistate
-      |> Map.merge(%{fold_id: nil, reg_id: nil, mode: "view"})
+      |> Map.merge(%{fld_id: nil, reg_id: nil, mode: "view"})
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "remove_feed", %{uistate: new_state})
+    {:noreply, socket}
+  end
+
+  def handle_event("resync", _payload, socket) do
+    feed = socket.assigns.feed
+    IO.puts "+++++++++++++++++++++++++++++++++++++++"
+    RaggedJob.sync(feed)
+    IO.puts "+++++++++++++++++++++++++++++++++++++++"
     {:noreply, socket}
   end
   

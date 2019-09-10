@@ -28,49 +28,9 @@ defmodule RaggedData.Ctx.TestQuery do
     from(f in folder_qry(user_id), select: %{name: f.name})
   end
 
-  # def uu1 do
-  #   userid = first_user_id()
-  #
-  #   from(
-  #     u in User,
-  #     where: u.id == ^userid,
-  #     join: f in assoc(u, :folders),
-  #     join: l in assoc(f, :registers),
-  #     preload: [folders: {f, registers: l}]
-  #   )
-  # end
-  
-  # def uu2 do
-  #   userid = first_user_id()
-  #
-  #   from(
-  #     u in User,
-  #     where: u.id == ^userid,
-  #     join: f in assoc(u, :folders),
-  #     select: %{userid: u.id, folders: %{name: f.name}}
-  #   )
-  # end
-
   def fff do
     from(f in Folder, select: %{name: f.name, id: f.id})
   end
-
-  # def uuu(userid \\ first_user_id()) do
-  #   q1 =
-  #     from(f in Folder,
-  #       select: %{name: f.name, id: f.id}
-  #     )
-  #
-  #   q2 =
-  #     from(u in User,
-  #       where: u.id == ^userid
-  #       # merge_select: %{name: u.name, id: u.id}
-  #     )
-  #
-  #   from(u in q2,
-  #     preload: ^q1
-  #   )
-  # end
 
   def gg1 do
     uid = first_user_id()

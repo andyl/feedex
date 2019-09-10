@@ -51,13 +51,13 @@ defmodule RaggedWeb.News.BodyAddFolder do
   end
 
   def handle_event("save", payload, socket) do
-    userid = socket.assigns.uistate.user_id
+    userid = socket.assigns.uistate.usr_id
     name   = payload["folder"]["name"]
     params = %Account.Folder{user_id: userid, name: name}
     {:ok, result} = Repo.insert(params)
     new_state = 
       socket.assigns.uistate
-      |> Map.merge(%{mode: "view", fold_id: result.id, reg_id: nil})
+      |> Map.merge(%{mode: "view", fld_id: result.id, reg_id: nil})
       Map.merge(socket.assigns.uistate, params)
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "create_folder", %{uistate: new_state})
     {:noreply, socket}

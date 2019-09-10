@@ -56,7 +56,7 @@ defmodule RaggedWeb.News.BodyAddFeed do
   # ----- view helpers -----
     
   def folders_for(uistate) do
-    user_id = uistate.user_id
+    user_id = uistate.usr_id
     from(
       f in Folder,
       where: f.user_id == ^user_id
@@ -95,7 +95,7 @@ defmodule RaggedWeb.News.BodyAddFeed do
     } |> Repo.insert()
     new_state = 
       socket.assigns.uistate
-      |> Map.merge(%{mode: "view", fold_id: nil, reg_id: reg.id})
+      |> Map.merge(%{mode: "view", fld_id: nil, reg_id: reg.id})
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "create_feed", %{uistate: new_state})
     {:noreply, socket}
   end

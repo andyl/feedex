@@ -11,7 +11,7 @@ defmodule RaggedWeb.News.Hdr do
   def render(assigns) do
     ~L"""
     <%= if @uistate.mode == "view" do %>
-    <div class='row'>
+    <div class='row' style="background-color: lightgray; padding-top: 4px; padding-bottom: 4px; margin-bottom: 10px;">
     <div class='col-md-6'>
       <%= title(@uistate) %>
     </div>
@@ -19,7 +19,6 @@ defmodule RaggedWeb.News.Hdr do
       <%= HTML.raw btns(@uistate) %>
     </div>
     </div>
-    <hr/>
     <% end %>
     """
   end
@@ -27,10 +26,10 @@ defmodule RaggedWeb.News.Hdr do
   # ----- view helpers -----
   
   defp title(state) do
-    case {state.reg_id, state.fold_id} do
+    case {state.reg_id, state.fld_id} do
       {nil    , nil} -> "ALL"
       {reg_id, nil}  -> register_name(reg_id)
-      {nil, fold_id} -> folder_name(fold_id)
+      {nil, fld_id} -> folder_name(fld_id)
     end
   end
 
@@ -43,7 +42,7 @@ defmodule RaggedWeb.News.Hdr do
   end
 
   defp btns(state) do
-    show_pencil = state.reg_id != nil || state.fold_id != nil
+    show_pencil = state.reg_id != nil || state.fld_id != nil
     pencil = 
       if show_pencil do
         """
@@ -70,7 +69,7 @@ defmodule RaggedWeb.News.Hdr do
   
   def handle_event("click-edit", _click, socket) do
     uistate = socket.assigns.uistate
-    new_mode = case {uistate.fold_id, uistate.reg_id} do
+    new_mode = case {uistate.fld_id, uistate.reg_id} do
       {_id, nil} -> "edit_folder"
       {nil, _id} -> "edit_feed"
     end

@@ -28,7 +28,7 @@ config :ragged_web, RaggedWeb.Endpoint,
 #     config :logger, :console,
 #       level: :info,
 #       format: "$date $time [$level] $metadata$message\n",
-#       metadata: [:user_id]
+#       metadata: [:usr_id]
 #
 
 # Configures Elixir's Logger

@@ -34,7 +34,7 @@ News: Feed / Post
 
 ## Queries
 
-- Account.folders(user_id)
+- Account.folders(usr_id)
 - News.posts
 
 ## API
@@ -48,7 +48,7 @@ News: Feed / Post
 - part of RaggedWeb
 - backed by PersistentETS
 
-- user_id: 
+- usr_id: 
 - mode:         view | edit | add_feed | add_folder
 - folder_id:    id | NIL
 - folder_state: open | closed

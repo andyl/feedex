@@ -144,21 +144,30 @@ Editing Design Notes:
 - [x] Edit Folder
 - [x] Edit Feed
 
-# Jobs
+# 2019 Sep 09 Mon
 
-- [ ] Setup seeds with real URLs
+- [x] Setup seeds with real URLs
+- [x] Create `RaggedJob.sync`
+- [x] Import live posts
+- [x] Add manual sync button for feed
+- [x] VIEWING: View post
+- [x] Posts: sort descending
 
-- [ ] JOBS: Setup job execution
-- [ ] JOBS: Allow job control (on/off)
-- [ ] JOBS: Show statistics
+- [ ] Posts: mark read
+- [ ] Posts: mark all read
 
 # Viewing
 
-- [ ] VIEWING: View post
 - [ ] VIEWING: Update post-read status
 - [ ] VIEWING: Update post-read status in TREE
 - [ ] VIEWING: Hotkeys | Table Nav up/down
 - [ ] VIEWING: Hotkeys | Folder/Feed Selection
+
+# RaggedRunner
+
+- [ ] JOBS: Setup job execution
+- [ ] JOBS: Allow job control (on/off)
+- [ ] JOBS: Show statistics
 
 # Misc
 

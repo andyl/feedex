@@ -20,13 +20,6 @@ Repo.insert(%User{
       name: "Elixir",
       registers: [
         %Register{
-          name: "Elixir Status",
-          feed: %Feed{
-            name: "Elixir Status Feed",
-            url:  "http://elixirstatus.com/rss"
-          }
-        },
-        %Register{
           name: "Elixir Forum",
           feed: %Feed{
             name: "Elixir Forum Feed",
@@ -41,6 +34,13 @@ Repo.insert(%User{
           }
         },
         %Register{
+          name: "Amberbit",
+          feed: %Feed{
+            name: "Amberbit Feed",
+            url:  "https://www.amberbit.com/blog.rss"
+          }
+        },
+        %Register{
           name: "Elixir Reddit",
           feed: %Feed{
             name: "Elixir Reddit Feed",
@@ -50,22 +50,29 @@ Repo.insert(%User{
       ]
     },
     %Folder{
-      name: "B_Folder1",
+      name: "TechNews",
       registers: [
         %Register{
-          name: "B_Register1",
+          name: "TechMeme",
           feed: %Feed{
-            name: "B_Feed1",
-            posts: [
-              %Post{
-                body: "B_Post1"
-              },
-              %Post{
-                body: "B_Post2"
-              }
-            ]
+            name: "TechMeme Feed",
+            url: "http://www.techmeme.com/feed.xml"
           }
-        }
+        },
+        %Register{
+          name: "TechCrunch",
+          feed: %Feed{
+            name: "TechCrunch Feed",
+            url: "http://feeds.feedburner.com/TechCrunch"
+          }
+        },
+        %Register{
+          name: "MitReview",
+          feed: %Feed{
+            name: "MitReview Feed",
+            url: "https://www.technologyreview.com/topnews.rss"
+          }
+        },
       ]
     }
   ]

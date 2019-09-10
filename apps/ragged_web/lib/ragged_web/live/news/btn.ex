@@ -8,9 +8,7 @@ defmodule RaggedWeb.News.Btn do
 
   def render(assigns) do
     ~L"""
-    <div>
-      <p></p>
-      <b>BTNS</b><br/>
+    <div style='margin-top: 8px;'>
       <a phx-click="add_feed" href="#">
         <i class="fa fa-plus" style="padding-right: 5px;"></i> Add Feed<br/>
       </a>

@@ -88,7 +88,7 @@ defmodule RaggedData.Ctx.Account.FolderTest do
       insert(:folder)
       result = Repo.all(fusr)
       assert Enum.count(result) == 1
-    end
+    end 
 
     test "finds the folder from the user" do
       ufold =

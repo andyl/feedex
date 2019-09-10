@@ -16,7 +16,7 @@ defmodule RaggedWeb.Cache.PushState do
   - the back button works
   - one UiState per hash
 
-  Note that the user_id is encoded in the UiState, preventing 
+  Note that the usr_id is encoded in the UiState, preventing 
   """
 
   @doc """
@@ -36,12 +36,12 @@ defmodule RaggedWeb.Cache.PushState do
   @doc """
   Return the PushState for a given lookup key.
   """
-  def lookup(hash_key, user_id \\ 1) do
+  def lookup(hash_key, usr_id \\ 1) do
     result = Pets.lookup(sig(), hash_key)
 
     case result do
-      [] -> %UiState{user_id: user_id}
-      nil -> %UiState{user_id: user_id}
+      [] -> %UiState{usr_id: usr_id}
+      nil -> %UiState{usr_id: usr_id}
       [{_, uistate}] -> uistate
       _ -> raise("Error: badval")
     end
@@ -81,7 +81,7 @@ defmodule RaggedWeb.Cache.PushState do
   # the hash_key is truncated, for brevity as a the browser Url
   # we expect a small number of pushStates per user
   # so the risk of cross-user collision is small
-  # note also that the user_id is encoded in the push_state
+  # note also that the usr_id is encoded in the push_state
   defp gen_hash(ui_state) do
     :md5
     |> :crypto.hash(inspect(ui_state))

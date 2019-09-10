@@ -12,6 +12,7 @@ defmodule RaggedData.Ctx.News.Post do
     field(:body,    :string)
     field(:author,  :string)
     field(:link,    :string)
+    field(:updated, :utc_datetime)
     field(:jfields, :map)
     timestamps(type: :utc_datetime)
 

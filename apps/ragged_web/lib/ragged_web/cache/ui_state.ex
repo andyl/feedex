@@ -1,15 +1,11 @@
 defmodule RaggedWeb.Cache.UiState do
-  # modes: view, edit, add_feed, add_folder
-  # fold_state: open, closed
-  # reg_state: open, closed
+  # modes: view, edit, add_feed, add_folder, edit_feed, edit_folder
 
-  defstruct user_id: nil,
-            mode: "view",
-            fold_id: nil,
-            fold_state: "closed",
+  defstruct mode: "view",
+            usr_id: nil,
+            fld_id: nil,
             reg_id: nil,
-            post_id: nil,
-            post_state: "closed",
+            pst_id: nil,
             timestamp: Timex.now()
 
   alias RaggedWeb.Cache.UiState
@@ -29,18 +25,18 @@ defmodule RaggedWeb.Cache.UiState do
     payload = struct(UiState, state)
 
     sig()
-    |> Pets.insert({payload.user_id, payload})
+    |> Pets.insert({payload.usr_id, payload})
   end
 
   @doc """
-  Return the UiState for a given user_id.
+  Return the UiState for a given usr_id.
   """
-  def lookup(user_id) do
-    result = Pets.lookup(sig(), user_id)
+  def lookup(usr_id) do
+    result = Pets.lookup(sig(), usr_id)
 
     case result do
-      [] -> %UiState{user_id: user_id}
-      nil -> %UiState{user_id: user_id}
+      [] -> %UiState{usr_id: usr_id}
+      nil -> %UiState{usr_id: usr_id}
       [{_, uistate}] -> uistate
       _ -> raise("Error: badval")
     end

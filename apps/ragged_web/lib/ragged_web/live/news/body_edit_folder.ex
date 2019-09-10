@@ -8,7 +8,7 @@ defmodule RaggedWeb.News.BodyEditFolder do
   use Phoenix.LiveView
 
   def mount(session, socket) do
-    folder_id = session.uistate.fold_id
+    folder_id = session.uistate.fld_id
     reg_count = 
       from(r in Register, select: count(r.id), where: r.id == ^folder_id)
       |> Repo.one()
@@ -39,11 +39,11 @@ defmodule RaggedWeb.News.BodyEditFolder do
   # ----- event handlers -----
 
   def handle_event("delete", _payload, socket) do
-    Repo.get(Folder, socket.assigns.uistate.fold_id)
+    Repo.get(Folder, socket.assigns.uistate.fld_id)
     |> Repo.delete()
     new_state = 
       socket.assigns.uistate
-      |> Map.merge(%{fold_id: nil, mode: "view"})
+      |> Map.merge(%{fld_id: nil, mode: "view"})
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "remove_folder", %{uistate: new_state})
     {:noreply, socket}
   end

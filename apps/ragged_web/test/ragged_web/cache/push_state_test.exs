@@ -10,8 +10,8 @@ defmodule RaggedWeb.Cache.PushStateTest do
 
   describe "#save" do
     test "returns a hash-key" do
-      payload1 = %UiState{user_id: 1}
-      payload2 = %UiState{user_id: 2}
+      payload1 = %UiState{usr_id: 1}
+      payload2 = %UiState{usr_id: 2}
       assert hash_key1 = PushState.save(payload1)
       assert hash_key2 = PushState.save(payload2)
       assert hash_key1 != hash_key2
@@ -20,7 +20,7 @@ defmodule RaggedWeb.Cache.PushStateTest do
 
   describe "#lookup" do
     test "returns a payload" do
-      payload1 = %UiState{user_id: 1}
+      payload1 = %UiState{usr_id: 1}
       assert hash_key1 = PushState.save(payload1)
       assert payload_x = PushState.lookup(hash_key1)
       assert payload_x = payload1
@@ -28,7 +28,7 @@ defmodule RaggedWeb.Cache.PushStateTest do
 
     test "generates a fresh UiState if key not found" do
       assert payload = PushState.lookup("asdf")
-      assert payload.user_id == 1
+      assert payload.usr_id == 1
     end
   end
 end

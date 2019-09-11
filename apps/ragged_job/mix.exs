@@ -17,14 +17,17 @@ defmodule RaggedJob.MixProject do
 
   def application do
     [
-      extra_applications: [:logger]
+      mod: {RaggedJob.Application, []},
+      extra_applications: [:logger, :runtime_tools, :timex]
     ]
   end
 
   defp deps do
     [
       {:ragged_client, in_umbrella: true},
-      {:ragged_data, in_umbrella: true}
+      {:ragged_data, in_umbrella: true},
+      {:quantum, "~> 2.3"},
+      {:timex, "~> 3.0"},
     ]
   end
 end

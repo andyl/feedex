@@ -3,6 +3,8 @@ defmodule RaggedJob do
   alias RaggedData.Ctx.News.Post
   alias RaggedData.Ctx.News.Feed
 
+  import Ecto.Query
+
   @moduledoc """
   Fetches post data for an RSS feed.
   """
@@ -25,7 +27,7 @@ defmodule RaggedJob do
     |> sync()
   end
 
-  def sync_all
+  def sync_all do
     Feed
     |> Repo.all()
     |> Enum.map(&(sync(&1)))

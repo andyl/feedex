@@ -167,12 +167,10 @@ Editing Design Notes:
 - [x] QUERY: posts with read: true/false column by all
 - [x] VIEWING: Highlight unread rows
 
-# TBD
-
 - [ ] Sync now button
-- [ ] Sync all once per hour
+- [ ] Periodic sync (quantum/cron)
 - [ ] Deploy production
-- [ ] 
+- [ ] Display update times (1m, 2h, 3d, 4w)
 
 # Query Spec
 
@@ -185,12 +183,6 @@ Editing Design Notes:
 - [ ] QUERY: count of read by register
 - [ ] QUERY: count of read by folder
 - [ ] QUERY: count of read by all
-
-# Questions
-
-- [ ] How to use media breakpoints?
-- [ ] How to handle scrolling? (max 200)
-- [ ] How to do HotKeys?
 
 # Viewing
 

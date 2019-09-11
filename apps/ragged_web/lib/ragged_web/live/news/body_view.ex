@@ -20,19 +20,22 @@ defmodule RaggedWeb.News.BodyView do
     <%= for post <- posts_for(@uistate) do %>
     <%= if @uistate.pst_id == post.id do %>
       <tr style='background-color: lightgrey;'>
+      <td><small><i class="fa fa-check"></i></small></td>
       <td><b><%= HTML.raw id_link(post.id) %></b></td>
       <td><b><a href='<%= post.link %>' target='_blank'><%= post.title %></a></b></td>
       </tr>
-      <tr style='background-color: lightgrey;'><td colspan=2>
+      <tr style='background-color: lightgrey;'><td colspan=3>
       <small>
       <%= HTML.raw post.body %>
       </small>
       </td></tr>
     <% else %>
       <tr>
+      <td>
+      <%= if post.has_read == "t", do: HTML.raw "<small><i class='fa fa-check'></i></small> " %>
+      </td>
       <td><%= HTML.raw id_link(post.id) %></td>
       <td>
-      <%= if post.has_read == "t", do: "READ " %>
       <%= post.title %>
       </td>
       </tr>
@@ -53,12 +56,12 @@ defmodule RaggedWeb.News.BodyView do
     """
   end
 
-
   def posts_for(uistate) do
-    case {uistate.reg_id, uistate.fld_id} do
-      {nil, nil   } -> News.posts_all()
-      {reg_id, nil} -> News.posts_for_register(reg_id)
-      {nil, fld_id} -> News.posts_for_folder(fld_id)
+    userid = uistate.usr_id
+    case {uistate.fld_id, uistate.reg_id} do
+      {nil, nil   } -> News.posts_all(userid)
+      {fld_id, nil} -> News.posts_for_folder(userid, fld_id)
+      {nil, reg_id} -> News.posts_for_register(userid, reg_id)
     end
   end
 

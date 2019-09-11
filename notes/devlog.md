@@ -159,23 +159,32 @@ Editing Design Notes:
 
 - [x] VIEWING: Update post-read status
 - [x] VIEWING: Index the read_list
-- [ ] VIEWING: Highlight unread rows
 
-# Read/Unread
+# 2019 Sep 11 Wed
 
-QUERY SPEC
-- posts with read: true/false column by register
-- posts with read: true/false column by folder
-- posts with read: true/false column by all
-- filtered by read/unread by register
-- filtered by read/unread by folder
-- filtered by read/unread by all
-- count of unread by register
-- count of unread by folder
-- count of unread by all
-- count of read by register
-- count of read by folder
-- count of read by all
+- [x] QUERY: posts with read: true/false column by register
+- [x] QUERY: posts with read: true/false column by folder
+- [x] QUERY: posts with read: true/false column by all
+- [x] VIEWING: Highlight unread rows
+
+# TBD
+
+- [ ] Sync now button
+- [ ] Sync all once per hour
+- [ ] Deploy production
+- [ ] 
+
+# Query Spec
+
+- [ ] QUERY: filtered by read/unread by register
+- [ ] QUERY: filtered by read/unread by folder
+- [ ] QUERY: filtered by read/unread by all
+- [ ] QUERY: count of unread by register
+- [ ] QUERY: count of unread by folder
+- [ ] QUERY: count of unread by all
+- [ ] QUERY: count of read by register
+- [ ] QUERY: count of read by folder
+- [ ] QUERY: count of read by all
 
 # Questions
 

@@ -35,55 +35,51 @@ defmodule RaggedData.Ctx.News do
     Repo.get(Post, id)
   end
 
-  def qall do
-    reg_qry = from(
-      r in Register,
-      select: fragment("distinct jsonb_array_elements(r.read_list)::integer")
-    )
-
-    from(
-      p in Post,
-      order_by: [desc: p.id],
-      limit: 100,
-      left_join: r in subquery(reg_qry), on: p.id == r.post_id,
-      select: %{
-        id: p.id, 
-        exid: p.exid, 
-        title: p.title, 
-        body: p.body, 
-        author: p.author, 
-        link: p.link,
-        has_read: r.post_id
-      }
-    )
+  def posts_all(userid) do
+    "fld.user_id = #{userid}"
+    |> run_query()
   end
 
-  def psts_all do
-    qall()
-    |> Repo.all()
+  def posts_for_folder(usrid, fldid) do
+    "fld.user_id = #{usrid} and fld.id = #{fldid}"
+    |> run_query()
   end
 
-  def posts_all(_user_id \\ 1) do
-    qry = 
-      """
-      with read_list as (
-      select distinct jsonb_array_elements(r.read_list)::integer as post_id
-      from registers r
-      order by post_id
-      )
-      select p.id, 
-      p.exid, 
-      p.title, 
-      p.body, 
-      p.author, 
-      p.link, 
-      case when r.post_id is NULL then 'f' else 't' end as has_read
-      from posts p 
-      left join read_list r on p.id = r.post_id 
-      order by p.id desc
-      limit 100;
-      """
-    {:ok, data} = RaggedData.Repo.query(qry)
+  def posts_for_register(usrid, regid) do
+    "fld.user_id = #{usrid} and reg.id = #{regid}"
+    "reg.id = #{regid}"
+    |> run_query()
+  end
+
+  def run_query(where) do
+    """
+    with read_list as (
+    select distinct jsonb_array_elements(r.read_list)::integer as post_id
+    from registers r
+    order by post_id
+    )
+    select 
+    pst.id, 
+    pst.exid, 
+    pst.title, 
+    pst.body, 
+    pst.author, 
+    pst.link, 
+    case when rls.post_id is NULL then 'f' else 't' end as has_read
+    from posts pst
+    left join read_list rls on pst.id = rls.post_id 
+    join feeds fee on pst.feed_id = fee.id
+    join registers reg on reg.feed_id = fee.id
+    join folders fld on reg.folder_id = fld.id
+    where #{where}
+    order by pst.id desc
+    limit 100;
+    """
+    |> process()
+  end
+
+  def process(query) do
+    {:ok, data} = RaggedData.Repo.query(query)
     data.rows
     |> Enum.map(&(%{
       id:       Enum.fetch!(&1, 0),
@@ -94,23 +90,5 @@ defmodule RaggedData.Ctx.News do
       link:     Enum.fetch!(&1, 5),
       has_read: Enum.fetch!(&1, 6)
     }))
-  end
-
-  def posts_for_folder(fld_id) do
-    from(
-      p in qall(),
-      join: f in Feed, on: f.id == p.feed_id,
-      join: r in Register, on: f.id == r.feed_id,
-      where: r.folder_id == ^fld_id
-    ) |> Repo.all()
-  end
-
-  def posts_for_register(reg_id) do
-    from(
-      p in qall(),
-      join: f in Feed, on: f.id == p.feed_id,
-      join: r in Register, on: f.id == r.feed_id,
-      where: r.id == ^reg_id
-    ) |> Repo.all()
   end
 end

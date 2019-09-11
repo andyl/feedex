@@ -1,6 +1,7 @@
 defmodule RaggedJob do
   alias RaggedData.Repo
   alias RaggedData.Ctx.News.Post
+  alias RaggedData.Ctx.News.Feed
 
   @moduledoc """
   Fetches post data for an RSS feed.
@@ -11,14 +12,34 @@ defmodule RaggedJob do
   """
   def sync(feed) do
     case RaggedClient.scan(feed.url) do
-      {:ok, _url, data} -> sync_posts(feed.id, data)
+      {:ok, _url, data} -> sync_posts(feed, data)
       {:error, message} -> {:error, message}
     end
   end
 
-  defp sync_posts(feed_id, data) do
-    data.entries |> Enum.each(&(sync_post(feed_id, &1)))
+  def sync_next do
+    Feed
+    |> order_by(:updated_at)
+    |> limit(1)
+    |> Repo.one()
+    |> sync()
+  end
+
+  def sync_all
+    Feed
+    |> Repo.all()
+    |> Enum.map(&(sync(&1)))
+  end
+
+  defp sync_posts(feed, data) do
+    data.entries |> Enum.each(&(sync_post(feed.id, &1)))
+    mark_updated(feed)
     :ok
+  end
+
+  defp mark_updated(feed) do
+    "update feeds set updated_at = now() where id = #{feed.id}"
+    |> Repo.query()
   end
 
   defp sync_post(feed_id, post) do

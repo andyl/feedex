@@ -72,9 +72,7 @@ defmodule RaggedWeb.News.BodyEditFeed do
 
   def handle_event("resync", _payload, socket) do
     feed = socket.assigns.feed
-    IO.puts "+++++++++++++++++++++++++++++++++++++++"
     RaggedJob.sync(feed)
-    IO.puts "+++++++++++++++++++++++++++++++++++++++"
     {:noreply, socket}
   end
   

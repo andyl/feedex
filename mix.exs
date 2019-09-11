@@ -32,7 +32,6 @@ defmodule Ragged.MixProject do
       {:distillery, "~> 2.1", warn_missing: false},
       # ----- static analyzers
       {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.0.0-rc.6", only: [:dev], runtime: false},
       # ----- development and test
       {:scribe, "~> 0.10"},
       {:mix_test_watch, "~> 0.8", only: :dev, runtime: false},

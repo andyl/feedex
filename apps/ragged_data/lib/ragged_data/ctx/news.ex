@@ -39,6 +39,7 @@ defmodule RaggedData.Ctx.News do
     from(
       p in Post,
       order_by: [desc: p.id],
+      limit: 100,
       select: %{
         id: p.id, 
         exid: p.exid, 
@@ -46,7 +47,6 @@ defmodule RaggedData.Ctx.News do
         body: p.body, 
         author: p.author, 
         link: p.link
-        # updated: p.updated
       }
     )
   end

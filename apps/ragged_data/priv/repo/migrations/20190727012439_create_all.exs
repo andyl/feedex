@@ -53,10 +53,11 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
       add(:feed_id,    references(:feeds))
       add(:url,        :string)
       add(:name,       :string)
-      add(:read_posts, :map, default: "[]")
+      add(:read_list,  :map, default: "[]")
       add(:jfields,    :map, default: "{}")
       timestamps()
     end
+    create index(:registers, [:read_list], using: :gin)
 
   end
 end

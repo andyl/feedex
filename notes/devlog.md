@@ -152,13 +152,39 @@ Editing Design Notes:
 - [x] Add manual sync button for feed
 - [x] VIEWING: View post
 - [x] Posts: sort descending
+- [x] Posts: toggle show/hide
+- [x] Posts: add text link
 
-- [ ] Posts: mark read
-- [ ] Posts: mark all read
+# 2019 Sep 10 Tue
+
+- [x] VIEWING: Update post-read status
+- [x] VIEWING: Index the read_list
+- [ ] VIEWING: Highlight unread rows
+
+# Read/Unread
+
+QUERY SPEC
+- posts with read: true/false column by register
+- posts with read: true/false column by folder
+- posts with read: true/false column by all
+- filtered by read/unread by register
+- filtered by read/unread by folder
+- filtered by read/unread by all
+- count of unread by register
+- count of unread by folder
+- count of unread by all
+- count of read by register
+- count of read by folder
+- count of read by all
+
+# Questions
+
+- [ ] How to use media breakpoints?
+- [ ] How to handle scrolling? (max 200)
+- [ ] How to do HotKeys?
 
 # Viewing
 
-- [ ] VIEWING: Update post-read status
 - [ ] VIEWING: Update post-read status in TREE
 - [ ] VIEWING: Hotkeys | Table Nav up/down
 - [ ] VIEWING: Hotkeys | Folder/Feed Selection
@@ -171,8 +197,6 @@ Editing Design Notes:
 
 # Misc
 
-- [ ] TREE open/close
-
 - [ ] Expand scan-list for ragged_client
 - [ ] Setup CI
 
@@ -180,4 +204,3 @@ Editing Design Notes:
 - [ ] TEST - intc - login/logout 
 - [ ] TEST - intw - install HOUND 1.1.0
 - [ ] TEST - intw - login/logout 
-

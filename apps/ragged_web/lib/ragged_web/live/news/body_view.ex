@@ -59,14 +59,16 @@ defmodule RaggedWeb.News.BodyView do
   # ----- event handlers -----
 
   def handle_event("click-post", payload, socket) do
-    post_id = String.to_integer(payload)
     uistate = socket.assigns.uistate
+    user_id = uistate.usr_id
+    post_id = String.to_integer(payload)
     new_id  = if uistate.pst_id == post_id, do: nil, else: post_id
     opts =  %{pst_id: new_id}
     newstate = 
       socket.assigns.uistate
       |> Map.merge(opts)
-    
+
+    RaggedData.Ctx.Account.mark_read(user_id, post_id)
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "CLICK_POST", %{uistate: newstate})
     {:noreply, assign(socket, %{uistate: newstate})}
   end

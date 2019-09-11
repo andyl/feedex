@@ -10,13 +10,13 @@ defmodule RaggedWeb.News.Btn do
     ~L"""
     <div style='margin-top: 8px;'>
       <a phx-click="add_feed" href="#">
-        <i class="fa fa-plus" style="padding-right: 5px;"></i> Add Feed<br/>
+        <i class="fa fa-plus fa-fw" style="padding-right: 5px;"></i> Feed<br/>
       </a>
-      <a phx-click="add_folder" href="#">
-        <i class="fa fa-plus" style="padding-right: 5px;"></i> Add Folder<br/>
+      <a phx-click="add_folder fa-fw" href="#">
+        <i class="fa fa-plus" style="padding-right: 5px;"></i> Folder<br/>
       </a>
       <a phx-click="view_all" href="#">
-        <i class="fa fa-expand" style="padding-right: 5px;"></i> View All<br/>
+        <i class="fa fa-eye fa-fw" style="padding-right: 5px;"></i> All<br/>
       </a>
     </div>
     """

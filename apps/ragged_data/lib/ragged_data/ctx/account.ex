@@ -99,14 +99,24 @@ defmodule RaggedData.Ctx.Account do
   end
 
   @doc """
-  Mark posts read.
-
-  Options:
-    - folder: <folder_id>
-    - feed: <feed_id>
-    - post: <post_id>
+  Mark posts read.  Idempotent.
   """
-  def mark_read do
+  def mark_read(user_id, post_id) do
+    qry = 
+      """
+      update registers set read_list = read_list || '#{post_id}' 
+      where not(read_list @> '#{post_id}')
+      and id in (
+      select reg.id
+      from folders fld
+      join registers reg on fld.id = reg.folder_id
+      join feeds fee     on fee.id = reg.feed_id 
+      join posts pst     on fee.id = pst.feed_id
+      where fld.user_id = #{user_id} and pst.id = #{post_id}
+      order by reg.id
+      )
+      """
+    Ecto.Adapters.SQL.query( RaggedData.Repo, qry, [])
   end
   
   # ----- feeds ----- 

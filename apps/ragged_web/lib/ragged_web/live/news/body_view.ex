@@ -22,7 +22,7 @@ defmodule RaggedWeb.News.BodyView do
       <tr style='background-color: lightgrey;'>
       <td><small><i class="fa fa-check"></i></small></td>
       <td><b><%= HTML.raw id_link(post.id) %></b></td>
-      <td><b><a href='<%= post.link %>' target='_blank'><%= post.title %></a></b></td>
+      <td><b><a href='<%= post.link %>' target='_blank'><%= time_ago(post.updated) %><%= post.title %></a></b></td>
       </tr>
       <tr style='background-color: lightgrey;'><td colspan=3>
       <small>
@@ -36,7 +36,7 @@ defmodule RaggedWeb.News.BodyView do
       </td>
       <td><%= HTML.raw id_link(post.id) %></td>
       <td>
-      <%= post.title %>
+      <%= time_ago(post.updated) %><%= post.title %>
       </td>
       </tr>
     <% end %>
@@ -48,6 +48,18 @@ defmodule RaggedWeb.News.BodyView do
 
   # ----- view helpers -----
   
+  def time_ago(date) do
+    delta = Timex.diff(Timex.now(), date, :minutes)
+    base  = case delta do
+      x when x in 0..60        -> "#{x}m"
+      x when x in 61..1440     -> "#{div(x, 60)}h"
+      x when x in 1441..10080  -> "#{div(x, 1440)}d"
+      x when x in 10081..99999 -> "#{div(x, 10080)}w"
+      _ -> "xx"
+    end
+    "#{base} - "
+  end
+
   def id_link(id) do
     """
     <a href="#" phx-click='click-post' phx-value='#{id}'>

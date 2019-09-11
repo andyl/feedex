@@ -56,7 +56,7 @@ defmodule RaggedWeb.News.Hdr do
 
     """
     <a href='#'>
-    <i class='fa fa-check' style='margin-right: 10px;'></i>
+    <i class='fa fa-check' phx-click='mark-read' style='margin-right: 10px;'></i>
     </a>
     <a href='#'>
     <i class='fa fa-redo' style='margin-right: 10px;'></i>
@@ -77,6 +77,13 @@ defmodule RaggedWeb.News.Hdr do
     payload = %{uistate: new_state}
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "click_#{new_mode}", payload)
     {:noreply, assign(socket, %{uistate: new_state})}
+  end
+
+  def handle_event("mark-read", _click, socket) do
+    IO.inspect "======================================="
+    IO.inspect socket.assigns.uistate
+    IO.inspect "======================================="
+    {:noreply, socket}
   end
   
   # ----- pub/sub handlers -----

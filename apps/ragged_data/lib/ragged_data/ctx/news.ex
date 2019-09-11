@@ -65,6 +65,7 @@ defmodule RaggedData.Ctx.News do
     pst.body, 
     pst.author, 
     pst.link, 
+    pst.updated_at,
     case when rls.post_id is NULL then 'f' else 't' end as has_read
     from posts pst
     left join read_list rls on pst.id = rls.post_id 
@@ -88,7 +89,8 @@ defmodule RaggedData.Ctx.News do
       body:     Enum.fetch!(&1, 3),
       author:   Enum.fetch!(&1, 4),
       link:     Enum.fetch!(&1, 5),
-      has_read: Enum.fetch!(&1, 6)
+      updated:  Enum.fetch!(&1, 6),
+      has_read: Enum.fetch!(&1, 7)
     }))
   end
 end

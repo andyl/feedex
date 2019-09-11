@@ -166,41 +166,26 @@ Editing Design Notes:
 - [x] QUERY: posts with read: true/false column by folder
 - [x] QUERY: posts with read: true/false column by all
 - [x] VIEWING: Highlight unread rows
+- [x] Sync now button
+- [x] Periodic sync (quantum/cron)
+- [x] Display update times (1m, 2h, 3d, 4w)
 
-- [ ] Sync now button
-- [ ] Periodic sync (quantum/cron)
+- [ ] Mark all as read
 - [ ] Deploy production
-- [ ] Display update times (1m, 2h, 3d, 4w)
+- [ ] Show unread counts in tree
 
-# Query Spec
-
-- [ ] QUERY: filtered by read/unread by register
-- [ ] QUERY: filtered by read/unread by folder
-- [ ] QUERY: filtered by read/unread by all
 - [ ] QUERY: count of unread by register
 - [ ] QUERY: count of unread by folder
 - [ ] QUERY: count of unread by all
-- [ ] QUERY: count of read by register
-- [ ] QUERY: count of read by folder
-- [ ] QUERY: count of read by all
 
-# Viewing
+# Hotkeys
 
-- [ ] VIEWING: Update post-read status in TREE
-- [ ] VIEWING: Hotkeys | Table Nav up/down
-- [ ] VIEWING: Hotkeys | Folder/Feed Selection
-
-# RaggedRunner
-
-- [ ] JOBS: Setup job execution
-- [ ] JOBS: Allow job control (on/off)
-- [ ] JOBS: Show statistics
+- [ ] HOTKEYS: Table Nav up/down
+- [ ] HOTKEYS: Folder/Feed Selection
 
 # Misc
 
 - [ ] Expand scan-list for ragged_client
-- [ ] Setup CI
-
 - [ ] TEST - unit - RaggedData.Account
 - [ ] TEST - intc - login/logout 
 - [ ] TEST - intw - install HOUND 1.1.0

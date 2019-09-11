@@ -2,6 +2,7 @@ defmodule RaggedWeb.News.Hdr do
   use Phoenix.LiveView
 
   alias Phoenix.HTML
+  alias RaggedData.Ctx.Account
 
   def mount(session, socket) do
     RaggedWeb.Endpoint.subscribe("uistate")
@@ -30,6 +31,14 @@ defmodule RaggedWeb.News.Hdr do
       {nil    , nil} -> "ALL"
       {reg_id, nil}  -> register_name(reg_id)
       {nil, fld_id} -> folder_name(fld_id)
+    end
+  end
+
+  def mark_all_read(state) do
+    case {state.fld_id, state.reg_id} do
+      {nil   , nil} -> Account.mark_read(state.usr_id)
+      {fld_id, nil} -> Account.mark_read(state.usr_id, fld_id: fld_id)
+      {nil, reg_id} -> Account.mark_read(state.usr_id, reg_id: reg_id)
     end
   end
 
@@ -80,9 +89,9 @@ defmodule RaggedWeb.News.Hdr do
   end
 
   def handle_event("mark-read", _click, socket) do
-    IO.inspect "======================================="
-    IO.inspect socket.assigns.uistate
-    IO.inspect "======================================="
+    mark_all_read(socket.assigns.uistate)
+    payload = %{uistate: socket.assigns.uistate}
+    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "mark-read", payload)
     {:noreply, socket}
   end
   

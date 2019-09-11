@@ -17,7 +17,7 @@ defmodule RaggedWeb.News.BodyView do
     ~L"""
     <div>
     <table class="table table-sm">
-    <%= for post <- posts_for(@uistate) do %>
+    <%= for post <- all_posts_for(@uistate) do %>
     <%= if @uistate.pst_id == post.id do %>
       <tr style='background-color: lightgrey;'>
       <td><small><i class="fa fa-check"></i></small></td>
@@ -68,12 +68,12 @@ defmodule RaggedWeb.News.BodyView do
     """
   end
 
-  def posts_for(uistate) do
+  def all_posts_for(uistate) do
     userid = uistate.usr_id
     case {uistate.fld_id, uistate.reg_id} do
-      {nil, nil   } -> News.posts_all(userid)
-      {fld_id, nil} -> News.posts_for_folder(userid, fld_id)
-      {nil, reg_id} -> News.posts_for_register(userid, reg_id)
+      {nil, nil   } -> News.posts_for(userid)
+      {fld_id, nil} -> News.posts_for(userid, fld_id: fld_id)
+      {nil, reg_id} -> News.posts_for(userid, reg_id: reg_id)
     end
   end
 
@@ -89,7 +89,7 @@ defmodule RaggedWeb.News.BodyView do
       socket.assigns.uistate
       |> Map.merge(opts)
 
-    RaggedData.Ctx.Account.mark_read(user_id, post_id)
+    RaggedData.Ctx.Account.mark_read(user_id, pst_id: post_id)
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "CLICK_POST", %{uistate: newstate})
     {:noreply, assign(socket, %{uistate: newstate})}
   end

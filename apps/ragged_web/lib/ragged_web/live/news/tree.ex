@@ -2,6 +2,8 @@ defmodule RaggedWeb.News.Tree do
   
   use Phoenix.LiveView
 
+  alias Phoenix.HTML
+
   def mount(session, socket) do
     RaggedWeb.Endpoint.subscribe("uistate")
     {:ok, assign(socket, %{uistate: session.uistate, treemap: session.treemap})}
@@ -15,10 +17,10 @@ defmodule RaggedWeb.News.Tree do
         <p></p>
         <a href='#' phx-click='clk_folder' phx-value='<%= folder.id %>'>
           <%= folder.name %>
-        </a>
+        </a> <%= HTML.raw unread(@uistate.usr_id, fld_id: folder.id) %>
         <%= for register <- folder.registers do %>
           <br/>
-          > <a href='#' phx-click='clk_feed' phx-value='<%= register.id %>'><%= register.name %></a>
+          > <a href='#' phx-click='clk_feed' phx-value='<%= register.id %>'><%= register.name %></a> <%= HTML.raw unread(@uistate.usr_id, reg_id: register.id) %>
         <% end %>
       <% end %>
       </small>
@@ -37,6 +39,32 @@ defmodule RaggedWeb.News.Tree do
     </div>
     """
   end
+
+  # ----- view helpers -----
+   
+  def unread(user_id, fld_id: folder_id) do
+    count = RaggedData.Ctx.News.unread_count_for(user_id, fld_id: folder_id)
+    if count == 0 do
+      ""
+    else
+      """
+      <span class="badge badge-light">#{count}</span>
+      """
+    end
+  end
+   
+  def unread(user_id, reg_id: register_id) do
+    count = RaggedData.Ctx.News.unread_count_for(user_id, reg_id: register_id)
+    if count == 0 do
+      ""
+    else
+      """
+      <span class="badge badge-light">#{count}</span>
+      """
+    end
+  end
+   
+  # ----- event helpers -----
 
   def handle_event("clk_folder", payload, socket) do
     opts = %{
@@ -63,6 +91,8 @@ defmodule RaggedWeb.News.Tree do
 
     {:noreply, assign(socket, %{uistate: new_state, treemap: socket.assigns.treemap})}
   end
+
+  # ----- pub/sub helpers -----
 
   def handle_info(%{topic: "uistate", payload: new_state}, socket) do
     {:noreply, assign(socket, %{uistate: new_state.uistate})}

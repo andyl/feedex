@@ -97,11 +97,25 @@ defmodule RaggedData.Ctx.Account do
   def register_get(id) do
     Repo.get(Register, id)
   end
+  
+  # ----- mark-read -----
 
   @doc """
   Mark posts read.  Idempotent.
   """
-  def mark_read(user_id, post_id) do
+  def mark_read(_user_id) do
+    IO.puts "mark_read ALL"
+  end
+
+  def mark_read(_user_id, fld_id: _fld_id) do
+    IO.puts "mark_read fld_id"
+  end
+
+  def mark_read(_user_id, reg_id: _reg_id) do
+    IO.puts "mark_read reg_id"
+  end
+
+  def mark_read(user_id, pst_id: post_id) do
     qry = 
       """
       update registers set read_list = read_list || '#{post_id}' 
@@ -121,14 +135,14 @@ defmodule RaggedData.Ctx.Account do
   
   # ----- feeds ----- 
 
-  def feed_add do
-  end
-
-  def feed_update do
-  end
-
-  def feed_delete do
-  end
+  # def feed_add do
+  # end
+  #
+  # def feed_update do
+  # end
+  #
+  # def feed_delete do
+  # end
 
   # ----- utility functions -----
 

@@ -36,24 +36,64 @@ defmodule RaggedData.Ctx.News do
   end
 
   def qall do
+    reg_qry = from(
+      r in Register,
+      select: fragment("distinct jsonb_array_elements(r.read_list)::integer")
+    )
+
     from(
       p in Post,
       order_by: [desc: p.id],
       limit: 100,
+      left_join: r in subquery(reg_qry), on: p.id == r.post_id,
       select: %{
         id: p.id, 
         exid: p.exid, 
         title: p.title, 
         body: p.body, 
         author: p.author, 
-        link: p.link
+        link: p.link,
+        has_read: r.post_id
       }
     )
   end
 
-  def posts_all do
+  def psts_all do
     qall()
     |> Repo.all()
+  end
+
+  def posts_all(_user_id \\ 1) do
+    qry = 
+      """
+      with read_list as (
+      select distinct jsonb_array_elements(r.read_list)::integer as post_id
+      from registers r
+      order by post_id
+      )
+      select p.id, 
+      p.exid, 
+      p.title, 
+      p.body, 
+      p.author, 
+      p.link, 
+      case when r.post_id is NULL then 'f' else 't' end as has_read
+      from posts p 
+      left join read_list r on p.id = r.post_id 
+      order by p.id desc
+      limit 100;
+      """
+    {:ok, data} = RaggedData.Repo.query(qry)
+    data.rows
+    |> Enum.map(&(%{
+      id:       Enum.fetch!(&1, 0),
+      exid:     Enum.fetch!(&1, 1),
+      title:    Enum.fetch!(&1, 2),
+      body:     Enum.fetch!(&1, 3),
+      author:   Enum.fetch!(&1, 4),
+      link:     Enum.fetch!(&1, 5),
+      has_read: Enum.fetch!(&1, 6)
+    }))
   end
 
   def posts_for_folder(fld_id) do

@@ -29,7 +29,13 @@ defmodule RaggedWeb.News.BodyView do
       </small>
       </td></tr>
     <% else %>
-    <tr><td><%= HTML.raw id_link(post.id) %></td><td><%= post.title %></td></tr>
+      <tr>
+      <td><%= HTML.raw id_link(post.id) %></td>
+      <td>
+      <%= if post.has_read == "t", do: "READ " %>
+      <%= post.title %>
+      </td>
+      </tr>
     <% end %>
     <% end %>
     </table>

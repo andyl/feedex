@@ -116,7 +116,7 @@ defmodule RaggedData.Ctx.Account do
       order by reg.id
       )
       """
-    Ecto.Adapters.SQL.query( RaggedData.Repo, qry, [])
+    RaggedData.Repo.query(qry)
   end
   
   # ----- feeds ----- 

@@ -50,6 +50,16 @@ Repo.insert(%User{
       ]
     },
     %Folder{
+      name: "Podcasts",
+      registers: [
+        name: "ChangeLog",
+        feed: %Feed{
+          name: "ChangeLog Feed",
+          url: "https://changelog.com/master/feed"
+        }
+      ]
+    },
+    %Folder{
       name: "TechNews",
       registers: [
         %Register{

@@ -11,11 +11,11 @@ defmodule RaggedWeb.News.Btn do
   def render(assigns) do
     ~L"""
     <div style='margin-top: 8px;'>
+      <a phx-click="add_folder" href="#">
+        <i class="fa fa-plus fa-fw" style="padding-right: 5px;"></i> Folder<br/>
+      </a>
       <a phx-click="add_feed" href="#">
         <i class="fa fa-plus fa-fw" style="padding-right: 5px;"></i> Feed<br/>
-      </a>
-      <a phx-click="add_folder fa-fw" href="#">
-        <i class="fa fa-plus" style="padding-right: 5px;"></i> Folder<br/>
       </a>
       <a phx-click="view_all" href="#">
         <i class="fa fa-eye fa-fw" style="padding-right: 5px;"></i> All 
@@ -65,6 +65,13 @@ defmodule RaggedWeb.News.Btn do
     new_state = Map.merge(socket.assigns.uistate, opts)
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "BTN_VIEW_ALL", %{uistate: new_state})
     {:noreply, assign(socket, %{})}
+  end
+
+  def handle_event(type, _payload, socket) do
+    IO.inspect "======================================="
+    IO.inspect type
+    IO.inspect "======================================="
+    {:noreply, socket}
   end
 
   # ----- pub/sub helpers -----

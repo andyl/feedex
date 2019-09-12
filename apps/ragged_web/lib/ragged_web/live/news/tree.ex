@@ -17,10 +17,10 @@ defmodule RaggedWeb.News.Tree do
         <p></p>
         <a href='#' phx-click='clk_folder' phx-value='<%= folder.id %>'>
           <%= folder.name %>
-        </a> <%# HTML.raw unread(@uistate.usr_id, fld_id: folder.id) %>
+        </a> <%= HTML.raw unread(@uistate.usr_id, fld_id: folder.id) %>
         <%= for register <- folder.registers do %>
           <br/>
-          > <a href='#' phx-click='clk_feed' phx-value='<%= register.id %>'><%= register.name %></a> <%# HTML.raw unread(@uistate.usr_id, reg_id: register.id) %>
+          > <a href='#' phx-click='clk_feed' phx-value='<%= register.id %>'><%= register.name %></a> <%= HTML.raw unread(@uistate.usr_id, reg_id: register.id) %>
         <% end %>
       <% end %>
       </small>
@@ -42,13 +42,17 @@ defmodule RaggedWeb.News.Tree do
 
   # ----- view helpers -----
    
+  def style do
+    "style='vertical-align: top; margin-top: 5px; margin-left: 2px;'"
+  end
+
   def unread(user_id, fld_id: folder_id) do
     count = RaggedData.Ctx.News.unread_count_for(user_id, fld_id: folder_id)
     if count == 0 do
       ""
     else
       """
-      <span class="badge badge-light">#{count}</span>
+      <span class="badge badge-light" #{style()}>#{count}</span>
       """
     end
   end
@@ -59,7 +63,7 @@ defmodule RaggedWeb.News.Tree do
       ""
     else
       """
-      <span class="badge badge-light">#{count}</span>
+      <span class="badge badge-light" #{style()}>#{count}</span>
       """
     end
   end

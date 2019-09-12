@@ -33,7 +33,7 @@
         </ul>
       </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid">
       <%= if info_msg = get_flash(@conn, :info) do %>
         <p class="alert alert-info" role="alert"><%= info_msg %></p>
       <% end %>

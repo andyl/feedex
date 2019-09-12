@@ -115,26 +115,26 @@ defmodule RaggedData.Ctx.Account do
     IO.puts "mark_read reg_id"
   end
 
-  def mark_read(user_id, pst_id: post_id) do
-    qry = 
-      """
-      update registers set read_list = read_list || '#{post_id}' 
-      where not(read_list @> '#{post_id}')
-      and id in (
-      select reg.id
-      from folders fld
-      join registers reg on fld.id = reg.folder_id
-      join feeds fee     on fee.id = reg.feed_id 
-      join posts pst     on fee.id = pst.feed_id
-      where fld.user_id = #{user_id} and pst.id = #{post_id}
-      order by reg.id
-      )
-      """
-    mk2(user_id, pst_id: post_id)
-    RaggedData.Repo.query(qry)
-  end
+  # def mark_read(user_id, pst_id: post_id) do
+  #   qry = 
+  #     """
+  #     update registers set read_list = read_list || '#{post_id}' 
+  #     where not(read_list @> '#{post_id}')
+  #     and id in (
+  #     select reg.id
+  #     from folders fld
+  #     join registers reg on fld.id = reg.folder_id
+  #     join feeds fee     on fee.id = reg.feed_id 
+  #     join posts pst     on fee.id = pst.feed_id
+  #     where fld.user_id = #{user_id} and pst.id = #{post_id}
+  #     order by reg.id
+  #     )
+  #     """
+  #   mk2(user_id, pst_id: post_id)
+  #   RaggedData.Repo.query(qry)
+  # end
 
-  def mk2(user_id, pst_id: post_id) do
+  def mark_read(user_id, pst_id: post_id) do
     %ReadLog{}
     |> ReadLog.changeset(read_log_ids(user_id, post_id))
     |> Repo.insert()

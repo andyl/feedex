@@ -1,6 +1,8 @@
 defmodule RaggedWeb.News.Btn do
   use Phoenix.LiveView
 
+  alias Phoenix.HTML
+
   def mount(session, socket) do
     RaggedWeb.Endpoint.subscribe("uistate")
     {:ok, assign(socket, %{uistate: session.uistate})}
@@ -16,10 +18,23 @@ defmodule RaggedWeb.News.Btn do
         <i class="fa fa-plus" style="padding-right: 5px;"></i> Folder<br/>
       </a>
       <a phx-click="view_all" href="#">
-        <i class="fa fa-eye fa-fw" style="padding-right: 5px;"></i> All<br/>
+        <i class="fa fa-eye fa-fw" style="padding-right: 5px;"></i> All <%= HTML.raw unread(@uistate.usr_id) %><br/>
       </a>
     </div>
     """
+  end
+  #
+  # ----- view helpers -----
+   
+  def unread(user_id) do
+    count = RaggedData.Ctx.News.unread_count_for(user_id)
+    if count == 0 do
+      ""
+    else
+      """
+      <small><span class="badge badge-light" style='vertical-align: top; margin-top: 3px;'>#{count}</span></small>
+      """
+    end
   end
 
   def handle_event("add_feed", _payload, socket) do
@@ -46,6 +61,12 @@ defmodule RaggedWeb.News.Btn do
     new_state = Map.merge(socket.assigns.uistate, opts)
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "BTN_VIEW_ALL", %{uistate: new_state})
     {:noreply, assign(socket, %{})}
+  end
+
+  # ----- pub/sub helpers -----
+
+  def handle_info(%{topic: "uistate", payload: new_state}, socket) do
+    {:noreply, assign(socket, %{uistate: new_state.uistate})}
   end
 
   def handle_info(_state, socket) do

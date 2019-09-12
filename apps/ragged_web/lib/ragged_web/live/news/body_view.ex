@@ -22,7 +22,7 @@ defmodule RaggedWeb.News.BodyView do
       <tr style='background-color: lightgrey;'>
       <td><small><i class="fa fa-check"></i></small></td>
       <td><b><%= HTML.raw id_link(post.id) %></b></td>
-      <td><b><a href='<%= post.link %>' target='_blank'><%= time_ago(post.updated) %><%= post.title %></a></b></td>
+      <td><b><a href='<%= post.link %>' target='_blank'><%= time_ago(post.updated_at) %><%= post.title %></a></b></td>
       </tr>
       <tr style='background-color: lightgrey;'><td colspan=3>
       <small>
@@ -32,11 +32,11 @@ defmodule RaggedWeb.News.BodyView do
     <% else %>
       <tr>
       <td>
-      <%= if post.has_read == "t", do: HTML.raw "<small><i class='fa fa-check'></i></small> " %>
+      <%= if post.read_log, do: HTML.raw "<small><i class='fa fa-check'></i></small> " %>
       </td>
       <td><%= HTML.raw id_link(post.id) %></td>
       <td>
-      <%= time_ago(post.updated) %><%= post.title %>
+      <%= time_ago(post.updated_at) %><%= post.title %>
       </td>
       </tr>
     <% end %>

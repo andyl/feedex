@@ -4,6 +4,7 @@ defmodule RaggedData.Ctx.News.Post do
   """
   use Ecto.Schema
   alias RaggedData.Ctx.News
+  alias RaggedData.Ctx.Account
   import Ecto.Changeset
 
   schema "posts" do
@@ -12,16 +13,15 @@ defmodule RaggedData.Ctx.News.Post do
     field(:body,    :string)
     field(:author,  :string)
     field(:link,    :string)
-    field(:updated, :utc_datetime)
-    field(:jfields, :map)
     timestamps(type: :utc_datetime)
 
+    has_many :read_logs, Account.ReadLog
     belongs_to :feed, News.Feed 
   end
 
   def changeset(user, attrs) do
     required_fields = [:exid, :body]
-    optional_fields = [:feed_id, :jfields]
+    optional_fields = [:feed_id]
 
     user
     |> cast(attrs, required_fields ++ optional_fields)

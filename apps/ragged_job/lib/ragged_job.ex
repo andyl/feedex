@@ -51,7 +51,6 @@ defmodule RaggedJob do
       body:    post[:description] || post[:content],
       author:  author_for(post),
       link:    post[:"rss2:link"],
-      # updated: post.updated,
       feed_id: feed_id
     }
     Repo.get_by(Post, exid: opts.exid) || Repo.insert!(opts)

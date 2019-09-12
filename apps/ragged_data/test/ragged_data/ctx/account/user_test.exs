@@ -28,18 +28,6 @@ defmodule RaggedData.Ctx.Account.UserTest do
       assert {:ok, _result} = Repo.insert(cset)
       assert Repo.one(cqry) == 1
     end
-
-    test "handling maps" do 
-      lmap = %{a: 1, b: 2}
-      tmap = %User{}
-      attr = %{name: "asdf", jfields: lmap, email: "qwer@asdf.com"}
-      cset = User.changeset(tmap, attr)
-      cqry = from(t in "users", select: count(t.id))
-      assert Repo.one(cqry) == 0
-      assert {:ok, trak} = Repo.insert(cset)
-      assert Repo.one(cqry) == 1
-      assert trak.jfields == lmap
-    end
   end
 
   describe "signup" do

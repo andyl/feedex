@@ -17,10 +17,10 @@ defmodule RaggedWeb.News.Tree do
         <p></p>
         <a href='#' phx-click='clk_folder' phx-value='<%= folder.id %>'>
           <%= folder.name %>
-        </a> <%= HTML.raw unread(@uistate.usr_id, fld_id: folder.id) %>
+        </a> <%# HTML.raw unread(@uistate.usr_id, fld_id: folder.id) %>
         <%= for register <- folder.registers do %>
           <br/>
-          > <a href='#' phx-click='clk_feed' phx-value='<%= register.id %>'><%= register.name %></a> <%= HTML.raw unread(@uistate.usr_id, reg_id: register.id) %>
+          > <a href='#' phx-click='clk_feed' phx-value='<%= register.id %>'><%= register.name %></a> <%# HTML.raw unread(@uistate.usr_id, reg_id: register.id) %>
         <% end %>
       <% end %>
       </small>

@@ -11,9 +11,9 @@ defmodule RaggedData.Ctx.Account.User do
     field(:email, :string)
     field(:pwd, :string, virtual: true)
     field(:pwd_hash, :string)
-    field(:jfields, :map)
     timestamps(type: :utc_datetime)
 
+    has_many(:read_logs, Account.ReadLog)
     has_many(:folders, Account.Folder)
     has_many(:registers, through: [:folders, :registers])
     has_many(:feeds, through: [:folders, :registers, :feeds])
@@ -21,7 +21,7 @@ defmodule RaggedData.Ctx.Account.User do
 
   def changeset(user, attrs) do
     required_fields = [:name, :email]
-    optional_fields = [:jfields, :pwd, :pwd_hash]
+    optional_fields = [:pwd, :pwd_hash]
 
     user
     |> cast(attrs, required_fields ++ optional_fields)

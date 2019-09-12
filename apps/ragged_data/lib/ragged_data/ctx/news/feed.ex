@@ -9,7 +9,6 @@ defmodule RaggedData.Ctx.News.Feed do
   schema "feeds" do
     field(:name, :string)
     field(:url, :string)
-    field(:jfields, :map)
     timestamps(type: :utc_datetime)
 
     has_many :posts, News.Post
@@ -17,7 +16,7 @@ defmodule RaggedData.Ctx.News.Feed do
 
   def changeset(feed, attrs) do
     required_fields = [:url]
-    optional_fields = [:jfields]
+    optional_fields = []
 
     feed
     |> cast(attrs, required_fields ++ optional_fields)

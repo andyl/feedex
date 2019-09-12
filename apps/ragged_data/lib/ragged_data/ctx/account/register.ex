@@ -9,9 +9,9 @@ defmodule RaggedData.Ctx.Account.Register do
   schema "registers" do
     field(:name, :string)
     field(:read_list, {:array, :integer})
-    field(:jfields, :map)
     timestamps(type: :utc_datetime)
 
+    has_many   :read_logs, Account.ReadLog
     belongs_to :folder, Account.Folder
     belongs_to :feed, News.Feed
   end

@@ -19,6 +19,7 @@ defmodule RaggedJobTest do
         cqry = from(p in "posts", select: count(p.id))
         assert Repo.one(cqry) == 0
         result = RaggedJob.sync(feed)
+        assert result
       end
     end
   end

@@ -1,5 +1,5 @@
 defmodule RaggedData.Ctx.Account do
-  alias RaggedData.Ctx.Account.{User, Folder, Register}
+  alias RaggedData.Ctx.Account.{User, Folder, Register, ReadLog}
   alias RaggedData.Repo
   alias Modex.AltMap
   import Ecto.Query
@@ -130,7 +130,25 @@ defmodule RaggedData.Ctx.Account do
       order by reg.id
       )
       """
+    mk2(user_id, pst_id: post_id)
     RaggedData.Repo.query(qry)
+  end
+
+  def mk2(user_id, pst_id: post_id) do
+    %ReadLog{}
+    |> ReadLog.changeset(read_log_ids(user_id, post_id))
+    |> Repo.insert()
+  end
+
+  def read_log_ids(user_id, post_id) do
+    from(pst in "posts",
+      join: fee in "feeds", on: pst.feed_id == fee.id,
+      join: reg in "registers", on: reg.feed_id == fee.id,
+      where: pst.id == ^post_id,
+      select: %{folder_id: reg.folder_id, register_id: reg.id}
+    ) 
+    |> Repo.one() 
+    |> Map.merge(%{user_id: user_id, post_id: post_id})
   end
   
   # ----- feeds ----- 

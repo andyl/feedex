@@ -47,7 +47,6 @@ defmodule RaggedWeb.News.Tree do
       </table>
     """
   end
-
    
   def style do
     "style='vertical-align: top; margin-top: 5px; margin-left: 2px;'"
@@ -75,7 +74,7 @@ defmodule RaggedWeb.News.Tree do
     end
   end
    
-  # ----- event helpers -----
+  # ----- event handlers -----
 
   def handle_event("clk_folder", payload, socket) do
     opts = %{
@@ -103,7 +102,7 @@ defmodule RaggedWeb.News.Tree do
     {:noreply, assign(socket, %{uistate: new_state, treemap: socket.assigns.treemap})}
   end
 
-  # ----- pub/sub helpers -----
+  # ----- pub/sub handlers -----
 
   def handle_info(%{topic: "uistate", payload: new_state}, socket) do
     {:noreply, assign(socket, %{uistate: new_state.uistate})}

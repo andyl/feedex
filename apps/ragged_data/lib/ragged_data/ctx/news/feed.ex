@@ -3,7 +3,7 @@ defmodule RaggedData.Ctx.News.Feed do
   Feed DataModel.
   """
   use Ecto.Schema
-  alias RaggedData.Ctx.{News, Account}
+  alias RaggedData.Ctx.News
   import Ecto.Changeset
 
   schema "feeds" do

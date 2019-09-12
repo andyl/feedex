@@ -2,57 +2,71 @@
 
 ## Applications
 
-| APP             | Generator                | Purpose              |
-|-----------------|--------------------------|----------------------|
-| - ragged_api    | new.phx.web ragged_api   | GraphQL API          |
-| x ragged_client | mix new ragged_client    | HTML Client          |
-| x ragged_data   | new.phx.ecto ragged_data | Ecto Interface       |
-| x ragged_job    | mix new ragged_job       | RSS Update Jobs      |
-| x ragged_runner | mix new ragged_runner    | Job Scheduler/Runner |
-| - ragged_term   | mix new ragged_term      | Terminal UI          |
-| x ragged_web    | new.phx.web ragged_web   | Web UI               |
+| APP             | Generator                | Purpose                 |
+|-----------------|--------------------------|-------------------------|
+| x ragged_client | mix new ragged_client    | HTML Client - Reads RSS |
+| x ragged_data   | new.phx.ecto ragged_data | Ecto Interface          |
+| x ragged_job    | mix new ragged_job       | Scheduled RSS Sync Jobs |
+| x ragged_web    | new.phx.web ragged_web   | Web UI                  |
+| - ragged_term   | mix new ragged_term      | Terminal UI             |
+| - ragged_api    | new.phx.web ragged_api   | GraphQL API             |
 
-## RaggedJob Scheduler
+## Schema
 
-- each feed has "last update" field
-- job scheduler has "job frequency"
+User > Folder > Register < Feed < Post
 
-- sort by "last_update"
-- filter by "max_update_frequency"
-- cap by "max_concurrent_updates"
+ReadLog 
 
-- feed updates all users who reference the feed
+- ReadLog: one record for every read post 
+- each ReadLog record contains: `id, user_id, folder_id, register_id, post_id`
 
-## ERD
+Key API Calls:
 
-```
-User -< Folder -< Register >-< Feed -< Post
-```
+- build tree with aggregate unread-count (register/folder/all)
+- list posts with read-status (register/folder/all)
+- mark as read (post/register/folder/all)
+- sync feed (register/folder/all)
 
-Account: User / Folder / Register
-News: Feed / Post
+## 3rd-Party Tooling
 
-## Queries
+| App          | Tool             | Purpose                  |
+|--------------|------------------|--------------------------|
+| RaggedClient | ElixirFeedParser | RSS Parsing              |
+| RaggedJob    | Oban             | Background Job Runner    |
+| RaggedJob    | Quantum          | Cron-like Job Scheduling |
+| RaggedWeb    | LiveView         | Dynamic UI               |
+| RaggedWeb    | Pets             | ETS Caching              |
 
-- Account.folders(usr_id)
-- News.posts
+## Persistence
 
-## API
+RaggedData uses Postgres with the standard Ecto tooling.
 
-- User.Folders(user)
-- Folder.UnreadCounts(folder)
-- Register.UnreadCount
+RaggedWeb caches UiState in ETS tables backed by files on disk. 
 
 ## UiState
 
-- part of RaggedWeb
+Purpose:
+
+- core to RaggedWeb LiveView
 - backed by PersistentETS
+- used by PushState
 
-- usr_id: 
-- mode:         view | edit | add_feed | add_folder
-- folder_id:    id | NIL
-- folder_state: open | closed
-- feed_id:      id | NIL
-- post_id:      id | NIL
-- post_state:   open | closed
+| Field  | Description | Type       |
+|--------|-------------|------------|
+| usr_id | User ID     | integer    |
+| fld_id | Folder ID   | integer    |
+| reg_id | Register ID | integer    |
+| pst_id | Post ID     | integer    |
+| mode   | UI MODE     | enumerated |
 
+Valid Modes:
+- view
+- add_feed
+- add_folder
+- edit_feed
+- edit_folder
+
+Notes:
+- nav tree always sorted alphabetically
+- nav folders always open
+- fld_id and reg_id can be blank - both can't be filled at once

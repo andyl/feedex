@@ -176,13 +176,24 @@ Editing Design Notes:
 - [x] Show unread counts in tree
 - [x] Mark all (pst/reg/fld/all)
 - [x] Sync all (pst/reg/fld/all)
-
-- [ ] Deploy production
+- [x] Deploy production
+- [x] Install systemD
 
 # Hotkeys
 
+- [ ] Admin: Rename folder
+- [ ] Admin: Delete folder
+- [ ] Admin: Rename feed
+- [ ] Admin: Delete feed
+- [ ] Admin: Test feed
+
+- [ ] UI Optimizations for Mobile
+- [ ] Split scrolling
+
 - [ ] HOTKEYS: Table Nav up/down
 - [ ] HOTKEYS: Folder/Feed Selection
+
+- [ ] Add PushState
 
 # Misc
 
@@ -191,3 +202,4 @@ Editing Design Notes:
 - [ ] TEST - intc - login/logout 
 - [ ] TEST - intw - install HOUND 1.1.0
 - [ ] TEST - intw - login/logout 
+- [ ] TEST - clean up documentation

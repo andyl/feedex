@@ -1,6 +1,6 @@
 defmodule RaggedData.Ctx.Account.RegFeed do
   @moduledoc """
-  Folder DataModel.
+  A virtual data-model - used for feed creation.
   """
   use Ecto.Schema
   alias RaggedData.Ctx.Account

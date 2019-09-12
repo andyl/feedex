@@ -67,10 +67,7 @@ defmodule RaggedWeb.News.Btn do
     {:noreply, assign(socket, %{})}
   end
 
-  def handle_event(type, _payload, socket) do
-    IO.inspect "======================================="
-    IO.inspect type
-    IO.inspect "======================================="
+  def handle_event(_type, _payload, socket) do
     {:noreply, socket}
   end
 

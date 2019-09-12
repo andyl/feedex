@@ -1,20 +1,10 @@
 # RaggedWeb
 
-To start your Phoenix server:
+A WebUI for the Ragged RSS Aggregator.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+This is a standard live-view UI, structured around a `UiState` object.
 
-Now you can visit [`localhost:4060`](http://localhost:4060) from your browser.
+This WebUI uses ETS-style of persistence to cache the UiState.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+The WebUI is built to be as simple as possible - minimal configuration options,
+minimal complexity.

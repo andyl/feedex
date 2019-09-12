@@ -1,5 +1,4 @@
 defmodule RaggedWeb.News.BodyAddFolder do
-  alias RaggedData.Ctx.News
   alias RaggedData.Ctx.Account
   alias RaggedData.Repo
 

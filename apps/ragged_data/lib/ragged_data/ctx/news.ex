@@ -1,6 +1,6 @@
 defmodule RaggedData.Ctx.News do
   alias RaggedData.Ctx.News.{Feed, Post}
-  alias RaggedData.Ctx.Account.{ReadLog, Register, Folder, User}
+  alias RaggedData.Ctx.Account.{ReadLog, Register, Folder}
   alias RaggedData.Repo
 
   import Ecto.Query
@@ -63,17 +63,6 @@ defmodule RaggedData.Ctx.News do
       where: is_nil(log.id), 
       select: count(pst.id)
     )
-  end
-
-  # ----- unread_ids_for -----
-
-  def unread_ids_for(_userid) do
-  end
-
-  def unread_ids_for(_userid, fld_id: _fldid) do
-  end
-
-  def unread_ids_for(_userid, reg_id: _regid) do
   end
 
   # ----- posts_for -----

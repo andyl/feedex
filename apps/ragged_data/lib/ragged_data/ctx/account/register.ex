@@ -1,6 +1,10 @@
 defmodule RaggedData.Ctx.Account.Register do
   @moduledoc """
   Register DataModel.
+
+  A Register is a many-to-many table, joining an `Account.Folder` to a
+  `News.Feed`.  The Register concept appears in the code, but is not exposed to
+  end-users. (EndUsers see Folders and Feeds)
   """
   use Ecto.Schema
   alias RaggedData.Ctx.{Account, News}

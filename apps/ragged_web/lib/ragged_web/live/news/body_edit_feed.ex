@@ -1,8 +1,6 @@
 defmodule RaggedWeb.News.BodyEditFeed do
-  alias RaggedData.Ctx.News
   alias RaggedData.Ctx.News.Post
   alias RaggedData.Ctx.News.Feed
-  alias RaggedData.Ctx.Account.Folder
   alias RaggedData.Ctx.Account.Register
   alias RaggedData.Repo
 

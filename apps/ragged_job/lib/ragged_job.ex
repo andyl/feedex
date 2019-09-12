@@ -5,6 +5,8 @@ defmodule RaggedJob do
   alias RaggedData.Ctx.News.Post
   alias RaggedData.Ctx.News.Feed
 
+  require Logger
+
   import Ecto.Query
 
   @moduledoc """
@@ -27,10 +29,12 @@ defmodule RaggedJob do
   Fetch data from URL, update Post records.
   """
   def sync(feed) do
-    IO.puts "----- FEED SYNC --------------------------"
-    IO.puts "ID/NAME: #{feed.id} / #{feed.name}"
-    IO.puts "    URL: #{feed.url}"
-    IO.puts "----- FEED SYNC --------------------------"
+
+    Logger.info "----- FEED SYNC --------------------------"
+    Logger.info "ID/NAME: #{feed.id} / #{feed.name}"
+    Logger.info "    URL: #{feed.url}"
+    Logger.info "----- FEED SYNC --------------------------"
+
     case RaggedClient.scan(feed.url) do
       {:ok, _url, data} -> sync_posts(feed, data)
       {:error, message} -> {:error, message}

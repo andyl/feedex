@@ -46,7 +46,6 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
       add(:folder_id,  references(:folders))
       add(:feed_id,    references(:feeds))
       add(:name,       :string)
-      add(:read_list,  :map, default: "[]")
       timestamps()
     end
     create index(:registers, [:folder_id])

@@ -18,21 +18,25 @@ defmodule RaggedWeb.News.Btn do
         <i class="fa fa-plus" style="padding-right: 5px;"></i> Folder<br/>
       </a>
       <a phx-click="view_all" href="#">
-        <i class="fa fa-eye fa-fw" style="padding-right: 5px;"></i> All <%= HTML.raw unread(@uistate.usr_id) %><br/>
-      </a>
+        <i class="fa fa-eye fa-fw" style="padding-right: 5px;"></i> All 
+      </a> <%= HTML.raw unread(@uistate.usr_id) %><br/>
     </div>
     """
   end
   #
   # ----- view helpers -----
    
+  def style do
+    "style='vertical-align: top; margin-top: 3px; margin-left: 4px;'"
+  end
+
   def unread(user_id) do
     count = RaggedData.Ctx.News.unread_count_for(user_id)
     if count == 0 do
       ""
     else
       """
-      <small><span class="badge badge-light" style='vertical-align: top; margin-top: 3px;'>#{count}</span></small>
+      <small><span class="badge badge-light" #{style()}>#{count}</span></small>
       """
     end
   end

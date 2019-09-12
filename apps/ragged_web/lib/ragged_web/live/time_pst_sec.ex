@@ -19,6 +19,6 @@ defmodule RaggedWeb.TimePstSec do
 
   defp ldate do
     Timex.now("US/Pacific")
-    |> Timex.format!("%d %b %H:%M:%S", :strftime)
+    |> Timex.format!("%Y %b %d %a %H:%M:%S", :strftime)
   end
 end

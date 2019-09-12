@@ -89,7 +89,7 @@ defmodule RaggedWeb.News.BodyView do
       socket.assigns.uistate
       |> Map.merge(opts)
 
-    RaggedData.Ctx.Account.mark_read(user_id, pst_id: post_id)
+    RaggedData.Ctx.Account.mark_all_for(user_id, pst_id: post_id)
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "CLICK_POST", %{uistate: newstate})
     {:noreply, assign(socket, %{uistate: newstate})}
   end

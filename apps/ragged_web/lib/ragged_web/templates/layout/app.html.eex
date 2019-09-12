@@ -9,10 +9,10 @@
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/css/app.css") %>"></script>
     <link rel="stylesheet" href="/css/app.css">
   </head>
-  <body style='padding-top: 70px;' class="bg-custom">
+  <body style='padding-top: 56px;' class="bg-custom">
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="/">
+      <a class="navbar-brand" href="/news">
         <img src="/images/rss-4-32.png" height=28></img>
         Ragged
       </a>

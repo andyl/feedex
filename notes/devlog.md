@@ -169,14 +169,15 @@ Editing Design Notes:
 - [x] Sync now button
 - [x] Periodic sync (quantum/cron)
 - [x] Display update times (1m, 2h, 3d, 4w)
+- [x] Refactor readlog
+- [x] QUERY: count of unread by register
+- [x] QUERY: count of unread by folder
+- [x] QUERY: count of unread by all
+- [x] Show unread counts in tree
+- [x] Mark all (pst/reg/fld/all)
+- [x] Sync all (pst/reg/fld/all)
 
-- [ ] Mark all as read
 - [ ] Deploy production
-- [ ] Show unread counts in tree
-
-- [ ] QUERY: count of unread by register
-- [ ] QUERY: count of unread by folder
-- [ ] QUERY: count of unread by all
 
 # Hotkeys
 

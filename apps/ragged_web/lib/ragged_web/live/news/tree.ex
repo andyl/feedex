@@ -26,13 +26,7 @@ defmodule RaggedWeb.News.Tree do
       </small>
       <p></p>
       <small>
-      <table class='table table-sm'>
-        <tr><td>Mode</td> <td><%= @uistate.mode %>  </td></tr>
-        <tr><td>UsrId</td><td><%= @uistate.usr_id %></td></tr>
-        <tr><td>FldId</td><td><%= @uistate.fld_id %></td></tr>
-        <tr><td>RegId</td><td><%= @uistate.reg_id %></td></tr>
-        <tr><td>PstId</td><td><%= @uistate.pst_id %></td></tr>
-      </table>
+      <%# HTML.raw state_table(@uistate) %>
       <p></p>
       <%= live_render(@socket, RaggedWeb.TimePstSec) %>
       </small>
@@ -41,6 +35,19 @@ defmodule RaggedWeb.News.Tree do
   end
 
   # ----- view helpers -----
+  
+  def state_table(uistate) do
+    """
+      <table class='table table-sm'>
+        <tr><td>Mode</td> <td>#{ uistate.mode   }</td></tr>
+        <tr><td>UsrId</td><td>#{ uistate.usr_id }</td></tr>
+        <tr><td>FldId</td><td>#{ uistate.fld_id }</td></tr>
+        <tr><td>RegId</td><td>#{ uistate.reg_id }</td></tr>
+        <tr><td>PstId</td><td>#{ uistate.pst_id }</td></tr>
+      </table>
+    """
+  end
+
    
   def style do
     "style='vertical-align: top; margin-top: 5px; margin-left: 2px;'"

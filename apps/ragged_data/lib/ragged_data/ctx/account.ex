@@ -1,5 +1,6 @@
 defmodule RaggedData.Ctx.Account do
   alias RaggedData.Ctx.Account.{User, Folder, Register, ReadLog}
+  alias RaggedData.Ctx.News.{Post, Feed}
   alias RaggedData.Repo
   alias Modex.AltMap
   import Ecto.Query
@@ -67,11 +68,12 @@ defmodule RaggedData.Ctx.Account do
   end
 
   def rawtree(user_id) do
-    rq = from(r in Register, select: %{id: r.id, name: r.name})
+    rq = from(r in Register, order_by: r.name, select: %{id: r.id, name: r.name})
       
     from(
       f in Folder,
       where: f.user_id == ^user_id,
+      order_by: f.name,
       preload: [registers: ^rq]
     )
     |> Repo.all()
@@ -97,70 +99,61 @@ defmodule RaggedData.Ctx.Account do
   def register_get(id) do
     Repo.get(Register, id)
   end
-  
-  # ----- mark-read -----
 
-  @doc """
-  Mark posts read.  Idempotent.
-  """
-  def mark_read(_user_id) do
-    IO.puts "mark_read ALL"
+  # ----- mark_all_for -----
+
+  def mark_all_for(usrid) do
+    mark_all_qry(usrid) |> create_read_logs()
   end
 
-  def mark_read(_user_id, fld_id: _fld_id) do
-    IO.puts "mark_read fld_id"
+  def mark_all_for(usrid, fld_id: fldid) do
+    from([pst, log, fee, reg, fld] in mark_all_qry(usrid),
+      where: fld.id == ^fldid
+    ) |> create_read_logs()
   end
 
-  def mark_read(_user_id, reg_id: _reg_id) do
-    IO.puts "mark_read reg_id"
+  def mark_all_for(usrid, reg_id: regid) do
+    from([pst, log, fee, reg, fld] in mark_all_qry(usrid),
+      where: reg.id == ^regid
+    ) |> create_read_logs()
   end
 
-  # def mark_read(user_id, pst_id: post_id) do
-  #   qry = 
-  #     """
-  #     update registers set read_list = read_list || '#{post_id}' 
-  #     where not(read_list @> '#{post_id}')
-  #     and id in (
-  #     select reg.id
-  #     from folders fld
-  #     join registers reg on fld.id = reg.folder_id
-  #     join feeds fee     on fee.id = reg.feed_id 
-  #     join posts pst     on fee.id = pst.feed_id
-  #     where fld.user_id = #{user_id} and pst.id = #{post_id}
-  #     order by reg.id
-  #     )
-  #     """
-  #   mk2(user_id, pst_id: post_id)
-  #   RaggedData.Repo.query(qry)
-  # end
+  def mark_all_for(usrid, pst_id: pstid) do
+    from([pst, log, fee, reg, fld] in mark_all_qry(usrid),
+      where: pst.id == ^pstid
+    ) |> create_read_logs()
+  end
 
-  def mark_read(user_id, pst_id: post_id) do
+  # ----- mark_all utility functions -----
+
+  defp create_read_logs(list) do
+    list
+    |> Repo.all()
+    |> Enum.map(&(create_read_log(&1)))
+  end
+
+  defp create_read_log(record) do
     %ReadLog{}
-    |> ReadLog.changeset(read_log_ids(user_id, post_id))
+    |> ReadLog.changeset(record)
     |> Repo.insert()
   end
 
-  def read_log_ids(user_id, post_id) do
-    from(pst in "posts",
-      join: fee in "feeds", on: pst.feed_id == fee.id,
-      join: reg in "registers", on: reg.feed_id == fee.id,
-      where: pst.id == ^post_id,
-      select: %{folder_id: reg.folder_id, register_id: reg.id}
-    ) 
-    |> Repo.one() 
-    |> Map.merge(%{user_id: user_id, post_id: post_id})
+  defp mark_all_qry(userid) do
+    from(pst in Post,
+      left_join: log in ReadLog, on: pst.id == log.post_id,
+      join:  fee in Feed       , on: pst.feed_id == fee.id,
+      join:  reg in Register   , on: reg.feed_id == fee.id,
+      join:  fld in Folder     , on: reg.folder_id == fld.id,
+      where: fld.user_id == ^userid,
+      where: is_nil(log.id),
+      select: %{
+        post_id: pst.id,
+        register_id: reg.id,
+        folder_id: fld.id,
+        user_id: fld.user_id
+      }
+    )
   end
-  
-  # ----- feeds ----- 
-
-  # def feed_add do
-  # end
-  #
-  # def feed_update do
-  # end
-  #
-  # def feed_delete do
-  # end
 
   # ----- utility functions -----
 

@@ -36,9 +36,17 @@ defmodule RaggedWeb.News.Hdr do
 
   def mark_all_read(state) do
     case {state.fld_id, state.reg_id} do
-      {nil   , nil} -> Account.mark_read(state.usr_id)
-      {fld_id, nil} -> Account.mark_read(state.usr_id, fld_id: fld_id)
-      {nil, reg_id} -> Account.mark_read(state.usr_id, reg_id: reg_id)
+      {nil   , nil} -> Account.mark_all_for(state.usr_id)
+      {fld_id, nil} -> Account.mark_all_for(state.usr_id, fld_id: fld_id)
+      {nil, reg_id} -> Account.mark_all_for(state.usr_id, reg_id: reg_id)
+    end
+  end
+
+  def sync_all(state) do
+    case {state.fld_id, state.reg_id} do
+      {nil   , nil} -> RaggedJob.sync_for(state.usr_id)
+      {fld_id, nil} -> RaggedJob.sync_for(state.usr_id, fld_id: fld_id)
+      {nil, reg_id} -> RaggedJob.sync_for(state.usr_id, reg_id: reg_id)
     end
   end
 
@@ -68,7 +76,7 @@ defmodule RaggedWeb.News.Hdr do
     <i class='fa fa-check' phx-click='mark-read' style='margin-right: 10px;'></i>
     </a>
     <a href='#'>
-    <i class='fa fa-redo' style='margin-right: 10px;'></i>
+    <i class='fa fa-redo' phx-click='feed-sync' style='margin-right: 10px;'></i>
     </a>
     #{pencil}
     """
@@ -92,6 +100,13 @@ defmodule RaggedWeb.News.Hdr do
     mark_all_read(socket.assigns.uistate)
     payload = %{uistate: socket.assigns.uistate}
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "mark-read", payload)
+    {:noreply, socket}
+  end
+
+  def handle_event("feed-sync", _click, socket) do
+    sync_all(socket.assigns.uistate)
+    payload = %{uistate: socket.assigns.uistate}
+    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "sync-all", payload)
     {:noreply, socket}
   end
   

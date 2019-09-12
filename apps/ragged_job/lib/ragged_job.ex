@@ -1,5 +1,7 @@
 defmodule RaggedJob do
   alias RaggedData.Repo
+  alias RaggedData.Ctx.Account.Register
+  alias RaggedData.Ctx.Account.Folder
   alias RaggedData.Ctx.News.Post
   alias RaggedData.Ctx.News.Feed
 
@@ -10,28 +12,85 @@ defmodule RaggedJob do
   """
 
   @doc """
+  Runs with max frequency once every five minutes.
+  """
+  def safe_sync(feed) do
+    delta = Timex.diff(Timex.now(), feed.updated_at, :minutes)
+    if delta > 5 do
+      sync(feed)
+    else
+      "FEED SYNC ABORTED: LAST SYNC LESS THAN 5 MINS (#{feed.id}/#{feed.name})"
+    end
+  end
+
+  @doc """
   Fetch data from URL, update Post records.
   """
   def sync(feed) do
+    IO.puts "----- FEED SYNC --------------------------"
+    IO.puts "ID/NAME: #{feed.id} / #{feed.name}"
+    IO.puts "    URL: #{feed.url}"
+    IO.puts "----- FEED SYNC --------------------------"
     case RaggedClient.scan(feed.url) do
       {:ok, _url, data} -> sync_posts(feed, data)
       {:error, message} -> {:error, message}
     end
   end
 
+  @doc """
+  Invoked by the cron scheduler.  (typically once every five minutes)
+
+  Syncs the oldest feed, and touches the feed's `updated_at` timestamp.
+  """
   def sync_next do
     Feed
     |> order_by(:updated_at)
     |> limit(1)
     |> Repo.one()
-    |> sync()
+    |> safe_sync()
   end
 
+  # ----- invoked from the UI -----
+
+  def sync_for(usrid) do
+    sync_qry(usrid) 
+    |> Repo.all() 
+    |> Enum.map(&(safe_sync(&1)))
+  end
+
+  def sync_for(usrid, fld_id: fldid) do
+    from([fee, reg, fld] in sync_qry(usrid),
+      where: fld.id == ^fldid) 
+    |> Repo.all()
+    |> Enum.map(&(safe_sync(&1)))
+  end
+
+  def sync_for(usrid, reg_id: regid) do
+    from([fee, reg, fld] in sync_qry(usrid),
+      where: reg.id == ^regid) 
+    |> Repo.all()
+    |> Enum.map(&(safe_sync(&1)))
+  end
+
+  defp sync_qry(userid) do
+    from(fee in Feed,
+      join:  reg in Register, on: reg.feed_id == fee.id,
+      join:  fld in Folder  , on: reg.folder_id == fld.id,
+      where: fld.user_id == ^userid,
+      order_by: [desc: fee.updated_at]
+    )
+  end
+
+  # ----- for development and testing -----
+  
   def sync_all do
     Feed
+    |> order_by(:updated_at)
     |> Repo.all()
-    |> Enum.map(&(sync(&1)))
+    |> Enum.map(&(safe_sync(&1)))
   end
+
+  # ----- utility functions -----
 
   defp sync_posts(feed, data) do
     data.entries |> Enum.each(&(sync_post(feed.id, &1)))

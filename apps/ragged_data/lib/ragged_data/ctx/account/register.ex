@@ -8,7 +8,6 @@ defmodule RaggedData.Ctx.Account.Register do
 
   schema "registers" do
     field(:name, :string)
-    field(:read_list, {:array, :integer})
     timestamps(type: :utc_datetime)
 
     has_many   :read_logs, Account.ReadLog

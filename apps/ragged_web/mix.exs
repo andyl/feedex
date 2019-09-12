@@ -58,6 +58,7 @@ defmodule RaggedWeb.MixProject do
       {:typed_struct, "~> 0.1.4"},
       # ----- umbrella apps
       {:ragged_data, in_umbrella: true}
+      {:ragged_job, in_umbrella: true}
     ]
   end
 end

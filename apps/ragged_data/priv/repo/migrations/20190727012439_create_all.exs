@@ -6,7 +6,6 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
     # News.Feed
     create table(:feeds) do
       add(:url,        :string)
-      add(:name,       :string)
       add(:sync_count, :integer, default: 0)
       timestamps(type: :utc_datetime)
     end

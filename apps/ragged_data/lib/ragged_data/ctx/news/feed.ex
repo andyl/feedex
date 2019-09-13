@@ -7,7 +7,6 @@ defmodule RaggedData.Ctx.News.Feed do
   import Ecto.Changeset
 
   schema "feeds" do
-    field(:name, :string)
     field(:url, :string)
     field(:sync_count, :integer)
     timestamps(type: :utc_datetime)
@@ -22,7 +21,6 @@ defmodule RaggedData.Ctx.News.Feed do
     feed
     |> cast(attrs, required_fields ++ optional_fields)
     |> validate_required(required_fields)
-    |> validate_length(:name, min: 4)
     |> unique_constraint(:url)
   end
 

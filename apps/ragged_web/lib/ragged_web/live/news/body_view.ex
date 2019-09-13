@@ -16,6 +16,7 @@ defmodule RaggedWeb.News.BodyView do
   def render(assigns) do
     ~L"""
     <div>
+    <small>
     <table class="table table-sm">
     <%= for post <- all_posts_for(@uistate) do %>
     <%= if @uistate.pst_id == post.id do %>
@@ -42,6 +43,7 @@ defmodule RaggedWeb.News.BodyView do
     <% end %>
     <% end %>
     </table>
+    </small>
     </div>
     """
   end

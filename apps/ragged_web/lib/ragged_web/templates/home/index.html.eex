@@ -1,22 +1,10 @@
-<div class="jumbotron text-center" style='padding: 1em;'>
+<div class="jumbotron text-center" style='padding: 1em; margin-top: 40px;'>
   <h1>Ragged</h1>
   <p>RSS Aggregator, Elixir Dashboard</p>
   <%= if @current_user do %>
-    LOGGED IN!
+    <a role="button" class="btn btn-primary" href="/news">NEWS</a>
   <% else %>
-    NOT LOGGED IN!
+    <a role = "button" class="btn btn-primary" href="/session/new">LOGIN</a>
   <% end %>
 </div>
 
-<div class="row">
-  <div class="col-md-6">
-    <h2>About</h2>
-    Text goes here<br/>
-    List of links
-  </div>
-
-  <div class="col-md-6">
-    <h2>Alt Header</h2>
-    enter your text
-  </div>
-</div>

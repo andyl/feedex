@@ -5,7 +5,6 @@ defmodule RaggedData.Factory do
 
   def feed_factory do
     %Feed{
-      name: sequence(:name, &"feed_#{&1}"),
       url: sequence(:url, &"http://test_dom.com/path_#{&1}")
     }
   end

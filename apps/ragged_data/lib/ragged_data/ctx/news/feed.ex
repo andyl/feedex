@@ -9,6 +9,7 @@ defmodule RaggedData.Ctx.News.Feed do
   schema "feeds" do
     field(:name, :string)
     field(:url, :string)
+    field(:sync_count, :integer)
     timestamps(type: :utc_datetime)
 
     has_many :posts, News.Post

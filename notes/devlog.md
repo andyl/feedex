@@ -179,13 +179,20 @@ Editing Design Notes:
 - [x] Deploy production
 - [x] Install systemD
 
-# Hotkeys
+# 2019 Sep 12 Thu
+
+- [x] Admin: Delete folder
+- [x] Add cascade deletes
+- [x] Fix feed sync
+- [x] Admin: Delete feed
 
 - [ ] Admin: Rename folder
-- [ ] Admin: Delete folder
 - [ ] Admin: Rename feed
-- [ ] Admin: Delete feed
+- [ ] Admin: Move feed to a different folder
+
 - [ ] Admin: Test feed
+
+# TBD
 
 - [ ] UI Optimizations for Mobile
 - [ ] Split scrolling

@@ -10,10 +10,11 @@ defmodule RaggedWeb.News.BodyEditFolder do
   def mount(session, socket) do
     folder_id = session.uistate.fld_id
     reg_count = 
-      from(r in Register, select: count(r.id), where: r.id == ^folder_id)
+      from(r in Register, select: count(r.id), where: r.folder_id == ^folder_id)
       |> Repo.one()
     opts = %{
-      folder: Repo.get(Folder, folder_id),
+      # folder: folder = Repo.get(Folder, folder_id),
+      # changeset: %{},
       feed_count: reg_count,
       uistate: session.uistate
     }

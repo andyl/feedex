@@ -12,7 +12,7 @@ defmodule RaggedData.Ctx.Account.Folder do
 
     belongs_to :user, Account.User
     has_many :registers, Account.Register
-    has_many :read_logs, Account.ReadLog
+    has_many :read_logs, Account.ReadLog 
     has_many :feeds, through: [:registers, :feeds]
     has_many :posts, through: [:registers, :feeds, :posts]
   end

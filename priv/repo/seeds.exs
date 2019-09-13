@@ -11,9 +11,10 @@ Repo.delete_all(Post)
 Repo.delete_all(Feed)
 Repo.delete_all(User)
 
+
 Repo.insert(%User{
-  name: "zzz",
-  email: "zzz",
+  name: "aaa",
+  email: "aaa",
   pwd_hash: User.pwd_hash("zzz"),
   folders: [
     %Folder{
@@ -50,16 +51,6 @@ Repo.insert(%User{
       ]
     },
     %Folder{
-      name: "Podcasts",
-      registers: [
-        name: "ChangeLog",
-        feed: %Feed{
-          name: "ChangeLog Feed",
-          url: "https://changelog.com/master/feed"
-        }
-      ]
-    },
-    %Folder{
       name: "TechNews",
       registers: [
         %Register{
@@ -86,5 +77,19 @@ Repo.insert(%User{
       ]
     }
   ]
+  }
+)
+
+Repo.insert(%User{
+  name: "bbb",
+  email: "bbb",
+  pwd_hash: User.pwd_hash("bbb")
+  }
+)
+
+Repo.insert(%User{
+  name: "ccc",
+  email: "ccc",
+  pwd_hash: User.pwd_hash("ccc")
   }
 )

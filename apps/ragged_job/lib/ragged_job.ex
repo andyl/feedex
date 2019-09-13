@@ -18,10 +18,16 @@ defmodule RaggedJob do
   """
   def safe_sync(feed) do
     delta = Timex.diff(Timex.now(), feed.updated_at, :minutes)
-    if delta > 5 do
+    if delta > 5 || feed.sync_count == 0 do
       sync(feed)
     else
-      "FEED SYNC ABORTED: LAST SYNC LESS THAN 5 MINS (#{feed.id}/#{feed.name})"
+      Logger.info "----- FEED SYNC SKIPPED ------------------"
+      Logger.info "  ID/NAME: #{feed.id} / #{feed.name}"
+      Logger.info "      URL: #{feed.url}"
+      Logger.info "LAST SYNC: #{feed.updated_at}"
+      Logger.info " TIME NOW: #{Timex.now()}"
+      Logger.info "    DELTA: #{delta} (LESS THAN 5 MINS)"
+      Logger.info "----- FEED SYNC SKIPPED ------------------"
     end
   end
 
@@ -29,12 +35,13 @@ defmodule RaggedJob do
   Fetch data from URL, update Post records.
   """
   def sync(feed) do
-
     Logger.info "----- FEED SYNC --------------------------"
-    Logger.info "ID/NAME: #{feed.id} / #{feed.name}"
-    Logger.info "    URL: #{feed.url}"
+    Logger.info "  ID/NAME: #{feed.id} / #{feed.name}"
+    Logger.info "      URL: #{feed.url}"
+    Logger.info "LAST SYNC: #{feed.updated_at}"
+    Logger.info " TIME NOW: #{Timex.now()}"
+    Logger.info "    DELTA: #{Timex.diff(Timex.now(), feed.updated_at, :minutes)}"
     Logger.info "----- FEED SYNC --------------------------"
-
     case RaggedClient.scan(feed.url) do
       {:ok, _url, data} -> sync_posts(feed, data)
       {:error, message} -> {:error, message}
@@ -98,13 +105,16 @@ defmodule RaggedJob do
 
   defp sync_posts(feed, data) do
     data.entries |> Enum.each(&(sync_post(feed.id, &1)))
-    mark_updated(feed)
+    touch(feed)
     :ok
   end
 
-  defp mark_updated(feed) do
-    "update feeds set updated_at = now() where id = #{feed.id}"
-    |> Repo.query()
+  defp touch(feed) do
+    from(f in Feed, 
+      update: [inc: [sync_count: 1]], 
+      update: [set: [updated_at: ^Timex.now()]], 
+      where: f.id == ^feed.id
+    ) |> Repo.update_all([])
   end
 
   defp sync_post(feed_id, post) do

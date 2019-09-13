@@ -23,7 +23,8 @@
         <ul class="navbar-nav mr-auto">
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-          <%= hdr_link(@conn, "ABOUT",  "/about") %>
+          <%= hdr_link(@conn, "HOME",   "/") %>
+          <%= hdr_link(@conn, "NEWS",   "/news") %>
           <%= if @current_user do %>
             <%= logout_link(@conn, @current_user) %>
           <% else %>
@@ -45,9 +46,7 @@
         <hr>
         <small>
           <ul class="nav justify-content-center">
-            <%= ftr_link(@conn, "Demo1", "/demo1") %>
-            <%= ftr_link(@conn, "Demo2", "/demo2") %>
-            <%= ftr_link(@conn, "News",  "/news")  %>
+            <%= ftr_link(@conn, "Demo",  "/demo") %>
             <%= ftr_link(@conn, "Users", "/users") %>
           </ul>
         </small>

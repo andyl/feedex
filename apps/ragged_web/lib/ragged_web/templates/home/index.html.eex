@@ -7,4 +7,12 @@
     <a role = "button" class="btn btn-primary" href="/session/new">LOGIN</a>
   <% end %>
 </div>
+<div style='margin-top: 60px;' class='text-center'>
+<p>
+Ragged is a simple RSS Aggregator built with Phoenix and Phoenix LiveView.
+</p>
+<p>
+<a target="_blank" href="http://github.com/andyl/ragged">Source</a>
+</p>
+</div>
 

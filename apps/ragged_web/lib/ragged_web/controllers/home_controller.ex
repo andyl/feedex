@@ -13,6 +13,10 @@ defmodule RaggedWeb.HomeController do
     render(conn, "login.html")
   end
 
+  def demo(conn, _params) do
+    render(conn, "demo.html")
+  end
+
   def signup(conn, _params) do
     render(conn, "signup.html")
   end

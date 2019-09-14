@@ -15,7 +15,7 @@ Repo.delete_all(User)
 Repo.insert(%User{
   name: "aaa",
   email: "aaa",
-  pwd_hash: User.pwd_hash("zzz"),
+  pwd_hash: User.pwd_hash("aaa"),
   folders: [
     %Folder{
       name: "Elixir",

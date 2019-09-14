@@ -4,7 +4,7 @@
   <%= if @current_user do %>
     <a role="button" class="btn btn-primary" href="/news">NEWS</a>
   <% else %>
-    <a role = "button" class="btn btn-primary" href="/session/new">LOGIN</a>
+    <a role = "button" class="btn btn-primary" href="/sessions/new">LOGIN</a>
   <% end %>
 </div>
 <div style='margin-top: 60px;' class='text-center'>

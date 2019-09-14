@@ -22,8 +22,9 @@ defmodule RaggedJob do
       sync(feed)
     else
       Logger.info "----- FEED SYNC SKIPPED ------------------"
-      Logger.info "       ID: #{feed.id}"
-      Logger.info "      URL: #{feed.url}"
+      Logger.info "  FEED ID: #{feed.id}"
+      Logger.info " FEED URL: #{feed.url}"
+      Logger.info " NUM SYNC: #{feed.sync_count}"
       Logger.info "LAST SYNC: #{feed.updated_at}"
       Logger.info " TIME NOW: #{Timex.now()}"
       Logger.info "    DELTA: #{delta} (LESS THAN 5 MINS)"
@@ -36,12 +37,14 @@ defmodule RaggedJob do
   """
   def sync(feed) do
     Logger.info "----- FEED SYNC --------------------------"
-    Logger.info "       ID: #{feed.id}"
-    Logger.info "      URL: #{feed.url}"
+    Logger.info "  FEED ID: #{feed.id}"
+    Logger.info " FEED URL: #{feed.url}"
+    Logger.info " NUM SYNC: #{feed.sync_count}"
     Logger.info "LAST SYNC: #{feed.updated_at}"
     Logger.info " TIME NOW: #{Timex.now()}"
     Logger.info "    DELTA: #{Timex.diff(Timex.now(), feed.updated_at, :minutes)}"
     Logger.info "----- FEED SYNC --------------------------"
+    touch(feed)
     case RaggedClient.scan(feed.url) do
       {:ok, _url, data} -> sync_posts(feed, data)
       {:error, message} -> {:error, message}
@@ -105,7 +108,6 @@ defmodule RaggedJob do
 
   defp sync_posts(feed, data) do
     data.entries |> Enum.each(&(sync_post(feed.id, &1)))
-    touch(feed)
     :ok
   end
 

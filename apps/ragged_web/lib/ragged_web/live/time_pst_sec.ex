@@ -9,7 +9,7 @@ defmodule RaggedWeb.TimePstSec do
   end
 
   def mount(_session, socket) do
-    :timer.send_interval(500, self(), :tick)
+    :timer.send_interval(20000, self(), :tick)
     {:ok, assign(socket, date: ldate())}
   end
 
@@ -19,6 +19,7 @@ defmodule RaggedWeb.TimePstSec do
 
   defp ldate do
     Timex.now("US/Pacific")
-    |> Timex.format!("%Y %b %d %a %H:%M:%S", :strftime)
+    # |> Timex.format!("%Y %b %d %a %H:%M:%S", :strftime)
+    |> Timex.format!("%b %d %a %H:%M", :strftime)
   end
 end

@@ -36,10 +36,10 @@
     </nav>
     <div class="container-fluid">
       <%= if info_msg = get_flash(@conn, :info) do %>
-        <p class="alert alert-info" role="alert"><%= info_msg %></p>
+        <p class="alert alert-info" style="margin-top: 20px;" role="alert"><%= info_msg %></p>
       <% end %>
       <%= if error_msg = get_flash(@conn, :error) do %>
-        <p class="alert alert-danger" role="alert"><%= error_msg %></p>
+        <p class="alert alert-danger" style="margin-top: 20px;" role="alert"><%= error_msg %></p>
       <% end %>
       <%= render @view_module, @view_template, assigns %>
       <div style='margin-top: 40px;'>

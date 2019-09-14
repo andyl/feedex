@@ -27,8 +27,6 @@ defmodule RaggedWeb.News.Tree do
       <p></p>
       <small>
       <%# HTML.raw state_table(@uistate) %>
-      <p></p>
-      <%= live_render(@socket, RaggedWeb.TimePstSec) %>
       </small>
     </div>
     """

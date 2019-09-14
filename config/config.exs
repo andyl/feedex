@@ -19,7 +19,7 @@ config :ragged_job, RaggedJob.Scheduler,
     # {"0 18-6/2 * * *", fn -> :mnesia.backup('/var/backup/mnesia') end},
     # {"@daily",         {Backup, :backup, []}}
     # {"* * * * *",      {IO, :puts, ["CRON JOB"]}}
-    {"*/10 * * * *",      {RaggedJob, :sync_next, []}}
+    {"*/3 * * * *",      {RaggedJob, :sync_next, []}}
   ]
 
 config :logger, :console,

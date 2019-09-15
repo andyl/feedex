@@ -10,9 +10,12 @@ defmodule RaggedWeb.News.Btn do
 
   def render(assigns) do
     ~L"""
-    <div style='margin-top: 5px;'>
+    <div style='margin-top: 8px;'>
+      <div style='margin-bottom: 4px;'>
+      <small>
       <%= live_render(@socket, RaggedWeb.TimePstSec) %>
-      <p></p>
+      </small>
+      </div>
       <a phx-click="add_folder" href="#">
         <i class="fa fa-plus fa-fw" style="padding-right: 5px;"></i> Folder<br/>
       </a>

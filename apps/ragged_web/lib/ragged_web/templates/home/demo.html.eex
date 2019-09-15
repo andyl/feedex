@@ -9,4 +9,7 @@ Here are some LiveView demo pages:
   <li>
     <a href="/demo2">Demo2</a>
   </li>
+  <li>
+    <a href="/demo3">Demo3</a>
+  </li>
 </ul>

@@ -1,7 +1,8 @@
 /* This file is for your main application css. */
 
-
 @import "custom"; 
+
+@import "./bootstrap-editable.css";
 
 @import "~bootstrap/scss/bootstrap";
 
@@ -13,3 +14,4 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 
 @import "../../../../deps/phoenix_live_view/assets/css/live_view.css";
+

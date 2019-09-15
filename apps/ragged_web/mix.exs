@@ -45,6 +45,7 @@ defmodule RaggedWeb.MixProject do
       # ----- phoenix view helpers
       {:phoenix_active_link, "~> 0.2.1"},
       {:phoenix_live_view, "~> 0.1.1"},
+      {:siariwyd, "~> 0.2.0"},
       # ----- util
       {:jason, "~> 1.0"},
       {:gettext, "~> 0.11"},

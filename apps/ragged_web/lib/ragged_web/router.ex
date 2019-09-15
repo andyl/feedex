@@ -25,7 +25,8 @@ defmodule RaggedWeb.Router do
     get  "/demo",   HomeController,  :demo
     get  "/news",   NewsController,  :index
     live "/demo1",  Live.Demo1
-    get  "/demo2",  Demo2Controller, :index
+    live "/demo2",  Live.Demo2
+    get  "/demo3",  Demo3Controller, :index
 
     resources "/users", UserController, only: [:index, :show, :new, :create]
     resources "/sessions", SessionController, only: [:new, :create, :delete]

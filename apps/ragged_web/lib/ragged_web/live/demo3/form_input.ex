@@ -1,4 +1,4 @@
-defmodule RaggedWeb.Demo2.FormInput do
+defmodule RaggedWeb.Demo3.FormInput do
   use Phoenix.LiveView
   use Timex
 

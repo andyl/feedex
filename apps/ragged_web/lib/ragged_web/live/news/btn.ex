@@ -15,6 +15,7 @@ defmodule RaggedWeb.News.Btn do
       <small>
       <%= live_render(@socket, RaggedWeb.TimePstSec) %>
       </small>
+      <p></p>
       </div>
       <a phx-click="add_folder" href="#">
         <i class="fa fa-plus fa-fw" style="padding-right: 5px;"></i> Folder<br/>
@@ -29,7 +30,7 @@ defmodule RaggedWeb.News.Btn do
     </div>
     """
   end
-  #
+  
   # ----- view helpers -----
 
   def all(uistate) do
@@ -70,13 +71,14 @@ defmodule RaggedWeb.News.Btn do
   def handle_event("view_all", _payload, socket) do
     opts = %{ 
       mode: "view", 
+      usr_id: socket.assigns.uistate.usr_id,
       reg_id: nil, 
       fld_id: nil, 
-      post_id: nil, 
+      pst_id: nil, 
     }
     new_state = Map.merge(socket.assigns.uistate, opts)
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "BTN_VIEW_ALL", %{uistate: new_state})
-    {:noreply, assign(socket, %{})}
+    {:noreply, assign(socket, %{uistate: opts})}
   end
 
   def handle_event(_type, _payload, socket) do

@@ -30,7 +30,7 @@ defmodule RaggedWeb.News.Hdr do
     case {state.reg_id, state.fld_id} do
       {nil    , nil} -> "ALL"
       {reg_id, nil}  -> register_name(reg_id)
-      {nil, fld_id} -> folder_name(fld_id)
+      {nil, fld_id}  -> folder_name(fld_id)
     end
   end
 
@@ -55,7 +55,7 @@ defmodule RaggedWeb.News.Hdr do
   end
 
   defp register_name(register_id) do
-    RaggedData.Ctx.Account.register_get(register_id).name
+    "> " <> RaggedData.Ctx.Account.register_get(register_id).name
   end
 
   defp btns(state) do

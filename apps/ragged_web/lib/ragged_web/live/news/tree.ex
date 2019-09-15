@@ -3,6 +3,8 @@ defmodule RaggedWeb.News.Tree do
   use Phoenix.LiveView
 
   alias Phoenix.HTML
+  alias RaggedData.Repo
+  alias RaggedData.Ctx.Account.Register
 
   def mount(session, socket) do
     RaggedWeb.Endpoint.subscribe("uistate")
@@ -10,17 +12,21 @@ defmodule RaggedWeb.News.Tree do
   end
 
   def render(assigns) do
+    uistate = assigns.uistate
+    open_folder = uistate.fld_id || get_fld(uistate.reg_id)
     ~L"""
     <div>
       <small>
       <%= for folder <- @treemap do %>
         <p></p>
         <a href='#' phx-click='clk_folder' phx-value='<%= folder.id %>'>
-          <%= folder.name %>
+          <%= foldname(@uistate, folder) %>
         </a> <%= HTML.raw unread(@uistate.usr_id, fld_id: folder.id) %>
+        <%= if open_folder == folder.id do %>
         <%= for register <- folder.registers do %>
           <br/>
-          > <a href='#' phx-click='clk_feed' phx-value='<%= register.id %>'><%= register.name %></a> <%= HTML.raw unread(@uistate.usr_id, reg_id: register.id) %>
+          > <a href='#' phx-click='clk_feed' phx-value='<%= register.id %>'><%= regname(@uistate, register) %></a> <%= HTML.raw unread(@uistate.usr_id, reg_id: register.id) %>
+        <% end %>
         <% end %>
       <% end %>
       </small>
@@ -33,7 +39,31 @@ defmodule RaggedWeb.News.Tree do
   end
 
   # ----- view helpers -----
+
+  def foldname(uistate, folder) do
+    if uistate.fld_id == folder.id do
+      HTML.raw "<b><u>#{folder.name}</u></b>"
+    else
+      folder.name
+    end
+  end
+
+  def regname(uistate, register) do
+    if uistate.reg_id == register.id do
+      HTML.raw "<b><u>#{register.name}</u></b>"
+    else
+      register.name
+    end
+  end
   
+  def get_fld(regid) do
+    case regid do
+      nil -> nil
+      id when is_number(id) -> Repo.get(Register, id).folder_id
+      _ -> nil
+    end
+  end
+
   def state_table(uistate) do
     """
       <table class='table table-sm'>

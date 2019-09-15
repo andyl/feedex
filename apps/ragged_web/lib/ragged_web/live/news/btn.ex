@@ -22,14 +22,23 @@ defmodule RaggedWeb.News.Btn do
       <a phx-click="add_feed" href="#">
         <i class="fa fa-plus fa-fw" style="padding-right: 5px;"></i> Feed<br/>
       </a>
+      <p></p>
       <a phx-click="view_all" href="#">
-        <i class="fa fa-eye fa-fw" style="padding-right: 5px;"></i> All 
+        <i class="fa fa-eye fa-fw" style="padding-right: 5px;"></i><%= all(@uistate) %>
       </a> <%= HTML.raw unread(@uistate.usr_id) %><br/>
     </div>
     """
   end
   #
   # ----- view helpers -----
+
+  def all(uistate) do
+    if uistate.fld_id == nil && uistate.reg_id == nil do
+      HTML.raw "<b><u>ALL</u></b>"
+    else
+      "ALL"
+    end
+  end
    
   def style do
     "style='vertical-align: top; margin-top: 3px; margin-left: 4px;'"
@@ -61,11 +70,9 @@ defmodule RaggedWeb.News.Btn do
   def handle_event("view_all", _payload, socket) do
     opts = %{ 
       mode: "view", 
-      feed_id: nil, 
-      folder_id: nil, 
-      folder_state: "closed",
+      reg_id: nil, 
+      fld_id: nil, 
       post_id: nil, 
-      post_state: "closed"
     }
     new_state = Map.merge(socket.assigns.uistate, opts)
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "BTN_VIEW_ALL", %{uistate: new_state})

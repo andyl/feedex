@@ -19,13 +19,12 @@ defmodule RaggedWeb.News.Tree do
       <small>
       <%= for folder <- @treemap do %>
         <p></p>
-        <a href='#' phx-click='clk_folder' phx-value='<%= folder.id %>'>
-          <%= foldname(@uistate, folder) %>
-        </a> <%= HTML.raw unread(@uistate.usr_id, fld_id: folder.id) %>
+        <%= fold_link(@uistate, folder) %>
+        <%= HTML.raw unread(@uistate.usr_id, fld_id: folder.id) %>
         <%= if open_folder == folder.id do %>
         <%= for register <- folder.registers do %>
           <br/>
-          > <a href='#' phx-click='clk_feed' phx-value='<%= register.id %>'><%= regname(@uistate, register) %></a> <%= HTML.raw unread(@uistate.usr_id, reg_id: register.id) %>
+          > <%= reg_link(@uistate, register) %> <%= HTML.raw unread(@uistate.usr_id, reg_id: register.id) %>
         <% end %>
         <% end %>
       <% end %>
@@ -40,20 +39,26 @@ defmodule RaggedWeb.News.Tree do
 
   # ----- view helpers -----
 
-  def foldname(uistate, folder) do
+  def fold_link(uistate, folder) do
     if uistate.fld_id == folder.id do
-      HTML.raw "<b><u>#{folder.name}</u></b>"
+      "<b>#{folder.name}</b>"
     else
-      folder.name
-    end
+      """
+      <a href='#' phx-click='clk_folder' phx-value='#{folder.id}'>
+      #{folder.name}
+      </a>
+      """
+    end |> HTML.raw()
   end
 
-  def regname(uistate, register) do
+  def reg_link(uistate, register) do
     if uistate.reg_id == register.id do
-      HTML.raw "<b><u>#{register.name}</u></b>"
+      "<b>#{register.name}</b>"
     else
-      register.name
-    end
+      """
+      <a href='#' phx-click='clk_feed' phx-value='#{register.id}'>#{register.name}</a> 
+      """
+    end |> HTML.raw()
   end
   
   def get_fld(regid) do
@@ -106,6 +111,7 @@ defmodule RaggedWeb.News.Tree do
 
   def handle_event("clk_folder", payload, socket) do
     opts = %{
+      mode:   "view",
       fld_id: Integer.parse(payload) |> elem(0),
       reg_id: nil,
       pst_id: nil
@@ -119,6 +125,7 @@ defmodule RaggedWeb.News.Tree do
 
   def handle_event("clk_feed", payload, socket) do
     opts = %{
+      mode:   "view",
       reg_id: Integer.parse(payload) |> elem(0),
       fld_id: nil,
       pst_id: nil

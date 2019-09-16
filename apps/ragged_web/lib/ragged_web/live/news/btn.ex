@@ -24,9 +24,7 @@ defmodule RaggedWeb.News.Btn do
         <i class="fa fa-plus fa-fw" style="padding-right: 5px;"></i> Feed<br/>
       </a>
       <p></p>
-      <a phx-click="view_all" href="#">
-        <i class="fa fa-eye fa-fw" style="padding-right: 5px;"></i><%= all(@uistate) %>
-      </a> <%= HTML.raw unread(@uistate.usr_id) %><br/>
+      <%= all(@uistate) %> <%= HTML.raw unread(@uistate.usr_id) %><br/>
     </div>
     """
   end
@@ -35,10 +33,10 @@ defmodule RaggedWeb.News.Btn do
 
   def all(uistate) do
     if uistate.fld_id == nil && uistate.reg_id == nil do
-      HTML.raw "<b><u>ALL</u></b>"
+      "<b>ALL</b>"
     else
-      "ALL"
-    end
+      "<a phx-click='view_all' href='#'>ALL</a>"
+    end |> HTML.raw()
   end
    
   def style do
@@ -57,13 +55,25 @@ defmodule RaggedWeb.News.Btn do
   end
 
   def handle_event("add_feed", _payload, socket) do
-    new_state = %{ socket.assigns.uistate | mode: "add_feed" }
+    new_state = %{ 
+      mode: "add_feed", 
+      usr_id: socket.assigns.uistate.usr_id,
+      reg_id: nil, 
+      fld_id: nil, 
+      pst_id: nil, 
+    }
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "BTN_ADD_FEED", %{uistate: new_state})
     {:noreply, assign(socket, %{})}
   end
 
   def handle_event("add_folder", _payload, socket) do
-    new_state = %{ socket.assigns.uistate | mode: "add_folder" }
+    new_state = %{ 
+      mode: "add_folder", 
+      usr_id: socket.assigns.uistate.usr_id,
+      reg_id: nil, 
+      fld_id: nil, 
+      pst_id: nil, 
+    }
     RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "BTN_ADD_FOLDER", %{uistate: new_state})
     {:noreply, assign(socket, %{})}
   end

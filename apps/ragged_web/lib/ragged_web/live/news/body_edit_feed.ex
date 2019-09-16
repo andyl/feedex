@@ -4,11 +4,10 @@ defmodule RaggedWeb.News.BodyEditFeed do
   alias RaggedData.Ctx.Account.Register
   alias RaggedData.Repo
 
-  # import Phoenix.HTML.Form
-  # import RaggedWeb.ErrorHelpers
   import Ecto.Query
 
   use Phoenix.LiveView
+  use LiveEdit.Base
 
   def mount(session, socket) do
     reg_id = session.uistate.reg_id
@@ -51,26 +50,18 @@ defmodule RaggedWeb.News.BodyEditFeed do
     ~L"""
     <h1>EDIT FEED</h1>
     <%= if @register do %>
-    <b>Reg Name:</b> <%= @register.name %><br/>
-    <b>Feed Url:</b> <%= @feed.url %><br/>
-    <div class="row" style='margin-top: 60px;'>
-    <div class="col-md-6">
-    <b>Registry ID:</b> <%= @register.id %><br/>
-    <b>Feed Count:</b> <%= @feed_count %><br/>
-    <b>Post Count:</b> <%= @post_count %>
-
-
-
-    </div>
-    <div class="col-md-6">
-    <p style='margin-bottom: 120px;'>
-    <button type="button" phx-click='resync' class="btn btn-primary">Sync Feed</button>
-    </p>
+      <table class="table">
+      <tr><td>Reg Name:</td><td><%= live_edit(assigns, @register.name, id: "name", on_submit: "rename") %></td></tr>
+      <tr><td>FeedUrl:</td><td><%= @feed.url %></td></tr>
+      <tr><td>Usr/Registry ID:</td><td><%= @register.id %></td></tr>
+      <tr><td>Attached Registries:</td><td><%= @feed_count %></td></tr>
+      <tr><td>Post Count:</td><td><%= @post_count %></td></tr>
+      <tr><td>Sync Count:</td><td><%= @feed.sync_count %></td></tr>
+      </table>
+    <p style='margin-bottom: 60px;'></p>
     <%= if @feed_count == 1 do %>
-    <button type="button" phx-click='delete' class="btn btn-danger">Delete Register</button>
+    <button type="button" phx-click='delete' class="btn btn-danger">Delete Feed</button>
     <% end %>
-    </div>
-    </div>
     <% end %>
     """
   end
@@ -98,10 +89,16 @@ defmodule RaggedWeb.News.BodyEditFeed do
     {:noreply, assign(socket, %{uistate: new_state})}
   end
 
-  def handle_event("resync", _payload, socket) do
-    feed = socket.assigns.feed
-    RaggedJob.sync(feed)
-    {:noreply, socket}
+  def handle_event("rename", %{"editable_text" => newname}, socket) do
+    Register
+    |> Repo.get(socket.assigns.uistate.reg_id)
+    |> Ecto.Changeset.change(name: newname)
+    |> Repo.update()
+    new_state = 
+      socket.assigns.uistate
+      |> Map.merge(%{mode: "view"})
+    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "rename_feed", %{uistate: new_state})
+    {:noreply, assign(socket, %{uistate: new_state})}
   end
 
   # ----- pub/sub handlers -----

@@ -207,6 +207,5 @@ Editing Design Notes:
 - [ ] Expand scan-list for ragged_client
 - [ ] TEST - unit - RaggedData.Account
 - [ ] TEST - intc - login/logout 
-- [ ] TEST - intw - install HOUND 1.1.0
 - [ ] TEST - intw - login/logout 
 - [ ] TEST - clean up documentation

@@ -19,7 +19,7 @@ defmodule LiveEdit.Base do
   defp form_text(label, opts) do
     """
     <form phx-change="#{opts[:on_change]}" phx-submit="#{opts[:on_submit]}">
-      <input type="text" value="#{label}">
+      <input type="text" name="editable_text" value="#{label}">
       <button type='submit'><i class='fa fa-check-square'></i></button>
       <button phx-click='cancel'><i class='fa fa-window-close'></i></button>
     </form>

@@ -21,6 +21,7 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
       timestamps(type: :utc_datetime)
     end
     create index(:posts, [:feed_id])
+    create index(:posts, [:exid])
 
     # Account.User
     create table(:users) do

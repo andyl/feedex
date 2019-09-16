@@ -106,19 +106,19 @@ defmodule RaggedJob do
 
   # ----- utility functions -----
 
-  defp sync_posts(feed, data) do
-    data.entries 
-    |> Enum.reverse()
-    |> Enum.each(&(sync_post(feed.id, &1)))
-    :ok
-  end
-
   defp touch(feed) do
     from(f in Feed, 
       update: [inc: [sync_count: 1]], 
       update: [set: [updated_at: ^Timex.now()]], 
       where: f.id == ^feed.id
     ) |> Repo.update_all([])
+  end
+
+  defp sync_posts(feed, data) do
+    data.entries 
+    |> Enum.reverse()
+    |> Enum.each(&(sync_post(feed.id, &1)))
+    :ok
   end
 
   defp sync_post(feed_id, post) do

@@ -35,6 +35,37 @@ defmodule RaggedData.Ctx.News do
     Repo.get(Post, id)
   end
 
+  # ----- unread aggregates -----
+
+  def unread_aggregate_count_for(userid, type: "fld") do
+    from([pst, log, fee, reg, fld] in unread_aggregate_count_qry(userid),
+      group_by: fld.id,
+      select: %{fld.id => count(pst.id)}
+    ) 
+    |> Repo.all() 
+    |> Enum.reduce(%{}, fn(el, acc) -> Map.merge(acc, el) end)
+  end
+
+  def unread_aggregate_count_for(userid, type: "reg") do
+    from([pst, log, fee, reg, fld] in unread_aggregate_count_qry(userid),
+      group_by: reg.id,
+      select: %{reg.id => count(pst.id)}
+    ) 
+    |> Repo.all() 
+    |> Enum.reduce(%{}, fn(el, acc) -> Map.merge(acc, el) end)
+  end
+
+  def unread_aggregate_count_qry(userid) do
+    from(pst in Post,
+      left_join: log in ReadLog, on: pst.id == log.post_id,
+      join:  fee in Feed       , on: pst.feed_id == fee.id,
+      join:  reg in Register   , on: reg.feed_id == fee.id,
+      join:  fld in Folder     , on: reg.folder_id == fld.id,
+      where: fld.user_id == ^userid,
+      where: is_nil(log.id) 
+    )
+  end
+
   # ----- unread_count_for -----
 
   def unread_count_for(userid) do

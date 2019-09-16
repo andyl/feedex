@@ -6,9 +6,18 @@ defmodule RaggedWeb.News.Tree do
   alias RaggedData.Repo
   alias RaggedData.Ctx.Account.Register
 
+  import Phoenix.HTML
+
   def mount(session, socket) do
     RaggedWeb.Endpoint.subscribe("uistate")
-    {:ok, assign(socket, %{uistate: session.uistate, treemap: session.treemap})}
+    user_id = session.uistate.usr_id
+    opts = %{
+      uistate: session.uistate, 
+      treemap: session.treemap,
+      fld_count: RaggedData.Ctx.News.unread_aggregate_count_for(user_id, type: "fld"),
+      reg_count: RaggedData.Ctx.News.unread_aggregate_count_for(user_id, type: "reg")
+      }
+    {:ok, assign(socket, opts)}
   end
 
   def render(assigns) do
@@ -20,11 +29,11 @@ defmodule RaggedWeb.News.Tree do
       <%= for folder <- @treemap do %>
         <p></p>
         <%= fold_link(@uistate, folder) %>
-        <%= HTML.raw unread(@uistate.usr_id, fld_id: folder.id) %>
+        <%= unread(folder.id, @fld_count) %>
         <%= if open_folder == folder.id do %>
         <%= for register <- folder.registers do %>
           <br/>
-          > <%= reg_link(@uistate, register) %> <%= HTML.raw unread(@uistate.usr_id, reg_id: register.id) %>
+          > <%= reg_link(@uistate, register) %> <%= unread(register.id, @reg_count) %>
         <% end %>
         <% end %>
       <% end %>
@@ -85,26 +94,15 @@ defmodule RaggedWeb.News.Tree do
     "style='vertical-align: top; margin-top: 5px; margin-left: 2px;'"
   end
 
-  def unread(user_id, fld_id: folder_id) do
-    count = RaggedData.Ctx.News.unread_count_for(user_id, fld_id: folder_id)
+  def unread(id, unread_count) do
+    count = unread_count[id] || 0
     if count == 0 do
       ""
     else
       """
       <span class="badge badge-light" #{style()}>#{count}</span>
       """
-    end
-  end
-   
-  def unread(user_id, reg_id: register_id) do
-    count = RaggedData.Ctx.News.unread_count_for(user_id, reg_id: register_id)
-    if count == 0 do
-      ""
-    else
-      """
-      <span class="badge badge-light" #{style()}>#{count}</span>
-      """
-    end
+    end |> raw()
   end
    
   # ----- event handlers -----

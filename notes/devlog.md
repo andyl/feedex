@@ -196,18 +196,15 @@ Editing Design Notes:
 
 - [x] Add link to RSS url
 - [x] Reverse Feed List before loading
+- [x] No Links for active AddFolder
+- [x] No Links for active AddFeed
+- [x] Optimize Tree Query
+- [x] Fix Broken Feeds (ExStatus, ExJobs)
 
-- [ ] No Links for active AddFolder
-- [ ] No Links for active AddFeed
+# TBD
 
 - [ ] LiveEditable: Add Select Function
 - [ ] Admin: Move feed to a different folder
-
-- [ ] Optimize Tree Query
-
-- [ ] Fix Broken Feeds (ExStatus, ExJobs)
-
-# TBD
 
 - [ ] JSON IO: Add JSON import/export (All, Folder, Feed) (code)
 - [ ] JSON IO: Add JSON import/export (All, Folder, Feed) (UI)

@@ -107,7 +107,9 @@ defmodule RaggedJob do
   # ----- utility functions -----
 
   defp sync_posts(feed, data) do
-    data.entries |> Enum.each(&(sync_post(feed.id, &1)))
+    data.entries 
+    |> Enum.reverse()
+    |> Enum.each(&(sync_post(feed.id, &1)))
     :ok
   end
 

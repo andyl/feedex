@@ -195,8 +195,7 @@ Editing Design Notes:
 # 2019 Sep 15 Sun
 
 - [x] Add link to RSS url
-
-- [ ] Reverse Feed List before loading
+- [x] Reverse Feed List before loading
 
 - [ ] No Links for active AddFolder
 - [ ] No Links for active AddFeed

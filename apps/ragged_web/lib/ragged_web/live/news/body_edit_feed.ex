@@ -5,6 +5,7 @@ defmodule RaggedWeb.News.BodyEditFeed do
   alias RaggedData.Repo
 
   import Ecto.Query
+  import Phoenix.HTML
 
   use Phoenix.LiveView
   use LiveEdit.Base
@@ -52,7 +53,7 @@ defmodule RaggedWeb.News.BodyEditFeed do
     <%= if @register do %>
       <table class="table">
       <tr><td>Reg Name:</td><td><%= live_edit(assigns, @register.name, id: "name", on_submit: "rename") %></td></tr>
-      <tr><td>FeedUrl:</td><td><%= @feed.url %></td></tr>
+      <tr><td>FeedUrl:</td><td><%= feed_link(@feed) %></td></tr>
       <tr><td>Usr/Registry ID:</td><td><%= @register.id %></td></tr>
       <tr><td>Attached Registries:</td><td><%= @feed_count %></td></tr>
       <tr><td>Post Count:</td><td><%= @post_count %></td></tr>
@@ -64,6 +65,16 @@ defmodule RaggedWeb.News.BodyEditFeed do
     <% end %>
     <% end %>
     """
+  end
+
+  # ----- view helpers -----
+
+  def feed_link(feed) do
+    """
+    <a href="#{feed.url}" target="_blank">
+    #{feed.url}
+    </a>
+    """ |> raw()
   end
 
   # ----- event handlers -----

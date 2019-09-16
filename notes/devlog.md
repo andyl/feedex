@@ -186,13 +186,35 @@ Editing Design Notes:
 - [x] Fix feed sync
 - [x] Admin: Delete feed
 
-- [ ] Admin: Rename folder
-- [ ] Admin: Rename feed
+# 2019 Sep 15 Sun
+
+- [x] Write LiveEditable
+- [x] Admin: Rename folder
+- [x] Admin: Rename feed
+
+# 2019 Sep 15 Sun
+
+- [x] Add link to RSS url
+
+- [ ] Reverse Feed List before loading
+
+- [ ] No Links for active AddFolder
+- [ ] No Links for active AddFeed
+
+- [ ] LiveEditable: Add Select Function
 - [ ] Admin: Move feed to a different folder
 
-- [ ] Admin: Test feed
+- [ ] Optimize Tree Query
+
+- [ ] Fix Broken Feeds (ExStatus, ExJobs)
 
 # TBD
+
+- [ ] JSON IO: Add JSON import/export (All, Folder, Feed) (code)
+- [ ] JSON IO: Add JSON import/export (All, Folder, Feed) (UI)
+
+- [ ] Schema: Add `WebUrl` to `Resource`
+- [ ] Schema: Add `LoadOrder` (forward|reverse) to `Feed`
 
 - [ ] UI Optimizations for Mobile
 - [ ] Split scrolling
@@ -202,9 +224,18 @@ Editing Design Notes:
 
 - [ ] Add PushState
 
-# Misc
+- [ ] LiveEditable: Add RadioButton Field
+- [ ] LiveEditable: Create `Editable` Behavior
+- [ ] LiveEditable: Implement `HTML` Editable 
+- [ ] LiveEditable: Implement `Bootstrap4` Editable 
+- [ ] LiveEditable: Implement `Milligram` Editable 
+- [ ] LiveEditable: ExUnit Shared Examples for HTML, Bootstrap4 and Milligram
+- [ ] LiveEditable: Create Developer Website (and serve CSS/JS Assets)
+- [ ] LiveEditable: Create Demo Application (Swap Between CSS Frameworks)
+- [ ] LiveEditable: Change to PhoenixLiveEditable
 
 - [ ] Expand scan-list for ragged_client
+
 - [ ] TEST - unit - RaggedData.Account
 - [ ] TEST - intc - login/logout 
 - [ ] TEST - intw - login/logout 

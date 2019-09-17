@@ -12,12 +12,14 @@ defmodule RaggedWeb.News.Hdr do
   def render(assigns) do
     ~L"""
     <%= if @uistate.mode == "view" do %>
+    <div class='desktop-only'>
     <div class='row' style="background-color: lightgray; padding-top: 4px; padding-bottom: 4px; margin-bottom: 10px;">
     <div class='col-md-6'>
       <%= title(@uistate) %>
     </div>
     <div class='col-md-6 text-right'>
       <%= HTML.raw btns(@uistate) %>
+    </div>
     </div>
     </div>
     <% end %>

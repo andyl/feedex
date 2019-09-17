@@ -192,7 +192,7 @@ Editing Design Notes:
 - [x] Admin: Rename folder
 - [x] Admin: Rename feed
 
-# 2019 Sep 15 Sun
+# 2019 Sep 16 Mon
 
 - [x] Add link to RSS url
 - [x] Reverse Feed List before loading
@@ -200,6 +200,8 @@ Editing Design Notes:
 - [x] No Links for active AddFeed
 - [x] Optimize Tree Query
 - [x] Fix Broken Feeds (ExStatus, ExJobs)
+- [x] Mobile: Fix Menu Dropdown
+- [x] Mobile: Mobile Btn & Tree Divs
 
 # TBD
 
@@ -212,14 +214,19 @@ Editing Design Notes:
 - [ ] Schema: Add `WebUrl` to `Resource`
 - [ ] Schema: Add `LoadOrder` (forward|reverse) to `Feed`
 
-- [ ] UI Optimizations for Mobile
-- [ ] Split scrolling
-
 - [ ] HOTKEYS: Table Nav up/down
 - [ ] HOTKEYS: Folder/Feed Selection
 
+- [ ] Backend: Reduce queries for FeedSync
+- [ ] Backend: Why is Database Dropping Out?
+
 - [ ] Add PushState
 
+- [ ] Split scrolling
+
+- [ ] Expand scan-list for ragged_client
+
+- [ ] LiveEditable: Get Validations Working
 - [ ] LiveEditable: Add RadioButton Field
 - [ ] LiveEditable: Create `Editable` Behavior
 - [ ] LiveEditable: Implement `HTML` Editable 
@@ -229,8 +236,6 @@ Editing Design Notes:
 - [ ] LiveEditable: Create Developer Website (and serve CSS/JS Assets)
 - [ ] LiveEditable: Create Demo Application (Swap Between CSS Frameworks)
 - [ ] LiveEditable: Change to PhoenixLiveEditable
-
-- [ ] Expand scan-list for ragged_client
 
 - [ ] TEST - unit - RaggedData.Account
 - [ ] TEST - intc - login/logout 

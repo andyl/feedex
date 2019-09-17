@@ -24,7 +24,9 @@ defmodule RaggedWeb.News.Tree do
     uistate = assigns.uistate
     open_folder = uistate.fld_id || get_fld(uistate.reg_id)
     ~L"""
-    <div>
+    <div class='desktop-only'>
+      <p></p>
+      <%= all_btn(@uistate) %> <%= HTML.raw unread(@uistate.usr_id) %><br/>
       <small>
       <%= for folder <- @treemap do %>
         <p></p>
@@ -43,11 +45,30 @@ defmodule RaggedWeb.News.Tree do
       <%# HTML.raw state_table(@uistate) %>
       </small>
     </div>
+    <div class='mobile-only'>
+      <%= all_btn(@uistate) %> <%= HTML.raw unread(@uistate.usr_id) %>
+      <small>
+      <%= for folder <- @treemap do %>
+        &emsp;
+        &emsp;
+        <%= fold_link(@uistate, folder) %>
+        <%= unread(folder.id, @fld_count) %>
+      <% end %>
+      </small>
+    </div>
     """
   end
 
   # ----- view helpers -----
 
+  def all_btn(uistate) do
+    if uistate.mode == "view" && uistate.fld_id == nil && uistate.reg_id == nil do
+      "<b>ALL</b>"
+    else
+      "<a phx-click='view_all' href='#'>ALL</a>"
+    end |> HTML.raw()
+  end
+   
   def fold_link(uistate, folder) do
     if uistate.fld_id == folder.id do
       "<b>#{folder.name}</b>"
@@ -94,6 +115,17 @@ defmodule RaggedWeb.News.Tree do
     "style='vertical-align: top; margin-top: 5px; margin-left: 2px;'"
   end
 
+  def unread(user_id) do
+    count = RaggedData.Ctx.News.unread_count_for(user_id)
+    if count == 0 do
+      ""
+    else
+      """
+      <small><span class="badge badge-light" #{style()}>#{count}</span></small>
+      """
+    end
+  end
+
   def unread(id, unread_count) do
     count = unread_count[id] || 0
     if count == 0 do
@@ -106,6 +138,19 @@ defmodule RaggedWeb.News.Tree do
   end
    
   # ----- event handlers -----
+
+  def handle_event("view_all", _payload, socket) do
+    opts = %{ 
+      mode: "view", 
+      usr_id: socket.assigns.uistate.usr_id,
+      reg_id: nil, 
+      fld_id: nil, 
+      pst_id: nil, 
+    }
+    new_state = Map.merge(socket.assigns.uistate, opts)
+    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "BTN_VIEW_ALL", %{uistate: new_state})
+    {:noreply, assign(socket, %{uistate: opts})}
+  end
 
   def handle_event("clk_folder", payload, socket) do
     opts = %{

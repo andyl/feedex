@@ -23,7 +23,7 @@ defmodule RaggedJob do
     else
       Logger.info "----- FEED SYNC SKIPPED ------------------"
       Logger.info "  FEED ID: #{feed.id}"
-      Logger.info " FEED URL: #{feed.url}"
+      Logger.info " FEED URL: #{String.slice(feed.url, 0..35)}"
       Logger.info " NUM SYNC: #{feed.sync_count}"
       Logger.info "LAST SYNC: #{feed.updated_at}"
       Logger.info " TIME NOW: #{Timex.now()}"
@@ -38,7 +38,7 @@ defmodule RaggedJob do
   def sync(feed) do
     Logger.info "----- FEED SYNC --------------------------"
     Logger.info "  FEED ID: #{feed.id}"
-    Logger.info " FEED URL: #{feed.url}"
+    Logger.info " FEED URL: #{String.slice(feed.url, 0..35)}"
     Logger.info " NUM SYNC: #{feed.sync_count}"
     Logger.info "LAST SYNC: #{feed.updated_at}"
     Logger.info " TIME NOW: #{Timex.now()}"

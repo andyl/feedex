@@ -22,6 +22,7 @@ defmodule RaggedWeb.Router do
     get  "/login",  HomeController,  :login
     get  "/signup", HomeController,  :signup
     get  "/about",  HomeController,  :about
+    get  "/subs",   HomeController,  :subs
     get  "/demo",   HomeController,  :demo
     get  "/news",   NewsController,  :index
     live "/demo1",  Live.Demo1

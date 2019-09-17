@@ -203,16 +203,29 @@ Editing Design Notes:
 - [x] Mobile: Fix Menu Dropdown
 - [x] Mobile: Mobile Btn & Tree Divs
 
+# 2019 Sep 17 Tue
+
+- [ ] Fix uistate sync
+
+| Action                      | Channel   | From      | To             |
+|-----------------------------|-----------|-----------|----------------|
+| when sync job updates       | poststate | JobRunner | bodyview, tree |
+| when post is viewed         | poststate | bodyview  | tree           |
+| when folder/feed is added   | treecount | addui     | tree, body     |
+| when folder/feed is removed | treecount | remui     | tree, body     |
+| when folder/feed is renamed | treebase  | editui    | tree, hdr      |
+
+- [ ] Print: print record of feeds as yaml
+
 # TBD
-
-- [ ] LiveEditable: Add Select Function
-- [ ] Admin: Move feed to a different folder
-
-- [ ] JSON IO: Add JSON import/export (All, Folder, Feed) (code)
-- [ ] JSON IO: Add JSON import/export (All, Folder, Feed) (UI)
 
 - [ ] Schema: Add `WebUrl` to `Resource`
 - [ ] Schema: Add `LoadOrder` (forward|reverse) to `Feed`
+
+- [ ] Move system to datacenter
+
+- [ ] LiveEditable: Add Select Function
+- [ ] Admin: Move feed to a different folder
 
 - [ ] HOTKEYS: Table Nav up/down
 - [ ] HOTKEYS: Folder/Feed Selection
@@ -221,9 +234,9 @@ Editing Design Notes:
 - [ ] Backend: Why is Database Dropping Out?
 
 - [ ] Add PushState
+- [ ] Add ToolTips
 
 - [ ] Split scrolling
-
 - [ ] Expand scan-list for ragged_client
 
 - [ ] LiveEditable: Get Validations Working

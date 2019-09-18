@@ -5,7 +5,8 @@ defmodule RaggedWeb.News.Hdr do
   alias RaggedData.Ctx.Account
 
   def mount(session, socket) do
-    RaggedWeb.Endpoint.subscribe("uistate")
+    RaggedWeb.Endpoint.subscribe("set_uistate")
+    RaggedWeb.Endpoint.subscribe("tree_mod")
     {:ok, assign(socket, %{uistate: session.uistate})}
   end
 
@@ -94,27 +95,30 @@ defmodule RaggedWeb.News.Hdr do
     end
     new_state = Map.merge(uistate, %{mode: new_mode})
     payload = %{uistate: new_state}
-    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "click_#{new_mode}", payload)
+    RaggedWeb.Endpoint.broadcast_from(self(), "set_uistate", "click_#{new_mode}", payload)
     {:noreply, assign(socket, %{uistate: new_state})}
   end
 
   def handle_event("mark-read", _click, socket) do
     mark_all_read(socket.assigns.uistate)
-    payload = %{uistate: socket.assigns.uistate}
-    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "mark-read", payload)
+    RaggedWeb.Endpoint.broadcast_from(self(), "read_all", "mark-read", %{})
     {:noreply, socket}
   end
 
   def handle_event("feed-sync", _click, socket) do
     sync_all(socket.assigns.uistate)
     payload = %{uistate: socket.assigns.uistate}
-    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "sync-all", payload)
+    RaggedWeb.Endpoint.broadcast_from(self(), "set_uistate", "sync-all", payload)
     {:noreply, socket}
   end
   
   # ----- pub/sub handlers -----
 
-  def handle_info(%{topic: "uistate", payload: new_state}, socket) do
+  def handle_info(%{topic: "set_uistate", payload: new_state}, socket) do
+    {:noreply, assign(socket, %{uistate: new_state.uistate})}
+  end
+
+  def handle_info(%{topic: "tree_mod", payload: new_state}, socket) do
     {:noreply, assign(socket, %{uistate: new_state.uistate})}
   end
 end

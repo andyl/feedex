@@ -4,7 +4,7 @@ defmodule RaggedWeb.News.Btn do
   import Phoenix.HTML
 
   def mount(session, socket) do
-    RaggedWeb.Endpoint.subscribe("uistate")
+    RaggedWeb.Endpoint.subscribe("set_uistate")
     {:ok, assign(socket, %{uistate: session.uistate})}
   end
 
@@ -56,7 +56,7 @@ defmodule RaggedWeb.News.Btn do
       pst_id: nil, 
     }
     new_state = Map.merge(socket.assigns.uistate, opts)
-    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "BTN_ADD_FEED", %{uistate: new_state})
+    RaggedWeb.Endpoint.broadcast_from(self(), "set_uistate", "BTN_ADD_FEED", %{uistate: new_state})
     {:noreply, assign(socket, %{uistate: opts})}
   end
 
@@ -69,7 +69,7 @@ defmodule RaggedWeb.News.Btn do
       pst_id: nil, 
     }
     new_state = Map.merge(socket.assigns.uistate, opts)
-    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "BTN_ADD_FOLDER", %{uistate: new_state})
+    RaggedWeb.Endpoint.broadcast_from(self(), "set_uistate", "BTN_ADD_FOLDER", %{uistate: new_state})
     {:noreply, assign(socket, %{uistate: opts})}
   end
 
@@ -79,7 +79,7 @@ defmodule RaggedWeb.News.Btn do
 
   # ----- pub/sub helpers -----
 
-  def handle_info(%{topic: "uistate", payload: new_state}, socket) do
+  def handle_info(%{topic: "set_uistate", payload: new_state}, socket) do
     {:noreply, assign(socket, %{uistate: new_state.uistate})}
   end
 

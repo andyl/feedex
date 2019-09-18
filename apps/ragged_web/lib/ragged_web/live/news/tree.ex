@@ -9,14 +9,17 @@ defmodule RaggedWeb.News.Tree do
   import Phoenix.HTML
 
   def mount(session, socket) do
-    RaggedWeb.Endpoint.subscribe("uistate")
-    user_id = session.uistate.usr_id
+    RaggedWeb.Endpoint.subscribe("set_uistate")
+    RaggedWeb.Endpoint.subscribe("read_one")
+    RaggedWeb.Endpoint.subscribe("read_all")
+    RaggedWeb.Endpoint.subscribe("tree_mod")
+
     opts = %{
       uistate: session.uistate, 
-      treemap: session.treemap,
-      fld_count: RaggedData.Ctx.News.unread_aggregate_count_for(user_id, type: "fld"),
-      reg_count: RaggedData.Ctx.News.unread_aggregate_count_for(user_id, type: "reg")
+      treemap: RaggedData.Ctx.Account.cleantree(session.uistate.usr_id),
+      counts:  gen_counts(session.uistate.usr_id)
       }
+
     {:ok, assign(socket, opts)}
   end
 
@@ -26,16 +29,16 @@ defmodule RaggedWeb.News.Tree do
     ~L"""
     <div class='desktop-only'>
       <p></p>
-      <%= all_btn(@uistate) %> <%= HTML.raw unread(@uistate.usr_id) %><br/>
+      <%= all_btn(@uistate) %> <%= unread(@counts.all) %><br/>
       <small>
       <%= for folder <- @treemap do %>
         <p></p>
         <%= fold_link(@uistate, folder) %>
-        <%= unread(folder.id, @fld_count) %>
+        <%= unread(folder.id, @counts.fld) %>
         <%= if open_folder == folder.id do %>
         <%= for register <- folder.registers do %>
           <br/>
-          > <%= reg_link(@uistate, register) %> <%= unread(register.id, @reg_count) %>
+          > <%= reg_link(@uistate, register) %> <%= unread(register.id, @counts.reg) %>
         <% end %>
         <% end %>
       <% end %>
@@ -46,13 +49,13 @@ defmodule RaggedWeb.News.Tree do
       </small>
     </div>
     <div class='mobile-only'>
-      <%= all_btn(@uistate) %> <%= HTML.raw unread(@uistate.usr_id) %>
+      <%= all_btn(@uistate) %> <%= unread(@counts.all) %>
       <small>
       <%= for folder <- @treemap do %>
         &emsp;
         &emsp;
         <%= fold_link(@uistate, folder) %>
-        <%= unread(folder.id, @fld_count) %>
+        <%= unread(folder.id, @counts.fld) %>
       <% end %>
       </small>
     </div>
@@ -60,6 +63,30 @@ defmodule RaggedWeb.News.Tree do
   end
 
   # ----- view helpers -----
+ 
+  def gen_counts(user_id) do
+    %{
+      all: RaggedData.Ctx.News.unread_count_for(user_id),
+      fld: RaggedData.Ctx.News.unread_aggregate_count_for(user_id, type: "fld"),
+      reg: RaggedData.Ctx.News.unread_aggregate_count_for(user_id, type: "reg")
+    }
+  end
+
+  def unread(count) do
+    if count == 0 do
+      ""
+    else
+      """
+      <small><span class="badge badge-light" #{style()}>#{count}</span></small>
+      """
+    end |> raw()
+  end
+
+  def unread(id, unread_count) do
+    unread(unread_count[id] || 0)
+  end
+
+  # -----
 
   def all_btn(uistate) do
     if uistate.mode == "view" && uistate.fld_id == nil && uistate.reg_id == nil do
@@ -115,27 +142,6 @@ defmodule RaggedWeb.News.Tree do
     "style='vertical-align: top; margin-top: 5px; margin-left: 2px;'"
   end
 
-  def unread(user_id) do
-    count = RaggedData.Ctx.News.unread_count_for(user_id)
-    if count == 0 do
-      ""
-    else
-      """
-      <small><span class="badge badge-light" #{style()}>#{count}</span></small>
-      """
-    end
-  end
-
-  def unread(id, unread_count) do
-    count = unread_count[id] || 0
-    if count == 0 do
-      ""
-    else
-      """
-      <span class="badge badge-light" #{style()}>#{count}</span>
-      """
-    end |> raw()
-  end
    
   # ----- event handlers -----
 
@@ -148,7 +154,7 @@ defmodule RaggedWeb.News.Tree do
       pst_id: nil, 
     }
     new_state = Map.merge(socket.assigns.uistate, opts)
-    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "BTN_VIEW_ALL", %{uistate: new_state})
+    RaggedWeb.Endpoint.broadcast_from(self(), "set_uistate", "BTN_VIEW_ALL", %{uistate: new_state})
     {:noreply, assign(socket, %{uistate: opts})}
   end
 
@@ -161,7 +167,7 @@ defmodule RaggedWeb.News.Tree do
     }
 
     new_state = Map.merge(socket.assigns.uistate, opts)
-    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "TREE_FOLDER", %{uistate: new_state})
+    RaggedWeb.Endpoint.broadcast_from(self(), "set_uistate", "TREE_FOLDER", %{uistate: new_state})
 
     {:noreply, assign(socket, %{uistate: new_state, treemap: socket.assigns.treemap})}
   end
@@ -175,14 +181,31 @@ defmodule RaggedWeb.News.Tree do
     }
 
     new_state = Map.merge(socket.assigns.uistate, opts)
-    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "TREE_FEED", %{uistate: new_state})
+    RaggedWeb.Endpoint.broadcast_from(self(), "set_uistate", "TREE_FEED", %{uistate: new_state})
 
     {:noreply, assign(socket, %{uistate: new_state, treemap: socket.assigns.treemap})}
   end
 
   # ----- pub/sub handlers -----
 
-  def handle_info(%{topic: "uistate", payload: new_state}, socket) do
+  def handle_info(%{topic: "set_uistate", payload: new_state}, socket) do
     {:noreply, assign(socket, %{uistate: new_state.uistate})}
+  end
+
+  def handle_info(%{topic: "tree_mod", payload: new_state}, socket) do
+    usrid = socket.assigns.uistate.usr_id
+    newcounts = usrid |> gen_counts() 
+    newtree   = usrid |> RaggedData.Ctx.Account.cleantree()
+    {:noreply, assign(socket, %{counts: newcounts, treemap: newtree, uistate: new_state.uistate})}
+  end
+
+  def handle_info(%{topic: "read_one"}, socket) do
+    newcounts = socket.assigns.uistate.usr_id |> gen_counts() 
+    {:noreply, assign(socket, %{counts: newcounts})}
+  end
+
+  def handle_info(%{topic: "read_all"}, socket) do
+    newcounts = socket.assigns.uistate.usr_id |> gen_counts() 
+    {:noreply, assign(socket, %{counts: newcounts})}
   end
 end

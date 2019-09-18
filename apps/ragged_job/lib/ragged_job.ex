@@ -20,6 +20,7 @@ defmodule RaggedJob do
     delta = Timex.diff(Timex.now(), feed.updated_at, :minutes)
     if delta > 5 || feed.sync_count == 0 do
       sync(feed)
+      RaggedWeb.Endpoint.broadcast_from(self(), "read_all", "sync_feed", %{})
     else
       Logger.info "----- FEED SYNC SKIPPED ------------------"
       Logger.info "  FEED ID: #{feed.id}"
@@ -114,6 +115,7 @@ defmodule RaggedJob do
     ) |> Repo.update_all([])
   end
 
+  # TODO: bulk-update (Repo.insert_all)
   defp sync_posts(feed, data) do
     data.entries 
     |> Enum.reverse()

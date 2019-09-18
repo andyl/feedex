@@ -6,7 +6,8 @@ defmodule RaggedWeb.News.Body do
   use Phoenix.LiveView
 
   def mount(session, socket) do
-    RaggedWeb.Endpoint.subscribe("uistate")
+    RaggedWeb.Endpoint.subscribe("set_uistate")
+    RaggedWeb.Endpoint.subscribe("tree_mod")
     {:ok, assign(socket, %{uistate: session.uistate})}
   end
 
@@ -34,7 +35,12 @@ defmodule RaggedWeb.News.Body do
 
   # ----- pub/sub handlers -----
 
-  def handle_info(%{topic: "uistate", payload: new_state}, socket) do
+  def handle_info(%{topic: "set_uistate", payload: new_state}, socket) do
     {:noreply, assign(socket, %{uistate: new_state.uistate})}
   end
+
+  def handle_info(%{topic: "tree_mod", payload: new_state}, socket) do
+    {:noreply, assign(socket, %{uistate: new_state.uistate})}
+  end
+
 end

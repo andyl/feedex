@@ -95,7 +95,7 @@ defmodule RaggedWeb.News.BodyAddFeed do
     new_state = 
       socket.assigns.uistate
       |> Map.merge(%{mode: "view", fld_id: nil, reg_id: reg.id})
-    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "create_feed", %{uistate: new_state})
+    RaggedWeb.Endpoint.broadcast_from(self(), "tree_mod", "create_feed", %{uistate: new_state})
     {:noreply, socket}
   end
 

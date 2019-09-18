@@ -205,24 +205,15 @@ Editing Design Notes:
 
 # 2019 Sep 17 Tue
 
-- [ ] Fix uistate sync
-
-| Action                      | Channel   | From      | To             |
-|-----------------------------|-----------|-----------|----------------|
-| when sync job updates       | poststate | JobRunner | bodyview, tree |
-| when post is viewed         | poststate | bodyview  | tree           |
-| when folder/feed is added   | treecount | addui     | tree, body     |
-| when folder/feed is removed | treecount | remui     | tree, body     |
-| when folder/feed is renamed | treebase  | editui    | tree, hdr      |
-
-- [ ] Print: print record of feeds as yaml
+- [x] Print: print record of feeds 
+- [x] Fix uistate sync
 
 # TBD
 
+- [ ] Move system to datacenter
+
 - [ ] Schema: Add `WebUrl` to `Resource`
 - [ ] Schema: Add `LoadOrder` (forward|reverse) to `Feed`
-
-- [ ] Move system to datacenter
 
 - [ ] LiveEditable: Add Select Function
 - [ ] Admin: Move feed to a different folder
@@ -231,6 +222,7 @@ Editing Design Notes:
 - [ ] HOTKEYS: Folder/Feed Selection
 
 - [ ] Backend: Reduce queries for FeedSync
+- [ ] Backend: Reduce queries for Delete
 - [ ] Backend: Why is Database Dropping Out?
 
 - [ ] Add PushState

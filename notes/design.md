@@ -70,3 +70,17 @@ Notes:
 - nav tree always sorted alphabetically
 - nav folders always open
 - fld_id and reg_id can be blank - both can't be filled at once
+
+## Ui PubSub
+
+| Action                      | Event       | From      | To              |
+|-----------------------------|-------------|-----------|-----------------|
+| when post is viewed         | read_one    | bodyview  | tree            |
+| when "read all" is pressed  | read_all    | hdr       | bodyview, tree  |
+| when sync job updated       | read_all    | JobRunner | bodyview, tree  |
+| when folder/feed is added   | tree_mod    | addui     | tree, body      |
+| when folder/feed is removed | tree_mod    | remui     | tree, body      |
+| when folder/feed is renamed | tree_mod    | editui    | tree, hdr       |
+| clicking on btn             | set_uistate | btn       | hdr, tree, body |
+| clicking on tree            | set_uistate | tree      | btn, hdr, body  |
+| clicking on edit            | set_uistate | hdr       | btn, hdr, body  |

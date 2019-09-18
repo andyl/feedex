@@ -12,8 +12,8 @@ defmodule LiveEdit.Base do
     if id == focus do
       case opts[:type] do
         "text" -> form_text(label, opts) 
-        "select" -> form_select(label, opts)
-        _ -> form_select(label, opts)
+        # "select" -> form_select(label, opts)
+        _ -> form_text(label, opts)
       end |> raw()
     else
       raw("<span class='editable-click' phx-click='focus' phx-value='#{id}'>#{label}</span>")
@@ -30,19 +30,19 @@ defmodule LiveEdit.Base do
     """
   end
 
-  defp form_select(label, opts) do
-    Keyword.has_key?(opts, :options) || raise("Needs `:options` option")
-    options = Enum.map(opts[:options], &("<option value='#{elem(&1,0)}'>#{elem(&1,1)}</option>"))
-
-    """
-    <form phx-change="#{opts[:on_change]}" phx-submit="#{opts[:on_submit]}">
-      <select name="editable_select" value="#{label}">
-      </select>
-      <button type='submit'><i class='fa fa-check-square'></i></button>
-      <button phx-click='cancel'><i class='fa fa-window-close'></i></button>
-    </form>
-    """
-  end
+  # defp form_select(label, opts) do
+  #   Keyword.has_key?(opts, :options) || raise("Needs `:options` option")
+  #   options = Enum.map(opts[:options], &("<option value='#{elem(&1,0)}'>#{elem(&1,1)}</option>"))
+  #
+  #   """
+  #   <form phx-change="#{opts[:on_change]}" phx-submit="#{opts[:on_submit]}">
+  #     <select name="editable_select" value="#{label}">
+  #     </select>
+  #     <button type='submit'><i class='fa fa-check-square'></i></button>
+  #     <button phx-click='cancel'><i class='fa fa-window-close'></i></button>
+  #   </form>
+  #   """
+  # end
 
   defmacro __using__(_opts) do
     quote do

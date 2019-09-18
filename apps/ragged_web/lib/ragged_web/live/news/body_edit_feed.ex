@@ -10,6 +10,8 @@ defmodule RaggedWeb.News.BodyEditFeed do
   use Phoenix.LiveView
   use LiveEdit.Base
 
+  require Logger
+
   def mount(session, socket) do
     reg_id = session.uistate.reg_id
     register = Repo.get(Register, reg_id)
@@ -86,17 +88,25 @@ defmodule RaggedWeb.News.BodyEditFeed do
       from(r in Register, select: count(r.id), where: r.feed_id == ^register.feed_id)
       |> Repo.one()
 
+    try do
     if feed_count == 1 do
       Repo.get(Feed, register.feed_id) |> Repo.delete()
     end
+    rescue
+      _ -> Logger.info("Warning: delete feed error")
+    end
 
+    try do
     Repo.delete(register)
+    rescue
+      _ -> Logger.info("Warning: delete register error")
+    end
 
     new_state =
       socket.assigns.uistate
       |> Map.merge(%{fld_id: nil, reg_id: nil, mode: "view"})
 
-    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "remove_feed", %{uistate: new_state})
+    RaggedWeb.Endpoint.broadcast_from(self(), "tree_mod", "remove_feed", %{uistate: new_state})
     {:noreply, assign(socket, %{uistate: new_state})}
   end
 
@@ -108,7 +118,7 @@ defmodule RaggedWeb.News.BodyEditFeed do
     new_state = 
       socket.assigns.uistate
       |> Map.merge(%{mode: "view"})
-    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "rename_feed", %{uistate: new_state})
+    RaggedWeb.Endpoint.broadcast_from(self(), "tree_mod", "rename_feed", %{uistate: new_state})
     {:noreply, assign(socket, %{uistate: new_state})}
   end
 

@@ -5,9 +5,11 @@ defmodule RaggedWeb.News.BodyView do
   use Phoenix.LiveView
 
   def mount(session, socket) do
-    RaggedWeb.Endpoint.subscribe("uistate")
+    RaggedWeb.Endpoint.subscribe("set_uistate")
+    RaggedWeb.Endpoint.subscribe("read_all")
     opts = %{
       uistate: session.uistate,
+      posts: all_posts_for(session.uistate),
       post_id: nil
     }
     {:ok, assign(socket, opts)}
@@ -17,7 +19,7 @@ defmodule RaggedWeb.News.BodyView do
     ~L"""
     <div>
     <table class="table table-sm">
-    <%= for post <- all_posts_for(@uistate) do %>
+    <%= for post <- @posts do %>
     <%= if @uistate.pst_id == post.id do %>
       <tr style='background-color: lightgrey;'>
       <td><small><i class="fa fa-check"></i></small></td>
@@ -80,6 +82,7 @@ defmodule RaggedWeb.News.BodyView do
   # ----- event handlers -----
 
   def handle_event("click-post", payload, socket) do
+    # Toggle post on and off...
     uistate = socket.assigns.uistate
     user_id = uistate.usr_id
     post_id = String.to_integer(payload)
@@ -89,14 +92,22 @@ defmodule RaggedWeb.News.BodyView do
       socket.assigns.uistate
       |> Map.merge(opts)
 
-    RaggedData.Ctx.Account.mark_all_for(user_id, pst_id: post_id)
-    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "CLICK_POST", %{uistate: newstate})
+    if new_id do
+      RaggedData.Ctx.Account.mark_all_for(user_id, pst_id: post_id)
+      RaggedWeb.Endpoint.broadcast_from(self(), "read_one", "CLICK_POST", %{})
+    end
+
     {:noreply, assign(socket, %{uistate: newstate})}
   end
   
   # ----- pub/sub handlers -----
 
-  def handle_info(%{topic: "uistate", payload: new_state}, socket) do
+  def handle_info(%{topic: "set_uistate", payload: new_state}, socket) do
     {:noreply, assign(socket, %{uistate: new_state.uistate})}
+  end
+
+  def handle_info(%{topic: "read_all"}, socket) do
+    uistate = socket.assigns.uistate
+    {:noreply, assign(socket, %{posts: all_posts_for(uistate)})}
   end
 end

@@ -58,7 +58,7 @@ defmodule RaggedWeb.News.BodyAddFolder do
       socket.assigns.uistate
       |> Map.merge(%{mode: "view", fld_id: nil, reg_id: nil})
       Map.merge(socket.assigns.uistate, params)
-    RaggedWeb.Endpoint.broadcast_from(self(), "uistate", "create_folder", %{uistate: new_state})
+    RaggedWeb.Endpoint.broadcast_from(self(), "tree_mod"   , "create_folder", %{uistate: new_state})
     {:noreply, assign(socket, %{uistate: new_state})}
   end
   

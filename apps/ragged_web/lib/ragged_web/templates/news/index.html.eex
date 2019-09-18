@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-2" style="background-color: lightgray;">
     <%= live_render(@conn, RaggedWeb.News.Btn, session: %{uistate: @uistate}) %>
-    <%= live_render(@conn, RaggedWeb.News.Tree, session: %{uistate: @uistate, treemap: @treemap}) %>
+    <%= live_render(@conn, RaggedWeb.News.Tree, session: %{uistate: @uistate}) %>
   </div>
   <div class="col-md-10">
     <%= live_render(@conn, RaggedWeb.News.Hdr, session: %{uistate: @uistate}) %>

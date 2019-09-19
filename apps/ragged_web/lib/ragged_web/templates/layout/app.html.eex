@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Ragged</title>
-    <link rel="icon" href="/images/rss-4-32_2.ico" sizes="32x32">
+    <link rel="icon" href="/images/rss-4-32.ico" sizes="32x32">
     <link rel="stylesheet" href="/css/app.css">
   </head>
   <body style='padding-top: 56px;' class="bg-custom">

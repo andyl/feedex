@@ -32,10 +32,6 @@ Repo.insert(%User{
           name: "Amberbit",
           feed: %Feed{url: "https://www.amberbit.com/blog.rss"}
         },
-        %Register{
-          name: "Elixir Reddit",
-          feed: %Feed{url: "https://old.reddit.com/r/elixir/.rss"}
-        }
       ]
     },
     %Folder{
@@ -54,7 +50,7 @@ Repo.insert(%User{
           feed: %Feed{url: "https://www.technologyreview.com/topnews.rss"}
         },
       ]
-    }
+    },
     %Folder{
       name: "YouTube",
       registers: [

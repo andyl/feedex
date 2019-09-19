@@ -9,9 +9,11 @@
 - [ ] Deploy: Configure domain (ragged.bugmark.tech)
 - [ ] Deploy: Setup port forwarding (ragged.bugmark.tech -> 5060)
 
-- [ ] Ansible: install ASDF
-- [ ] Ansible: install InfluxDB
-- [ ] Ansible: install Telegraf
+- [ ] Sops for Secrets
+
+- [x] Ansible: install ASDF
+- [x] Ansible: install InfluxDB
+- [x] Ansible: install Telegraf
 
 - [ ] Monitoring: get telemetry working
 - [ ] Monitoring: configure Grafana BugTech datasource
@@ -19,7 +21,7 @@
 - [ ] Monitoring: configure Grafana Alert Email
 - [ ] Monitoring: configure phone alert pager
 
-- [ ] Operations: backup/restore
+- [-] Operations: backup/restore
 - [ ] Operations: live backup
 - [ ] Operations: hotsite failover
 

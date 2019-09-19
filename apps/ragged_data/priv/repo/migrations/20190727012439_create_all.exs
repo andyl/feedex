@@ -22,6 +22,7 @@ defmodule RaggedData.Repo.Migrations.CreateAll do
     end
     create index(:posts, [:feed_id])
     create index(:posts, [:exid])
+    create index(:posts, [:title])
 
     # Account.User
     create table(:users) do

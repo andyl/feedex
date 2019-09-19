@@ -217,9 +217,9 @@ Editing Design Notes:
 
 - [x] Add case-insensitive login
 - [x] Add distinct post query
-- [ ] Add Ecto telemetry
-- [ ] Add Plug telemetry
-- [ ] 
+- [x] Add Ecto telemetry
+- [x] Add Plug telemetry
+- [x] Add VM telemetry
 
 # TBD
 

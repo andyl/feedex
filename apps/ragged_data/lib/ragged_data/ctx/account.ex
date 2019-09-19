@@ -19,6 +19,11 @@ defmodule RaggedData.Ctx.Account do
     Repo.get_by(User, params)
   end
 
+  def user_get_by_email(email) do
+    from(usr in User, where: fragment("email ilike ?", ^email))
+    |> Repo.one()
+  end
+
   def user_add(opts) do
     %User{}
     |> User.changeset(opts)
@@ -45,7 +50,7 @@ defmodule RaggedData.Ctx.Account do
   end
 
   def user_auth_by_email_and_pwd(email, pwd) do
-    user = user_get_by(email: email)
+    user = user_get_by_email(email)
 
     cond do
       user && Pbkdf2.verify_pass(pwd, user.pwd_hash) ->

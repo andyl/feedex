@@ -55,6 +55,23 @@ Repo.insert(%User{
         },
       ]
     }
+    %Folder{
+      name: "YouTube",
+      registers: [
+        %Register{
+          name: "Empex",
+          feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCIYiFWyuEytDzyju6uXW40Q"}
+        },
+        %Register{
+          name: "ElixirConf",
+          feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC0l2QTnO1P2iph-86HHilMQ"}
+        },
+        %Register{
+          name: "CodeSync",
+          feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC47eUBNO8KBH_V8AfowOWOw"}
+        }
+      ]
+    }
   ]
   }
 )

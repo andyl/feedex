@@ -129,7 +129,7 @@ defmodule RaggedJob do
       title:   post.title,
       body:    post[:description] || post[:content],
       author:  author_for(post),
-      link:    post[:"rss2:link"],
+      link:    link_for(post),
       feed_id: feed_id
     }
     Repo.get_by(Post, exid: opts.exid) || Repo.insert!(opts)
@@ -137,5 +137,9 @@ defmodule RaggedJob do
 
   defp author_for(post) do
     post[:author] || Enum.join(post[:authors] || [])
+  end
+
+  defp link_for(post) do
+    post[:"rss2:link"] || List.first(post[:links] || [])
   end
 end

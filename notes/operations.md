@@ -8,20 +8,19 @@
 
 - [ ] Deploy: Configure domain (ragged.bugmark.tech)
 - [ ] Deploy: Setup port forwarding (ragged.bugmark.tech -> 5060)
+- [ ] Deploy: Setup SSH / LetsEncrypt
 
-- [ ] Sops for Secrets
-
-- [x] Ansible: install ASDF
-- [x] Ansible: install InfluxDB
-- [x] Ansible: install Telegraf
-
-- [ ] Monitoring: get telemetry working
-- [ ] Monitoring: configure Grafana BugTech datasource
-- [ ] Monitoring: configure Grafana BugTech datasource
-- [ ] Monitoring: configure Grafana Alert Email
-- [ ] Monitoring: configure phone alert pager
-
-- [-] Operations: backup/restore
+- [ ] Operations: backup/restore
 - [ ] Operations: live backup
 - [ ] Operations: hotsite failover
 
+- [ ] Sops for Secrets
+- [ ] Sops Ansible Integration
+
+Sops Ansible
+https://github.com/mozilla/sops/issues/303
+https://scottc.me/ansible-and-credstash/
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_lookups.html#the-credstash-lookup
+https://github.com/ansible/ansible/pull/59641
+https://github.com/ansible/ansible/pull/59639
+https://kushaldas.in/posts/using-sops-with-ansible-for-vars-encryption.html

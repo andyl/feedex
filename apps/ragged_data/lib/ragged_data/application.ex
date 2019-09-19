@@ -10,6 +10,8 @@ defmodule RaggedData.Application do
       RaggedData.Repo
     ]
 
+    RaggedData.Metrics.InspectHandler.setup()
+
     Supervisor.start_link(children, strategy: :one_for_one, name: RaggedData.Supervisor)
   end
 end

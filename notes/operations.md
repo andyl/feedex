@@ -14,6 +14,8 @@
 - [ ] Operations: live backup
 - [ ] Operations: hotsite failover
 
+# Secrets 
+
 - [ ] Sops for Secrets
 - [ ] Sops Ansible Integration
 
@@ -24,3 +26,25 @@ https://docs.ansible.com/ansible/latest/user_guide/playbooks_lookups.html#the-cr
 https://github.com/ansible/ansible/pull/59641
 https://github.com/ansible/ansible/pull/59639
 https://kushaldas.in/posts/using-sops-with-ansible-for-vars-encryption.html
+
+# Application Metrics
+
+- [x] Framework Events: Plug 
+- [x] Framework Events: Ecto
+
+- [ ] VM Polling: Memory
+- [ ] VM Polling: TotalRunQueue
+
+- [ ] App Polling: NumPosts
+- [ ] App Polling: NumReadPosts
+- [ ] App Polling: NumFeeds
+- [ ] App Polling: NumFolders
+- [ ] App Polling: NumUsers
+
+- [ ] App Events: Login (userid)
+- [ ] App Events: Sync [time]{feedName, feedId}
+
+
+
+
+

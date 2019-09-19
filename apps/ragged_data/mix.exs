@@ -36,12 +36,19 @@ defmodule RaggedData.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:ex_machina, "~> 2.3"},
+      # ----- database
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
+      # ----- test
+      {:ex_machina, "~> 2.3"},
+      # ----- misc
       {:pbkdf2_elixir, "~> 1.0"},
+      {:modex, path: "~/src/modex"},
       {:jason, "~> 1.0"},
-      {:modex, path: "~/src/modex"}
+      # ----- metrics
+      {:instream, "~> 0.21.0"},
+      {:telemetry, "~> 0.4.0"},
+      {:telemetry_poller, "~> 0.4.0"}
     ]
   end
 

@@ -208,9 +208,20 @@ Editing Design Notes:
 - [x] Print: print record of feeds 
 - [x] Fix uistate sync
 
-# TBD
+# 2019 Sep 18 Wed
 
-- [ ] Move system to datacenter
+- [x] Configure public machine
+- [x] Move system to public machine
+
+# 2019 Sep 19 Thu
+
+- [x] Add case-insensitive login
+- [x] Add distinct post query
+- [ ] Add Ecto telemetry
+- [ ] Add Plug telemetry
+- [ ] 
+
+# TBD
 
 - [ ] Schema: Add `WebUrl` to `Resource`
 - [ ] Schema: Add `LoadOrder` (forward|reverse) to `Feed`

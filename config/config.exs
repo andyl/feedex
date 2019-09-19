@@ -22,6 +22,8 @@ config :ragged_job, RaggedJob.Scheduler,
     {"*/3 * * * *",      {RaggedJob, :sync_next, []}}
   ]
 
+config :telemetry_poller, :default, vm_measurements: :default
+
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]

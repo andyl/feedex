@@ -11,7 +11,7 @@
 
 - [ ] Ansible: install ASDF
 - [ ] Ansible: install InfluxDB
-- [ ] Ansible: install Telegram
+- [ ] Ansible: install Telegraf
 
 - [ ] Monitoring: get telemetry working
 - [ ] Monitoring: configure Grafana BugTech datasource

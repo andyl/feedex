@@ -21,7 +21,10 @@ defmodule Ragged.MixProject do
       # ----- development and test
       {:scribe, "~> 0.10"},
       {:mix_test_watch, "~> 0.8", only: :dev, runtime: false},
-      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
+      # ----- metrics 
+      {:telemetry, "~> 0.3"},
+      {:instream, "~> 0.21"}
     ]
   end
 

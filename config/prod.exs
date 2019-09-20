@@ -3,7 +3,7 @@ use Mix.Config
 config :ragged_data, RaggedData.Repo,
   username: "postgres",
   password: "postgres",
-  database: "ragged_prod",
+  database: "ragged_data_prod",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

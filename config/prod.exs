@@ -30,3 +30,16 @@ config :ragged_data, RaggedData.Repo,
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
+
+config :ragged_data, RaggedWeb.Influx,
+  database: "ragged_app_prod",
+  host: "localhost",
+  http_opts: [insecure: true],
+  pool: [max_overflow: 10, size: 50],
+  port: 8086,
+  port_udp: 8089,
+  scheme: "http",
+  auth: [method: :basic, username: "admin", password: "admin"],
+  # writer: Instream.Writer.Line
+  writer: Instream.Writer.UDP
+

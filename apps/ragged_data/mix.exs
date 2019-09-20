@@ -46,7 +46,6 @@ defmodule RaggedData.MixProject do
       {:modex, path: "~/src/modex"},
       {:jason, "~> 1.0"},
       # ----- metrics
-      {:instream, "~> 0.21.0"},
       {:telemetry, "~> 0.4.0"},
       {:telemetry_poller, "~> 0.4.0"}
     ]

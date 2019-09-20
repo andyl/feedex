@@ -29,8 +29,8 @@ https://kushaldas.in/posts/using-sops-with-ansible-for-vars-encryption.html
 
 # Application Metrics
 
-- [ ] Export to Influx
-- [ ] Render in Grafana
+- [x] Export to Influx
+- [x] Render in Grafana
 
 - [x] Framework Events: Plug 
 - [x] Framework Events: Ecto

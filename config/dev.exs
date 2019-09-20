@@ -1,32 +1,18 @@
 use Mix.Config
 
-# Configure your database
 config :ragged_data, RaggedData.Repo,
   username: "postgres",
   password: "postgres",
-  database: "ragged_data_dev",
+  database: "ragged_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
-config :ragged_data, RaggedWeb.Influx,
-  database: "ragged_app_dev",
-  host: "localhost",
-  http_opts: [insecure: true],
-  pool: [max_overflow: 10, size: 50],
-  port: 8086,
-  port_udp: 8089,
-  scheme: "http",
-  auth: [method: :basic, username: "admin", password: "admin"],
-  # writer: Instream.Writer.Line
-  writer: Instream.Writer.UDP
+config :ragged_data, RaggedData.Influx,
+  database: "inf_ragged_dev"
 
-# For development, we disable any cache and enable
-# debugging and code reloading.
-#
-# The watchers configuration can be used to run external
-# watchers to your application. For example, we use it
-# with webpack to recompile .js and .css sources.
+# ---------------------------------------------------
+
 config :ragged_web, RaggedWeb.Endpoint,
   http: [port: 4060],
   debug_errors: true,
@@ -41,6 +27,22 @@ config :ragged_web, RaggedWeb.Endpoint,
       cd: Path.expand("../apps/ragged_web/assets", __DIR__)
     ]
   ]
+
+# ---------------------------------------------------
+
+config :ragged_web, RaggedWeb.Endpoint,
+  live_reload: [
+    patterns: [
+      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/gettext/.*(po)$",
+      ~r"lib/ragged_web/{live,views}/.*(ex)$",
+      ~r"lib/ragged_web/templates/.*(eex)$"
+    ]
+  ]
+
+config :mix_test_watch, clear: true
+
+# ---------------------------------------------------
 
 # ## SSL Support
 #
@@ -65,17 +67,3 @@ config :ragged_web, RaggedWeb.Endpoint,
 # If desired, both `http:` and `https:` keys can be
 # configured to run both http and https servers on
 # different ports.
-
-# Watch static and templates for browser reloading.
-config :ragged_web, RaggedWeb.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"priv/gettext/.*(po)$",
-      ~r"lib/ragged_web/{live,views}/.*(ex)$",
-      ~r"lib/ragged_web/templates/.*(eex)$"
-    ]
-  ]
-
-config :mix_test_watch, clear: true
-

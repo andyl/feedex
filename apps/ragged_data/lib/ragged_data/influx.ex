@@ -3,7 +3,7 @@ defmodule RaggedData.Influx do
   def write_point(measurement, vals, tags) do
     tagstr = Enum.map(tags, fn({k,v}) -> "#{k}=#{v}" end) |> Enum.join(",")
     valstr = Enum.map(vals, fn({k,v}) -> "#{k}=#{v}" end) |> Enum.join(",")
-    "#{measurement} #{tagstr} #{valstr}"
+    "#{measurement},#{tagstr} #{valstr}"
     |> send()
   end
 

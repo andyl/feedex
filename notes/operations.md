@@ -29,14 +29,6 @@ https://kushaldas.in/posts/using-sops-with-ansible-for-vars-encryption.html
 
 # Application Metrics
 
-- [x] Export to Influx
-- [x] Render in Grafana
-
-- [x] Framework Events: Plug 
-- [x] Framework Events: Ecto
-- [x] VM Polling: Memory
-- [x] VM Polling: TotalRunQueue
-
 - [ ] App Polling: NumPosts
 - [ ] App Polling: NumReadPosts
 - [ ] App Polling: NumFeeds

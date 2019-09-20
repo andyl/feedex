@@ -220,14 +220,27 @@ Editing Design Notes:
 - [x] Add Ecto telemetry
 - [x] Add Plug telemetry
 - [x] Add VM telemetry
+- [x] Export to Influx
+- [x] Render in Grafana
+- [x] Framework Events: Plug 
+- [x] Framework Events: Ecto
+- [x] VM Polling: Memory
+- [x] VM Polling: TotalRunQueue
+
+# 2019 Sep 20 Fri
+
+- [x] Add Grafana Panel
 
 # TBD
+
+- [ ] Re-read LV Docco
+- [ ] Upgrade to Latest LV
 
 - [ ] Schema: Add `WebUrl` to `Resource`
 - [ ] Schema: Add `LoadOrder` (forward|reverse) to `Feed`
 
 - [ ] LiveEditable: Add Select Function
-- [ ] Admin: Move feed to a different folder
+- [ ] Admin: Add FolderSelect for Feeds
 
 - [ ] HOTKEYS: Table Nav up/down
 - [ ] HOTKEYS: Folder/Feed Selection

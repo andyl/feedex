@@ -9,7 +9,11 @@ defmodule RaggedData.Application do
       RaggedData.Repo
     ]
 
-    # RaggedData.Metrics.InspectHandler.setup()
+    current_env = Application.get_env(:ragged_data, :environment)
+    if current_env == :prod || current_env == :dev do
+      # RaggedData.Metrics.InspectHandler.setup()
+      RaggedData.Metrics.InfluxHandler.setup()
+    end
 
     Supervisor.start_link(children, strategy: :one_for_one, name: RaggedData.Supervisor)
   end

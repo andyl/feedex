@@ -56,7 +56,9 @@ defmodule RaggedData.Ctx.News do
   end
 
   def unread_aggregate_count_qry(userid) do
-    from(pst in Post,
+    # from(pst in Post,
+    q1 = from(p in Post, distinct: :title, order_by: [desc: :id])
+    from(pst in subquery(q1),
       left_join: log in ReadLog, on: pst.id == log.post_id,
       join:  fee in Feed       , on: pst.feed_id == fee.id,
       join:  reg in Register   , on: reg.feed_id == fee.id,
@@ -85,7 +87,9 @@ defmodule RaggedData.Ctx.News do
   end
 
   def unread_count_qry(userid) do
-    from(pst in Post,
+    # from(pst in Post,
+    q1 = from(p in Post, distinct: :title, order_by: [desc: :id])
+    from(pst in subquery(q1),
       left_join: log in ReadLog, on: pst.id == log.post_id,
       join:  fee in Feed       , on: pst.feed_id == fee.id,
       join:  reg in Register   , on: reg.feed_id == fee.id,
@@ -115,10 +119,10 @@ defmodule RaggedData.Ctx.News do
   end
 
   def posts_qry(user_id) do
-    q1 = from(p in Post, distinct: :title, order_by: [desc: :id])
-    from(pst in subquery(q1),
     # use subquery to eliminate duplicate titles (forum posts) only show the latest
     # from(pst in Post,
+    q1 = from(p in Post, distinct: :title, order_by: [desc: :id])
+    from(pst in subquery(q1),
       left_join: log in ReadLog, on: pst.id == log.post_id,
       join:  fee in Feed       , on: pst.feed_id == fee.id,
       join:  reg in Register   , on: reg.feed_id == fee.id,

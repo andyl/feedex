@@ -234,7 +234,17 @@ Editing Design Notes:
 # TBD
 
 - [ ] Re-read LV Docco
-- [ ] Upgrade to Latest LV
+- [ ] Read LV Test Docs
+
+- [ ] Add LV Seeds
+- [ ] Add LV Unit Tests
+- [ ] Add LV Integration Tests
+
+- [ ] Upgrade to LV 0.1.2
+- [ ] Upgrade to LV 0.2.0
+- [ ] Upgrade to LV 0.2.1
+- [ ] Upgrade to LV 0.3.0
+- [ ] Upgrade to LV 0.3.1
 
 - [ ] Schema: Add `WebUrl` to `Resource`
 - [ ] Schema: Add `LoadOrder` (forward|reverse) to `Feed`

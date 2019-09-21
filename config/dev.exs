@@ -35,7 +35,8 @@ config :ragged_web, RaggedWeb.Endpoint,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/ragged_web/{live,views}/.*(ex)$",
+      ~r"lib/ragged_web/live/.*(ex)$",
+      ~r"lib/ragged_web/views/.*(ex)$",
       ~r"lib/ragged_web/templates/.*(eex)$"
     ]
   ]

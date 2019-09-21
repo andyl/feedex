@@ -14,9 +14,19 @@ defmodule RaggedData.DataCase do
 
   use ExUnit.CaseTemplate
 
+  alias RaggedData.Repo
+  alias RaggedData.Ctx.Account
+  alias RaggedData.Ctx.Account.{User, Folder, Register, ReadLog}
+  alias RaggedData.Ctx.News
+  alias RaggedData.Ctx.News.{Feed, Post}
+
   using do
     quote do
       alias RaggedData.Repo
+      alias RaggedData.Ctx.Account
+      alias RaggedData.Ctx.Account.{User, Folder, Register, ReadLog}
+      alias RaggedData.Ctx.News
+      alias RaggedData.Ctx.News.{Feed, Post}
 
       import Ecto
       import Ecto.Changeset
@@ -49,5 +59,41 @@ defmodule RaggedData.DataCase do
         opts |> Keyword.get(String.to_existing_atom(key), key) |> to_string()
       end)
     end)
+  end
+
+  def load_test_data do
+    Repo.insert(%User{
+      name: "test",
+      email: "test",
+      pwd_hash: User.pwd_hash("test"),
+      folders: [
+        %Folder{
+          name: "Elixir",
+          registers: [
+            %Register{
+              name: "Plataformatec",
+              feed: %Feed{url: "http://blog.plataformatec.com.br/tag/elixir/feed"}
+            },
+            %Register{
+              name: "Amberbit",
+              feed: %Feed{url: "https://www.amberbit.com/blog.rss"}
+            }
+          ]
+        },
+        %Folder{
+          name: "TechNews",
+          registers: [
+            %Register{
+              name: "TechMeme",
+              feed: %Feed{url: "http://www.techmeme.com/feed.xml"}
+            },
+            %Register{
+              name: "MitReview",
+              feed: %Feed{url: "https://www.technologyreview.com/topnews.rss"}
+            }
+          ]
+        }
+      ]
+    })
   end
 end

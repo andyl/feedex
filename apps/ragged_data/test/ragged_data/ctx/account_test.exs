@@ -1,12 +1,6 @@
 defmodule RaggedData.Ctx.AccountTest do 
   use ExUnit.Case, async: true
-  alias RaggedData.Repo
-  alias RaggedData.Ctx.Account
-  alias RaggedData.Ctx.Account.User
-
-  setup do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Repo)
-  end
+  use RaggedData.DataCase
 
   describe "#count" do
     test "valid results" do

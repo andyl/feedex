@@ -20,6 +20,8 @@ defmodule RaggedData.DataCase do
   alias RaggedData.Ctx.News
   alias RaggedData.Ctx.News.{Feed, Post}
 
+  require Ecto.Query
+
   using do
     quote do
       alias RaggedData.Repo
@@ -32,6 +34,7 @@ defmodule RaggedData.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import RaggedData.DataCase
+      import RaggedData.Factory
     end
   end
 
@@ -59,6 +62,11 @@ defmodule RaggedData.DataCase do
         opts |> Keyword.get(String.to_existing_atom(key), key) |> to_string()
       end)
     end)
+  end
+
+  def count(type) do
+    Ecto.Query.from(element in type, select: count(element.id))
+    |> Repo.one()
   end
 
   def load_test_data do

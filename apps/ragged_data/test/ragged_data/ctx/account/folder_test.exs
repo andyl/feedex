@@ -1,13 +1,6 @@
 defmodule RaggedData.Ctx.Account.FolderTest do
   use ExUnit.Case, async: true
-  alias RaggedData.Repo
-  alias RaggedData.Ctx.Account.Folder
-  import Ecto.Query, only: [from: 2]
-  import RaggedData.Factory
-
-  setup do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Repo)
-  end
+  use RaggedData.DataCase
 
   test "greet the world" do
     assert "hello" == "hello"
@@ -27,10 +20,9 @@ defmodule RaggedData.Ctx.Account.FolderTest do
       tmap = %Folder{}
       attr = %{name: "asdf"}
       cset = Folder.changeset(tmap, attr)
-      cqry = from(t in "folders", select: count(t.id))
-      assert Repo.one(cqry) == 0
+      assert count(Folder) == 0
       assert {:ok, _result} = Repo.insert(cset)
-      assert Repo.one(cqry) == 1
+      assert count(Folder) == 1
     end
   end
 
@@ -40,10 +32,9 @@ defmodule RaggedData.Ctx.Account.FolderTest do
     end
 
     test "inserting an entity" do
-      cqry = from(t in "folders", select: count(t.id))
-      assert Repo.one(cqry) == 0
+      assert count(Folder) == 0
       assert insert(:folder)
-      assert Repo.one(cqry) == 1
+      assert count(Folder) == 1
     end
 
     test "inserting two entities" do
@@ -57,23 +48,21 @@ defmodule RaggedData.Ctx.Account.FolderTest do
     end
 
     test "uses alternate attrs" do
-      cqry = from(t in "folders", select: count(t.id))
       altname = "NEWNAME"
-      assert Repo.one(cqry) == 0
+      assert count(Folder) == 0
       assert trak = insert(:folder, %{name: altname})
-      assert Repo.one(cqry) == 1
+      assert count(Folder) == 1
       assert trak.name == altname
     end
   end
 
   describe "deleting records" do
     test "all folders" do
-      cqry = from(t in "folders", select: count(t.id))
-      assert Repo.one(cqry) == 0
+      assert count(Folder) == 0
       insert(:folder)
-      assert Repo.one(cqry) == 1
+      assert count(Folder) == 1
       Repo.delete_all(Folder)
-      assert Repo.one(cqry) == 0
+      assert count(Folder) == 0
     end
   end
 

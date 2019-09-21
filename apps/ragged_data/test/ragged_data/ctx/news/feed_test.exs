@@ -1,13 +1,6 @@
 defmodule RaggedData.Ctx.News.FeedTest do 
   use ExUnit.Case, async: true
-  alias RaggedData.Repo
-  alias RaggedData.Ctx.News.Feed
-  import Ecto.Query, only: [from: 2]
-  import RaggedData.Factory
-
-  setup do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Repo)
-  end
+  use RaggedData.DataCase
 
   test "greet the world" do
     assert "hello" == "hello"
@@ -27,10 +20,9 @@ defmodule RaggedData.Ctx.News.FeedTest do
       tmap = %Feed{}
       attr = %{url: "asdf"}
       cset = Feed.changeset(tmap, attr)
-      cqry = from(t in "feeds", select: count(t.id))
-      assert Repo.one(cqry) == 0
+      assert count(Feed) == 0
       assert {:ok, _result} = Repo.insert(cset)
-      assert Repo.one(cqry) == 1
+      assert count(Feed) == 1
     end
   end
 
@@ -40,38 +32,34 @@ defmodule RaggedData.Ctx.News.FeedTest do
     end
 
     test "inserting an entity" do
-      cqry = from(t in "feeds", select: count(t.id))
-      assert Repo.one(cqry) == 0
+      assert count(Feed) == 0
       assert insert(:feed)
-      assert Repo.one(cqry) == 1
+      assert count(Feed) == 1
     end
 
     test "inserting two entities" do
-      cqry = from(t in "feeds", select: count(t.id))
-      assert Repo.one(cqry) == 0
+      assert count(Feed) == 0
       assert insert(:feed)
       assert insert(:feed)
-      assert Repo.one(cqry) == 2
+      assert count(Feed) == 2
     end
 
     test "uses alternate attrs" do
-      cqry = from(t in "feeds", select: count(t.id))
       altname = "NEWNAME"
-      assert Repo.one(cqry) == 0
+      assert count(Feed) == 0
       assert trak = insert(:feed, %{url: altname})
-      assert Repo.one(cqry) == 1
+      assert count(Feed) == 1
       assert trak.url == altname
     end
   end
 
   describe "deleting records" do
     test "all feeds" do
-      cqry = from(t in "feeds", select: count(t.id))
-      assert Repo.one(cqry) == 0
+      assert count(Feed) == 0
       insert(:feed)
-      assert Repo.one(cqry) == 1
+      assert count(Feed) == 1
       Repo.delete_all(Feed)
-      assert Repo.one(cqry) == 0
+      assert count(Feed) == 0
     end
   end
 end

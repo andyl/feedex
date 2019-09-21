@@ -53,6 +53,7 @@ defmodule RaggedWeb.MixProject do
       {:observer_cli, "~> 1.5"},
       # ----- development and test
       {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:hound, "~> 1.0"},
       # ----- UI Data Management
       {:pets, path: "~/src/pets"},
       {:typed_struct, "~> 0.1.4"},

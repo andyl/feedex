@@ -230,21 +230,27 @@ Editing Design Notes:
 # 2019 Sep 20 Fri
 
 - [x] Add Grafana Panel
+- [x] Re-read LV Docco
+- [x] Read LV Test Docs
+
+# 2019 Sep 21 Sat
+
+- [x] Fix LiveReload 
+- [x] Add DataCase#count
+- [x] Add DataCase#load_test_data
+- [x] Add LV Seeds
+
+- [ ] Add LV Integration Tests (Hound)
 
 # TBD
-
-- [ ] Re-read LV Docco
-- [ ] Read LV Test Docs
-
-- [ ] Add LV Seeds
-- [ ] Add LV Unit Tests
-- [ ] Add LV Integration Tests
 
 - [ ] Upgrade to LV 0.1.2
 - [ ] Upgrade to LV 0.2.0
 - [ ] Upgrade to LV 0.2.1
 - [ ] Upgrade to LV 0.3.0
 - [ ] Upgrade to LV 0.3.1
+
+- [ ] Add LV Unit Tests
 
 - [ ] Schema: Add `WebUrl` to `Resource`
 - [ ] Schema: Add `LoadOrder` (forward|reverse) to `Feed`

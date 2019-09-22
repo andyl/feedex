@@ -44,7 +44,8 @@ defmodule RaggedWeb.MixProject do
       {:phoenix_ecto, "~> 4.0.0"},
       # ----- phoenix view helpers
       {:phoenix_active_link, "~> 0.2.1"},
-      {:phoenix_live_view, "~> 0.1.1"},
+      {:floki, "~> 0.23.0"},
+      {:phoenix_live_view, "~> 0.2.1"},
       # ----- util
       {:jason, "~> 1.0"},
       {:gettext, "~> 0.11"},

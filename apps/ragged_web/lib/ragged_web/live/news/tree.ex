@@ -101,7 +101,7 @@ defmodule RaggedWeb.News.Tree do
       "<b>#{folder.name}</b>"
     else
       """
-      <a href='#' phx-click='clk_folder' phx-value='#{folder.id}'>
+      <a href='#' phx-click='clk_folder' phx-value-fldid='#{folder.id}'>
       #{folder.name}
       </a>
       """
@@ -113,7 +113,7 @@ defmodule RaggedWeb.News.Tree do
       "<b>#{register.name}</b>"
     else
       """
-      <a href='#' phx-click='clk_feed' phx-value='#{register.id}'>#{register.name}</a> 
+      <a href='#' phx-click='clk_feed' phx-value-regid='#{register.id}'>#{register.name}</a> 
       """
     end |> HTML.raw()
   end
@@ -158,10 +158,10 @@ defmodule RaggedWeb.News.Tree do
     {:noreply, assign(socket, %{uistate: opts})}
   end
 
-  def handle_event("clk_folder", payload, socket) do
+  def handle_event("clk_folder", %{"fldid" => fldid}, socket) do
     opts = %{
       mode:   "view",
-      fld_id: Integer.parse(payload) |> elem(0),
+      fld_id: Integer.parse(fldid) |> elem(0),
       reg_id: nil,
       pst_id: nil
     }
@@ -172,10 +172,10 @@ defmodule RaggedWeb.News.Tree do
     {:noreply, assign(socket, %{uistate: new_state, treemap: socket.assigns.treemap})}
   end
 
-  def handle_event("clk_feed", payload, socket) do
+  def handle_event("clk_feed", %{"regid" => regid}, socket) do
     opts = %{
       mode:   "view",
-      reg_id: Integer.parse(payload) |> elem(0),
+      reg_id: Integer.parse(regid) |> elem(0),
       fld_id: nil,
       pst_id: nil
     }

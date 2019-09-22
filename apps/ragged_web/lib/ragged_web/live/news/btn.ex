@@ -13,7 +13,7 @@ defmodule RaggedWeb.News.Btn do
     <div class='desktop-only' style='margin-top: 8px;'>
       <div style='margin-bottom: 4px;'>
       <small>
-      <%= live_render(@socket, RaggedWeb.TimePstSec) %>
+      <%= live_render(@socket, RaggedWeb.TimePstSec, id: "clock") %>
       </small>
       <p></p>
       </div>

@@ -64,10 +64,10 @@ defmodule RaggedWeb.News.BodyView do
 
   def id_link(id) do
     """
-    <a href="#" phx-click='click-post' phx-value='#{id}'>
+    <a href="#" phx-click='click-post' phx-value-pstid='#{id}'>
     #{id}
     </a>
-    """
+    """ |> HTML.raw()
   end
 
   def all_posts_for(uistate) do
@@ -81,11 +81,11 @@ defmodule RaggedWeb.News.BodyView do
 
   # ----- event handlers -----
 
-  def handle_event("click-post", payload, socket) do
+  def handle_event("click-post", %{"pstid" => pstid}, socket) do
     # Toggle post on and off...
     uistate = socket.assigns.uistate
     user_id = uistate.usr_id
-    post_id = String.to_integer(payload)
+    post_id = String.to_integer(pstid)
     new_id  = if uistate.pst_id == post_id, do: nil, else: post_id
     opts =  %{pst_id: new_id}
     newstate = 

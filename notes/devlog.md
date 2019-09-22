@@ -239,12 +239,12 @@ Editing Design Notes:
 - [x] Add DataCase#count
 - [x] Add DataCase#load_test_data
 - [x] Add LV Seeds
+- [x] Add LV Integration Tests (Hound)
 
-- [ ] Add LV Integration Tests (Hound)
+- [ ] Upgrade to LV 0.1.2
 
 # TBD
 
-- [ ] Upgrade to LV 0.1.2
 - [ ] Upgrade to LV 0.2.0
 - [ ] Upgrade to LV 0.2.1
 - [ ] Upgrade to LV 0.3.0

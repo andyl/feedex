@@ -11,7 +11,7 @@ defmodule Acceptance.TreeTest do
       click({:link_text, "Elixir"})
       assert page_source() =~ "Plataformatec"
       click({:link_text, "TechNews"})
-      # take_screenshot("/tmp/test.png")
+      take_screenshot("/tmp/test.png")
       refute page_source() =~ "Plataformatec"
     end
   end

@@ -1,4 +1,4 @@
-defmodule Acceptance.HomeTest do
+defmodule Acceptance.BaseTest do
   use ExUnit.Case, async: false
   use RaggedData.DataCase
   use Hound.Helpers
@@ -37,17 +37,23 @@ defmodule Acceptance.HomeTest do
       assert count(User) == 1
       navigate_to("http://localhost:4001/sessions/new")
       find_element(:id, "session_email") |> fill_field("test")
-      find_element(:id, "session_pwd")   |> fill_field("test")
-      find_element(:id, "submit_btn")    |> click()
+      find_element(:id, "session_pwd") |> fill_field("test")
+      find_element(:id, "submit_btn") |> click()
       assert current_path() == "/"
     end
 
     test "login with function" do
       load_test_data()
       do_login()
-      take_screenshot("/tmp/test.png")
       assert current_path() == "/news"
     end
+  end
 
+  describe "typical init usage with setup" do
+    setup [:load_test_data, :do_login]
+    
+    test "works with minimal code" do
+      assert current_path() == "/news"
+    end
   end
 end

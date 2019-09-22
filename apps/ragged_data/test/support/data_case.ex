@@ -69,7 +69,7 @@ defmodule RaggedData.DataCase do
     |> Repo.one()
   end
 
-  def load_test_data do
+  def load_test_data(_ctx \\ []) do
     Repo.insert(%User{
       name: "test",
       email: "test",
@@ -103,5 +103,6 @@ defmodule RaggedData.DataCase do
         }
       ]
     })
+    :ok 
   end
 end

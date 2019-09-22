@@ -1,5 +1,4 @@
 defmodule RaggedWeb.HoundCase do
-
   use ExUnit.CaseTemplate
   use Hound.Helpers
 
@@ -14,11 +13,12 @@ defmodule RaggedWeb.HoundCase do
     :ok
   end
 
-  def do_login do
-      navigate_to("http://localhost:4001/sessions/new")
-      find_element(:id, "session_email") |> fill_field("test")
-      find_element(:id, "session_pwd")   |> fill_field("test")
-      find_element(:id, "submit_btn")    |> click()
-      navigate_to("http://localhost:4001/news")
+  def do_login(_args \\ []) do
+    navigate_to("http://localhost:4001/sessions/new")
+    find_element(:id, "session_email") |> fill_field("test")
+    find_element(:id, "session_pwd") |> fill_field("test")
+    find_element(:id, "submit_btn") |> click()
+    navigate_to("http://localhost:4001/news")
+    :ok
   end
 end

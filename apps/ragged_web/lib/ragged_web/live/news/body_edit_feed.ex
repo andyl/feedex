@@ -54,7 +54,8 @@ defmodule RaggedWeb.News.BodyEditFeed do
     <h1>EDIT FEED</h1>
     <%= if @register do %>
       <table class="table">
-      <tr><td>Reg Name:</td><td><%= live_edit(assigns, @register.name, id: "name", on_submit: "rename") %></td></tr>
+      <tr><td>Reg Name:</td><td><%= live_edit(assigns, @register.name, type: "text", id: "name", on_submit: "rename") %></td></tr>
+      <tr><td>Reg Folder:</td><td><%= live_edit(assigns, @register.name, type: "select", options: fld_opts(), id: "folder", on_submit: "refolder") %></td></tr>
       <tr><td>FeedUrl:</td><td><%= feed_link(@feed) %></td></tr>
       <tr><td>Usr/Registry ID:</td><td><%= @register.id %></td></tr>
       <tr><td>Attached Registries:</td><td><%= @feed_count %></td></tr>
@@ -77,6 +78,13 @@ defmodule RaggedWeb.News.BodyEditFeed do
     #{feed.url}
     </a>
     """ |> raw()
+  end
+
+  def fld_opts do
+    [
+      {1, "asdf"},
+      {2, "qwer"}
+    ]
   end
 
   # ----- event handlers -----
@@ -120,6 +128,13 @@ defmodule RaggedWeb.News.BodyEditFeed do
       |> Map.merge(%{mode: "view"})
     RaggedWeb.Endpoint.broadcast_from(self(), "tree_mod", "rename_feed", %{uistate: new_state})
     {:noreply, assign(socket, %{uistate: new_state})}
+  end
+
+  def handle_event("refolder", payload, socket) do
+    IO.inspect "+++++++++++++++++++++++++++++++++++++++"
+    IO.inspect payload
+    IO.inspect "+++++++++++++++++++++++++++++++++++++++"
+    {:noreply, socket}
   end
 
   # ----- pub/sub handlers -----

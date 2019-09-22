@@ -6,17 +6,18 @@ defmodule LiveEdit.Base do
   # ----- view helpers -----
   def live_edit(assigns, label, opts) do
     Keyword.has_key?(opts, :id) || raise("Needs `:id` option")
+    Keyword.has_key?(opts, :type) || raise("Needs `:type` option ('text' | 'select')")
     id = opts[:id]
     focus = assigns[:focus]
 
     if id == focus do
       case opts[:type] do
         "text" -> form_text(label, opts) 
-        # "select" -> form_select(label, opts)
+        "select" -> form_select(label, opts)
         _ -> form_text(label, opts)
       end |> raw()
     else
-      raw("<span class='editable-click' phx-click='focus' phx-value='#{id}'>#{label}</span>")
+      raw("<span class='editable-click' phx-click='focus' phx-value-focusid='#{id}'>#{label}</span>")
     end
   end
 
@@ -31,26 +32,40 @@ defmodule LiveEdit.Base do
   end
 
   # defp form_select(label, opts) do
-  #   Keyword.has_key?(opts, :options) || raise("Needs `:options` option")
-  #   options = Enum.map(opts[:options], &("<option value='#{elem(&1,0)}'>#{elem(&1,1)}</option>"))
-  #
   #   """
   #   <form phx-change="#{opts[:on_change]}" phx-submit="#{opts[:on_submit]}">
-  #     <select name="editable_select" value="#{label}">
-  #     </select>
+  #     <input type="text" name="editable_text" value="#{label}">
   #     <button type='submit'><i class='fa fa-check-square'></i></button>
   #     <button phx-click='cancel'><i class='fa fa-window-close'></i></button>
   #   </form>
   #   """
   # end
 
+  defp form_select(label, opts) do
+    IO.inspect "+++++++++++++++++++++++++++++++++++++++"
+    IO.inspect label
+    IO.inspect opts
+    IO.inspect "+++++++++++++++++++++++++++++++++++++++"
+    Keyword.has_key?(opts, :options) || raise("Needs `:options` option")
+    options = Enum.map(opts[:options], &("<option value='#{elem(&1,0)}'>#{elem(&1,1)}</option>"))
+    """
+    <form phx-submit="#{opts[:on_submit]}">
+      <select name="editable_select" value="#{label}">
+        <%= Enum.join(options, "") %>
+      </select>
+      <button type='submit'><i class='fa fa-check-square'></i></button>
+      <button phx-click='cancel'><i class='fa fa-window-close'></i></button>
+    </form>
+    """
+  end
+
   defmacro __using__(_opts) do
     quote do
       import LiveEdit.Base
 
       # ----- event handlers -----
-      def handle_event("focus", payload, socket) do
-        {:noreply, assign(socket, focus: payload)}
+      def handle_event("focus", %{"focusid" => focusid}, socket) do
+        {:noreply, assign(socket, focus: focusid)}
       end
 
       def handle_event("cancel", payload, socket) do

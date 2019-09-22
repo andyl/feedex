@@ -23,7 +23,7 @@ defmodule RaggedWeb.News.BodyView do
     <%= if @uistate.pst_id == post.id do %>
       <tr style='background-color: lightgrey;'>
       <td><small><i class="fa fa-check"></i></small></td>
-      <td><b><%= HTML.raw id_link(post.id) %></b></td>
+      <td><b><%= id_link(post.id) %></b></td>
       <td><b><a href='<%= post.link %>' target='_blank'><%= time_ago(post.updated_at) %><%= post.title %></a></b></td>
       </tr>
       <tr style='background-color: lightgrey;'><td colspan=3>
@@ -36,7 +36,7 @@ defmodule RaggedWeb.News.BodyView do
       <td>
       <%= if post.read_log, do: HTML.raw "<small><i class='fa fa-check'></i></small> " %>
       </td>
-      <td><%= HTML.raw id_link(post.id) %></td>
+      <td><%= id_link(post.id) %></td>
       <td>
       <%= time_ago(post.updated_at) %><%= post.title %>
       </td>

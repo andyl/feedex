@@ -240,23 +240,19 @@ Editing Design Notes:
 - [x] Add DataCase#load_test_data
 - [x] Add LV Seeds
 - [x] Add LV Integration Tests (Hound)
-
-- [ ] Upgrade to LV 0.1.2
+- [x] Upgrade to LV 0.3.0
+- [x] Add LV Unit Tests
 
 # TBD
 
-- [ ] Upgrade to LV 0.2.0
-- [ ] Upgrade to LV 0.2.1
-- [ ] Upgrade to LV 0.3.0
-- [ ] Upgrade to LV 0.3.1
-
-- [ ] Add LV Unit Tests
-
-- [ ] Schema: Add `WebUrl` to `Resource`
-- [ ] Schema: Add `LoadOrder` (forward|reverse) to `Feed`
-
 - [ ] LiveEditable: Add Select Function
 - [ ] Admin: Add FolderSelect for Feeds
+- [ ] Bug: not remembering post-click
+
+- [ ] Metrics: # of connected clients
+- [ ] Metrics: # feeds, users
+- [ ] Metrics: posts by feed
+- [ ] Metrics: unread posts by feed
 
 - [ ] HOTKEYS: Table Nav up/down
 - [ ] HOTKEYS: Folder/Feed Selection
@@ -281,6 +277,9 @@ Editing Design Notes:
 - [ ] LiveEditable: Create Developer Website (and serve CSS/JS Assets)
 - [ ] LiveEditable: Create Demo Application (Swap Between CSS Frameworks)
 - [ ] LiveEditable: Change to PhoenixLiveEditable
+- [ ] LiveEditable: Create 'Coverage' Chart (red/yellow/green)
+- [ ] LiveEditable: ExUnit Unit Specs with LV test helpers
+- [ ] LiveEditable: Hound Integration Specs on test pages
 
 - [ ] TEST - unit - RaggedData.Account
 - [ ] TEST - intc - login/logout 

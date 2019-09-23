@@ -245,12 +245,15 @@ Editing Design Notes:
 - [x] LiveEditable: Add Select Function
 - [x] Admin: Add FolderSelect for Feeds
 
-- [ ] Metrics: # of connected clients
-- [ ] Metrics: # feeds, users
-- [ ] Metrics: posts by feed
-- [ ] Metrics: unread posts by feed
+# 2019 Sep 22 Sun
+
+- [x] Metrics: posts by feed
+- [x] Metrics: unread posts by feed
 
 # TBD
+
+- [ ] Metrics: # of connected clients
+- [ ] Metrics: # feeds, users
 
 - [ ] Bug: not remembering post-click
 - [ ] Auth directly thru LiveView in Mount (redirect to login)
@@ -267,20 +270,6 @@ Editing Design Notes:
 
 - [ ] Split scrolling
 - [ ] Expand scan-list for ragged_client
-
-- [ ] LiveEditable: Get Validations Working
-- [ ] LiveEditable: Add RadioButton Field
-- [ ] LiveEditable: Create `Editable` Behavior
-- [ ] LiveEditable: Implement `HTML` Editable 
-- [ ] LiveEditable: Implement `Bootstrap4` Editable 
-- [ ] LiveEditable: Implement `Milligram` Editable 
-- [ ] LiveEditable: ExUnit Shared Examples for HTML, Bootstrap4 and Milligram
-- [ ] LiveEditable: Create Developer Website (and serve CSS/JS Assets)
-- [ ] LiveEditable: Create Demo Application (Swap Between CSS Frameworks)
-- [ ] LiveEditable: Change to PhoenixLiveEditable
-- [ ] LiveEditable: Create 'Coverage' Chart (red/yellow/green)
-- [ ] LiveEditable: ExUnit Unit Specs with LV test helpers
-- [ ] LiveEditable: Hound Integration Specs on test pages
 
 - [ ] TEST - unit - RaggedData.Account
 - [ ] TEST - intc - login/logout 

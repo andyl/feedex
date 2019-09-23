@@ -1,7 +1,7 @@
 defmodule RaggedWeb.Live.Demo2 do
 
   use Phoenix.LiveView
-  use LiveEditable.Base
+  use LiveEditable
 
   def mount(_session, socket) do
     {:ok, assign(socket, focus: nil)}

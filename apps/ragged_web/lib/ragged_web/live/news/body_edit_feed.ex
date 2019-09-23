@@ -9,7 +9,7 @@ defmodule RaggedWeb.News.BodyEditFeed do
   import Phoenix.HTML
 
   use Phoenix.LiveView
-  use LiveEdit.Base
+  use LiveEditable.Base
 
   require Logger
 

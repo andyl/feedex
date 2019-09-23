@@ -6,7 +6,7 @@ defmodule RaggedWeb.News.BodyEditFolder do
   import Ecto.Query
 
   use Phoenix.LiveView
-  use LiveEdit.Base
+  use LiveEditable.Base
 
   def mount(session, socket) do
     folder_id = session.uistate.fld_id

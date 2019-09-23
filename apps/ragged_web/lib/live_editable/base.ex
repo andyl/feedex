@@ -1,4 +1,4 @@
-defmodule LiveEdit.Base do
+defmodule LiveEditable.Base do
   import Phoenix.LiveView
 
   import Phoenix.HTML
@@ -47,7 +47,7 @@ defmodule LiveEdit.Base do
 
   defmacro __using__(_opts) do
     quote do
-      import LiveEdit.Base
+      import LiveEditable.Base
 
       # ----- event handlers -----
       def handle_event("focus", %{"focusid" => focusid}, socket) do

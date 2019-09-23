@@ -242,17 +242,18 @@ Editing Design Notes:
 - [x] Add LV Integration Tests (Hound)
 - [x] Upgrade to LV 0.3.0
 - [x] Add LV Unit Tests
-
-# TBD
-
-- [ ] LiveEditable: Add Select Function
-- [ ] Admin: Add FolderSelect for Feeds
-- [ ] Bug: not remembering post-click
+- [x] LiveEditable: Add Select Function
+- [x] Admin: Add FolderSelect for Feeds
 
 - [ ] Metrics: # of connected clients
 - [ ] Metrics: # feeds, users
 - [ ] Metrics: posts by feed
 - [ ] Metrics: unread posts by feed
+
+# TBD
+
+- [ ] Bug: not remembering post-click
+- [ ] Auth directly thru LiveView in Mount (redirect to login)
 
 - [ ] HOTKEYS: Table Nav up/down
 - [ ] HOTKEYS: Folder/Feed Selection

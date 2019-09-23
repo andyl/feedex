@@ -10,10 +10,10 @@ defmodule RaggedData.Metrics.InfluxHandler do
       [:ragged_data, :repo, :query]
     ]
 
-    IO.puts "======================================="
-    IO.puts "STARTING INFLUX TELEMETRY"
-    IO.puts events
-    IO.puts "======================================="
+    IO.inspect "======================================="
+    IO.inspect "STARTING INFLUX TELEMETRY"
+    IO.inspect events
+    IO.inspect "======================================="
 
     :telemetry.attach_many(
       "inspect-reporter",

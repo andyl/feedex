@@ -14,11 +14,11 @@ config :ragged_web, RaggedWeb.Endpoint,
 
 config :ragged_job, RaggedJob.Scheduler,
   jobs: [
-    # {"* * * * *",      {Heartbeat, :send, []}},
     # {"*/15 * * * *",   fn -> System.cmd("rm", ["/tmp/tmp_"]) end},
     # {"0 18-6/2 * * *", fn -> :mnesia.backup('/var/backup/mnesia') end},
     # {"@daily",         {Backup, :backup, []}}
     # {"* * * * *",      {IO, :puts, ["CRON JOB"]}}
+    {"* * * * *",        {RaggedData.Metrics.AppPoller, :post_counts, []}},
     {"*/3 * * * *",      {RaggedJob, :sync_next, []}}
   ]
 

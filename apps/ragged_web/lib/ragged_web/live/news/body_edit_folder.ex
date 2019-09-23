@@ -26,7 +26,7 @@ defmodule RaggedWeb.News.BodyEditFolder do
     <div>
     <h1>EDIT FOLDER</h1>
     <table class="table">
-    <tr><td>Folder Name:</td><td><%= live_edit(assigns, @folder.name, id: "name", on_submit: "rename") %></td></tr>
+    <tr><td>Folder Name:</td><td><%= live_edit(assigns, @folder.name, type: "text", id: "name", on_submit: "rename") %></td></tr>
     <tr><td>Folder ID:</td><td><%= @folder.id %></td></tr>
     <tr><td>Num Feeds:</td><td><%= @feed_count %></td></tr>
     </table>

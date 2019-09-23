@@ -2,6 +2,7 @@ defmodule RaggedWeb.News.BodyEditFeed do
   alias RaggedData.Ctx.News.Post
   alias RaggedData.Ctx.News.Feed
   alias RaggedData.Ctx.Account.Register
+  alias RaggedData.Ctx.Account.Folder
   alias RaggedData.Repo
 
   import Ecto.Query
@@ -14,24 +15,31 @@ defmodule RaggedWeb.News.BodyEditFeed do
 
   def mount(session, socket) do
     reg_id = session.uistate.reg_id
+    usr_id = session.uistate.usr_id
     register = Repo.get(Register, reg_id)
 
     opts =
       if register do
         feed_count =
-          from(r in Register, select: count(r.id), where: r.feed_id == ^register.feed_id)
+          from(reg in Register, select: count(reg.id), where: reg.feed_id == ^register.feed_id)
           |> Repo.one()
 
         post_count =
-          from(p in Post, select: count(p.id), where: p.feed_id == ^register.feed_id)
+          from(pst in Post, select: count(pst.id), where: pst.feed_id == ^register.feed_id)
           |> Repo.one()
 
-        feed = Repo.get(Feed, register.feed_id)
+        folders = from(fld in Folder, 
+          select: {fld.id, fld.name}, 
+          where: fld.user_id == ^usr_id,
+          order_by: fld.name
+        ) |> Repo.all() 
 
         %{
           register: register,
           feed_count: feed_count,
-          feed: feed,
+          feed: Repo.get(Feed, register.feed_id),
+          folder: Repo.get(Folder, register.folder_id), 
+          folders: folders,
           post_count: post_count,
           uistate: session.uistate
         }
@@ -40,6 +48,8 @@ defmodule RaggedWeb.News.BodyEditFeed do
           register: nil,
           feed_count: 0,
           feed: nil,
+          folder: nil,
+          folders: nil,
           post_count: 0,
           changeset: %Register{},
           uistate: session.uistate
@@ -55,7 +65,7 @@ defmodule RaggedWeb.News.BodyEditFeed do
     <%= if @register do %>
       <table class="table">
       <tr><td>Reg Name:</td><td><%= live_edit(assigns, @register.name, type: "text", id: "name", on_submit: "rename") %></td></tr>
-      <tr><td>Reg Folder:</td><td><%= live_edit(assigns, @register.name, type: "select", options: fld_opts(), id: "folder", on_submit: "refolder") %></td></tr>
+      <tr><td>Reg Folder:</td><td><%= live_edit(assigns, @folder.name, type: "select", options: @folders, id: "folder", on_submit: "refolder") %></td></tr>
       <tr><td>FeedUrl:</td><td><%= feed_link(@feed) %></td></tr>
       <tr><td>Usr/Registry ID:</td><td><%= @register.id %></td></tr>
       <tr><td>Attached Registries:</td><td><%= @feed_count %></td></tr>
@@ -78,13 +88,6 @@ defmodule RaggedWeb.News.BodyEditFeed do
     #{feed.url}
     </a>
     """ |> raw()
-  end
-
-  def fld_opts do
-    [
-      {1, "asdf"},
-      {2, "qwer"}
-    ]
   end
 
   # ----- event handlers -----
@@ -130,11 +133,16 @@ defmodule RaggedWeb.News.BodyEditFeed do
     {:noreply, assign(socket, %{uistate: new_state})}
   end
 
-  def handle_event("refolder", payload, socket) do
-    IO.inspect "+++++++++++++++++++++++++++++++++++++++"
-    IO.inspect payload
-    IO.inspect "+++++++++++++++++++++++++++++++++++++++"
-    {:noreply, socket}
+  def handle_event("refolder", %{"editable_select" => fldid}, socket) do
+    Register
+    |> Repo.get(socket.assigns.uistate.reg_id)
+    |> Ecto.Changeset.change(folder_id: String.to_integer(fldid))
+    |> Repo.update()
+    new_state = 
+      socket.assigns.uistate
+      |> Map.merge(%{mode: "view"})
+    RaggedWeb.Endpoint.broadcast_from(self(), "tree_mod", "rename_feed", %{uistate: new_state})
+    {:noreply, socket |> assign(%{uistate: new_state})}
   end
 
   # ----- pub/sub handlers -----

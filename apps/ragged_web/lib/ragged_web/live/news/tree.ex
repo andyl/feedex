@@ -45,7 +45,7 @@ defmodule RaggedWeb.News.Tree do
       </small>
       <p></p>
       <small>
-      <%# HTML.raw state_table(@uistate) %>
+      <%= HTML.raw state_table(@uistate) %>
       </small>
     </div>
     <div class='mobile-only'>

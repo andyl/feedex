@@ -34,3 +34,5 @@ import_config "#{Mix.env()}.exs"
 
 config :ragged_web, RaggedWeb.Endpoint, live_view: [signing_salt: "asdf"]
 
+config :live_editable, css_framework: "bootstrap4"
+

@@ -1,19 +1,19 @@
 use Mix.Config
 
-config :ragged_data, RaggedData.Repo,
+config :feedex_data, FeedexData.Repo,
   username: "postgres",
   password: "postgres",
-  database: "ragged_data_prod",
+  database: "feedex_data_prod",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
-config :ragged_data, RaggedData.Influx,
-  database: "inf_ragged_prod"
+config :feedex_data, FeedexData.Influx,
+  database: "inf_feedex_prod"
 
 # ---------------------------------------------------
 
-config :ragged_web, RaggedWeb.Endpoint,
+config :feedex_web, FeedexWeb.Endpoint,
   url: [host: "localhost", port: 5060],
   cache_static_manifest: "priv/static/cache_manifest.json",
   check_origin: false,
@@ -22,7 +22,7 @@ config :ragged_web, RaggedWeb.Endpoint,
 
 config :logger, level: :info
 
-config :ragged_web, RaggedWeb.Endpoint,
+config :feedex_web, FeedexWeb.Endpoint,
   http: [:inet6, port: String.to_integer(System.get_env("PORT") || "5060")],
   secret_key_base: "veryverysecretkeyeryverysecretkeyveryverysecretkeyveryverysecretkey"
 

@@ -1,0 +1,8 @@
+<h3 style='margin-top: 20px;'>ABOUT</h3>
+
+<p>
+Simple RSS Aggregator built with Phoenix and Phoenix LiveView.
+</p>
+<p>
+<a target="_blank" href="http://github.com/andyl/feedex">Source</a>
+</p>

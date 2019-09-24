@@ -1,16 +1,16 @@
 use Mix.Config
 
 # Configure your database
-config :ragged_data, RaggedData.Repo,
+config :feedex_data, FeedexData.Repo,
   username: "postgres",
   password: "postgres",
-  database: "ragged_data_test",
+  database: "feedex_data_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :ragged_web, RaggedWeb.Endpoint,
+config :feedex_web, FeedexWeb.Endpoint,
   http: [port: 4001],
   server: true
 

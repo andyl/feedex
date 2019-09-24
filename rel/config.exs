@@ -46,13 +46,13 @@ end
 # when running `mix distillery.release`, the first release in the file
 # will be used by default
 
-release :ragged do
+release :feedex do
   set version: "0.1.0"
   set applications: [
     :runtime_tools,
-    ragged_client: :permanent,
-    ragged_data: :permanent,
-    ragged_web: :permanent
+    feedex_client: :permanent,
+    feedex_data: :permanent,
+    feedex_web: :permanent
   ]
 end
 

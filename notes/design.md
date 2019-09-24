@@ -1,15 +1,15 @@
-# Ragged Design Notes
+# Feedex Design Notes
 
 ## Applications
 
 | APP             | Generator                | Purpose                 |
 |-----------------|--------------------------|-------------------------|
-| x ragged_client | mix new ragged_client    | HTML Client - Reads RSS |
-| x ragged_data   | new.phx.ecto ragged_data | Ecto Interface          |
-| x ragged_job    | mix new ragged_job       | Scheduled RSS Sync Jobs |
-| x ragged_web    | new.phx.web ragged_web   | Web UI                  |
-| - ragged_term   | mix new ragged_term      | Terminal UI             |
-| - ragged_api    | new.phx.web ragged_api   | GraphQL API             |
+| x feedex_client | mix new feedex_client    | HTML Client - Reads RSS |
+| x feedex_data   | new.phx.ecto feedex_data | Ecto Interface          |
+| x feedex_job    | mix new feedex_job       | Scheduled RSS Sync Jobs |
+| x feedex_web    | new.phx.web feedex_web   | Web UI                  |
+| - feedex_term   | mix new feedex_term      | Terminal UI             |
+| - feedex_api    | new.phx.web feedex_api   | GraphQL API             |
 
 ## Schema
 
@@ -31,23 +31,23 @@ Key API Calls:
 
 | App          | Tool             | Purpose                  |
 |--------------|------------------|--------------------------|
-| RaggedClient | ElixirFeedParser | RSS Parsing              |
-| RaggedJob    | Oban             | Background Job Runner    |
-| RaggedJob    | Quantum          | Cron-like Job Scheduling |
-| RaggedWeb    | LiveView         | Dynamic UI               |
-| RaggedWeb    | Pets             | ETS Caching              |
+| FeedexClient | ElixirFeedParser | RSS Parsing              |
+| FeedexJob    | Oban             | Background Job Runner    |
+| FeedexJob    | Quantum          | Cron-like Job Scheduling |
+| FeedexWeb    | LiveView         | Dynamic UI               |
+| FeedexWeb    | Pets             | ETS Caching              |
 
 ## Persistence
 
-RaggedData uses Postgres with the standard Ecto tooling.
+FeedexData uses Postgres with the standard Ecto tooling.
 
-RaggedWeb caches UiState in ETS tables backed by files on disk. 
+FeedexWeb caches UiState in ETS tables backed by files on disk. 
 
 ## UiState
 
 Purpose:
 
-- core to RaggedWeb LiveView
+- core to FeedexWeb LiveView
 - backed by PersistentETS
 - used by PushState
 

@@ -6,8 +6,8 @@
 - [ ] Release: CI
 - [ ] Release: Practice Versioning
 
-- [ ] Deploy: Configure domain (ragged.bugmark.tech)
-- [ ] Deploy: Setup port forwarding (ragged.bugmark.tech -> 5060)
+- [ ] Deploy: Configure domain (feedex.bugmark.tech)
+- [ ] Deploy: Setup port forwarding (feedex.bugmark.tech -> 5060)
 - [ ] Deploy: Setup SSH / LetsEncrypt
 
 - [ ] Operations: backup/restore

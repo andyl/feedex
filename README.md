@@ -1,4 +1,4 @@
-# Ragged
+# Feedex
 
 Simple RSS Aggregator
 
@@ -23,21 +23,21 @@ Simple RSS Aggregator
 
 Create the database and run the migrations.  Then:
 
-- edit the SystemD service file in `rel/ragged.service`
-- `sudo cp rel/ragged.service /etc/systemd/system`
-- `sudo chmod 644 /etc/systemd/system/ragged.service`
+- edit the SystemD service file in `rel/feedex.service`
+- `sudo cp rel/feedex.service /etc/systemd/system`
+- `sudo chmod 644 /etc/systemd/system/feedex.service`
 
 Start the service with SystemD
 
-- `sudo systemctl start ragged`
-- `sudo systemctl status ragged`
-- `sudo systemctl restart ragged`
-- `sudo systemctl stop ragged`
-- `sudo journalctl -u ragged -f`
+- `sudo systemctl start feedex`
+- `sudo systemctl status feedex`
+- `sudo systemctl restart feedex`
+- `sudo systemctl stop feedex`
+- `sudo journalctl -u feedex -f`
 
 Make sure your service starts when the system reboots
 
-- `sudo systemctl enable ragged`
+- `sudo systemctl enable feedex`
 
 Reboot and test!
 

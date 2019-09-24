@@ -1,9 +1,9 @@
 # Remove all application data
 # > mix run priv/repo/clear.exs
 
-alias RaggedData.Ctx.Account.{User, Folder, Register}
-alias RaggedData.Ctx.News.{Feed, Post}
-alias RaggedData.Repo
+alias FeedexData.Ctx.Account.{User, Folder, Register}
+alias FeedexData.Ctx.News.{Feed, Post}
+alias FeedexData.Repo
 
 Repo.delete_all(Post)
 Repo.delete_all(Feed)

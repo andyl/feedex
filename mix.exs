@@ -1,4 +1,4 @@
-defmodule Ragged.MixProject do
+defmodule Feedex.MixProject do
   use Mix.Project
 
   def project do

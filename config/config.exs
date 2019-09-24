@@ -1,25 +1,25 @@
 import Config
 
-config :ragged_data,
-  ecto_repos: [RaggedData.Repo]
+config :feedex_data,
+  ecto_repos: [FeedexData.Repo]
 
-config :ragged_web,
+config :feedex_web,
   generators: [context_app: false]
 
-config :ragged_web, RaggedWeb.Endpoint,
+config :feedex_web, FeedexWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "7+ofwaUftnfag5VLUeS90Hs50uMUOWmTbbh3Kx2GGeFNPyizWJTI6clwH/0VV8NX",
-  render_errors: [view: RaggedWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: RaggedWeb.PubSub, adapter: Phoenix.PubSub.PG2]
+  render_errors: [view: FeedexWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: FeedexWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
-config :ragged_job, RaggedJob.Scheduler,
+config :feedex_job, FeedexJob.Scheduler,
   jobs: [
     # {"*/15 * * * *",   fn -> System.cmd("rm", ["/tmp/tmp_"]) end},
     # {"0 18-6/2 * * *", fn -> :mnesia.backup('/var/backup/mnesia') end},
     # {"@daily",         {Backup, :backup, []}}
     # {"* * * * *",      {IO, :puts, ["CRON JOB"]}}
-    {"* * * * *",        {RaggedData.Metrics.AppPoller, :post_counts, []}},
-    {"*/3 * * * *",      {RaggedJob, :sync_next, []}}
+    {"* * * * *",        {FeedexData.Metrics.AppPoller, :post_counts, []}},
+    {"*/3 * * * *",      {FeedexJob, :sync_next, []}}
   ]
 
 config :telemetry_poller, :default, vm_measurements: :default, period: 30000
@@ -32,7 +32,7 @@ config :phoenix, :json_library, Jason
 
 import_config "#{Mix.env()}.exs"
 
-config :ragged_web, RaggedWeb.Endpoint, live_view: [signing_salt: "asdf"]
+config :feedex_web, FeedexWeb.Endpoint, live_view: [signing_salt: "asdf"]
 
 config :phoenix_live_editable, css_framework: "bootstrap4"
 

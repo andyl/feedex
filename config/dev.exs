@@ -1,19 +1,19 @@
 use Mix.Config
 
-config :ragged_data, RaggedData.Repo,
+config :feedex_data, FeedexData.Repo,
   username: "postgres",
   password: "postgres",
-  database: "ragged_dev",
+  database: "feedex_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
-config :ragged_data, RaggedData.Influx,
-  database: "inf_ragged_dev"
+config :feedex_data, FeedexData.Influx,
+  database: "inf_feedex_dev"
 
 # ---------------------------------------------------
 
-config :ragged_web, RaggedWeb.Endpoint,
+config :feedex_web, FeedexWeb.Endpoint,
   http: [port: 4060],
   debug_errors: true,
   code_reloader: true,
@@ -24,20 +24,20 @@ config :ragged_web, RaggedWeb.Endpoint,
       "--mode",
       "development",
       "--watch-stdin",
-      cd: Path.expand("../apps/ragged_web/assets", __DIR__)
+      cd: Path.expand("../apps/feedex_web/assets", __DIR__)
     ]
   ]
 
 # ---------------------------------------------------
 
-config :ragged_web, RaggedWeb.Endpoint,
+config :feedex_web, FeedexWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/ragged_web/live/.*(ex)$",
-      ~r"lib/ragged_web/views/.*(ex)$",
-      ~r"lib/ragged_web/templates/.*(eex)$"
+      ~r"lib/feedex_web/live/.*(ex)$",
+      ~r"lib/feedex_web/views/.*(ex)$",
+      ~r"lib/feedex_web/templates/.*(eex)$"
     ]
   ]
 

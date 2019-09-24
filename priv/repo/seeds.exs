@@ -1,9 +1,9 @@
 # Add application data
 # > mix run priv/repo/seeds.exs
 
-alias RaggedData.Ctx.Account.{User, Folder, Register, ReadLog}
-alias RaggedData.Ctx.News.{Feed, Post}
-alias RaggedData.Repo
+alias FeedexData.Ctx.Account.{User, Folder, Register, ReadLog}
+alias FeedexData.Ctx.News.{Feed, Post}
+alias FeedexData.Repo
 
 Repo.delete_all(ReadLog)
 Repo.delete_all(Register)

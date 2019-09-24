@@ -1,21 +1,21 @@
-# Ragged Devlog
+# Feedex Devlog
 
 # 2019 Jul 27 Sat
 
-- [x] Add ragged_web
-- [x] Create ragged layout
-- [x] Add ragged_client
-- [x] Get ragged_client#get to return data
+- [x] Add feedex_web
+- [x] Create feedex layout
+- [x] Add feedex_client
+- [x] Get feedex_client#get to return data
 - [x] Get probe to work
-- [x] Setup VCR for ragged_client
-- [x] Setup VCR for ragged_client.url
-- [x] Add ragged_data
-- [x] Build first ragged_data tests
-- [x] Add ragged_jobs
+- [x] Setup VCR for feedex_client
+- [x] Setup VCR for feedex_client.url
+- [x] Add feedex_data
+- [x] Build first feedex_data tests
+- [x] Add feedex_jobs
 
 # 2019 Jul 30 Tue
 
-- [x] Update RaggedData migration
+- [x] Update FeedexData migration
 - [x] Take "Mastering SQL" course
 - [x] Read Ecto Book 
 - [x] Add ecto-data contexts
@@ -35,15 +35,15 @@
 - [x] Test Account Context
 - [x] Build News Context
 - [x] Test News Context
-- [x] Add RaggedJobs.scan(url)
-- [x] Add RaggedJobs.update(url)
-- [x] Add RaggedRunner
-- [x] Add RaggedRunner.start()
-- [x] Add RaggedRunner.stop()
-- [x] Add RaggedRunner.config_show()
-- [x] Add RaggedRunner.config_update()
+- [x] Add FeedexJobs.scan(url)
+- [x] Add FeedexJobs.update(url)
+- [x] Add FeedexRunner
+- [x] Add FeedexRunner.start()
+- [x] Add FeedexRunner.stop()
+- [x] Add FeedexRunner.config_show()
+- [x] Add FeedexRunner.config_update()
 - [x] Add News page
-- [x] Update ragged nav
+- [x] Update feedex nav
 
 # 2019 Aug 01 Thu
 
@@ -147,7 +147,7 @@ Editing Design Notes:
 # 2019 Sep 09 Mon
 
 - [x] Setup seeds with real URLs
-- [x] Create `RaggedJob.sync`
+- [x] Create `FeedexJob.sync`
 - [x] Import live posts
 - [x] Add manual sync button for feed
 - [x] VIEWING: View post
@@ -269,9 +269,9 @@ Editing Design Notes:
 - [ ] Add ToolTips
 
 - [ ] Split scrolling
-- [ ] Expand scan-list for ragged_client
+- [ ] Expand scan-list for feedex_client
 
-- [ ] TEST - unit - RaggedData.Account
+- [ ] TEST - unit - FeedexData.Account
 - [ ] TEST - intc - login/logout 
 - [ ] TEST - intw - login/logout 
 - [ ] TEST - clean up documentation

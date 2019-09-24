@@ -1,0 +1,18 @@
+<div class="jumbotron text-center" style='padding: 1em; margin-top: 40px;'>
+  <h1>Feedex</h1>
+  <p>RSS Aggregator, Elixir Dashboard</p>
+  <%= if @current_user do %>
+    <a role="button" class="btn btn-primary" href="/news">NEWS</a>
+  <% else %>
+    <a role = "button" class="btn btn-primary" href="/sessions/new">LOGIN</a>
+  <% end %>
+</div>
+<div style='margin-top: 60px;' class='text-center'>
+<p>
+Feedex is a simple RSS Aggregator built with Phoenix and Phoenix LiveView.
+</p>
+<p>
+<a target="_blank" href="http://github.com/andyl/feedex">Source</a>
+</p>
+</div>
+

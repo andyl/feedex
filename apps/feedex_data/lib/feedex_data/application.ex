@@ -8,8 +8,8 @@ defmodule FeedexData.Application do
       FeedexData.Repo
     ]
 
-    current_env = Application.get_env(:feedex_data, :environment) || Mix.env()
-    if current_env == :prod || current_env == :dev do
+    current_env = Application.get_env(:feedex_data, :environment)
+    if current_env != :test do
       # FeedexData.Metrics.InspectHandler.setup()
       FeedexData.Metrics.InfluxHandler.setup()
     end

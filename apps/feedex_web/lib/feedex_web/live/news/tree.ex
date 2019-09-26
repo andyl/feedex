@@ -27,7 +27,13 @@ defmodule FeedexWeb.News.Tree do
     uistate = assigns.uistate
     open_folder = uistate.fld_id || get_fld(uistate.reg_id)
     ~L"""
-    <div class='desktop-only'>
+    <div style='margin-top: 8px;' class='desktop-only'>
+      <div class='desktop-only' style='margin-bottom: 4px;'>
+      <small>
+      <%= live_render(@socket, FeedexWeb.TimePstSec, id: "clock") %>
+      </small>
+      <p></p>
+      </div>
       <p></p>
       <%= all_btn(@uistate) %> <%= unread(@counts.all) %><br/>
       <small>

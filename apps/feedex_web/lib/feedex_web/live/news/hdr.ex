@@ -30,11 +30,19 @@ defmodule FeedexWeb.News.Hdr do
   # ----- view helpers -----
   
   defp title(state) do
+    checklink = 
+      """
+      <span style="margin-right: 10px">
+       <a href='#'>
+      <i class='fa fa-check' phx-click='mark-read'></i>
+      </a>  
+      </span>
+      """
     case {state.reg_id, state.fld_id} do
-      {nil    , nil} -> "ALL"
-      {reg_id, nil}  -> register_name(reg_id)
-      {nil, fld_id}  -> folder_name(fld_id)
-    end
+      {nil    , nil} -> checklink <> "ALL"
+      {reg_id, nil}  -> checklink <> register_name(reg_id)
+      {nil, fld_id}  -> checklink <> folder_name(fld_id)
+    end |> HTML.raw()
   end
 
   def mark_all_read(state) do
@@ -75,9 +83,6 @@ defmodule FeedexWeb.News.Hdr do
       end
 
     """
-    <a href='#'>
-    <i class='fa fa-check' phx-click='mark-read' style='margin-right: 10px;'></i>
-    </a>
     <a href='#'>
     <i class='fa fa-redo' phx-click='feed-sync' style='margin-right: 10px;'></i>
     </a>

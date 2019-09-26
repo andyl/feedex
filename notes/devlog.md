@@ -252,8 +252,15 @@ Editing Design Notes:
 
 # TBD
 
-- [ ] Metrics: # of connected clients
-- [ ] Metrics: # feeds, users
+- [ ] Feature: Import/Export Yaml Feed Lists (needs file upload/download)
+
+- [ ] Feature: Metrics / # of connected clients
+- [ ] Feature: Metrics / # feeds, users
+
+- [ ] Feature: Record Reads
+- [ ] Feature: Record Clickthrus
+- [ ] Feature: When visiting post, show the associated feeds
+- [ ] Feature: add a highlight or star function
 
 - [ ] Bug: not remembering post-click
 - [ ] Auth directly thru LiveView in Mount (redirect to login)

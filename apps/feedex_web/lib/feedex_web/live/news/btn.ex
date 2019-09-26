@@ -10,13 +10,8 @@ defmodule FeedexWeb.News.Btn do
 
   def render(assigns) do
     ~L"""
-    <div class='desktop-only' style='margin-top: 8px;'>
-      <div style='margin-bottom: 4px;'>
-      <small>
-      <%= live_render(@socket, FeedexWeb.TimePstSec, id: "clock") %>
-      </small>
-      <p></p>
-      </div>
+    <div class='desktop-only'>
+      <hr/>
       <%= folder_btn(@uistate) %>
       <%= feed_btn(@uistate) %>
     </div>

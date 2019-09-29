@@ -55,13 +55,13 @@ defmodule FeedexWeb.News.Tree do
       </small>
     </div>
     <div class='mobile-only'>
-      <%= all_btn(@uistate) %> <%= unread(@counts.all) %>
+      <%= all_btn(@uistate) %> <%= all_unread(@uistate, @counts.all) %>
       <small>
       <%= for folder <- @treemap do %>
         &emsp;
         &emsp;
         <%= fold_link(@uistate, folder) %>
-        <%= unread(folder.id, @counts.fld) %>
+        <%= fold_unread(@uistate, folder.id, @counts.fld) %>
       <% end %>
       </small>
     </div>
@@ -78,18 +78,53 @@ defmodule FeedexWeb.News.Tree do
     }
   end
 
+  def unread(0), do: ""
+
   def unread(count) do
-    if count == 0 do
-      ""
-    else
       """
       <small><span class="badge badge-light" #{style()}>#{count}</span></small>
       """
-    end |> raw()
+    |> raw()
   end
 
   def unread(id, unread_count) do
     unread(unread_count[id] || 0)
+  end
+
+  # ---
+
+  def check_link(test) do
+    if test do
+    """
+      <span style="margin-right: 10px">
+      <a href='#'>
+      <i class='fa fa-check' phx-click='mark-read'></i>
+      </a>  
+      </span>
+    """
+    else
+      ""
+    end
+  end
+
+  def all_unread(_uistate, 0), do: ""
+
+  def all_unread(uistate, count) do
+      """
+      <small><span class="badge badge-light" #{style()}>#{count}</span></small>
+      #{check_link(uistate.fld_id == nil && uistate.reg_id == nil)}
+      """
+      |> raw()
+  end
+
+  def fold_unread(_uistate, id, 0), do: ""
+
+  def fold_unread(uistate, id, count) do
+      """
+      <small><span class="badge badge-light" #{style()}>#{count[id]}</span></small>
+      #{check_link(uistate.fld_id == id)}
+      """
+      |> raw()
   end
 
   # -----
@@ -148,7 +183,6 @@ defmodule FeedexWeb.News.Tree do
     "style='vertical-align: top; margin-top: 5px; margin-left: 2px;'"
   end
 
-   
   # ----- event handlers -----
 
   def handle_event("view_all", _payload, socket) do
@@ -190,6 +224,17 @@ defmodule FeedexWeb.News.Tree do
     FeedexWeb.Endpoint.broadcast_from(self(), "set_uistate", "TREE_FEED", %{uistate: new_state})
 
     {:noreply, assign(socket, %{uistate: new_state, treemap: socket.assigns.treemap})}
+  end
+
+  def handle_event("mark-read", _click, socket) do
+    FeedexWeb.News.Hdr.mark_all_read(socket.assigns.uistate)
+
+    FeedexWeb.Endpoint.broadcast_from(self(), "read_all", "mark-read", %{})
+
+    treemap = FeedexData.Ctx.Account.cleantree(socket.assigns.uistate.usr_id)
+    counts = gen_counts(socket.assigns.uistate.usr_id)
+
+    {:noreply, assign(socket, %{treemap: treemap, counts: counts})}
   end
 
   # ----- pub/sub handlers -----

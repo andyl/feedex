@@ -97,7 +97,9 @@ defmodule FeedexWeb.News.BodyView do
       FeedexWeb.Endpoint.broadcast_from(self(), "read_one", "CLICK_POST", %{})
     end
 
-    {:noreply, assign(socket, %{uistate: newstate})}
+    posts = all_posts_for(socket.assigns.uistate)
+
+    {:noreply, assign(socket, %{posts: posts, uistate: newstate})}
   end
   
   # ----- pub/sub handlers -----

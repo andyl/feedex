@@ -67,6 +67,16 @@ defmodule FeedexData.Ctx.News do
       where: is_nil(log.id) 
     )
   end
+  
+  # ----- unread_count -----
+
+  def unread_count(uistate) do
+    case {uistate.reg_id, uistate.fld_id} do
+      {nil, nil} -> unread_count_for(uistate.usr_id)
+      {regid, nil} -> unread_count_for(uistate.usr_id, reg_id: regid)
+      {nil, fldid} -> unread_count_for(uistate.usr_id, fld_id: fldid)
+    end
+  end
 
   # ----- unread_count_for -----
 

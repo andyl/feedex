@@ -252,11 +252,11 @@ Editing Design Notes:
 
 # 2019 Sep 22 Sun
 
-- [ ] Get unread count into header (all / folder / feed)
-- [ ] New header title: Folder > Feed [unread count]
-- [ ] Fix read highlight bug
-- [ ] Allcheck on mobile view
-- [ ] Test
+- [x] Get unread count into header (all / folder / feed)
+- [x] New header title: Folder > Feed [unread count]
+- [x] Fix read highlight bug (bodyview)
+- [x] Test
+- [x] Allcheck on mobile view
 
 # TBD
 

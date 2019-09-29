@@ -250,6 +250,14 @@ Editing Design Notes:
 - [x] Metrics: posts by feed
 - [x] Metrics: unread posts by feed
 
+# 2019 Sep 22 Sun
+
+- [ ] Get unread count into header (all / folder / feed)
+- [ ] New header title: Folder > Feed [unread count]
+- [ ] Fix read highlight bug
+- [ ] Allcheck on mobile view
+- [ ] Test
+
 # TBD
 
 - [ ] Feature: Import/Export Yaml Feed Lists (needs file upload/download)

@@ -1,5 +1,4 @@
 defmodule FeedexWeb.News.Tree do
-  
   use Phoenix.LiveView
 
   alias Phoenix.HTML
@@ -15,10 +14,10 @@ defmodule FeedexWeb.News.Tree do
     FeedexWeb.Endpoint.subscribe("tree_mod")
 
     opts = %{
-      uistate: session.uistate, 
+      uistate: session.uistate,
       treemap: FeedexData.Ctx.Account.cleantree(session.uistate.usr_id),
-      counts:  gen_counts(session.uistate.usr_id)
-      }
+      counts: gen_counts(session.uistate.usr_id)
+    }
 
     {:ok, assign(socket, opts)}
   end
@@ -26,6 +25,7 @@ defmodule FeedexWeb.News.Tree do
   def render(assigns) do
     uistate = assigns.uistate
     open_folder = uistate.fld_id || get_fld(uistate.reg_id)
+
     ~L"""
     <div style='margin-top: 8px;' class='desktop-only'>
       <div class='desktop-only' style='margin-bottom: 4px;'>
@@ -61,7 +61,7 @@ defmodule FeedexWeb.News.Tree do
         &emsp;
         &emsp;
         <%= fold_link(@uistate, folder) %>
-        <%= fold_unread(@uistate, folder.id, @counts.fld) %>
+        <%= fold_unread(@uistate, folder.id, @counts.fld[folder.id]) %>
       <% end %>
       </small>
     </div>
@@ -69,7 +69,7 @@ defmodule FeedexWeb.News.Tree do
   end
 
   # ----- view helpers -----
- 
+
   def gen_counts(user_id) do
     %{
       all: FeedexData.Ctx.News.unread_count_for(user_id),
@@ -81,9 +81,9 @@ defmodule FeedexWeb.News.Tree do
   def unread(0), do: ""
 
   def unread(count) do
-      """
-      <small><span class="badge badge-light" #{style()}>#{count}</span></small>
-      """
+    """
+    <small><span class="badge badge-light" #{style()}>#{count}</span></small>
+    """
     |> raw()
   end
 
@@ -93,8 +93,9 @@ defmodule FeedexWeb.News.Tree do
 
   # ---
 
-  def check_link(test) do
-    if test do
+  def check_link(false), do: ""
+
+  def check_link(_) do
     """
       <span style="margin-right: 10px">
       <a href='#'>
@@ -102,29 +103,28 @@ defmodule FeedexWeb.News.Tree do
       </a>  
       </span>
     """
-    else
-      ""
-    end
   end
 
   def all_unread(_uistate, 0), do: ""
+  def all_unread(_uistate, nil), do: ""
 
   def all_unread(uistate, count) do
-      """
-      <small><span class="badge badge-light" #{style()}>#{count}</span></small>
-      #{check_link(uistate.fld_id == nil && uistate.reg_id == nil)}
-      """
-      |> raw()
+    """
+    <small><span class="badge badge-light" #{style()}>#{count}</span></small>
+    #{check_link(uistate.fld_id == nil && uistate.reg_id == nil)}
+    """
+    |> raw()
   end
 
-  def fold_unread(_uistate, id, 0), do: ""
+  def fold_unread(_uistate, _id, 0), do: ""
+  def fold_unread(_uistate, _id, nil), do: ""
 
   def fold_unread(uistate, id, count) do
-      """
-      <small><span class="badge badge-light" #{style()}>#{count[id]}</span></small>
-      #{check_link(uistate.fld_id == id)}
-      """
-      |> raw()
+    """
+    <small><span class="badge badge-light" #{style()}>#{count}</span></small>
+    #{check_link(uistate.fld_id == id)}
+    """
+    |> raw()
   end
 
   # -----
@@ -134,9 +134,10 @@ defmodule FeedexWeb.News.Tree do
       "<b>ALL</b>"
     else
       "<a phx-click='view_all' href='#'>ALL</a>"
-    end |> HTML.raw()
+    end
+    |> HTML.raw()
   end
-   
+
   def fold_link(uistate, folder) do
     if uistate.fld_id == folder.id do
       "<b>#{folder.name}</b>"
@@ -146,7 +147,8 @@ defmodule FeedexWeb.News.Tree do
       #{folder.name}
       </a>
       """
-    end |> HTML.raw()
+    end
+    |> HTML.raw()
   end
 
   def reg_link(uistate, register) do
@@ -156,9 +158,10 @@ defmodule FeedexWeb.News.Tree do
       """
       <a href='#' phx-click='clk_feed' phx-value-regid='#{register.id}'>#{register.name}</a> 
       """
-    end |> HTML.raw()
+    end
+    |> HTML.raw()
   end
-  
+
   def get_fld(regid) do
     case regid do
       nil -> nil
@@ -170,15 +173,15 @@ defmodule FeedexWeb.News.Tree do
   def state_table(uistate) do
     """
       <table class='table table-sm'>
-        <tr><td>Mode</td> <td>#{ uistate.mode   }</td></tr>
-        <tr><td>UsrId</td><td>#{ uistate.usr_id }</td></tr>
-        <tr><td>FldId</td><td>#{ uistate.fld_id }</td></tr>
-        <tr><td>RegId</td><td>#{ uistate.reg_id }</td></tr>
-        <tr><td>PstId</td><td>#{ uistate.pst_id }</td></tr>
+        <tr><td>Mode</td> <td>#{uistate.mode}</td></tr>
+        <tr><td>UsrId</td><td>#{uistate.usr_id}</td></tr>
+        <tr><td>FldId</td><td>#{uistate.fld_id}</td></tr>
+        <tr><td>RegId</td><td>#{uistate.reg_id}</td></tr>
+        <tr><td>PstId</td><td>#{uistate.pst_id}</td></tr>
       </table>
     """
   end
-   
+
   def style do
     "style='vertical-align: top; margin-top: 5px; margin-left: 2px;'"
   end
@@ -186,21 +189,24 @@ defmodule FeedexWeb.News.Tree do
   # ----- event handlers -----
 
   def handle_event("view_all", _payload, socket) do
-    opts = %{ 
-      mode: "view", 
+    opts = %{
+      mode: "view",
       usr_id: socket.assigns.uistate.usr_id,
-      reg_id: nil, 
-      fld_id: nil, 
-      pst_id: nil, 
+      reg_id: nil,
+      fld_id: nil,
+      pst_id: nil
     }
+
     new_state = Map.merge(socket.assigns.uistate, opts)
+
     FeedexWeb.Endpoint.broadcast_from(self(), "set_uistate", "BTN_VIEW_ALL", %{uistate: new_state})
+
     {:noreply, assign(socket, %{uistate: opts})}
   end
 
   def handle_event("clk_folder", %{"fldid" => fldid}, socket) do
     opts = %{
-      mode:   "view",
+      mode: "view",
       fld_id: Integer.parse(fldid) |> elem(0),
       reg_id: nil,
       pst_id: nil
@@ -214,7 +220,7 @@ defmodule FeedexWeb.News.Tree do
 
   def handle_event("clk_feed", %{"regid" => regid}, socket) do
     opts = %{
-      mode:   "view",
+      mode: "view",
       reg_id: Integer.parse(regid) |> elem(0),
       fld_id: nil,
       pst_id: nil
@@ -245,18 +251,18 @@ defmodule FeedexWeb.News.Tree do
 
   def handle_info(%{topic: "tree_mod", payload: new_state}, socket) do
     usrid = socket.assigns.uistate.usr_id
-    newcounts = usrid |> gen_counts() 
-    newtree   = usrid |> FeedexData.Ctx.Account.cleantree()
+    newcounts = usrid |> gen_counts()
+    newtree = usrid |> FeedexData.Ctx.Account.cleantree()
     {:noreply, assign(socket, %{counts: newcounts, treemap: newtree, uistate: new_state.uistate})}
   end
 
   def handle_info(%{topic: "read_one"}, socket) do
-    newcounts = socket.assigns.uistate.usr_id |> gen_counts() 
+    newcounts = socket.assigns.uistate.usr_id |> gen_counts()
     {:noreply, assign(socket, %{counts: newcounts})}
   end
 
   def handle_info(%{topic: "read_all"}, socket) do
-    newcounts = socket.assigns.uistate.usr_id |> gen_counts() 
+    newcounts = socket.assigns.uistate.usr_id |> gen_counts()
     {:noreply, assign(socket, %{counts: newcounts})}
   end
 end

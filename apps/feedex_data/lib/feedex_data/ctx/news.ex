@@ -147,6 +147,10 @@ defmodule FeedexData.Ctx.News do
         body:       pst.body,
         author:     pst.author,
         link:       pst.link,
+        fld_name:   fld.name,
+        fld_id:     fld.id,
+        reg_name:   reg.name,
+        reg_id:     reg.id,
         updated_at: pst.updated_at,
         read_log:   log.id
       }

@@ -28,7 +28,7 @@ defmodule FeedexWeb.News.BodyView do
       </tr>
       <tr style='background-color: lightgrey;'><td colspan=3>
       <small>
-      <%= HTML.raw post.body %>
+      <%= byline(post) %> <%= HTML.raw post.body %>
       </small>
       </td></tr>
     <% else %>
@@ -49,6 +49,23 @@ defmodule FeedexWeb.News.BodyView do
   end
 
   # ----- view helpers -----
+  
+  def byline(post) do
+    """
+    <a href='#' phx-click='fld-clk' phx-value-fldid=#{post.fld_id}>#{post.fld_name}</a> 
+    > 
+    <a href='#' phx-click='reg-clk' phx-value-regid=#{post.reg_id}>#{post.reg_name}</a> (#{host_for(post)})
+    """ |> HTML.raw()
+  end
+
+  def host_for(post) do
+    URI.parse(post.link).host
+    |> String.replace("co.uk", "couk")
+    |> String.replace("com.br", "combr")
+    |> String.split(".") 
+    |> Enum.take(-2) 
+    |> List.first()
+  end
   
   def time_ago(date) do
     delta = Timex.diff(Timex.now(), date, :minutes)
@@ -100,6 +117,26 @@ defmodule FeedexWeb.News.BodyView do
     posts = all_posts_for(socket.assigns.uistate)
 
     {:noreply, assign(socket, %{posts: posts, uistate: newstate})}
+  end
+
+  def handle_event("fld-clk", %{"fldid" => fldid}, socket) do
+    opts = %{
+      fld_id: Integer.parse(fldid) |> elem(0),
+      reg_id: nil
+    }
+    new_state = Map.merge(socket.assigns.uistate, opts)
+    FeedexWeb.Endpoint.broadcast_from(self(), "set_uistate", "POSTCLK_FLD", %{uistate: new_state})
+    {:noreply, assign(socket, %{uistate: new_state})}
+  end
+  
+  def handle_event("reg-clk", %{"regid" => regid}, socket) do
+    opts = %{
+      reg_id: Integer.parse(regid) |> elem(0),
+      fld_id: nil
+    }
+    new_state = Map.merge(socket.assigns.uistate, opts)
+    FeedexWeb.Endpoint.broadcast_from(self(), "set_uistate", "POSTCLK_REG", %{uistate: new_state})
+    {:noreply, assign(socket, %{uistate: new_state})}
   end
   
   # ----- pub/sub handlers -----

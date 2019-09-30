@@ -255,8 +255,8 @@ Editing Design Notes:
 - [x] Get unread count into header (all / folder / feed)
 - [x] New header title: Folder > Feed [unread count]
 - [x] Fix read highlight bug (bodyview)
-- [x] Test
 - [x] Allcheck on mobile view
+- [x] Add byline to post view
 
 # TBD
 

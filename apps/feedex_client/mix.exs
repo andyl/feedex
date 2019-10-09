@@ -27,8 +27,6 @@ defmodule FeedexClient.MixProject do
   defp deps do
     [
       {:httpotion, "~> 3.1.0"},
-      # {:elixir_feed_parser, "~> 2.1.0"},
-      # {:elixir_feed_parser, path: "~/src/elixir-feed-parser"},
       {:elixir_feed_parser, github: "andyl/elixir-feed-parser"},
       {:exvcr, "~> 0.10", only: [:test]}
     ]

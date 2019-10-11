@@ -15,9 +15,7 @@ defmodule FeedexData.DataCase do
   use ExUnit.CaseTemplate
 
   alias FeedexData.Repo
-  alias FeedexData.Ctx.Account
   alias FeedexData.Ctx.Account.{User, Folder, Register, ReadLog}
-  alias FeedexData.Ctx.News
   alias FeedexData.Ctx.News.{Feed, Post}
 
   require Ecto.Query

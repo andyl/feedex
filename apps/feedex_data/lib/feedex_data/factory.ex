@@ -38,5 +38,4 @@ defmodule FeedexData.Factory do
       folder: insert(:folder)
     }
   end
-
 end

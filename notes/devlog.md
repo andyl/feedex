@@ -260,7 +260,12 @@ Editing Design Notes:
 
 # TBD
 
-- [ ] Feature: Import/Export Yaml Feed Lists (needs file upload/download)
+- [ ] Blockwords: by account
+- [ ] Blockwords: apply to folders (on/off - default off)
+
+- [ ] Mktg: Study antennapod
+
+- [ ] Feature: OPML Import/Export (needs file upload/download)
 
 - [ ] Feature: Metrics / # of connected clients
 - [ ] Feature: Metrics / # feeds, users

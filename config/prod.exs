@@ -22,7 +22,8 @@ config :feedex_web, FeedexWeb.Endpoint,
 
 config :logger, level: :info
 
+key = "veryverysecretkeyeryverysecretkeyveryverysecretkeyveryverysecretkey"
 config :feedex_web, FeedexWeb.Endpoint,
-  http: [:inet6, port: String.to_integer(System.get_env("PORT") || "5060")],
-  secret_key_base: "veryverysecretkeyeryverysecretkeyveryverysecretkeyveryverysecretkey"
+  http: [:inet6, port: "5060"],
+  secret_key_base: key
 

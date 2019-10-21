@@ -13,17 +13,15 @@ config :feedex_data, FeedexData.Influx,
 
 # ---------------------------------------------------
 
+key = "veryverysecretkeyeryverysecretkeyveryverysecretkeyveryverysecretkey"
 config :feedex_web, FeedexWeb.Endpoint,
   url: [host: "localhost", port: 5060],
+  http: [:inet6, port: "5060"],
   cache_static_manifest: "priv/static/cache_manifest.json",
   check_origin: false,
   server: true,
+  secret_key_base: key,
   root: "."
 
 config :logger, level: :info
-
-key = "veryverysecretkeyeryverysecretkeyveryverysecretkeyveryverysecretkey"
-config :feedex_web, FeedexWeb.Endpoint,
-  http: [:inet6, port: "5060"],
-  secret_key_base: key
 

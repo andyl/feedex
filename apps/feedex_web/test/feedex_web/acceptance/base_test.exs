@@ -51,7 +51,7 @@ defmodule Acceptance.BaseTest do
 
   describe "typical init usage with setup" do
     setup [:load_test_data, :do_login]
-    
+
     test "works with minimal code" do
       assert current_path() == "/news"
     end

@@ -39,6 +39,13 @@ defmodule FeedexData.DataCase do
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(FeedexData.Repo)
 
+    Repo.delete_all(ReadLog)
+    Repo.delete_all(Register)
+    Repo.delete_all(Folder)
+    Repo.delete_all(Post)
+    Repo.delete_all(Feed)
+    Repo.delete_all(User)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(FeedexData.Repo, {:shared, self()})
     end
@@ -101,6 +108,7 @@ defmodule FeedexData.DataCase do
         }
       ]
     })
-    :ok 
+
+    :ok
   end
 end

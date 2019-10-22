@@ -10,10 +10,10 @@ defmodule FeedexData.Metrics.InfluxHandler do
       [:feedex_data, :repo, :query]
     ]
 
-    IO.inspect "======================================="
-    IO.inspect "STARTING INFLUX TELEMETRY"
-    IO.inspect events
-    IO.inspect "======================================="
+    # IO.inspect "======================================="
+    # IO.inspect "STARTING INFLUX TELEMETRY"
+    # IO.inspect events
+    # IO.inspect "======================================="
 
     :telemetry.attach_many(
       "inspect-reporter",

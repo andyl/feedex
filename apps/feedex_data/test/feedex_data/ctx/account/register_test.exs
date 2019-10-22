@@ -25,7 +25,7 @@ defmodule FeedexData.Ctx.Account.RegisterTest do
       assert count(Register) == 1
     end
   end
-  
+
   describe "using Factory" do
     test "building an entity" do
       assert build(:register)

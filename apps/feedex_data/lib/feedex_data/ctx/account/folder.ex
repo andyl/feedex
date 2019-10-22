@@ -8,6 +8,7 @@ defmodule FeedexData.Ctx.Account.Folder do
 
   schema "folders" do
     field(:name, :string)
+    field(:stopwords, :string)
     timestamps(type: :utc_datetime)
 
     belongs_to :user, Account.User
@@ -19,7 +20,7 @@ defmodule FeedexData.Ctx.Account.Folder do
 
   def changeset(folder, attrs) do
     required_fields = [:name]
-    optional_fields = [:user_id]
+    optional_fields = [:user_id, :stopwords]
 
     folder
     |> cast(attrs, required_fields ++ optional_fields)

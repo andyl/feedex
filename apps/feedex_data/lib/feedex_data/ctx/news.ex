@@ -64,6 +64,8 @@ defmodule FeedexData.Ctx.News do
       join:  reg in Register   , on: reg.feed_id == fee.id,
       join:  fld in Folder     , on: reg.folder_id == fld.id,
       where: fld.user_id == ^userid,
+      where: not fragment("? ~* ?", pst.title, fld.stopwords),
+      or_where: is_nil(fld.stopwords),
       where: is_nil(log.id) 
     )
   end
@@ -105,6 +107,8 @@ defmodule FeedexData.Ctx.News do
       join:  reg in Register   , on: reg.feed_id == fee.id,
       join:  fld in Folder     , on: reg.folder_id == fld.id,
       where: fld.user_id == ^userid,
+      where: not fragment("? ~* ?", pst.title, fld.stopwords),
+      or_where: is_nil(fld.stopwords),
       where: is_nil(log.id), 
       select: count(pst.id)
     )
@@ -138,6 +142,8 @@ defmodule FeedexData.Ctx.News do
       join:  reg in Register   , on: reg.feed_id == fee.id,
       join:  fld in Folder     , on: reg.folder_id == fld.id,
       where: fld.user_id == ^user_id,
+      where: not fragment("? ~* ?", pst.title, fld.stopwords),
+      or_where: is_nil(fld.stopwords),
       order_by: [desc: pst.id],
       limit: 100,
       select: %{

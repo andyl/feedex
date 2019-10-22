@@ -45,7 +45,7 @@ defmodule FeedexWeb.MixProject do
       # ----- phoenix view helpers
       {:phoenix_active_link, "~> 0.2.1"},
       {:phoenix_live_view, "~> 0.3.1"},
-      {:phoenix_live_editable, path: "~/src/phoenix_live_editable"},
+      {:phoenix_live_editable, path: "~/lib/phoenix_live_editable"},
       # ----- util
       {:jason, "~> 1.0"},
       {:gettext, "~> 0.11"},

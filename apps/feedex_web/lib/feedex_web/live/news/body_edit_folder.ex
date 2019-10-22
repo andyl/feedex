@@ -10,14 +10,17 @@ defmodule FeedexWeb.News.BodyEditFolder do
 
   def mount(session, socket) do
     folder_id = session.uistate.fld_id
-    reg_count = 
+
+    reg_count =
       from(r in Register, select: count(r.id), where: r.folder_id == ^folder_id)
       |> Repo.one()
+
     opts = %{
       folder: Repo.get(Folder, folder_id),
       feed_count: reg_count,
       uistate: session.uistate
     }
+
     {:ok, assign(socket, opts)}
   end
 
@@ -26,7 +29,8 @@ defmodule FeedexWeb.News.BodyEditFolder do
     <div>
     <h1>EDIT FOLDER</h1>
     <table class="table">
-    <tr><td>Folder Name:</td><td><%= live_edit(assigns, @folder.name, type: "text", id: "name", on_submit: "rename") %></td></tr>
+    <tr><td>Folder Name:</td><td><%= live_edit(assigns, @folder.name, type: "text", id: "name", on_submit: "set_name") %></td></tr>
+    <tr><td>Stopwords:</td><td><%= live_edit(assigns, @folder.stopwords || "NA", type: "text", id: "stopwords", on_submit: "set_stopwords") %></td></tr>
     <tr><td>Folder ID:</td><td><%= @folder.id %></td></tr>
     <tr><td>Num Feeds:</td><td><%= @feed_count %></td></tr>
     </table>
@@ -37,17 +41,48 @@ defmodule FeedexWeb.News.BodyEditFolder do
     </div>
     """
   end
-  
+
   # ----- event handlers -----
 
-  def handle_event("rename", %{"editable_text" => newname}, socket) do
+  def handle_event("set_name", %{"editable_text" => newname}, socket) do
     Folder
     |> Repo.get(socket.assigns.uistate.fld_id)
     |> Ecto.Changeset.change(name: newname)
     |> Repo.update()
-    new_state = 
+
+    new_state =
       socket.assigns.uistate
       |> Map.merge(%{mode: "view"})
+
+    FeedexWeb.Endpoint.broadcast_from(self(), "tree_mod", "rename_folder", %{uistate: new_state})
+    {:noreply, assign(socket, %{uistate: new_state})}
+  end
+
+  def handle_event("set_stopwords", %{"editable_text" => new_words}, socket) do
+    cleanwords =
+      case new_words do
+        "" ->
+          nil
+
+        words ->
+          words
+          |> String.split("|")
+          |> Enum.map(&String.trim/1)
+          |> Enum.map(&String.downcase/1)
+          |> Enum.sort()
+          |> Enum.uniq()
+          |> Enum.join("|")
+      end
+
+    Folder
+    |> Repo.get(socket.assigns.uistate.fld_id)
+    |> Ecto.Changeset.change(stopwords: cleanwords)
+    |> Repo.update()
+
+    new_state =
+      socket.assigns.uistate
+      |> Map.merge(%{mode: "view"})
+
     FeedexWeb.Endpoint.broadcast_from(self(), "tree_mod", "rename_folder", %{uistate: new_state})
     {:noreply, assign(socket, %{uistate: new_state})}
   end
@@ -55,13 +90,15 @@ defmodule FeedexWeb.News.BodyEditFolder do
   def handle_event("delete", _payload, socket) do
     Repo.get(Folder, socket.assigns.uistate.fld_id)
     |> Repo.delete()
-    new_state = 
+
+    new_state =
       socket.assigns.uistate
       |> Map.merge(%{fld_id: nil, mode: "view"})
+
     FeedexWeb.Endpoint.broadcast_from(self(), "tree_mod", "remove_folder", %{uistate: new_state})
     {:noreply, assign(socket, %{uistate: new_state})}
   end
-  
+
   # ----- pub/sub handlers -----
 
   def handle_info(_params, socket) do

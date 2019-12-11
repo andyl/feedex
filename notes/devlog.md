@@ -265,7 +265,16 @@ Editing Design Notes:
 
 # TBD
 
+Note 2019-Dec-11:
+- test runner is not working
+- problem is with quantum scheduler (telemetry poller, jobs)
+- possible solution: replace quantum with oban(?)
+
+- [ ] Feature: hide read articles
+- [ ] Feature: star important articles
+- [ ] Feature: search
 - [ ] Feature: OPML Import/Export (needs file upload/download)
+
 - [ ] Redeploy using feedex_rel
 
 - [ ] Feature: Add badge as runtime CFG

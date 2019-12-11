@@ -22,7 +22,9 @@ config :feedex_job, FeedexJob.Scheduler,
     {"*/3 * * * *",      {FeedexJob, :sync_next, []}}
   ]
 
-config :telemetry_poller, :default, vm_measurements: :default, period: 30_000
+unless Mix.env() == :test do
+  config :telemetry_poller, :default, vm_measurements: :default, period: 30_000
+end
 
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

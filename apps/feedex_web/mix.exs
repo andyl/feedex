@@ -41,10 +41,10 @@ defmodule FeedexWeb.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_pubsub, "~> 1.1"},
-      {:phoenix_ecto, "~> 4.0.0"},
+      {:phoenix_ecto, "~> 4.1"},
       # ----- phoenix view helpers
-      {:phoenix_active_link, "~> 0.2.1"},
-      {:phoenix_live_view, "~> 0.3.1"},
+      {:phoenix_active_link, "~> 0.3"},
+      {:phoenix_live_view, "~> 0.4"},
       {:phoenix_live_editable, path: "~/lib/phoenix_live_editable"},
       # ----- util
       {:jason, "~> 1.0"},
@@ -60,7 +60,7 @@ defmodule FeedexWeb.MixProject do
       {:typed_struct, "~> 0.1.4"},
       # ----- umbrella apps
       {:feedex_data, in_umbrella: true},
-      {:feedex_job, in_umbrella: true},
+      {:feedex_job, in_umbrella: true, only: [:dev, :prod]}
     ]
   end
 end

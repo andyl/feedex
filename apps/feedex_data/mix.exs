@@ -46,8 +46,8 @@ defmodule FeedexData.MixProject do
       {:modex, path: "~/src/modex"},
       {:jason, "~> 1.0"},
       # ----- metrics
-      {:telemetry, "~> 0.4.0"},
-      {:telemetry_poller, "~> 0.4.0"}
+      {:telemetry, "~> 0.4.0", only: [:dev, :prod]},
+      {:telemetry_poller, "~> 0.4.0", only: [:dev, :prod]}
     ]
   end
 

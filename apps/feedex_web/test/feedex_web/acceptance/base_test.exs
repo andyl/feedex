@@ -43,9 +43,8 @@ defmodule Acceptance.BaseTest do
     end
 
 
-
-
     test "login with function" do
+      IO.inspect "---------------------------------------"
       load_test_data()
       do_login()
       assert current_path() == "/news"

@@ -268,8 +268,6 @@ Editing Design Notes:
 - [ ] Feature: OPML Import/Export (needs file upload/download)
 - [ ] Redeploy using feedex_rel
 
-- [ ] Mktg: Study antennapod
-
 - [ ] Feature: Add badge as runtime CFG
 
 - [ ] Feature: Metrics / # of connected clients

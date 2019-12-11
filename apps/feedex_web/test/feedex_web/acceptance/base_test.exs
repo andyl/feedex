@@ -42,6 +42,9 @@ defmodule Acceptance.BaseTest do
       assert current_path() == "/"
     end
 
+
+
+
     test "login with function" do
       load_test_data()
       do_login()
@@ -49,11 +52,12 @@ defmodule Acceptance.BaseTest do
     end
   end
 
-  describe "typical init usage with setup" do
-    setup [:load_test_data, :do_login]
 
-    test "works with minimal code" do
-      assert current_path() == "/news"
-    end
+  describe "typical init usage with setup" do
+    # setup [:load_test_data, :do_login]
+    #
+    # test "works with minimal code" do
+    #   assert current_path() == "/news"
+    # end
   end
 end

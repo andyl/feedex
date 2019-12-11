@@ -1,5 +1,5 @@
 defmodule FeedexData.Ctx.News.PostTest do 
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   use FeedexData.DataCase
 
   test "greet the world" do

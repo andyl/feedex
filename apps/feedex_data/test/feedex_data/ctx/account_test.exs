@@ -1,5 +1,5 @@
 defmodule FeedexData.Ctx.AccountTest do 
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   use FeedexData.DataCase
 
   describe "#count" do

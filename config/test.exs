@@ -1,6 +1,5 @@
 use Mix.Config
 
-# Configure your database
 config :feedex_data, FeedexData.Repo,
   username: "postgres",
   password: "postgres",

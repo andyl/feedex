@@ -1,5 +1,5 @@
 defmodule FeedexJobTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   use FeedexData.DataCase
   use ExVCR.Mock
 

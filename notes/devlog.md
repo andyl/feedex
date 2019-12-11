@@ -275,8 +275,6 @@ Note 2019-Dec-11:
 - [ ] Feature: search
 - [ ] Feature: OPML Import/Export (needs file upload/download)
 
-- [ ] Redeploy using feedex_rel
-
 - [ ] Feature: Add badge as runtime CFG
 
 - [ ] Feature: Metrics / # of connected clients
@@ -287,6 +285,7 @@ Note 2019-Dec-11:
 - [ ] Feature: When visiting post, show the associated feeds
 - [ ] Feature: add a highlight or star function
 
+- [ ] Redeploy using feedex_rel
 - [ ] Bug: not remembering post-click
 - [ ] Auth directly thru LiveView in Mount (redirect to login)
 

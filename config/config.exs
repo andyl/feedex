@@ -1,16 +1,21 @@
 import Config
 
 config :feedex_data,
-  ecto_repos: [FeedexData.Repo]
+  ecto_repos: [FeedexData.Repo],
+  env: Mix.env()
 
 config :feedex_web,
-  generators: [context_app: false]
+  generators: [context_app: false],
+  env: Mix.env()
 
 config :feedex_web, FeedexWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "7+ofwaUftnfag5VLUeS90Hs50uMUOWmTbbh3Kx2GGeFNPyizWJTI6clwH/0VV8NX",
   render_errors: [view: FeedexWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: FeedexWeb.PubSub, adapter: Phoenix.PubSub.PG2]
+
+config :feedex_job,
+  env: Mix.env()
 
 config :feedex_job, FeedexJob.Scheduler,
   jobs: [

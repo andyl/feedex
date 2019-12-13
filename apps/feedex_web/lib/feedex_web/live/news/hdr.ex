@@ -8,7 +8,11 @@ defmodule FeedexWeb.News.Hdr do
     FeedexWeb.Endpoint.subscribe("set_uistate")
     FeedexWeb.Endpoint.subscribe("tree_mod")
     FeedexWeb.Endpoint.subscribe("read_one")
-    count = News.unread_count(session.uistate)
+    count = if Application.fetch_env(:feedex_web, :env) == {:ok, :test} do
+      0
+    else
+      News.unread_count(session.uistate)
+    end
     {:ok, assign(socket, %{unread: count, uistate: session.uistate})}
   end
 

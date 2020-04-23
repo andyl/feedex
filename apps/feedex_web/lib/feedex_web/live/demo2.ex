@@ -4,26 +4,32 @@ defmodule FeedexWeb.Live.Demo2 do
   use Phoenix.LiveEditable
 
   def mount(_session, socket) do
-    {:ok, assign(socket, focus: nil)}
+    opts = %{
+      test_1: "1 - CLICK TO EDIT",
+      test_2: "2 - CLICK TO EDIT", 
+      focus: nil
+    }
+    {:ok, assign(socket, opts)}
   end
 
   def render(assigns) do
     ~L"""
-    <style>
-      .editable-click { cursor: pointer;}
-    </style>
-
     <h3 style='margin-top: 10px'>Demo 2</h3>
 
-    <%= live_edit(assigns, "asdf", type: "text", id: "one",   on_submit: 'saveit') %><br/>
-    <%= live_edit(assigns, "qwer", type: "text", id: "two",   on_submit: 'saveit') %><br/>
-    <%= live_edit(assigns, "zxcv", type: "text", id: "three", on_submit: 'saveit') %><br/>
+    <p>Some examples from PhoenixLiveEditable</p>
 
-    <a href='#' phx-click='alt'>ALT</a>
+    <%= live_edit(assigns, @test_1, type: "text", id: "test_1",   on_submit: 'update') %><br/>
+    <%= live_edit(assigns, @test_2, type: "text", id: "test_2",   on_submit: 'update') %><br/>
     """
   end
 
-  def handle_event(_tag, _payload, socket) do
-    {:noreply, socket}
+  def handle_event("update", %{"editable_text" => new_val}, socket) do
+    case socket.assigns.focus do
+      nil -> 
+        {:noreply, socket}
+      focus -> 
+        key = focus |> String.to_atom()
+        {:noreply, socket |> assign(key, new_val) |> assign(:focus, nil)}
+    end
   end
 end

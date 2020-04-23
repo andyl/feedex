@@ -41,5 +41,5 @@ import_config "#{Mix.env()}.exs"
 
 config :feedex_web, FeedexWeb.Endpoint, live_view: [signing_salt: "asdf"]
 
-config :phoenix_live_editable, css_framework: "bootstrap4"
+config :phoenix_live_editable, css_framework: Phoenix.LiveEditable.Bootstrap4
 

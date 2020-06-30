@@ -270,6 +270,12 @@ Note 2019-Dec-11:
 - problem is with quantum scheduler (telemetry poller, jobs)
 - possible solution: replace quantum with oban(?)
 
+Note 2020-Apr-23:
+- re-implement with Phoenix 1.5 and latest LiveView
+- add LiveView Dashboard
+- keep existing auth code
+- add DockerCompose script to rel project
+
 - [ ] Feature: hide read articles
 - [ ] Feature: star important articles
 - [ ] Feature: search

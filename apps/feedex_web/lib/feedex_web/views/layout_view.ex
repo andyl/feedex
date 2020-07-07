@@ -39,7 +39,7 @@ defmodule FeedexWeb.LayoutView do
   def footer_img(conn) do
     r_path = conn.request_path
     """
-    <img src="https://badger.casmacc.net/pngF/1?path=#{r_path}">
+    <img src="https://badger.casmacc.net/pngF/081484?path=#{r_path}">
     """ |> Phoenix.HTML.raw()
   end
 end

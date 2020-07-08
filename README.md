@@ -8,16 +8,21 @@ Simple RSS Aggregator
 
 ## System requirements
 
-- Ubuntu Host running 18.04
+- Ubuntu Host running 20.04
 - SystemD
 - Postgres (user/pass = postgres/postgres)
 
-## Installing
+## Installing Production
 
 - Clone the repo
-- `cd apps/feedex_web/assets && npm install`
-- `mix deps.get && phx.digest`
-- `MIX_ENV=prod mix do phx.digest, ecto.setup, distillery.release`
+- Install assets
+    > cd apps/badger_web/assets
+    > npm install
+    > npm run deploy
+    > cd ../../..
+- Setup Release
+    > MIX_ENV=prod mix do phx.digest
+    > MIX_ENV=prod mix do deps.get, ecto.create, ecto.setup, distillery.release
 - Start the release
 - Browse to `locahost:5070`
 

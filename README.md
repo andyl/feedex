@@ -15,7 +15,9 @@ Simple RSS Aggregator
 ## Installing
 
 - Clone the repo
-- `MIX_ENV=prod mix do deps.get, ecto.create, ecto.migrate, distillery.release`
+- `cd apps/feedex_web/assets && npm install`
+- `mix deps.get && phx.digest`
+- `MIX_ENV=prod mix do phx.digest, ecto.setup, distillery.release`
 - Start the release
 - Browse to `locahost:5070`
 

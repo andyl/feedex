@@ -6,6 +6,7 @@ config :feedex_data,
 
 config :feedex_web,
   generators: [context_app: false],
+  badger_tag: "Feedex",
   env: Mix.env()
 
 config :feedex_web, FeedexWeb.Endpoint,

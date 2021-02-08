@@ -271,10 +271,10 @@ Editing Design Notes:
 
 # 2020 Apr 23 Thu
 
-- re-implement with Phoenix 1.5 and latest LiveView
-- add LiveView Dashboard
-- keep existing auth code
-- add DockerCompose script to rel project
+- [x] re-implement with Phoenix 1.5 and latest LiveView
+- [x] add LiveView Dashboard
+- [ ] keep existing auth code
+- [ ] add DockerCompose script to rel project
 
 # TBD
 

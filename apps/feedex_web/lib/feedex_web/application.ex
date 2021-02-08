@@ -6,12 +6,13 @@ defmodule FeedexWeb.Application do
   use Application
 
   def start(_type, _args) do
-    # List all child processes to be supervised
     children = [
-      # Start the endpoint when the application starts
+      # Start the Telemetry supervisor
+      FeedexWeb.Telemetry,
+      # Start the Endpoint (http/https)
       FeedexWeb.Endpoint
-      # Starts a worker by calling: FeedexWeb.Worker.start_link(arg)
-      # {FeedexWeb.Worker, arg},
+      # Start a worker by calling: FeedexWeb.Worker.start_link(arg)
+      # {FeedexWeb.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

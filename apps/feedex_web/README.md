@@ -1,10 +1,18 @@
 # FeedexWeb
 
-A WebUI for the Feedex RSS Aggregator.
+To start your Phoenix server:
 
-This is a standard live-view UI, structured around a `UiState` object.
+  * Setup the project with `mix setup`
+  * Start Phoenix endpoint with `mix phx.server`
 
-This WebUI uses ETS-style of persistence to cache the UiState.
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-The WebUI is built to be as simple as possible - minimal configuration options,
-minimal complexity.
+Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+
+## Learn more
+
+  * Official website: https://www.phoenixframework.org/
+  * Guides: https://hexdocs.pm/phoenix/overview.html
+  * Docs: https://hexdocs.pm/phoenix
+  * Forum: https://elixirforum.com/c/phoenix-forum
+  * Source: https://github.com/phoenixframework/phoenix

@@ -1,20 +1,13 @@
 use Mix.Config
 
-config :feedex_data, FeedexData.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "feedex_dev",
-  hostname: "localhost",
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
-
-config :feedex_data, FeedexData.Influx,
-  database: "inf_feedex_dev"
-
-# ---------------------------------------------------
-
+# For development, we disable any cache and enable
+# debugging and code reloading.
+#
+# The watchers configuration can be used to run external
+# watchers to your application. For example, we use it
+# with webpack to recompile .js and .css sources.
 config :feedex_web, FeedexWeb.Endpoint,
-  http: [port: 4060],
+  http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -27,23 +20,6 @@ config :feedex_web, FeedexWeb.Endpoint,
       cd: Path.expand("../apps/feedex_web/assets", __DIR__)
     ]
   ]
-
-# ---------------------------------------------------
-
-config :feedex_web, FeedexWeb.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"priv/gettext/.*(po)$",
-      ~r"lib/feedex_web/live/.*(ex)$",
-      ~r"lib/feedex_web/views/.*(ex)$",
-      ~r"lib/feedex_web/templates/.*(eex)$"
-    ]
-  ]
-
-config :mix_test_watch, clear: true
-
-# ---------------------------------------------------
 
 # ## SSL Support
 #
@@ -68,3 +44,24 @@ config :mix_test_watch, clear: true
 # If desired, both `http:` and `https:` keys can be
 # configured to run both http and https servers on
 # different ports.
+
+# Watch static and templates for browser reloading.
+config :feedex_web, FeedexWeb.Endpoint,
+  live_reload: [
+    patterns: [
+      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/gettext/.*(po)$",
+      ~r"lib/feedex_web/(live|views)/.*(ex)$",
+      ~r"lib/feedex_web/templates/.*(eex)$"
+    ]
+  ]
+
+# Do not include metadata nor timestamps in development logs
+config :logger, :console, format: "[$level] $message\n"
+
+# Initialize plugs at runtime for faster development compilation
+config :phoenix, :plug_init_mode, :runtime
+
+# Set a higher stacktrace during development. Avoid configuring such
+# in production as building large stacktraces may be expensive.
+config :phoenix, :stacktrace_depth, 20

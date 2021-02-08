@@ -263,23 +263,39 @@ Editing Design Notes:
 - [x] stopwords: by account
 - [x] stopwords: apply to folders (on/off - default off)
 
-# TBD
+# 2019 Dec 11 Wed
 
-Note 2019-Dec-11:
 - test runner is not working
 - problem is with quantum scheduler (telemetry poller, jobs)
 - possible solution: replace quantum with oban(?)
 
-Note 2020-Apr-23:
+# 2020 Apr 23 Thu
+
 - re-implement with Phoenix 1.5 and latest LiveView
 - add LiveView Dashboard
 - keep existing auth code
 - add DockerCompose script to rel project
 
+# TBD
+
+- [ ] Feature: simple feed import / export
+
+- [ ] Infra: New Foundation: Tailwind, AlpineJS, Kaffy
+- [ ] Infra: Clean up UI with LiveComponents
+- [ ] Infra: UI Testing with Cyprus
+- [ ] Infra: Upgrade Oban
+- [ ] Infra: Org & User, Permissions & Tokens, Login
+- [ ] Infra: Restful API: RSS/JSON (Feeds and Folders)
+- [ ] Infra: Restful API: SyncNow (Feeds and Folders)
+- [ ] Infra: Restful API: Mark as Read (Feeds and Folders)
+- [ ] Infra: Webhook for each Feed and Channel
+- [ ] Infra: Metrics, Tracing (Jaeger), Logs (Loki)
+
+- [ ] Feature: OPML Import/Export (needs file upload/download)
+
 - [ ] Feature: hide read articles
 - [ ] Feature: star important articles
 - [ ] Feature: search
-- [ ] Feature: OPML Import/Export (needs file upload/download)
 
 - [ ] Feature: Add badge as runtime CFG
 

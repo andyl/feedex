@@ -12,11 +12,15 @@ Simple RSS Aggregator
 - SystemD
 - Postgres (user/pass = postgres/postgres)
 
+## Installing Development
+
+TBD
+
 ## Installing Production
 
 - Clone the repo
 - Install assets
-    > cd apps/badger_web/assets
+    > cd apps/feedex_web/assets
     > npm install
     > npm run deploy
     > cd ../../..

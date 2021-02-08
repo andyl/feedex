@@ -5,17 +5,17 @@ defmodule Acceptance.BaseTest do
   use FeedexWeb.HoundCase
 
   describe "basic page loading" do
-    test "load single page" do
-      navigate_to("http://localhost:4001")
-      assert page_title() == "Feedex"
-    end
+    # test "load single page" do
+    #   navigate_to("http://localhost:4001")
+    #   assert page_title() == "Feedex"
+    # end
 
-    test "load multi pages" do
-      navigate_to("http://localhost:4001")
-      assert page_title() == "Feedex"
-      navigate_to("http://localhost:4001")
-      assert page_title() == "Feedex"
-    end
+    # test "load multi pages" do
+    #   navigate_to("http://localhost:4001")
+    #   assert page_title() == "Feedex"
+    #   navigate_to("http://localhost:4001")
+    #   assert page_title() == "Feedex"
+    # end
   end
 
   # describe "auth redirection" do

@@ -38,7 +38,3 @@ https://kushaldas.in/posts/using-sops-with-ansible-for-vars-encryption.html
 - [ ] App Events: Login (userid)
 - [ ] App Events: Sync [time]{feedName, feedId}
 
-
-
-
-

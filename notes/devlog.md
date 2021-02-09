@@ -273,6 +273,10 @@ Editing Design Notes:
 
 - [x] re-implement with Phoenix 1.5 and latest LiveView
 - [x] add LiveView Dashboard
+- [x] add FeedexData
+- [ ] Replace HTTPotion with Tesla
+- [ ] Add AlpineJS
+- [ ] Add Cyprus
 - [ ] keep existing auth code
 - [ ] add DockerCompose script to rel project
 
@@ -284,12 +288,12 @@ Editing Design Notes:
 - [ ] Infra: Clean up UI with LiveComponents
 - [ ] Infra: UI Testing with Cyprus
 - [ ] Infra: Upgrade Oban
-- [ ] Infra: Org & User, Permissions & Tokens, Login
 - [ ] Infra: Restful API: RSS/JSON (Feeds and Folders)
 - [ ] Infra: Restful API: SyncNow (Feeds and Folders)
 - [ ] Infra: Restful API: Mark as Read (Feeds and Folders)
 - [ ] Infra: Webhook for each Feed and Channel
 - [ ] Infra: Metrics, Tracing (Jaeger), Logs (Loki)
+- [ ] Infra: Org & User, Permissions & Tokens, Login
 
 - [ ] Feature: OPML Import/Export (needs file upload/download)
 

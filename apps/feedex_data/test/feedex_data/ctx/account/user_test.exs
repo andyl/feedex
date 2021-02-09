@@ -27,7 +27,7 @@ defmodule FeedexData.Ctx.Account.UserTest do
       attr = %{name: "asdf", email: "qwer.com", pwd: "bingbing"}
       cset = User.signup_changeset(%User{}, attr)
       assert count(User) == 0
-      assert {:ok, trak} = Repo.insert(cset)
+      assert {:ok, _trak} = Repo.insert(cset)
       assert count(User) == 1
     end
   end

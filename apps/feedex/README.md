@@ -1,3 +1,3 @@
 # Feedex
 
-**TODO: Add description**
+Home to the PubSub service used by all sub-apps

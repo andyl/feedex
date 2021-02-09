@@ -274,6 +274,7 @@ Editing Design Notes:
 - [x] re-implement with Phoenix 1.5 and latest LiveView
 - [x] add LiveView Dashboard
 - [x] add FeedexData
+- [ ] create FeedexInflux
 - [ ] Replace HTTPotion with Tesla
 - [ ] Add AlpineJS
 - [ ] Add Cyprus

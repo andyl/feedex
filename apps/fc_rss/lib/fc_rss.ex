@@ -1,9 +1,9 @@
-defmodule FeedexClient do
+defmodule FcRss do
   @moduledoc """
   An Elixir Client that pulls RSS Documents.
   """
 
-  alias FeedexClient.Url
+  alias FcRss.Url
 
   @doc """
   Scan for a valid RSS feed.
@@ -24,7 +24,7 @@ defmodule FeedexClient do
 
   ## Examples
 
-      iex> FeedexClient.probe("https://notvalid.io")
+      iex> FcRss.probe("https://notvalid.io")
       {:error, "Bad URL"}
 
   """
@@ -45,7 +45,7 @@ defmodule FeedexClient do
 
   ## Examples
 
-      iex> FeedexClient.get("https://invalid_url.io/feed")
+      iex> FcRss.get("https://invalid_url.io/feed")
       {:error, "Bad URL"}
 
   """

@@ -1,15 +1,15 @@
-defmodule FeedexClient.MixProject do
+defmodule FcRss.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :feedex_client,
-      version: "0.0.1",
+      app: :fc_rss,
+      version: "0.1.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
       deps_path: "../../deps",
       lockfile: "../../mix.lock",
-      elixir: "~> 1.9",
+      elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -26,7 +26,7 @@ defmodule FeedexClient.MixProject do
 
   defp deps do
     [
-      {:httpotion, "~> 3.1.0"},
+      {:fc_http, in_umbrella: true},
       {:elixir_feed_parser, github: "andyl/elixir-feed-parser"},
       {:exvcr, "~> 0.10", only: [:test]}
     ]

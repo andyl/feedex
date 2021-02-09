@@ -1,4 +1,4 @@
-defmodule FeedexClientTest do
+defmodule FcRssTest do
   use ExUnit.Case, async: true
   use ExVCR.Mock
 
@@ -11,7 +11,7 @@ defmodule FeedexClientTest do
     test "valid resp valid data" do
       use_cassette "scan_valid_resp_valid_data" do 
         url_string = "https://www.reddit.com/r/elixir.rss"
-        {status, url, _data} = FeedexClient.scan(url_string)
+        {status, url, _data} = FcRss.scan(url_string)
         assert status == :ok
         assert url == url_string
       end
@@ -20,14 +20,14 @@ defmodule FeedexClientTest do
     test "invalid resp invalid data" do
       use_cassette "scan_invalid_resp_invalid_data" do
         url_string = "https://zzz.reddit.com/z/elixir.rss"
-        assert FeedexClient.scan(url_string) == {:error, "Bad URL"}
+        assert FcRss.scan(url_string) == {:error, "Bad URL"}
       end
     end
 
     test "valid resp invalid data" do
       use_cassette "scan_valid_resp_invalid_data" do 
         url_string = "https://www.reddit.com/r/elixir"
-        assert FeedexClient.scan(url_string) == {:error, "Not an RSS feed"}
+        assert FcRss.scan(url_string) == {:error, "Not an RSS feed"}
       end
     end
   end
@@ -36,21 +36,21 @@ defmodule FeedexClientTest do
     test "invalid resp invalid data" do
       use_cassette "get_invalid_resp_invalid_data" do
         url_string = "https://zzz.reddit.com/z/elir.rss"
-        assert FeedexClient.get(url_string) == {:error, "Bad URL"}
+        assert FcRss.get(url_string) == {:error, "Bad URL"}
       end
     end
 
     test "valid resp invalid data" do
       use_cassette "get_valid_resp_invalid_data" do 
         url_string = "https://www.reddit.com/r/elixir"
-        assert FeedexClient.get(url_string) == {:error, "Not an RSS feed"}
+        assert FcRss.get(url_string) == {:error, "Not an RSS feed"}
       end
     end
 
     test "valid resp valid data" do
       use_cassette "get_valid_resp_valid_data" do 
         url_string = "https://www.reddit.com/r/elixir.rss"
-        {status, url, _data} = FeedexClient.get(url_string)
+        {status, url, _data} = FcRss.get(url_string)
         assert status == :ok
         assert url == url_string
       end

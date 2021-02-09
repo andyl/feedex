@@ -1,0 +1,18 @@
+defmodule FeedexTsdb do
+
+  def write_point(measurement, vals, tags) do
+    tagstr = Enum.map(tags, fn({k,v}) -> "#{k}=#{v}" end) |> Enum.join(",")
+    valstr = Enum.map(vals, fn({k,v}) -> "#{k}=#{v}" end) |> Enum.join(",")
+    "#{measurement},#{tagstr} #{valstr}"
+    |> send()
+  end
+
+  # async send, fire and forget
+  def send(body) do
+    db  = Application.get_env(:feedex_data, FeedexData.Influx)[:database]
+    url = "localhost:8086/write?db=#{db}&time_precision=s"
+    opt = [body: body, basic_auth: {"admin", "admin"}]
+    Task.start(fn -> FcHttp.post(url, opt) end)
+  end
+
+end

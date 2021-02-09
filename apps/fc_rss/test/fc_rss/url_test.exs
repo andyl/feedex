@@ -1,7 +1,7 @@
-defmodule FeedexClient.UrlTest do
+defmodule FcRss.UrlTest do
   use ExUnit.Case, async: true
   use ExVCR.Mock
-  alias FeedexClient.Url
+  alias FcRss.Url
 
   doctest Url
 
@@ -21,7 +21,7 @@ defmodule FeedexClient.UrlTest do
 
     test "with valid url, invalid data" do 
       use_cassette "pull_valid_resp_invalid_data" do
-        HTTPotion.start()
+        FcHttp.start()
         url_string = "https://www.reddit.com/r/elixir"
         url_struct = Url.pull(url_string)
         assert url_struct.url == url_string
@@ -33,7 +33,7 @@ defmodule FeedexClient.UrlTest do
 
     test "with valid url, valid data" do
       use_cassette "pull_valid_resp_valid_data" do
-        HTTPotion.start()
+        FcHttp.start()
         url_string = "https://www.reddit.com/r/elixir.rss"
         url_struct = Url.pull(url_string)
         assert url_struct.url == url_string

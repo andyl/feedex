@@ -1,9 +1,9 @@
-defmodule FeedexClient.Url do
+defmodule FcRss.Url do
   @moduledoc """
   Pulls and validates RSS data.
   """
 
-  alias FeedexClient.Url
+  alias FcRss.Url
 
   defstruct url: "", valid_resp: false, resp: %{}, valid_data: false, data: %{}
 
@@ -21,8 +21,8 @@ defmodule FeedexClient.Url do
   end
 
   defp download(input_url) do
-    resp = HTTPotion.get(input_url, follow_redirects: true)
-    succ = HTTPotion.Response.success?(resp)
+    resp = FcHttp.get(input_url, follow_redirects: true)
+    succ = FcHttp.success?(resp)
     %{%Url{} | url: input_url, resp: resp, valid_resp: succ}
   end
 

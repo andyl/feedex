@@ -285,18 +285,19 @@ Editing Design Notes:
 ## 2021 Feb 09 Tue
 
 - [x] Add Cyprus
+- [ ] Add FeedexJob
 
 # TBD
 
-- [ ] RcHtml - Replace HTTPotion with Tesla
+- [ ] FcHtml: Replace HTTPotion with Tesla
 
-- [ ] Infra: Add Kaffy
+- [ ] FeedexWeb: Add Kaffy
 
-- [ ] Rebuild LiveView interface
+- [ ] FeedexWeb: Rebuild LiveView interface
 
-- [ ] Infra: Upgrade Oban
+- [ ] FeedexJob: Replace Quantum with Oban(?)
 
-- [ ] Feature: simple feed import / export
+- [ ] Feature: OPML Import/Export (needs file upload/download)
 
 - [ ] Infra: Restful API: RSS/JSON (Feeds and Folders)
 - [ ] Infra: Restful API: SyncNow (Feeds and Folders)
@@ -304,8 +305,6 @@ Editing Design Notes:
 - [ ] Infra: Webhook for each Feed and Channel
 - [ ] Infra: Metrics, Tracing (Jaeger), Logs (Loki)
 - [ ] Infra: Org & User, Permissions & Tokens, Login
-
-- [ ] Feature: OPML Import/Export (needs file upload/download)
 
 - [ ] keep existing auth code
 - [ ] add DockerCompose script to rel project

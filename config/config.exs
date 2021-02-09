@@ -7,9 +7,16 @@
 # all use the same configuration file. If you want different
 # configurations or dependencies per app, it is best to
 # move said applications out of the umbrella.
+
 use Mix.Config
 
+# ----- FeedexData 
 
+config :feedex_data,
+  ecto_repos: [FeedexData.Repo],
+  env: Mix.env()
+
+# ----- FeedexWeb 
 
 config :feedex_web,
   generators: [context_app: :feedex]
@@ -22,6 +29,8 @@ config :feedex_web, FeedexWeb.Endpoint,
   pubsub_server: Feedex.PubSub,
   live_view: [signing_salt: "gdYZay/D"]
 
+# ----- Misc 
+  
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

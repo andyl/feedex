@@ -6,6 +6,23 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
+
+# ----- FeedexData
+
+config :feedex_data, FeedexData.Repo,
+  username: "postgres",
+  password: "postgres",
+  database: "feedex_dev",
+  hostname: "localhost",
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+
+config :feedex_data, FeedexData.Influx,
+  database: "inf_feedex_dev"
+
+# ----- FeedexWeb 
+
+# Endpoint
 config :feedex_web, FeedexWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
@@ -20,6 +37,19 @@ config :feedex_web, FeedexWeb.Endpoint,
       cd: Path.expand("../apps/feedex_web/assets", __DIR__)
     ]
   ]
+  
+# Watch static and templates for browser reloading.
+config :feedex_web, FeedexWeb.Endpoint,
+  live_reload: [
+    patterns: [
+      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/gettext/.*(po)$",
+      ~r"lib/feedex_web/(live|views)/.*(ex)$",
+      ~r"lib/feedex_web/templates/.*(eex)$"
+    ]
+  ]
+
+# ----- Misc 
 
 # ## SSL Support
 #
@@ -44,17 +74,6 @@ config :feedex_web, FeedexWeb.Endpoint,
 # If desired, both `http:` and `https:` keys can be
 # configured to run both http and https servers on
 # different ports.
-
-# Watch static and templates for browser reloading.
-config :feedex_web, FeedexWeb.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"priv/gettext/.*(po)$",
-      ~r"lib/feedex_web/(live|views)/.*(ex)$",
-      ~r"lib/feedex_web/templates/.*(eex)$"
-    ]
-  ]
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

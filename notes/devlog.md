@@ -274,21 +274,22 @@ Editing Design Notes:
 - [x] re-implement with Phoenix 1.5 and latest LiveView
 - [x] add LiveView Dashboard
 - [x] add FeedexData
-- [ ] create FeedexInflux
-- [ ] Replace HTTPotion with Tesla
-- [ ] Add AlpineJS
+- [x] create FeedexTsdb
+- [x] create FcRss
+- [x] create FcHtml
+- [x] Add AlpineJS
 - [ ] Add Cyprus
-- [ ] keep existing auth code
-- [ ] add DockerCompose script to rel project
 
 # TBD
 
+- [ ] RcHtml - Replace HTTPotion with Tesla
+- [ ] Rebuild LiveView interface
+- [ ] Infra: Add Kaffy
+- [ ] Infra: Clean up UI with LiveComponents
+- [ ] Infra: Upgrade Oban
+
 - [ ] Feature: simple feed import / export
 
-- [ ] Infra: New Foundation: Tailwind, AlpineJS, Kaffy
-- [ ] Infra: Clean up UI with LiveComponents
-- [ ] Infra: UI Testing with Cyprus
-- [ ] Infra: Upgrade Oban
 - [ ] Infra: Restful API: RSS/JSON (Feeds and Folders)
 - [ ] Infra: Restful API: SyncNow (Feeds and Folders)
 - [ ] Infra: Restful API: Mark as Read (Feeds and Folders)
@@ -297,6 +298,9 @@ Editing Design Notes:
 - [ ] Infra: Org & User, Permissions & Tokens, Login
 
 - [ ] Feature: OPML Import/Export (needs file upload/download)
+
+- [ ] keep existing auth code
+- [ ] add DockerCompose script to rel project
 
 - [ ] Feature: hide read articles
 - [ ] Feature: star important articles

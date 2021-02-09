@@ -51,7 +51,7 @@ config :feedex_web, FeedexWeb.Endpoint,
 
 # ----- Testing
 
-config :mix_test_watch, clear: true
+# config :mix_test_watch, clear: true
 
 # ----- Misc 
 

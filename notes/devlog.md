@@ -292,7 +292,6 @@ Editing Design Notes:
 - [ ] FcHtml: Replace HTTPotion with Tesla
 
 - [ ] FeedexWeb: Add Kaffy
-
 - [ ] FeedexWeb: Rebuild LiveView interface
 
 - [ ] FeedexJob: Replace Quantum with Oban(?)

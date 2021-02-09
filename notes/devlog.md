@@ -1,6 +1,6 @@
 # Feedex Devlog
 
-# 2019 Jul 27 Sat
+## 2019 Jul 27 Sat
 
 - [x] Add feedex_web
 - [x] Create feedex layout
@@ -13,14 +13,14 @@
 - [x] Build first feedex_data tests
 - [x] Add feedex_jobs
 
-# 2019 Jul 30 Tue
+## 2019 Jul 30 Tue
 
 - [x] Update FeedexData migration
 - [x] Take "Mastering SQL" course
 - [x] Read Ecto Book 
 - [x] Add ecto-data contexts
 
-# 2019 Jul 31 Wed
+## 2019 Jul 31 Wed
 
 - [x] Build Account schemas
 - [x] Add tests for Account schemas
@@ -45,7 +45,7 @@
 - [x] Add News page
 - [x] Update feedex nav
 
-# 2019 Aug 01 Thu
+## 2019 Aug 01 Thu
 
 - [x] Make sure we generate a pwd_hash in the factory
 - [x] Add a clear script
@@ -54,7 +54,7 @@
 - [x] Add current_user (AuthPlug Phoenix Book)
 - [x] Study testing
 
-# 2019 Aug 02 Fri
+## 2019 Aug 02 Fri
 
 - [x] LV - DO / Add second clock to demo page
 - [x] LV - Basics / Router Rendering
@@ -65,12 +65,12 @@
 - [x] LV - Misc / What is `handle_info`?
 - [x] Study LiveView
 
-# 2019 Aug 03 Sat
+## 2019 Aug 03 Sat
 
 - [x] Build LV PubSub demo
 - [x] Change news to normal render
 
-# 2019 Aug 07 Wed
+## 2019 Aug 07 Wed
 
 - [x] Configure Webpack
 - [x] Create `Live.News.Btn`
@@ -80,49 +80,49 @@
 - [x] Demo Nested Components
 - [x] Demo Nested Component PubSub
 
-# 2019 Aug 08 Thu
+## 2019 Aug 08 Thu
 
 - [x] Add Pets
 - [x] Define Pets testing process
 - [x] Refactor Pets
 
-# 2019 Aug 09 Fri
+## 2019 Aug 09 Fri
 
 - [x] Add UI state
 - [x] Build ShowUiState component
 - [x] Add ShowUiState component to body
 
-# 2019 Aug 10 Sat
+## 2019 Aug 10 Sat
 
 - [x] Fix Pets config (testing)
 - [x] Add Auth to news page
 
-# 2019 Aug 11 Sun
+## 2019 Aug 11 Sun
 
 - [x] Click Buttons to update UiState
 
-# 2019 Aug 12 Mon
+## 2019 Aug 12 Mon
 
 - [x] Create treemap query 
 - [x] Add treemap to controller
 - [x] Generate test tree data
 
-# 2019 Aug 13 Tue
+## 2019 Aug 13 Tue
 
 - [x] Add treemap to TREE/HDR/BODY
 - [x] Display test trees in TREE/HDR/BODY
 - [x] Click tree updates UIstate
 
-# 2019 Aug 13 Wed
+## 2019 Aug 13 Wed
 
 - [x] Ecto Testing
 
-# 2019 Aug 30 Fri
+## 2019 Aug 30 Fri
 
 - [x] HDR display: folder
 - [x] HDR display: feed
 
-# 2019 Sep 07 Sat
+## 2019 Sep 07 Sat
 
 - [x] BASE: add scheme for caching UISTATE (uistate digest)
 - [x] BASE: convert news to liveview
@@ -131,7 +131,7 @@
 - [x] BODY display: all
 - [x] Add view layout for editing folders and feedds
 
-# 2019 Sep 08 Sun
+## 2019 Sep 08 Sun
 
 Editing Design Notes:
 - copy form technique from purlex
@@ -144,7 +144,7 @@ Editing Design Notes:
 - [x] Edit Folder
 - [x] Edit Feed
 
-# 2019 Sep 09 Mon
+## 2019 Sep 09 Mon
 
 - [x] Setup seeds with real URLs
 - [x] Create `FeedexJob.sync`
@@ -155,12 +155,12 @@ Editing Design Notes:
 - [x] Posts: toggle show/hide
 - [x] Posts: add text link
 
-# 2019 Sep 10 Tue
+## 2019 Sep 10 Tue
 
 - [x] VIEWING: Update post-read status
 - [x] VIEWING: Index the read_list
 
-# 2019 Sep 11 Wed
+## 2019 Sep 11 Wed
 
 - [x] QUERY: posts with read: true/false column by register
 - [x] QUERY: posts with read: true/false column by folder
@@ -179,20 +179,20 @@ Editing Design Notes:
 - [x] Deploy production
 - [x] Install systemD
 
-# 2019 Sep 12 Thu
+## 2019 Sep 12 Thu
 
 - [x] Admin: Delete folder
 - [x] Add cascade deletes
 - [x] Fix feed sync
 - [x] Admin: Delete feed
 
-# 2019 Sep 15 Sun
+## 2019 Sep 15 Sun
 
 - [x] Write LiveEditable
 - [x] Admin: Rename folder
 - [x] Admin: Rename feed
 
-# 2019 Sep 16 Mon
+## 2019 Sep 16 Mon
 
 - [x] Add link to RSS url
 - [x] Reverse Feed List before loading
@@ -203,17 +203,17 @@ Editing Design Notes:
 - [x] Mobile: Fix Menu Dropdown
 - [x] Mobile: Mobile Btn & Tree Divs
 
-# 2019 Sep 17 Tue
+## 2019 Sep 17 Tue
 
 - [x] Print: print record of feeds 
 - [x] Fix uistate sync
 
-# 2019 Sep 18 Wed
+## 2019 Sep 18 Wed
 
 - [x] Configure public machine
 - [x] Move system to public machine
 
-# 2019 Sep 19 Thu
+## 2019 Sep 19 Thu
 
 - [x] Add case-insensitive login
 - [x] Add distinct post query
@@ -227,13 +227,13 @@ Editing Design Notes:
 - [x] VM Polling: Memory
 - [x] VM Polling: TotalRunQueue
 
-# 2019 Sep 20 Fri
+## 2019 Sep 20 Fri
 
 - [x] Add Grafana Panel
 - [x] Re-read LV Docco
 - [x] Read LV Test Docs
 
-# 2019 Sep 21 Sat
+## 2019 Sep 21 Sat
 
 - [x] Fix LiveReload 
 - [x] Add DataCase#count
@@ -245,12 +245,12 @@ Editing Design Notes:
 - [x] LiveEditable: Add Select Function
 - [x] Admin: Add FolderSelect for Feeds
 
-# 2019 Sep 22 Sun
+## 2019 Sep 22 Sun
 
 - [x] Metrics: posts by feed
 - [x] Metrics: unread posts by feed
 
-# 2019 Sep 22 Sun
+## 2019 Sep 22 Sun
 
 - [x] Get unread count into header (all / folder / feed)
 - [x] New header title: Folder > Feed [unread count]
@@ -258,34 +258,42 @@ Editing Design Notes:
 - [x] Allcheck on mobile view
 - [x] Add byline to post view
 
-# 2019 Oct 21 Mon
+## 2019 Oct 21 Mon
 
 - [x] stopwords: by account
 - [x] stopwords: apply to folders (on/off - default off)
 
-# 2019 Dec 11 Wed
+## 2019 Dec 11 Wed
 
 - test runner is not working
 - problem is with quantum scheduler (telemetry poller, jobs)
 - possible solution: replace quantum with oban(?)
 
-# 2020 Apr 23 Thu
+## 2020 Apr 23 Thu
 
 - [x] re-implement with Phoenix 1.5 and latest LiveView
+
+## 2021 Feb 08 Mon
+
 - [x] add LiveView Dashboard
 - [x] add FeedexData
 - [x] create FeedexTsdb
 - [x] create FcRss
 - [x] create FcHtml
 - [x] Add AlpineJS
-- [ ] Add Cyprus
+
+## 2021 Feb 09 Tue
+
+- [x] Add Cyprus
 
 # TBD
 
 - [ ] RcHtml - Replace HTTPotion with Tesla
-- [ ] Rebuild LiveView interface
+
 - [ ] Infra: Add Kaffy
-- [ ] Infra: Clean up UI with LiveComponents
+
+- [ ] Rebuild LiveView interface
+
 - [ ] Infra: Upgrade Oban
 
 - [ ] Feature: simple feed import / export

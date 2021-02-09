@@ -25,7 +25,7 @@ defmodule Feedex.Umbrella.MixProject do
 
   defp aliases do
     [
-      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"]
     ]
   end

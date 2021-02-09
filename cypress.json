@@ -1,0 +1,13 @@
+{
+  "componentFolder": false,
+  "downloadsFolder": "tmp/cypress/downloads",
+  "fixturesFolder": "test/cypress/fixtures",
+  "integrationFolder": "apps/feedex_web/test/cypress/integration",
+  "pluginsFile": false,
+  "screenshotOnRunFailure": false,
+  "screenshotsFolder": "tmp/cypress/screenshots",
+  "supportFile": false,
+  "testFiles": "**/*.*",
+  "video": false,
+  "videosFolder": "tmp/cypress/videos"
+}

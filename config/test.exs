@@ -1,5 +1,10 @@
 use Mix.Config
 
+# ----- FeedexTsdb
+
+config :feedex_tsdb, FeedexTsdb,
+  database: "inf_feedex_test"
+
 # ----- FeedexData
 
 config :feedex_data, FeedexData.Repo,

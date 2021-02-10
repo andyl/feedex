@@ -287,6 +287,10 @@ Editing Design Notes:
 - [x] Add Cyprus
 - [x] Add FeedexJob
 
+## 2021 Feb 10 Wed
+
+- [ ] FeedexWeb: Add Torch
+
 ## TBD
 
 - [ ] FeedexWeb: Rebuild LiveView interface
@@ -294,8 +298,6 @@ Editing Design Notes:
 - [ ] FcHtml: Replace HTTPotion with Tesla
 
 - [ ] FeedexJob: Replace Quantum with Oban(?)
-
-- [ ] FeedexWeb: Add Kaffy
 
 - [ ] Feature: OPML Import/Export (needs file upload/download)
 

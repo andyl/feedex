@@ -8,7 +8,7 @@ echo "===IN THE assets/ FOLDER==="
 MIX_ENV=cypress mix phx.server &
 pid=$! # Store server pid
 echo "===WAITING FOR PHX SERVER==="
-until $(curl --output /dev/null --silent --head --fail http://localhost:4003); do
+until $(curl --output /dev/null --silent --head --fail http://localhost:4063); do
     printf '.'
     sleep 5
 done

@@ -48,6 +48,7 @@ defmodule FeedexWeb.MixProject do
       {:gettext, "~> 0.11"},
       {:feedex, in_umbrella: true},
       {:jason, "~> 1.0"},
+      {:torch, "~> 3.6"},
       {:plug_cowboy, "~> 2.0"}
     ]
   end

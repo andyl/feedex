@@ -18,7 +18,7 @@ config :feedex_data, FeedexData.Repo,
 
 # Endpoint
 config :feedex_web, FeedexWeb.Endpoint,
-  http: [port: 4003],
+  http: [port: 4063],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,

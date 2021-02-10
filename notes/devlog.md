@@ -289,12 +289,13 @@ Editing Design Notes:
 
 ## TBD
 
-- [ ] FcHtml: Replace HTTPotion with Tesla
-
-- [ ] FeedexWeb: Add Kaffy
 - [ ] FeedexWeb: Rebuild LiveView interface
 
+- [ ] FcHtml: Replace HTTPotion with Tesla
+
 - [ ] FeedexJob: Replace Quantum with Oban(?)
+
+- [ ] FeedexWeb: Add Kaffy
 
 - [ ] Feature: OPML Import/Export (needs file upload/download)
 

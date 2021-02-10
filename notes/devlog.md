@@ -289,9 +289,15 @@ Editing Design Notes:
 
 ## 2021 Feb 10 Wed
 
-- [ ] FeedexWeb: Add Torch
+Notes:
+- Kaffy didn't work / proprietary DSL / proprietary / hard to customize
+- Use torch / standard generators / transferrable skills / easy to customize
+- Torch failed on umbrella project - practice on throwaway app
 
 ## TBD
+
+- [ ] FeedexWeb: Get Torch working on Standalone project
+- [ ] FeedexWeb: Add Torch to feedex (umbrella context)
 
 - [ ] FeedexWeb: Rebuild LiveView interface
 

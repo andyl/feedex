@@ -29,6 +29,10 @@ config :feedex_web, FeedexWeb.Endpoint,
   pubsub_server: Feedex.PubSub,
   live_view: [signing_salt: "gdYZay/D"]
 
+config :torch,
+  otp_app: :feedex,
+  template_format: "eex" 
+
 # ----- FeedexJob
 
 config :feedex_job,

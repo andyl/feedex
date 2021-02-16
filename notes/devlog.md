@@ -321,15 +321,17 @@ Learnings:
 - [x] Study Channel generator
 - [x] Study LiveView generator
 
-## TBD
-
-- [ ] New umbrella project - binary ID
-- [ ] Add tailwind generators, phx.gen.auth, bamboo
+- [x] New umbrella project - binary ID
+- [x] Add tailwind generators, phx.gen.auth, bamboo
+- [ ] Comment out old contexts and migrations
+- [ ] Make sure we're using binary_id
 - [ ] Run phx.gen.auth
 - [ ] Add bamboo
 - [ ] Replace old webapp with new
 - [ ] Setup context app in config
 - [ ] Generate admin pages: users / feeds / posts
+
+## TBD
 
 - [ ] FcHtml: Replace HTTPotion with Tesla
 

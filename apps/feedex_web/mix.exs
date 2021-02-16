@@ -46,7 +46,10 @@ defmodule FeedexWeb.MixProject do
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
-      {:feedex, in_umbrella: true},
+      {:feedex_data, in_umbrella: true},
+      {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
+      {:phx_tailwind_generators, "~> 0.1.6"},
+      {:bamboo, "~> 1.7"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"}
     ]

@@ -19,7 +19,8 @@ config :feedex_data,
 # ----- FeedexWeb 
 
 config :feedex_web,
-  generators: [context_app: :feedex]
+  ecto_repos: [FeedexData.Repo],
+  generators: [context_app: :feedex_data, binary_id: true]
 
 # Configures the endpoint
 config :feedex_web, FeedexWeb.Endpoint,

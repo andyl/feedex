@@ -294,14 +294,46 @@ Notes:
 - Use torch / standard generators / transferrable skills / easy to customize
 - Torch failed on umbrella project - practice on throwaway app
 
+## 2021 Feb 12 Fri
+
+- [x] FeedexWeb: Get Torch working on Standalone project
+- [x] FeedexWeb: Add Torch to feedex (umbrella context)
+
+Learnings:
+- torch isn't that great
+- direction: master the off-the-shelf generators
+
+## 2021 Feb 14 Sun
+
+- https://github.com/wintermeyer/phx_tailwind_generators
+- works with standard Phoenix or Umbrellas
+- initial setup: Fullstack Phoenix or manual config
+
+## 2021 Feb 15 Mon
+
+- generators work with umbrella projects
+- there is a configuration for context app
+- can be defined in the application config, or on the command line
+- the context provides the API used by the web interface
+- the schema interacts with the database
+- liveview generator has a modal...
+
+- [x] Study Channel generator
+- [x] Study LiveView generator
+
 ## TBD
 
-- [ ] FeedexWeb: Get Torch working on Standalone project
-- [ ] FeedexWeb: Add Torch to feedex (umbrella context)
-
-- [ ] FeedexWeb: Rebuild LiveView interface
+- [ ] New umbrella project - binary ID
+- [ ] Add tailwind generators, phx.gen.auth, bamboo
+- [ ] Run phx.gen.auth
+- [ ] Add bamboo
+- [ ] Replace old webapp with new
+- [ ] Setup context app in config
+- [ ] Generate admin pages: users / feeds / posts
 
 - [ ] FcHtml: Replace HTTPotion with Tesla
+
+- [ ] FeedexWeb: Rebuild LiveView interface
 
 - [ ] FeedexJob: Replace Quantum with Oban(?)
 

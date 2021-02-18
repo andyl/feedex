@@ -46,6 +46,7 @@ defmodule FeedexUi.MixProject do
       {:phoenix_live_dashboard, "~> 0.4"},
       {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
       {:telemetry_metrics, "~> 0.4"},
+      {:phx_tailwind_generators, "~> 0.1.6"}, 
       {:feedex_data, in_umbrella: true},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},

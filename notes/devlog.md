@@ -330,6 +330,7 @@ Learnings:
 - [x] Run phx.gen.auth
 - [x] Replace old webapp with new
 - [x] Setup context app in config
+- [ ] Restore objects and tests
 - [ ] Generate admin pages: users / feeds / posts
 - [ ] Add bamboo
 

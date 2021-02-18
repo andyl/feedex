@@ -330,15 +330,20 @@ Learnings:
 - [x] Run phx.gen.auth
 - [x] Replace old webapp with new
 - [x] Setup context app in config
-- [ ] Restore migrations
+- [x] Restore migrations
+
+## 2021 Feb 18 Thu
+
+- [x] Study LiveNavigation
+- [x] Study LiveComponents
+
 - [ ] Restore objects and tests
 - [ ] Generate admin pages: users / feeds / posts
+- [ ] Rebuild LiveView Interface
 
 ## TBD
 
 - [ ] FcHtml: Replace HTTPotion with Tesla
-
-- [ ] FeedexWeb: Rebuild LiveView interface
 
 - [ ] FeedexJob: Replace Quantum with Oban(?)
 

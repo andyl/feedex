@@ -330,9 +330,9 @@ Learnings:
 - [x] Run phx.gen.auth
 - [x] Replace old webapp with new
 - [x] Setup context app in config
+- [ ] Restore migrations
 - [ ] Restore objects and tests
 - [ ] Generate admin pages: users / feeds / posts
-- [ ] Add bamboo
 
 ## TBD
 
@@ -343,6 +343,7 @@ Learnings:
 - [ ] FeedexJob: Replace Quantum with Oban(?)
 
 - [ ] Feature: OPML Import/Export (needs file upload/download)
+- [ ] Add bamboo
 
 - [ ] Infra: Restful API: RSS/JSON (Feeds and Folders)
 - [ ] Infra: Restful API: SyncNow (Feeds and Folders)

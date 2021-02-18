@@ -30,7 +30,7 @@ defmodule FeedexData.Repo.Migrations.CreateAll do
       add :name, :string
       add :email, :citext, null: false
       add :admin, :boolean
-      add :hashed_password, :string, null: false
+      add :pwd_hash, :string, null: false
       add :confirmed_at, :naive_datetime
       add :last_seen_at, :naive_datetime
       timestamps()

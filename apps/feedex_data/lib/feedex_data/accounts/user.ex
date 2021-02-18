@@ -7,8 +7,10 @@ defmodule FeedexData.Accounts.User do
   @foreign_key_type :binary_id
   schema "users" do
     field :email, :string
-    field :password, :string, virtual: true
-    field :hashed_password, :string
+    # field :password, :string, virtual: true
+    field :pwd, :string, virtual: true
+    # field :hashed_password, :string
+    field :pwd_hash, :string
     field :confirmed_at, :naive_datetime
 
     timestamps()
@@ -49,8 +51,8 @@ defmodule FeedexData.Accounts.User do
 
   defp validate_password(changeset, opts) do
     changeset
-    |> validate_required([:password])
-    |> validate_length(:password, min: 12, max: 80)
+    |> validate_required([:pwd])
+    |> validate_length(:pwd, min: 3, max: 80)
     # |> validate_format(:password, ~r/[a-z]/, message: "at least one lower case character")
     # |> validate_format(:password, ~r/[A-Z]/, message: "at least one upper case character")
     # |> validate_format(:password, ~r/[!?@#$%^&*_0-9]/, message: "at least one digit or punctuation character")
@@ -58,13 +60,13 @@ defmodule FeedexData.Accounts.User do
   end
 
   defp maybe_hash_password(changeset, opts) do
-    hash_password? = Keyword.get(opts, :hash_password, true)
-    password = get_change(changeset, :password)
+    hash_password? = Keyword.get(opts, :pwd_hash, true)
+    password = get_change(changeset, :pwd)
 
     if hash_password? && password && changeset.valid? do
       changeset
-      |> put_change(:hashed_password, Bcrypt.hash_pwd_salt(password))
-      |> delete_change(:password)
+      |> put_change(:pwd_hash, Bcrypt.hash_pwd_salt(password))
+      |> delete_change(:pwd)
     else
       changeset
     end
@@ -99,8 +101,8 @@ defmodule FeedexData.Accounts.User do
   """
   def password_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:password])
-    |> validate_confirmation(:password, message: "does not match password")
+    |> cast(attrs, [:pwd])
+    |> validate_confirmation(:pwd, message: "does not match password")
     |> validate_password(opts)
   end
 
@@ -118,7 +120,7 @@ defmodule FeedexData.Accounts.User do
   If there is no user or the user doesn't have a password, we call
   `Bcrypt.no_user_verify/0` to avoid timing attacks.
   """
-  def valid_password?(%FeedexData.Accounts.User{hashed_password: hashed_password}, password)
+  def valid_password?(%FeedexData.Accounts.User{pwd_hash: hashed_password}, password)
       when is_binary(hashed_password) and byte_size(password) > 0 do
     Bcrypt.verify_pass(password, hashed_password)
   end

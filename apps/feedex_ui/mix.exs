@@ -1,16 +1,17 @@
-defmodule FeedexData.MixProject do
+defmodule FeedexUi.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :feedex_data,
+      app: :feedex_ui,
       version: "0.1.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
       deps_path: "../../deps",
       lockfile: "../../mix.lock",
-      elixir: "~> 1.5",
+      elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -22,7 +23,7 @@ defmodule FeedexData.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {FeedexData.Application, []},
+      mod: {FeedexUi.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -36,33 +37,31 @@ defmodule FeedexData.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:bcrypt_elixir, "~> 2.0"},
-      # ----- database
-      {:ecto_sql, "~> 3.0"},
-      {:postgrex, ">= 0.0.0"},
-      # ----- test
-      {:ex_machina, "~> 2.3"},
-      # ----- misc
-      {:pbkdf2_elixir, "~> 1.0"},
-      {:modex, path: "~/src/modex"},
+      {:phoenix, "~> 1.5.7"},
+      {:phoenix_ecto, "~> 4.0"},
+      {:phoenix_live_view, "~> 0.15.0"},
+      {:floki, ">= 0.27.0", only: :test},
+      {:phoenix_html, "~> 2.11"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_live_dashboard, "~> 0.4"},
+      {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
+      {:telemetry_metrics, "~> 0.4"},
+      {:phx_tailwind_generators, "~> 0.1.6"}, 
+      {:feedex_data, in_umbrella: true},
+      {:telemetry_poller, "~> 0.4"},
+      {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      # ----- metrics
-      {:telemetry, "~> 0.4", only: [:dev, :prod]},
-      {:telemetry_poller, "~> 0.5", only: [:dev, :prod]}
+      {:plug_cowboy, "~> 2.0"}
     ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
-  # For example, to create, migrate and run the seeds file at once:
-  #
-  #     $ mix ecto.setup
   #
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-      "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate", "test"]
+      setup: ["deps.get", "cmd npm install --prefix assets"],
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
     ]
   end
 end

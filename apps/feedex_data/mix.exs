@@ -36,6 +36,7 @@ defmodule FeedexData.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 2.0"},
       # ----- database
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},

@@ -16,6 +16,20 @@ config :feedex_data,
   ecto_repos: [FeedexData.Repo],
   env: Mix.env()
 
+# ----- FeedexData 
+
+config :feedex_ui,
+  ecto_repos: [FeedexData.Repo],
+  generators: [context_app: :feedex_data, binary_id: true]
+
+# Configures the endpoint
+config :feedex_ui, FeedexUi.Endpoint,
+  url: [host: "localhost"],
+  secret_key_base: "0J0y7WjjZbElQAjZnF8qFVV/4Cr21mwLWslASkMj/p5XyvRBWeNDlwKEVakFP8Ra",
+  render_errors: [view: FeedexUi.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Feedex.PubSub,
+  live_view: [signing_salt: "UPuxN9Ta"]
+
 # ----- FeedexWeb 
 
 config :feedex_web,

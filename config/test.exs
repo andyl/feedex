@@ -1,5 +1,11 @@
 use Mix.Config
 
+# We don't run a server during test. If one is required,
+# you can enable the server option below.
+config :feedex_ui, FeedexUi.Endpoint,
+  http: [port: 4002],
+  server: false
+
 # ----- FeedexTsdb
 
 config :feedex_tsdb, FeedexTsdb,

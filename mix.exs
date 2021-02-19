@@ -29,5 +29,4 @@ defmodule Feedex.Umbrella.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"]
     ]
   end
-
 end

@@ -337,9 +337,10 @@ Learnings:
 - [x] Study LiveNavigation
 - [x] Study LiveComponents
 
+- [ ] Mock up Tailwind UI
+- [ ] Rebuild LiveView Interface
 - [ ] Restore objects and tests
 - [ ] Generate admin pages: users / feeds / posts
-- [ ] Rebuild LiveView Interface
 
 ## TBD
 

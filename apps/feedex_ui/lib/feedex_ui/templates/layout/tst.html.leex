@@ -4,6 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" href="/images/rss-4-32.ico" sizes="32x32">
     <%= csrf_meta_tag() %>
     <%= live_title_tag assigns[:page_title] || "FeedexUi" %>
     <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
@@ -18,9 +19,9 @@
           <div class="flex items-center justify-between h-14">
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <img class="w-8 h-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
+                <img class="w-8 h-8" src="/images/rss-4-32.png" alt="Workflow">
               </div>
-              <div class="ml-3 text-xl text-white">Feedex</div>
+              <div class="ml-3 text-xl text-white">FeedexUi</div>
             </div>
             <div class="hidden md:block">
               <div class="flex items-center ml-4 md:ml-6">
@@ -105,26 +106,10 @@
         </div>
       </nav>
 
-      <header class="bg-white shadow">
-        <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <h1 class="text-3xl font-bold text-gray-900">
-            Dashboard
-          </h1>
-        </div>
-      </header>
       <main>
-        <div class="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <!-- Replace with your content -->
-          <div class="px-4 py-6 sm:px-0">
-            <div class="border-4 border-gray-200 border-dashed rounded-lg h-96">
-
-              <%= @inner_content %>
-
-            </div>
-          </div>
-          <!-- /End replace -->
-        </div>
+        <%= @inner_content %>
       </main>
+
     </div>
 
   </body>

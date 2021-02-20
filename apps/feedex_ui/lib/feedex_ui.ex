@@ -46,8 +46,8 @@ defmodule FeedexUi do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {FeedexUi.LayoutView, "live.html"}
-
+        layout: {FeedexUi.LayoutView, "live.html"}, 
+        container: {:div, class: "live_view_container"}
       unquote(view_helpers())
     end
   end

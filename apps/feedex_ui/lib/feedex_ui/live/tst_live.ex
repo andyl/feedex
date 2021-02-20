@@ -1,5 +1,8 @@
 defmodule FeedexUi.TstLive do
-  use FeedexUi, :live_view
+  # use FeedexUi, :live_view
+  use Phoenix.LiveView,
+    layout: {FeedexUi.LayoutView, "live.html"},
+    container: {:div, class: "live_view_container"}
 
   @impl true
   def mount(_params, _session, socket) do

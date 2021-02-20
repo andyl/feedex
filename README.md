@@ -21,6 +21,11 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4070`](http://localhost:4070) from your browser.
 
+## Running Tests
+
+    > MIX_ENV=test mix do compile, ecto.create, ecto.migrate
+    > mix test
+    > mix test.watch
 
 ## Installing Production
 

@@ -498,7 +498,7 @@ defmodule FeedexData.AccountsTest do
 
   describe "inspect/2" do
     test "does not include password" do
-      refute inspect(%User{password: "123456"}) =~ "password: \"123456\""
+      refute inspect(%User{pwd: "123456"}) =~ "pwd: \"123456\""
     end
   end
 end

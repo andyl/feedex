@@ -49,7 +49,6 @@ defmodule FeedexWeb.MixProject do
       {:feedex_data, in_umbrella: true},
       {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
       {:phx_tailwind_generators, "~> 0.1.6"},
-      {:bamboo, "~> 1.7"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"}
     ]

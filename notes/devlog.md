@@ -338,11 +338,22 @@ Learnings:
 - [x] Study LiveComponents
 - [x] Mock up Tailwind UI
 
-- [ ] Rebuild LiveView Interface
-- [ ] Restore objects and tests
-- [ ] Generate admin pages: users / feeds / posts
+## 2021 Feb 20 Sat
+
+- [x] Create Tailwind Layout
+
+## 2021 Feb 20 Sat
+
+- [x] Restore objects and tests
+
+- [ ] UI: clock
+- [ ] UI: add alpine
+- [ ] UI: add user pulldown
+- [ ] UI: ActiveLink
 
 ## TBD
+
+- [ ] Generate admin pages: users / feeds / posts
 
 - [ ] FcHtml: Replace HTTPotion with Tesla
 

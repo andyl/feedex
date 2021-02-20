@@ -14,7 +14,7 @@ defmodule FeedexData.Ctx.Account.UserTest do
   describe "inserting records" do
     test "adds a record" do
       tmap = %User{}
-      attr = %{name: "asdff", email: "zqwer@asdf.com"}
+      attr = %{name: "asdff", email: "zqwer@asdf.com", pwd_hash: "xxx"}
       cset = User.changeset(tmap, attr)
       assert count(User) == 0
       assert {:ok, _result} = Repo.insert(cset)

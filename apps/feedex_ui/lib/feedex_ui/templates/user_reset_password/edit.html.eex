@@ -7,13 +7,13 @@
     </div>
   <% end %>
 
-  <%= label f, :password, "New password" %>
-  <%= password_input f, :password, required: true %>
-  <%= error_tag f, :password %>
+  <%= label f, :pwd, "New password" %>
+  <%= password_input f, :pwd, required: true %>
+  <%= error_tag f, :pwd %>
 
-  <%= label f, :password_confirmation, "Confirm new password" %>
-  <%= password_input f, :password_confirmation, required: true %>
-  <%= error_tag f, :password_confirmation %>
+  <%= label f, :pwd_confirmation, "Confirm new password" %>
+  <%= password_input f, :pwd_confirmation, required: true %>
+  <%= error_tag f, :pwd_confirmation %>
 
   <div>
     <%= submit "Reset password" %>

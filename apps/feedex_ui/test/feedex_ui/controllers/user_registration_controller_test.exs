@@ -25,7 +25,7 @@ defmodule FeedexUi.UserRegistrationControllerTest do
 
       conn =
         post(conn, Routes.user_registration_path(conn, :create), %{
-          "user" => %{"email" => email, "password" => valid_user_password()}
+          "user" => %{"email" => email, "pwd" => valid_user_password()}
         })
 
       assert get_session(conn, :user_token)
@@ -42,7 +42,7 @@ defmodule FeedexUi.UserRegistrationControllerTest do
     test "render errors for invalid data", %{conn: conn} do
       conn =
         post(conn, Routes.user_registration_path(conn, :create), %{
-          "user" => %{"email" => "with spaces", "password" => "too short"}
+          "user" => %{"email" => "with spaces", "pwd" => "too short"}
         })
 
       response = html_response(conn, 200)

@@ -16,7 +16,7 @@ defmodule FeedexUi.UserResetPasswordControllerTest do
       assert response =~ "<h1>Forgot your password?</h1>"
     end
   end
-
+   
   describe "POST /users/reset_password" do
     @tag :capture_log
     test "sends a new reset password token", %{conn: conn, user: user} do
@@ -78,8 +78,8 @@ defmodule FeedexUi.UserResetPasswordControllerTest do
       conn =
         put(conn, Routes.user_reset_password_path(conn, :update, token), %{
           "user" => %{
-            "password" => "new valid password",
-            "password_confirmation" => "new valid password"
+            "pwd" => "new valid password",
+            "pwd_confirmation" => "new valid password"
           }
         })
 
@@ -93,8 +93,8 @@ defmodule FeedexUi.UserResetPasswordControllerTest do
       conn =
         put(conn, Routes.user_reset_password_path(conn, :update, token), %{
           "user" => %{
-            "password" => "too short",
-            "password_confirmation" => "does not match"
+            "pwd" => "too short",
+            "pwd_confirmation" => "does not match"
           }
         })
 

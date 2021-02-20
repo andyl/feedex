@@ -11,9 +11,9 @@
   <%= email_input f, :email, required: true %>
   <%= error_tag f, :email %>
 
-  <%= label f, :password %>
-  <%= password_input f, :password, required: true %>
-  <%= error_tag f, :password %>
+  <%= label f, :pwd %>
+  <%= password_input f, :pwd, required: true %>
+  <%= error_tag f, :pwd %>
 
   <div>
     <%= submit "Register" %>

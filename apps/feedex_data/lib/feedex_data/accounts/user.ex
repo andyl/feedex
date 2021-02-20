@@ -2,12 +2,12 @@ defmodule FeedexData.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @derive {Inspect, except: [:password]}
-  @primary_key {:id, :binary_id, autogenerate: true}
-  @foreign_key_type :binary_id
+  @derive {Inspect, except: [:pwd]}
+  # @primary_key {:id, :binary_id, autogenerate: true}
+  # @foreign_key_type :binary_id
   schema "users" do
     field :email, :string
-    # field :password, :string, virtual: true
+    # field :pwd, :string, virtual: true
     field :pwd, :string, virtual: true
     # field :hashed_password, :string
     field :pwd_hash, :string
@@ -35,7 +35,7 @@ defmodule FeedexData.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, [:email, :pwd])
     |> validate_email()
     |> validate_password(opts)
   end
@@ -52,15 +52,15 @@ defmodule FeedexData.Accounts.User do
   defp validate_password(changeset, opts) do
     changeset
     |> validate_required([:pwd])
-    |> validate_length(:pwd, min: 3, max: 80)
-    # |> validate_format(:password, ~r/[a-z]/, message: "at least one lower case character")
-    # |> validate_format(:password, ~r/[A-Z]/, message: "at least one upper case character")
-    # |> validate_format(:password, ~r/[!?@#$%^&*_0-9]/, message: "at least one digit or punctuation character")
+    |> validate_length(:pwd, min: 12, max: 80)
+    # |> validate_format(:pwd, ~r/[a-z]/, message: "at least one lower case character")
+    # |> validate_format(:pwd, ~r/[A-Z]/, message: "at least one upper case character")
+    # |> validate_format(:pwd, ~r/[!?@#$%^&*_0-9]/, message: "at least one digit or punctuation character")
     |> maybe_hash_password(opts)
   end
 
   defp maybe_hash_password(changeset, opts) do
-    hash_password? = Keyword.get(opts, :pwd_hash, true)
+    hash_password? = Keyword.get(opts, :hash_password, true)
     password = get_change(changeset, :pwd)
 
     if hash_password? && password && changeset.valid? do

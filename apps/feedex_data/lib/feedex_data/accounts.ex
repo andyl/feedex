@@ -25,6 +25,7 @@ defmodule FeedexData.Accounts do
     Repo.get_by(User, email: email)
   end
 
+
   @doc """
   Gets a user by email and password.
 
@@ -329,10 +330,10 @@ defmodule FeedexData.Accounts do
 
   ## Examples
 
-      iex> reset_user_password(user, %{password: "new long password", password_confirmation: "new long password"})
+      iex> reset_user_password(user, %{pwd: "new long password", pwd_confirmation: "new long password"})
       {:ok, %User{}}
 
-      iex> reset_user_password(user, %{password: "valid", password_confirmation: "not the same"})
+      iex> reset_user_password(user, %{pwd: "valid", pwd_confirmation: "not the same"})
       {:error, %Ecto.Changeset{}}
 
   """

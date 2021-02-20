@@ -29,10 +29,10 @@ defmodule FeedexUi.ChannelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(FeedexUi.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(FeedexData.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(FeedexUi.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(FeedexData.Repo, {:shared, self()})
     end
 
     :ok

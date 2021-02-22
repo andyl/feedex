@@ -354,8 +354,9 @@ Learnings:
 
 ## TBD
 
-- [ ] UI: add user pulldown
+- [ ] UI: build out user login
 - [ ] UI: ActiveLink
+- [ ] UI: Add UI State
 
 - [ ] Generate admin pages: users / feeds / posts
 

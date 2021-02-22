@@ -1,4 +1,8 @@
-defmodule FeedexUi.PageLive do
+defmodule FeedexUi.NewsLive do
+  @moduledoc """
+  Renders a test page.
+  """
+
   use FeedexUi, :live_view
 
   @impl true
@@ -23,6 +27,12 @@ defmodule FeedexUi.PageLive do
          |> put_flash(:error, "No dependencies found matching \"#{query}\"")
          |> assign(results: %{}, query: query)}
     end
+  end
+
+  @impl true
+  def handle_info({:tick, assigns}, socket) do
+    send_update(FeedexUi.ClockComponent, assigns)
+    {:noreply, socket}
   end
 
   defp search(query) do

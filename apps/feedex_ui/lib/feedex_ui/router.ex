@@ -20,8 +20,8 @@ defmodule FeedexUi.Router do
   scope "/", FeedexUi do
     pipe_through :browser
 
-    live "/", PageLive, :index
-    live "/tst", TstLive, :index, layout: {FeedexUi.LayoutView, :tst}, container: {:div, class: "lv_container"}
+    live "/", HomeLive, :index
+    live "/news", NewsLive, :index, layout: {FeedexUi.LayoutView, :tst}, container: {:div, class: "lv_container"}
   end
 
   # Other scopes may use custom stacks.

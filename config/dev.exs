@@ -1,5 +1,22 @@
 use Mix.Config
 
+# ----- FeedexTsdb
+
+config :feedex_tsdb, FeedexTsdb,
+  database: "inf_feedex_dev"
+
+# ----- FeedexData
+
+config :feedex_data, FeedexData.Repo,
+  username: "postgres",
+  password: "postgres",
+  database: "feedex_dev",
+  hostname: "localhost",
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+
+# ----- FeedexUi
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
@@ -56,49 +73,35 @@ config :feedex_ui, FeedexUi.Endpoint,
     ]
   ]
 
-# ----- FeedexTsdb
-
-config :feedex_tsdb, FeedexTsdb,
-  database: "inf_feedex_dev"
-
-# ----- FeedexData
-
-config :feedex_data, FeedexData.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "feedex_dev",
-  hostname: "localhost",
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
 
 # ----- FeedexWeb 
 
-# Endpoint
-config :feedex_web, FeedexWeb.Endpoint,
-  http: [port: 4061],
-  debug_errors: true,
-  code_reloader: true,
-  check_origin: false,
-  watchers: [
-    node: [
-      "node_modules/webpack/bin/webpack.js",
-      "--mode",
-      "development",
-      "--watch-stdin",
-      cd: Path.expand("../apps/feedex_web/assets", __DIR__)
-    ]
-  ]
-  
-# Watch static and templates for browser reloading.
-config :feedex_web, FeedexWeb.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"priv/gettext/.*(po)$",
-      ~r"lib/feedex_web/(live|views)/.*(ex)$",
-      ~r"lib/feedex_web/templates/.*(eex)$"
-    ]
-  ]
+# # Endpoint
+# config :feedex_web, FeedexWeb.Endpoint,
+#   http: [port: 4061],
+#   debug_errors: true,
+#   code_reloader: true,
+#   check_origin: false,
+#   watchers: [
+#     node: [
+#       "node_modules/webpack/bin/webpack.js",
+#       "--mode",
+#       "development",
+#       "--watch-stdin",
+#       cd: Path.expand("../apps/feedex_web/assets", __DIR__)
+#     ]
+#   ]
+#   
+# # Watch static and templates for browser reloading.
+# config :feedex_web, FeedexWeb.Endpoint,
+#   live_reload: [
+#     patterns: [
+#       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+#       ~r"priv/gettext/.*(po)$",
+#       ~r"lib/feedex_web/(live|views)/.*(ex)$",
+#       ~r"lib/feedex_web/templates/.*(eex)$"
+#     ]
+#   ]
 
 # ----- Testing
 

@@ -32,17 +32,17 @@ config :feedex_ui, FeedexUi.Endpoint,
 
 # ----- FeedexWeb 
 
-config :feedex_web,
-  ecto_repos: [FeedexData.Repo],
-  generators: [context_app: :feedex_data, binary_id: true]
-
-# Configures the endpoint
-config :feedex_web, FeedexWeb.Endpoint,
-  url: [host: "localhost"],
-  secret_key_base: "3C/yQ+COfkrrV8JK0oqTM5k0QtpDYU5lQOe3yd2/pzjBMquux9ki7wJZXsZGklZu",
-  render_errors: [view: FeedexWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Feedex.PubSub,
-  live_view: [signing_salt: "gdYZay/D"]
+# config :feedex_web,
+#   ecto_repos: [FeedexData.Repo],
+#   generators: [context_app: :feedex_data, binary_id: true]
+#
+# # Configures the endpoint
+# config :feedex_web, FeedexWeb.Endpoint,
+#   url: [host: "localhost"],
+#   secret_key_base: "3C/yQ+COfkrrV8JK0oqTM5k0QtpDYU5lQOe3yd2/pzjBMquux9ki7wJZXsZGklZu",
+#   render_errors: [view: FeedexWeb.ErrorView, accepts: ~w(html json), layout: false],
+#   pubsub_server: Feedex.PubSub,
+#   live_view: [signing_salt: "gdYZay/D"]
 
 # ----- FeedexJob
 

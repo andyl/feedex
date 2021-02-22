@@ -20,16 +20,18 @@
               <div class="flex-shrink-0">
                 <img class="w-8 h-8" src="/images/rss-4-32.png" alt="Home">
               </div>
-              <div class="ml-3 text-xl text-white">FeedexUi</div>
+              <div class="ml-3 text-xl text-white">
+                <a href="/">FeedexUi</a>
+              </div>
             </div>
             <div class="hidden md:block">
               <div class="flex items-center ml-4 md:ml-6">
                 <div class="hidden md:block">
                   <div class="flex items-baseline space-x-1">
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <a href="#" class="px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-md">News</a>
-                    <a href="#" class="px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">Settings</a>
-                    <a href="#" class="px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">Logout</a>
+                    <a href="/news" class="px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-md">News</a>
+                    <a href="/users/settings" class="px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">Settings</a>
+                    <%= link "Logout", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
                   </div>
                 </div>
               </div>

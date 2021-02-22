@@ -352,13 +352,14 @@ Learnings:
 - [x] UI: clock as LiveView
 - [x] UI: add alpine
 
-## TBD
+## 2021 Feb 22 Mon
 
 - [ ] UI: build out user login
 - [ ] UI: ActiveLink
 - [ ] UI: Add UI State
+- [ ] UI: Generate admin pages: users / feeds / posts
 
-- [ ] Generate admin pages: users / feeds / posts
+## TBD
 
 - [ ] FcHtml: Replace HTTPotion with Finch (finch telemetry elixir html)
 

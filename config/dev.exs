@@ -103,12 +103,6 @@ config :feedex_ui, FeedexUi.Endpoint,
 #     ]
 #   ]
 
-# ----- Testing
-
-if Mix.env == :dev do
-  config :mix_test_watch, clear: true
-end
-
 # ----- Misc 
 
 # ## SSL Support

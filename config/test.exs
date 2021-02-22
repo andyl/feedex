@@ -35,3 +35,5 @@ config :feedex_ui, FeedexUi.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+

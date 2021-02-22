@@ -17,7 +17,8 @@ defmodule Feedex.Umbrella.MixProject do
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       # ----- development and test
       {:scribe, "~> 0.10", only: :dev, runtime: false},
-      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
+      {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
+      # {:mix_test_watch, "~> 1.0"},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
       {:benchee, "~> 1.0", only: :dev, runtime: false}
     ]

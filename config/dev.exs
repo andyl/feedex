@@ -105,7 +105,9 @@ config :feedex_ui, FeedexUi.Endpoint,
 
 # ----- Testing
 
-config :mix_test_watch, clear: true
+if Mix.env == :dev do
+  config :mix_test_watch, clear: true
+end
 
 # ----- Misc 
 

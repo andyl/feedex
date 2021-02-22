@@ -20,7 +20,8 @@ defmodule FeedexJob do
     delta = Timex.diff(Timex.now(), feed.updated_at, :minutes)
     if delta > 5 || feed.sync_count == 0 do
       sync(feed)
-      FeedexWeb.Endpoint.broadcast_from(self(), "read_all", "sync_feed", %{})
+      # TODO: fix this...
+      # FeedexUi.Endpoint.broadcast_from(self(), "read_all", "sync_feed", %{})
     else
       Logger.info "----- FEED SYNC SKIPPED ------------------"
       Logger.info "  FEED ID: #{feed.id}"
@@ -46,7 +47,7 @@ defmodule FeedexJob do
     Logger.info "    DELTA: #{Timex.diff(Timex.now(), feed.updated_at, :minutes)}"
     Logger.info "----- FEED SYNC --------------------------"
     touch(feed)
-    case FeedexClient.scan(feed.url) do
+    case FcRss.scan(feed.url) do
       {:ok, _url, data} -> sync_posts(feed, data)
       {:error, message} -> {:error, message}
     end

@@ -346,16 +346,20 @@ Learnings:
 
 - [x] Restore objects and tests
 
-- [ ] UI: clock
+## 2021 Feb 21 Sun
+
+- [x] UI: clock as LiveComponent
+- [x] UI: clock as LiveView
+
+## TBD
+
 - [ ] UI: add alpine
 - [ ] UI: add user pulldown
 - [ ] UI: ActiveLink
 
-## TBD
-
 - [ ] Generate admin pages: users / feeds / posts
 
-- [ ] FcHtml: Replace HTTPotion with Tesla
+- [ ] FcHtml: Replace HTTPotion with Finch (finch telemetry elixir html)
 
 - [ ] FeedexJob: Replace Quantum with Oban(?)
 

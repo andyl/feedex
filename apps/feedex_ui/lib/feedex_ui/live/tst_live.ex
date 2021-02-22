@@ -1,8 +1,9 @@
 defmodule FeedexUi.TstLive do
-  # use FeedexUi, :live_view
-  use Phoenix.LiveView,
-    layout: {FeedexUi.LayoutView, "live.html"},
-    container: {:div, class: "live_view_container"}
+  @moduledoc """
+  Renders a test page.
+  """
+
+  use FeedexUi, :live_view
 
   @impl true
   def mount(_params, _session, socket) do
@@ -26,6 +27,12 @@ defmodule FeedexUi.TstLive do
          |> put_flash(:error, "No dependencies found matching \"#{query}\"")
          |> assign(results: %{}, query: query)}
     end
+  end
+
+  @impl true
+  def handle_info({:tick, assigns}, socket) do
+    send_update(FeedexUi.ClockComponent, assigns)
+    {:noreply, socket}
   end
 
   defp search(query) do

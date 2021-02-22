@@ -350,10 +350,10 @@ Learnings:
 
 - [x] UI: clock as LiveComponent
 - [x] UI: clock as LiveView
+- [x] UI: add alpine
 
 ## TBD
 
-- [ ] UI: add alpine
 - [ ] UI: add user pulldown
 - [ ] UI: ActiveLink
 

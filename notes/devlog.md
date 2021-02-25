@@ -324,7 +324,7 @@ Learnings:
 ## 2021 Feb 17 Wed
 
 - [x] New umbrella project - binary ID
-- [x] Add tailwind generators, phx.gen.auth, bamboo
+- [x] Add tailwind generators, phx.gen.auth
 - [x] Comment out old contexts and migrations
 - [x] Make sure we're using binary_id
 - [x] Run phx.gen.auth
@@ -354,19 +354,23 @@ Learnings:
 
 ## 2021 Feb 22 Mon
 
+- [x] FcHtml: Add HTTP Client Finch (finch telemetry elixir html)
+
+## TBD
+
 - [ ] UI: build out user login
 - [ ] UI: ActiveLink
 - [ ] UI: Add UI State
 - [ ] UI: Generate admin pages: users / feeds / posts
 
-## TBD
-
-- [ ] FcHtml: Replace HTTPotion with Finch (finch telemetry elixir html)
-
+- [ ] Test FcRss connected to FcFinch
 - [ ] FeedexJob: Replace Quantum with Oban(?)
 
+- [ ] Add telemetry for FcFinch (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
+- [ ] Remove FcHttp
+
 - [ ] Feature: OPML Import/Export (needs file upload/download)
-- [ ] Add bamboo
+- [ ] Add bamboo 2.0
 
 - [ ] Infra: Restful API: RSS/JSON (Feeds and Folders)
 - [ ] Infra: Restful API: SyncNow (Feeds and Folders)

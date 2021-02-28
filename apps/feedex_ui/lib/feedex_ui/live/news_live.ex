@@ -4,11 +4,13 @@ defmodule FeedexUi.NewsLive do
   """
 
   use FeedexUi, :live_view
+  alias FeedexUi.Cache.UiState
 
   @impl true
   def mount(_params, session, socket) do
     user = FeedexUi.LiveUtil.user_from_session(session)
-    {:ok, assign(socket, current_user: user)}
+    uistate = UiState.lookup(user.id)
+    {:ok, assign(socket, current_user: user, uistate: uistate)}
   end
 
   @impl true

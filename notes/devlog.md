@@ -375,6 +375,9 @@ Recap:
 - [x] Style Page: Login
 - [x] Style Page: Register
 - [x] Style Page: Settings
+- [x] Remove phoenix.css
+
+- [ ] UI: Add UI State
 
 ## TBD
 
@@ -382,16 +385,12 @@ Recap:
 - [ ] UI: Admin-links to Dashboard and Admin pages on settings page
 - [ ] UI: Admin-only access to admin pages
 
-- [ ] UI: Add UI State
-
-- [ ] Remove phoenix.css
-
 - [ ] Test FcRss connected to FcFinch
 
 - [ ] Add telemetry for FcFinch (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
 - [ ] Remove FcHttp
 
-- [ ] Feature: OPML Import/Export (needs file upload/download)
+- [ ] Feature: OPML-JSON Import/Export (needs file upload/download)
 - [ ] Add bamboo 2.0
 
 - [ ] Infra: Restful API: RSS/JSON (Feeds and Folders)

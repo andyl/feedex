@@ -37,7 +37,7 @@ defmodule FeedexUi.UserSessionControllerTest do
       response = html_response(conn, 200)
       assert response =~ user.email
       assert response =~ "Settings</a>"
-      assert response =~ "Log out</a>"
+      assert response =~ "Logout</a>"
     end
 
     test "logs the user in with remember me", %{conn: conn, user: user} do

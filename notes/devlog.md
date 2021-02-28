@@ -368,15 +368,23 @@ Recap:
 - [x] UI: build out user login
 - [x] LV: Pick up current_user
 - [x] UI: ActiveLink
+- [x] Style Menu
 
-- [ ] Style Menu
-- [ ] Style Pages
-- [ ] Remove phoenix.css
+## 2021 Feb 28 Sun
+
+- [x] Style Page: Login
+- [x] Style Page: Register
+- [x] Style Page: Settings
 
 ## TBD
 
-- [ ] UI: Add UI State
 - [ ] UI: Generate admin pages: users / feeds / posts
+- [ ] UI: Admin-links to Dashboard and Admin pages on settings page
+- [ ] UI: Admin-only access to admin pages
+
+- [ ] UI: Add UI State
+
+- [ ] Remove phoenix.css
 
 - [ ] Test FcRss connected to FcFinch
 

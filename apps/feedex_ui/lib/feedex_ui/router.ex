@@ -7,7 +7,7 @@ defmodule FeedexUi.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, {FeedexUi.LayoutView, :root}
+    plug :put_root_layout, {FeedexUi.LayoutView, :base}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_user
@@ -20,13 +20,13 @@ defmodule FeedexUi.Router do
   scope "/", FeedexUi do
     pipe_through :browser
 
-    live "/", HomeLive, :index, layout: {FeedexUi.LayoutView, :base}
+    live "/", HomeLive, :index
   end
 
   scope "/", FeedexUi do
     pipe_through [:browser, :require_authenticated_user]
 
-    live "/news", NewsLive, :index, layout: {FeedexUi.LayoutView, :base}
+    live "/news", NewsLive, :index
   end
   # Other scopes may use custom stacks.
   # scope "/api", FeedexUi do

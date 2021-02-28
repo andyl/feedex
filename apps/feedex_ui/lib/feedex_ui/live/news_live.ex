@@ -1,15 +1,14 @@
 defmodule FeedexUi.NewsLive do
   @moduledoc """
-  Renders a test page.
+  Renders the news page.
   """
 
   use FeedexUi, :live_view
 
   @impl true
   def mount(_params, session, socket) do
-    user = session["user_token"]
-           |> FeedexData.Accounts.get_user_by_session_token()
-    {:ok, assign(socket, query: "", results: %{}, current_user: user)}
+    user = FeedexUi.LiveUtil.user_from_session(session)
+    {:ok, assign(socket, current_user: user)}
   end
 
   @impl true

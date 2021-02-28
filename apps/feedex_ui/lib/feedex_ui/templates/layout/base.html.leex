@@ -28,11 +28,7 @@
               <div class="flex items-center ml-4 md:ml-6">
                 <div class="hidden md:block">
                   <div class="flex items-baseline space-x-1">
-                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                     <%= render "_live_menu.html", assigns %>
-                    <a href="/news" class="px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-md">News</a>
-                    <a href="/users/settings" class="px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">Settings</a>
-                    <%= link "Logout", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
                   </div>
                 </div>
               </div>

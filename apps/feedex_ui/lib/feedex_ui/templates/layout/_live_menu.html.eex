@@ -1,2 +1,6 @@
-<%= @current_user.email %></li>
+<div class="px-3 py-2 text-sm font-medium text-white">
+<%= @current_user.email %>
+</div>
 <%= FeedexUi.NavUtil.link(@conn, "/news", "News") %>
+<%= FeedexUi.NavUtil.link(@conn, "/users/settings", "Settings") %>
+<%= link "Logout", to: Routes.user_session_path(@conn, :delete), method: :delete, class: FeedexUi.NavUtil.normal_klas() %>

@@ -20,7 +20,7 @@ defmodule FeedexUi.Router do
   scope "/", FeedexUi do
     pipe_through :browser
 
-    live "/", HomeLive, :index
+    live "/", HomeLive, :index, layout: {FeedexUi.LayoutView, :base}
   end
 
   scope "/", FeedexUi do

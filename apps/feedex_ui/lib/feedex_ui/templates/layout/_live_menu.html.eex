@@ -1,6 +1,11 @@
-<div class="px-3 py-2 text-sm font-medium text-white">
-<%= @current_user.email %>
-</div>
-<%= FeedexUi.NavUtil.link(@conn, "/news", "News") %>
-<%= FeedexUi.NavUtil.link(@conn, "/users/settings", "Settings") %>
-<%= link "Logout", to: Routes.user_session_path(@conn, :delete), method: :delete, class: FeedexUi.NavUtil.normal_klas() %>
+<%= if @current_user do %>
+  <div class="px-3 py-2 text-sm font-medium text-white">
+    <%= @current_user.email %>
+  </div>
+  <%= FeedexUi.NavUtil.link(@conn, "/news", "News") %>
+  <%= FeedexUi.NavUtil.link(@conn, "/users/settings", "Settings") %>
+  <%= link "Logout", to: Routes.user_session_path(@conn, :delete), method: :delete, class: FeedexUi.NavUtil.normal_klas() %>
+<% else %>
+  <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: FeedexUi.NavUtil.normal_klas() %>
+  <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: FeedexUi.NavUtil.normal_klas() %>
+<% end %>

@@ -42,7 +42,7 @@ defmodule FeedexData.Ctx.Account.User do
   end
 
   def pwd_hash(pass) do
-    Pbkdf2.hash_pwd_salt(pass)
+    Bcrypt.hash_pwd_salt(pass)
   end
 
   defp set_pwd_hash(changeset) do

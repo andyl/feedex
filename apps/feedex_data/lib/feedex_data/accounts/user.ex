@@ -61,6 +61,7 @@ defmodule FeedexData.Accounts.User do
 
   defp maybe_hash_password(changeset, opts) do
     hash_password? = Keyword.get(opts, :hash_password, true)
+    # hash_password? = Keyword.get(opts, :pwd_hash, true)
     password = get_change(changeset, :pwd)
 
     if hash_password? && password && changeset.valid? do

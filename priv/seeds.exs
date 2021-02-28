@@ -14,8 +14,8 @@ Repo.delete_all(User)
 
 Repo.insert(%User{
   name: "aaa",
-  email: "aaa",
-  pwd_hash: User.pwd_hash("aaa"),
+  email: "aaa@aaa.com",
+  pwd_hash: User.pwd_hash("123456789012"),
   folders: [
     %Folder{
       name: "Elixir",
@@ -74,14 +74,14 @@ Repo.insert(%User{
 
 Repo.insert(%User{
   name: "bbb",
-  email: "bbb",
-  pwd_hash: User.pwd_hash("bbb")
+  email: "bbb@bbb.com",
+  pwd_hash: User.pwd_hash("123456789012"),
   }
 )
 
 Repo.insert(%User{
   name: "ccc",
-  email: "ccc",
-  pwd_hash: User.pwd_hash("ccc")
+  email: "ccc@ccc.com",
+  pwd_hash: User.pwd_hash("123456789012")
   }
 )

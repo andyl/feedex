@@ -376,8 +376,13 @@ Recap:
 - [x] Style Page: Register
 - [x] Style Page: Settings
 - [x] Remove phoenix.css
+- [x] News: Add UI State
+- [x] Get seed generation working with login 
 
-- [ ] UI: Add UI State
+- [ ] News: write tree component
+- [ ] News: write body component
+- [ ] News: write button component
+- [ ] News: write header component
 
 ## TBD
 

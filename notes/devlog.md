@@ -356,15 +356,29 @@ Learnings:
 
 - [x] FcHtml: Add HTTP Client Finch (finch telemetry elixir html)
 
+## 2021 Feb 26 Fri
+
+Recap:
+- got LiveView book
+- learned login technique
+- discovered `phx.gen.live`
+
+## 2021 Feb 27 Sat
+
+- [x] UI: build out user login
+- [x] LV: Pick up current_user
+- [x] UI: ActiveLink
+
+- [ ] Style Menu
+- [ ] Style Pages
+- [ ] Remove phoenix.css
+
 ## TBD
 
-- [ ] UI: build out user login
-- [ ] UI: ActiveLink
 - [ ] UI: Add UI State
 - [ ] UI: Generate admin pages: users / feeds / posts
 
 - [ ] Test FcRss connected to FcFinch
-- [ ] FeedexJob: Replace Quantum with Oban(?)
 
 - [ ] Add telemetry for FcFinch (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
 - [ ] Remove FcHttp

@@ -21,9 +21,13 @@ defmodule FeedexUi.Router do
     pipe_through :browser
 
     live "/", HomeLive, :index
-    live "/news", NewsLive, :index, layout: {FeedexUi.LayoutView, :base}
   end
 
+  scope "/", FeedexUi do
+    pipe_through [:browser, :require_authenticated_user]
+
+    live "/news", NewsLive, :index, layout: {FeedexUi.LayoutView, :base}
+  end
   # Other scopes may use custom stacks.
   # scope "/api", FeedexUi do
   #   pipe_through :api

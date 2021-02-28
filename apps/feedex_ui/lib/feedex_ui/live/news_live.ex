@@ -6,8 +6,15 @@ defmodule FeedexUi.NewsLive do
   use FeedexUi, :live_view
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, query: "", results: %{})}
+  def mount(_params, session, socket) do
+    user = session["user_token"]
+           |> FeedexData.Accounts.get_user_by_session_token()
+    {:ok, assign(socket, query: "", results: %{}, current_user: user)}
+  end
+
+  @impl true
+  def handle_params(_unsigned_params, uri, socket) do
+    {:noreply, assign(socket, path: URI.parse(uri).path)}
   end
 
   @impl true

@@ -13,7 +13,7 @@ defmodule FeedexUi.BtnComponent do
 
   def render(assigns) do
     ~L"""
-    <div class="hidden py-1 md:block">
+    <div class="py-1 desktop-only">
       <hr/> 
       <%= folder_btn(@uistate) %>
       <%= feed_btn(@uistate) %>

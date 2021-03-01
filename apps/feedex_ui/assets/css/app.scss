@@ -7,6 +7,14 @@
 // @import "./phoenix.css";
 @import "../node_modules/nprogress/nprogress.css";
 
+.desktop-only {
+  @apply hidden md:block
+}
+
+.mobile-only {
+  @apply block md:hidden
+}
+
 /* LiveView specific classes for your customizations */
 .phx-no-feedback.invalid-feedback,
 .phx-no-feedback .invalid-feedback {

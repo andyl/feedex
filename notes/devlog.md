@@ -380,12 +380,22 @@ Recap:
 - [x] Get seed generation working with login 
 - [x] Prototype components
 
+## 2021 Mar 01 Mon
+
+- [x] News: write base tree component
+
 ## TBD
 
-- [ ] News: write tree component
-- [ ] News: write body component
-- [ ] News: write button component
-- [ ] News: write header component
+- [ ] News: write base header component
+
+- [ ] Feeds: get feeds working
+- [ ] News: get feed counts working
+- [ ] News: get 'mark all as read' working
+
+- [ ] News: write base body component
+- [ ] News: write base button component
+
+- [ ] UI: test <Surface/>
 
 - [ ] UI: Generate admin pages: users / feeds / posts
 - [ ] UI: Admin-links to Dashboard and Admin pages on settings page

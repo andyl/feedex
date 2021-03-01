@@ -12,7 +12,7 @@ defmodule FeedexUi.HdrComponent do
 
   def render(assigns) do
     ~L"""
-    <div class="hidden bg-gray-300 md:block">
+    <div class="bg-gray-300 desktop-only">
       HDR COMPONENT
     </div>
     """

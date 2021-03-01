@@ -378,13 +378,14 @@ Recap:
 - [x] Remove phoenix.css
 - [x] News: Add UI State
 - [x] Get seed generation working with login 
+- [x] Prototype components
+
+## TBD
 
 - [ ] News: write tree component
 - [ ] News: write body component
 - [ ] News: write button component
 - [ ] News: write header component
-
-## TBD
 
 - [ ] UI: Generate admin pages: users / feeds / posts
 - [ ] UI: Admin-links to Dashboard and Admin pages on settings page

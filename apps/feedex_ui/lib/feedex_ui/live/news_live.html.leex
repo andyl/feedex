@@ -1,15 +1,11 @@
 <div class="md:flex">
-  <div class="md:w-1/5">
-    <div class="hidden bg-gray-300 md:block">
-      <div class="py-1 text-xs text-center">
-        <%= live_render(@socket, FeedexUi.ClockLive, id: "clock1", session: %{"strftime" => "%b %d %a %H:%M", "interval" => 10_000}) %>
-      </div>
-    </div>
-
-    <div class="bg-gray-300">Tree</div>
+  <div class="bg-gray-300 md:w-1/5">
+    <%= live_render(@socket, FeedexUi.ClockLive, id: "clock") %>
+    <%= live_component(@socket, FeedexUi.TreeComponent, uistate: @uistate) %>
+    <%= live_component(@socket, FeedexUi.BtnComponent, uistate: @uistate) %>
   </div>
   <div class="md:w-4/5">
-    <div class="hidden bg-gray-300 md:block">Header</div>
-    <div>Body</div>
+    <%= live_component(@socket, FeedexUi.HdrComponent, uistate: @uistate) %>
+    <%= live_component(@socket, FeedexUi.BodyComponent, uistate: @uistate) %>
   </div>
 </div>

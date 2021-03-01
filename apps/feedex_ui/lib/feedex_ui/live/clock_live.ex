@@ -16,16 +16,19 @@ defmodule FeedexUi.ClockLive do
 
   @impl true
   def mount(_params, session, socket) do
-    start_timer(session["interval"] || 1000)
-    strftime = session["strftime"] || "%H:%M:%S"
-    state = [strftime: strftime, date: local_date(strftime)]
+    start_timer(session["interval"] || 10_000)
+    strftime = session["strftime"] || "%b %d %a %H:%M"
+    klas = session["klas"] || "hidden py-1 text-xs text-center md:block"
+    state = [strftime: strftime, date: local_date(strftime), klas: klas]
     {:ok, assign(socket, state)}
   end
 
   @impl true
   def render(assigns) do
     ~L"""
-    <%= @date %>
+    <div class="<%= @klas %>">
+      <%= @date %>
+    </div>
     """
   end
 

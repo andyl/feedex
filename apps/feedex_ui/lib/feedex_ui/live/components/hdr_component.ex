@@ -11,7 +11,8 @@ defmodule FeedexUi.HdrComponent do
   use Phoenix.LiveComponent
 
   alias Phoenix.HTML
-  alias FeedexData.Ctx.{Account, News}
+  alias FeedexData.Ctx.Account
+  # alias FeedexData.Ctx.{Account, News}
 
   # def mount(session, socket) do
   #   FeedexWeb.Endpoint.subscribe("set_uistate")
@@ -26,7 +27,6 @@ defmodule FeedexUi.HdrComponent do
   # end
 
   def update(assigns, socket) do
-    IO.inspect assigns, label: "UPDATE"
     {:ok, assign(socket, uistate: assigns.uistate, unread: 22)}
   end
 

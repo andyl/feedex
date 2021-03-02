@@ -50,7 +50,6 @@ defmodule FeedexUi.NewsLive do
       id: "hdr"
     ]
     send_update(FeedexUi.HdrComponent, opts)
-    IO.inspect opts, label: "HANDLE_INFO"
     {:noreply, socket}
   end
 

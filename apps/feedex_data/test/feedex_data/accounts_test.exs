@@ -1,5 +1,5 @@
 defmodule FeedexData.AccountsTest do
-  use FeedexData.DataCase
+  use FeedexData.DataCase, async: true
 
   alias FeedexData.Accounts
   alias FeedexData.Accounts.{User, UserToken}

@@ -1,5 +1,5 @@
 defmodule FeedexUi.HomeLiveTest do
-  use FeedexUi.ConnCase
+  use FeedexUi.ConnCase, async: true
 
   import Phoenix.LiveViewTest
 

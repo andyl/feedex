@@ -48,6 +48,7 @@ defmodule FeedexUi.MixProject do
       {:telemetry_metrics, "~> 0.4"},
       {:phx_tailwind_generators, "~> 0.1.6"},
       {:feedex_data, in_umbrella: true},
+      {:feedex_job, in_umbrella: true},
       {:surface, "~> 0.2"},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},

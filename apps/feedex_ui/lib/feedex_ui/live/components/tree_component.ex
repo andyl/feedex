@@ -219,6 +219,8 @@ defmodule FeedexUi.TreeComponent do
     new_state = Map.merge(socket.assigns.uistate, opts)
     FeedexUi.Endpoint.broadcast_from(self(), "set_uistate", "TREE_FOLDER", %{uistate: new_state})
 
+    send(self(), {"set_uistate", %{uistate: new_state}})
+
     {:noreply, assign(socket, %{uistate: new_state, treemap: socket.assigns.treemap})}
   end
 
@@ -232,6 +234,8 @@ defmodule FeedexUi.TreeComponent do
 
     new_state = Map.merge(socket.assigns.uistate, opts)
     FeedexUi.Endpoint.broadcast_from(self(), "set_uistate", "TREE_FEED", %{uistate: new_state})
+
+    send(self(), {"set_uistate", %{uistate: new_state}})
 
     {:noreply, assign(socket, %{uistate: new_state, treemap: socket.assigns.treemap})}
   end

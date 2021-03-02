@@ -43,6 +43,17 @@ defmodule FeedexUi.NewsLive do
     {:noreply, socket}
   end
 
+  @impl true
+  def handle_info({"set_uistate", %{uistate: new_state}}, socket) do
+    opts = [
+      uistate: new_state,
+      id: "hdr"
+    ]
+    send_update(FeedexUi.HdrComponent, opts)
+    IO.inspect opts, label: "HANDLE_INFO"
+    {:noreply, socket}
+  end
+
   defp search(query) do
     if not FeedexUi.Endpoint.config(:code_reloader) do
       raise "action disabled when not in development"

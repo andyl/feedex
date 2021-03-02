@@ -383,19 +383,18 @@ Recap:
 ## 2021 Mar 01 Mon
 
 - [x] News: write base tree component
+- [x] UI: test <Surface/> (fail)
+- [x] News: write base header component
 
 ## TBD
 
-- [ ] News: write base header component
-
 - [ ] Feeds: get feeds working
+
 - [ ] News: get feed counts working
 - [ ] News: get 'mark all as read' working
 
 - [ ] News: write base body component
 - [ ] News: write base button component
-
-- [ ] UI: test <Surface/>
 
 - [ ] UI: Generate admin pages: users / feeds / posts
 - [ ] UI: Admin-links to Dashboard and Admin pages on settings page

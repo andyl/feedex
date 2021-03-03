@@ -10,6 +10,10 @@
 
 use Mix.Config
 
+# ----- FcTesla
+
+config :tesla, adapter: Tesla.Adapter.Hackney
+
 # ----- FeedexData 
 
 config :feedex_data,

@@ -1,9 +1,9 @@
-defmodule FcRss.MixProject do
+defmodule FcTesla.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :fc_rss,
+      app: :fc_tesla,
       version: "0.1.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
@@ -15,20 +15,19 @@ defmodule FcRss.MixProject do
     ]
   end
 
+  # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [
-        :elixir_feed_parser, 
-        :logger
-      ]
+      extra_applications: [:logger]
     ]
   end
 
+  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:fc_tesla, in_umbrella: true},
-      {:elixir_feed_parser, github: "andyl/elixir-feed-parser"},
-      {:exvcr, "~> 0.12", only: [:test]}
+      {:tesla, "~> 1.4.0"},
+      {:hackney, "~> 1.17.0"},
+      {:jason, ">= 1.0.0"}
     ]
   end
 end

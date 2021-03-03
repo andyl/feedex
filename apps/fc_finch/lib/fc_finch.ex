@@ -16,7 +16,11 @@ defmodule FcFinch do
     |> Finch.request(FcFinch.App)
   end
 
-  def success?(_response) do
-    :ok
+  def success?(%Finch.Response{status: code}) do
+    code in 200..299
+  end
+
+  def success?(_unknown) do
+    false
   end
 end

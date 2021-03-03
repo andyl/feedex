@@ -21,8 +21,8 @@ defmodule FcRss.Url do
   end
 
   defp download(input_url) do
-    resp = FcHttp.get(input_url, follow_redirects: true)
-    succ = FcHttp.success?(resp)
+    resp = FcTesla.fc_get(input_url)
+    succ = FcTesla.fc_success?(resp)
     %{%Url{} | url: input_url, resp: resp, valid_resp: succ}
   end
 

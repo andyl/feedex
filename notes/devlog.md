@@ -395,9 +395,10 @@ Recap:
 
 ## 2021 Mar 03 Wed
 
-- [ ] News: Fix layout (Grey Blocks)
+- [x] News: Fix layout (Grey Blocks)
+- [x] News: Clean up unread counts
+- [ ] News: Fix unread count on header
 - [ ] News: Add icons
-- [ ] News: Clean up unread counts
 - [ ] News: Get 'mark all as read' working
 - [ ] News: write base body component
 - [ ] News: write base button component

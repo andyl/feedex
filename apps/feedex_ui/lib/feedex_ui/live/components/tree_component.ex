@@ -77,7 +77,11 @@ defmodule FeedexUi.TreeComponent do
 
   def unread(count) do
     """
-    <small><span class="badge badge-light" #{style()}>#{count}</span></small>
+    <span class="inline-flex items-center px-1 ml-1 text-xs font-light text-blue-800 align-text-top bg-blue-100 rounded-full">
+      <small>
+        #{count}
+      </small>
+    </span>
     """
     |> raw()
   end
@@ -105,7 +109,11 @@ defmodule FeedexUi.TreeComponent do
 
   def all_unread(uistate, count) do
     """
-    <small><span class="badge badge-light" #{style()}>#{count}</span></small>
+    <span class="inline-flex items-center px-1 ml-1 text-xs font-light text-blue-800 align-text-top bg-blue-100 rounded-full">
+      <small>
+        #{count}
+      </small>
+    </span>
     #{check_link(uistate.fld_id == nil && uistate.reg_id == nil)}
     """
     |> raw()
@@ -116,7 +124,11 @@ defmodule FeedexUi.TreeComponent do
 
   def fold_unread(uistate, id, count) do
     """
-    <small><span class="badge badge-light" #{style()}>#{count}</span></small>
+    <span class="inline-flex items-center px-1 ml-1 text-xs font-light text-blue-800 align-text-top bg-blue-100 rounded-full">
+      <small>
+        #{count}
+      </small>
+    </span>
     #{check_link(uistate.fld_id == id)}
     """
     |> raw()

@@ -1,5 +1,5 @@
 <div class="md:flex">
-  <div class="bg-gray-300 md:w-1/5">
+  <div class="px-2 bg-gray-400 md:w-1/5">
     <%= live_render(@socket, FeedexUi.ClockLive, id: "clock") %>
     <%= live_component(@socket, FeedexUi.TreeComponent, id: "tre", uistate: @uistate) %>
     <%= live_component(@socket, FeedexUi.BtnComponent, id: "btn", uistate: @uistate) %>

@@ -12,7 +12,7 @@ defmodule FeedexUi.BodyComponent do
 
   def render(assigns) do
     ~L"""
-    <div class="bg-white">
+    <div class="px-2 pt-1">
       BODY COMPONENT
     </div>
     """

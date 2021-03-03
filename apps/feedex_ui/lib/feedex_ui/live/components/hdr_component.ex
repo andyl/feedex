@@ -19,7 +19,7 @@ defmodule FeedexUi.HdrComponent do
 
   def render(assigns) do
     ~L"""
-    <div class='bg-gray-400 desktop-only'>
+    <div class='px-2 bg-gray-400 desktop-only'>
     <%= if @uistate.mode == "view" do %>
       <div class=''>
         <div class=''>

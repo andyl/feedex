@@ -1,6 +1,6 @@
 defmodule FcRssTest do
   use ExUnit.Case, async: true
-  use ExVCR.Mock
+  use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   setup do
     ExVCR.Config.cassette_library_dir("fixture/vcr_cassettes")

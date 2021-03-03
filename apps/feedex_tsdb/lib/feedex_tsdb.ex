@@ -12,7 +12,7 @@ defmodule FeedexTsdb do
     db  = Application.get_env(:feedex_data, FeedexData.Influx)[:database]
     url = "localhost:8086/write?db=#{db}&time_precision=s"
     opt = [body: body, basic_auth: {"admin", "admin"}]
-    Task.start(fn -> FcHttp.post(url, opt) end)
+    Task.start(fn -> FcTesla.fc_post(url, opt) end)
   end
 
 end

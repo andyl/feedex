@@ -1,6 +1,6 @@
 defmodule FcRss.UrlTest do
   use ExUnit.Case, async: true
-  use ExVCR.Mock
+  use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
   alias FcRss.Url
 
   doctest Url

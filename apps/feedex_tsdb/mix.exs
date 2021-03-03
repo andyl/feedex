@@ -19,7 +19,7 @@ defmodule FeedexTsdb.MixProject do
 
   defp deps do
     [
-      {:fc_http, in_umbrella: true}
+      {:fc_tesla, in_umbrella: true}
     ]
   end
 end

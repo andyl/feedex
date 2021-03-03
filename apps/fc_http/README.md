@@ -1,4 +1,0 @@
-# FcHttp
-
-Feedex Client - HTTP
-

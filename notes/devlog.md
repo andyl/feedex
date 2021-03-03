@@ -386,12 +386,19 @@ Recap:
 - [x] UI: test <Surface/> (fail)
 - [x] News: write base header component
 
+## 2021 Mar 02 Tue
+
+- [x] Test FcRss connected to FcTesla
+- [x] Feeds: get feeds working
+- [x] Remove FcHttp
+- [x] News: get feed counts working
+
 ## TBD
 
-- [ ] Feeds: get feeds working
-
-- [ ] News: get feed counts working
-- [ ] News: get 'mark all as read' working
+- [ ] News: Fix layout (Grey Blocks)
+- [ ] News: Add icons
+- [ ] News: Clean up unread counts
+- [ ] News: Get 'mark all as read' working
 
 - [ ] News: write base body component
 - [ ] News: write base button component
@@ -400,10 +407,7 @@ Recap:
 - [ ] UI: Admin-links to Dashboard and Admin pages on settings page
 - [ ] UI: Admin-only access to admin pages
 
-- [ ] Test FcRss connected to FcFinch
-
-- [ ] Add telemetry for FcFinch (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
-- [ ] Remove FcHttp
+- [ ] Add telemetry for FcTesla (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
 
 - [ ] Feature: OPML-JSON Import/Export (needs file upload/download)
 - [ ] Add bamboo 2.0

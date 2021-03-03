@@ -29,11 +29,7 @@ defmodule FeedexUi.TreeComponent do
   def render(assigns) do
     open_folder = get_open_fld(assigns.uistate)
     ~L"""
-    <div style='margin-top: 8px;' class='desktop-only'>
-      <div class='desktop-only' style='margin-bottom: 4px;'>
-      <p></p>
-      </div>
-      <p></p>
+    <div class='mt-2 desktop-only'>
       <%= all_btn(@uistate, @myself) %> <%= unread(@counts.all) %><br/>
       <small>
       <%= for folder <- @treemap do %>

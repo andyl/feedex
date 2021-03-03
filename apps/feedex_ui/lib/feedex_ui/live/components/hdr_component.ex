@@ -12,19 +12,6 @@ defmodule FeedexUi.HdrComponent do
 
   alias Phoenix.HTML
   alias FeedexData.Ctx.Account
-  # alias FeedexData.Ctx.{Account, News}
-
-  # def mount(session, socket) do
-  #   FeedexWeb.Endpoint.subscribe("set_uistate")
-  #   FeedexWeb.Endpoint.subscribe("tree_mod")
-  #   FeedexWeb.Endpoint.subscribe("read_one")
-  #   count = if Application.fetch_env(:feedex_web, :env) == {:ok, :test} do
-  #     0
-  #   else
-  #     News.unread_count(session.uistate)
-  #   end
-  #   {:ok, assign(socket, %{unread: count, uistate: session.uistate})}
-  # end
 
   def update(assigns, socket) do
     {:ok, assign(socket, uistate: assigns.uistate, unread: 22)}
@@ -32,16 +19,18 @@ defmodule FeedexUi.HdrComponent do
 
   def render(assigns) do
     ~L"""
-    <div class='bg-gray-300 desktop-only'>
+    <div class='bg-gray-400 desktop-only'>
     <%= if @uistate.mode == "view" do %>
-    <div class='row' style="background-color: lightgray; padding-top: 4px; padding-bottom: 4px; margin-bottom: 10px;">
-    <div class='col-md-6'>
-      <%= title(@uistate, @unread) %>
-    </div>
-    <div class='text-right col-md-6'>
-      <%= HTML.raw btns(@uistate) %>
-    </div>
-    </div>
+      <div class=''>
+        <div class=''>
+          <%= title(@uistate, @unread) %>
+        </div>
+        <!--
+        <div class='text-right'>
+          <%= HTML.raw btns(@uistate) %>
+        </div>
+        --> 
+      </div>
     <% end %>
     </div>
     """

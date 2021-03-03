@@ -393,15 +393,21 @@ Recap:
 - [x] Remove FcHttp
 - [x] News: get feed counts working
 
-## TBD
+## 2021 Mar 03 Wed
 
 - [ ] News: Fix layout (Grey Blocks)
 - [ ] News: Add icons
 - [ ] News: Clean up unread counts
 - [ ] News: Get 'mark all as read' working
-
 - [ ] News: write base body component
 - [ ] News: write base button component
+
+## TBD
+
+- [ ] Feature: OPML-JSON Import/Export (needs file upload/download)
+
+- [ ] Merge to Master
+- [ ] Deploy
 
 - [ ] UI: Generate admin pages: users / feeds / posts
 - [ ] UI: Admin-links to Dashboard and Admin pages on settings page
@@ -409,7 +415,6 @@ Recap:
 
 - [ ] Add telemetry for FcTesla (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
 
-- [ ] Feature: OPML-JSON Import/Export (needs file upload/download)
 - [ ] Add bamboo 2.0
 
 - [ ] Infra: Restful API: RSS/JSON (Feeds and Folders)

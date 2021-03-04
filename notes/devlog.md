@@ -397,6 +397,14 @@ Recap:
 
 - [x] News: Fix layout (Grey Blocks)
 - [x] News: Clean up unread counts
+
+What is the best way for the tree to update the hdr/btn/body?
+- all data lookup should probably be done in NewsLive
+- pass around uistate, treemap, counts
+- identify who is sending - update all the others
+- minimize database lookups
+- shared functions: icons, badges, etc.
+
 - [ ] News: Fix unread count on header
 - [ ] News: Add icons
 - [ ] News: Get 'mark all as read' working

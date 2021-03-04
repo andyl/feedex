@@ -402,24 +402,26 @@ Recap:
 ## 2021 Mar 04 Thu
 
 What is the best way for the tree to update the hdr/btn/body?
-- all data lookup should probably be done in NewsLive
-- pass around uistate, treemap, counts
-- identify who is sending - update all the others
-- minimize database lookups
-- shared functions: icons, badges, etc.
-
-The system needs to capture the currently selected item:
-- %{folder: FID}
-- %{folder: FID, register: RID}
+- [x] all DB interactions should be done in NewsLive
+- [x] pass around uistate, treemap, counts
+- [x] shared functions: icons, badges, etc.
+- [x] add folder_id to treemap data structure
+- [x] add Treemap util functions for Registry and Folder lookups
+- [-] identify who is sending - update all the others
 
 Goal: reduce the number of database queries in the life-cycle
 
-- [ ] News: Fix unread count on header
+- [x] News: Fix unread count on header
 
 ## TBD
 
-- [ ] News: Get 'mark all as read' working
+- [ ] Cleanup functions and write tests
+- [ ] Eliminate unneeded DB lookups
+
 - [ ] News: write base body component
+- [ ] News: write 'mark read' working
+- [ ] News: get 'mark all as read' working
+
 - [ ] News: write base button component
 
 - [ ] Feature: OPML-JSON Import/Export (needs file upload/download)

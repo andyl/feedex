@@ -399,7 +399,7 @@ Recap:
 - [x] News: Clean up unread counts
 - [x] News: Add icons
 
-## TBD
+## 2021 Mar 04 Thu
 
 What is the best way for the tree to update the hdr/btn/body?
 - all data lookup should probably be done in NewsLive
@@ -415,6 +415,9 @@ The system needs to capture the currently selected item:
 Goal: reduce the number of database queries in the life-cycle
 
 - [ ] News: Fix unread count on header
+
+## TBD
+
 - [ ] News: Get 'mark all as read' working
 - [ ] News: write base body component
 - [ ] News: write base button component

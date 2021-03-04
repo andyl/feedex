@@ -8,11 +8,12 @@ defmodule FeedexUi.NewsLive do
 
   @impl true
   def mount(_params, session, socket) do
-    user = FeedexUi.LiveUtil.user_from_session(session)
+    user = FeedexUi.SessionUtil.user_from_session(session)
+    treemap = FeedexData.Ctx.Account.cleantree(user.id)
     opts = %{
       current_user: user,
       uistate: UiState.lookup(user.id),
-      treemap: FeedexData.Ctx.Account.cleantree(user.id),
+      treemap: treemap,
       counts: gen_counts(user.id)
     }
     {:ok, assign(socket, opts)}

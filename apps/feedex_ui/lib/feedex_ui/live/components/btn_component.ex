@@ -10,6 +10,7 @@ defmodule FeedexUi.BtnComponent do
 
   use Phoenix.LiveComponent
   import Phoenix.HTML
+  import FeedexUi.IconHelpers
 
   def render(assigns) do
     ~L"""
@@ -24,7 +25,7 @@ defmodule FeedexUi.BtnComponent do
   # ----- view helpers -----
 
   def folder_btn(uistate) do
-    label = "#{FeedexUi.Icons.plus_circle("h-5 inline text-blue-500")} Folder<br/>"
+    label = "#{plus_circle("h-5 inline text-blue-500")} Folder<br/>"
     if uistate.mode == "add_folder" do
       label
     else
@@ -33,7 +34,7 @@ defmodule FeedexUi.BtnComponent do
   end
 
   def feed_btn(uistate) do
-    label = "#{FeedexUi.Icons.plus_circle("h-5 inline text-blue-500")} Feed<br/>"
+    label = "#{plus_circle("h-5 inline text-blue-500")} Feed<br/>"
     if uistate.mode == "add_feed" do
       label
     else

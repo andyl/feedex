@@ -73,7 +73,7 @@ defmodule FeedexData.Ctx.Account do
   end
 
   def rawtree(user_id) do
-    rq = from(r in Register, order_by: r.name, select: %{id: r.id, name: r.name})
+    rq = from(r in Register, order_by: r.name, select: %{folder_id: r.folder_id, id: r.id, name: r.name})
       
     from(
       f in Folder,

@@ -12,6 +12,8 @@ defmodule FeedexUi.HdrComponent do
 
   alias Phoenix.HTML
   alias FeedexData.Ctx.Account
+  alias FeedexData.Util.Treemap
+  import FeedexUi.CountHelpers
 
   # def update(assigns, socket) do
   #   IO.inspect assigns, label: "UPDATE"
@@ -39,13 +41,13 @@ defmodule FeedexUi.HdrComponent do
 
   # ----- view helpers -----
   
-  defp title(state, unread) do
-    case {state.reg_id, state.fld_id} do
-      {nil    , nil} -> all_name(unread)
-      {reg_id, nil}  -> register_name(reg_id, unread)
-      {nil, fld_id}  -> folder_name(fld_id, unread)
-    end |> HTML.raw()
-  end
+  # defp title(state, unread) do
+  #   case {state.reg_id, state.fld_id} do
+  #     {nil    , nil} -> all_name(unread)
+  #     {reg_id, nil}  -> register_name(reg_id, unread)
+  #     {nil, fld_id}  -> folder_name(fld_id, unread)
+  #   end |> HTML.raw()
+  # end
 
   defp title(state, counts, treemap) do
     case {state.reg_id, state.fld_id} do
@@ -71,51 +73,49 @@ defmodule FeedexUi.HdrComponent do
     end
   end
 
-  defp checklink(unread) do
-    style = "style='vertical-align: top; margin-top: 4px; margin-right: 5px; margin-left: 5px;'"
-    case unread do
-      0 -> ""
-      _ -> 
-      """
-      <small><span class="badge badge-light" #{style}>#{unread}</span></small>
-      <span style="margin-right: 10px">
-       <a href='#'>
-      <i class='fa fa-check' phx-click='mark-read'></i>
-      </a>  
-      </span>
-      """
-    end 
-  end
+  # defp checklink(unread) do
+  #   style = "style='vertical-align: top; margin-top: 4px; margin-right: 5px; margin-left: 5px;'"
+  #   case unread do
+  #     0 -> ""
+  #     _ -> 
+  #     """
+  #     <small><span class="badge badge-light" #{style}>#{unread}</span></small>
+  #     <span style="margin-right: 10px">
+  #      <a href='#'>
+  #     <i class='fa fa-check' phx-click='mark-read'></i>
+  #     </a>  
+  #     </span>
+  #     """
+  #   end 
+  # end
 
   defp all_name(counts) do
     # "ALL " <> checklink(counts)
-    "ALL " <> to_string(counts.all)
+    "ALL " <> unread(counts.all)
   end
 
-  defp folder_name(folder_id, unread) do
-    FeedexData.Ctx.Account.folder_get(folder_id).name <> checklink(unread)
+  defp folder_name(folder_id, counts, treemap) do
+    fname = Treemap.folder_name(treemap, folder_id)
+    count = counts.fld[folder_id] || 0
+    # label = if unread > 0, do: "(#{unread})", else: ""
+    label = if count > 0, do: unread(count), else: ""
+    "#{fname} #{label}"
   end
 
-  defp folder_name(folder_id, _counts, _treemap) do
-    # FeedexData.Ctx.Account.folder_get(folder_id).name <> checklink(unread)
-    "FOLDER_NAME (#{folder_id})"
-  end
-
-  defp register_name(register_id, unread) do
-    reg = FeedexData.Ctx.Account.register_get(register_id)
-    fld = FeedexData.Ctx.Account.folder_get(reg.folder_id)
-    flnk = "<a href='#' phx-click='folder-clk' phx-value-fldid='#{fld.id}'>#{fld.name}</a> "
-    flnk <> "> " <> FeedexData.Ctx.Account.register_get(register_id).name <> checklink(unread)
-  end
+  # defp register_name(register_id, unread) do
+  #   reg = FeedexData.Ctx.Account.register_get(register_id)
+  #   fld = FeedexData.Ctx.Account.folder_get(reg.folder_id)
+  #   flnk = "<a href='#' phx-click='folder-clk' phx-value-fldid='#{fld.id}'>#{fld.name}</a> "
+  #   flnk <> "> " <> FeedexData.Ctx.Account.register_get(register_id).name <> checklink(unread)
+  # end
 
   defp register_name(register_id, counts, treemap) do
-    IO.inspect counts, label: "COUNTS"
-    IO.inspect treemap, label: "TREEMAP"
-    # reg = FeedexData.Ctx.Account.register_get(register_id)
-    # fld = FeedexData.Ctx.Account.folder_get(reg.folder_id)
-    # flnk = "<a href='#' phx-click='folder-clk' phx-value-fldid='#{fld.id}'>#{fld.name}</a> "
-    # flnk <> "> " <> FeedexData.Ctx.Account.register_get(register_id).name <> checklink(unread)
-    "REGISTER_NAME (#{register_id})"
+    reg_name = Treemap.register_name(treemap, register_id)
+    fld_name = Treemap.register_parent_name(treemap, register_id)
+    count = counts.reg[register_id] || 0
+    # label = if unread > 0, do: "(#{unread})", else: ""
+    label = if count > 0, do: unread(count), else: ""
+    "#{fld_name} > #{reg_name} #{label}"
   end
 
   defp btns(state) do

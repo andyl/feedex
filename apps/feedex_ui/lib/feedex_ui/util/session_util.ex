@@ -1,6 +1,6 @@
-defmodule FeedexUi.LiveUtil do
+defmodule FeedexUi.SessionUtil do
   @moduledoc """
-  Conveniences for use within LiveViews.
+  Conveniences for use with Session infomation within LiveViews.
   """
 
   @doc """

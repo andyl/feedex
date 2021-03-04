@@ -15,21 +15,22 @@ defmodule FeedexUi.TreeComponent do
   alias FeedexData.Ctx.Account.Register
   alias Phoenix.HTML
   import Phoenix.HTML
+  import FeedexUi.CountHelpers
 
   def render(assigns) do
     open_folder = get_open_fld(assigns.uistate)
     ~L"""
     <div class='mt-2 desktop-only'>
-      <%= all_btn(@uistate, @myself) %> <%= unread(@counts.all) %><br/>
+      <%= all_btn(@uistate, @myself) %> <%= unread(@counts.all, :raw) %><br/>
       <small>
       <%= for folder <- @treemap do %>
         <p></p>
         <%= fold_link(@uistate, @myself, folder) %>
-        <%= unread(folder.id, @counts.fld) %>
+        <%= unread(folder.id, @counts.fld, :raw) %>
         <%= if open_folder == folder.id do %>
         <%= for register <- folder.registers do %>
           <br/>
-          > <%= reg_link(@uistate, @myself, register) %> <%= unread(register.id, @counts.reg) %>
+          > <%= reg_link(@uistate, @myself, register) %> <%= unread(register.id, @counts.reg, :raw) %>
         <% end %>
         <% end %>
       <% end %>
@@ -63,22 +64,22 @@ defmodule FeedexUi.TreeComponent do
     }
   end
 
-  def unread(0), do: ""
-
-  def unread(count) do
-    """
-    <span class="inline-flex items-center px-1 ml-1 text-xs font-light text-blue-800 align-text-top bg-blue-100 rounded-full">
-      <small>
-        #{count}
-      </small>
-    </span>
-    """
-    |> raw()
-  end
-
-  def unread(id, unread_count) do
-    unread(unread_count[id] || 0)
-  end
+  # def unread(0), do: ""
+  #
+  # def unread(count) do
+  #   """
+  #   <span class="inline-flex items-center px-1 ml-1 text-xs font-light text-blue-800 align-text-top bg-blue-100 rounded-full">
+  #     <small>
+  #       #{count}
+  #     </small>
+  #   </span>
+  #   """
+  #   |> raw()
+  # end
+  #
+  # def unread(id, unread_count) do
+  #   unread(unread_count[id] || 0)
+  # end
 
   # ---
 
@@ -202,6 +203,7 @@ defmodule FeedexUi.TreeComponent do
     new_state = Map.merge(socket.assigns.uistate, opts)
 
     FeedexUi.Endpoint.broadcast_from(self(), "set_uistate", "BTN_VIEW_ALL", %{uistate: new_state})
+    send(self(), {"set_uistate", %{uistate: new_state}})
 
     {:noreply, assign(socket, %{uistate: opts})}
   end

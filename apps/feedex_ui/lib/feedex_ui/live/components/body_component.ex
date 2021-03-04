@@ -9,14 +9,15 @@ defmodule FeedexUi.BodyComponent do
   """
 
   use Phoenix.LiveComponent
+  import FeedexUi.IconHelpers
 
   def render(assigns) do
     ~L"""
     <div class="px-2 pt-1">
       BODY COMPONENT
-      <%= FeedexUi.Icons.refresh("h-8 text-blue-400", :raw) %>
-      <%= FeedexUi.Icons.pencil_alt("h-8 text-blue-400", :raw) %>
-      <%= FeedexUi.Icons.check_circle("h-8 text-blue-400", :raw) %>
+      <%= refresh("h-8 text-blue-400", :raw) %>
+      <%= pencil_alt("h-8 text-blue-400", :raw) %>
+      <%= check_circle("h-8 text-blue-400", :raw) %>
     </div>
     """
   end

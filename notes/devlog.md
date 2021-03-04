@@ -397,6 +397,9 @@ Recap:
 
 - [x] News: Fix layout (Grey Blocks)
 - [x] News: Clean up unread counts
+- [x] News: Add icons
+
+## TBD
 
 What is the best way for the tree to update the hdr/btn/body?
 - all data lookup should probably be done in NewsLive
@@ -405,13 +408,16 @@ What is the best way for the tree to update the hdr/btn/body?
 - minimize database lookups
 - shared functions: icons, badges, etc.
 
+The system needs to capture the currently selected item:
+- %{folder: FID}
+- %{folder: FID, register: RID}
+
+Goal: reduce the number of database queries in the life-cycle
+
 - [ ] News: Fix unread count on header
-- [ ] News: Add icons
 - [ ] News: Get 'mark all as read' working
 - [ ] News: write base body component
 - [ ] News: write base button component
-
-## TBD
 
 - [ ] Feature: OPML-JSON Import/Export (needs file upload/download)
 

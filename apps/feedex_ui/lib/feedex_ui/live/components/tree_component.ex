@@ -16,16 +16,6 @@ defmodule FeedexUi.TreeComponent do
   alias Phoenix.HTML
   import Phoenix.HTML
 
-  def update(assigns, socket) do
-    usr_id = assigns.uistate.usr_id
-    opts = %{
-      uistate: assigns.uistate,
-      treemap: FeedexData.Ctx.Account.cleantree(usr_id),
-      counts: gen_counts(usr_id)
-    }
-    {:ok, assign(socket, opts)}
-  end
-
   def render(assigns) do
     open_folder = get_open_fld(assigns.uistate)
     ~L"""

@@ -13,9 +13,10 @@ defmodule FeedexUi.HdrComponent do
   alias Phoenix.HTML
   alias FeedexData.Ctx.Account
 
-  def update(assigns, socket) do
-    {:ok, assign(socket, uistate: assigns.uistate, unread: 22)}
-  end
+  # def update(assigns, socket) do
+  #   IO.inspect assigns, label: "UPDATE"
+  #   {:ok, assign(socket, uistate: assigns.uistate, unread: 22)}
+  # end
 
   def render(assigns) do
     ~L"""
@@ -23,7 +24,7 @@ defmodule FeedexUi.HdrComponent do
     <%= if @uistate.mode == "view" do %>
       <div class=''>
         <div class=''>
-          <%= title(@uistate, @unread) %>
+          <%= title(@uistate, @counts, @treemap) %>
         </div>
         <!--
         <div class='text-right'>
@@ -43,6 +44,14 @@ defmodule FeedexUi.HdrComponent do
       {nil    , nil} -> all_name(unread)
       {reg_id, nil}  -> register_name(reg_id, unread)
       {nil, fld_id}  -> folder_name(fld_id, unread)
+    end |> HTML.raw()
+  end
+
+  defp title(state, counts, treemap) do
+    case {state.reg_id, state.fld_id} do
+      {nil    , nil} -> all_name(counts)
+      {reg_id, nil}  -> register_name(reg_id, counts, treemap)
+      {nil, fld_id}  -> folder_name(fld_id, counts, treemap)
     end |> HTML.raw()
   end
 
@@ -78,12 +87,18 @@ defmodule FeedexUi.HdrComponent do
     end 
   end
 
-  defp all_name(count) do
-    "ALL " <> checklink(count)
+  defp all_name(counts) do
+    # "ALL " <> checklink(counts)
+    "ALL " <> to_string(counts.all)
   end
 
   defp folder_name(folder_id, unread) do
     FeedexData.Ctx.Account.folder_get(folder_id).name <> checklink(unread)
+  end
+
+  defp folder_name(folder_id, _counts, _treemap) do
+    # FeedexData.Ctx.Account.folder_get(folder_id).name <> checklink(unread)
+    "FOLDER_NAME (#{folder_id})"
   end
 
   defp register_name(register_id, unread) do
@@ -91,6 +106,16 @@ defmodule FeedexUi.HdrComponent do
     fld = FeedexData.Ctx.Account.folder_get(reg.folder_id)
     flnk = "<a href='#' phx-click='folder-clk' phx-value-fldid='#{fld.id}'>#{fld.name}</a> "
     flnk <> "> " <> FeedexData.Ctx.Account.register_get(register_id).name <> checklink(unread)
+  end
+
+  defp register_name(register_id, counts, treemap) do
+    IO.inspect counts, label: "COUNTS"
+    IO.inspect treemap, label: "TREEMAP"
+    # reg = FeedexData.Ctx.Account.register_get(register_id)
+    # fld = FeedexData.Ctx.Account.folder_get(reg.folder_id)
+    # flnk = "<a href='#' phx-click='folder-clk' phx-value-fldid='#{fld.id}'>#{fld.name}</a> "
+    # flnk <> "> " <> FeedexData.Ctx.Account.register_get(register_id).name <> checklink(unread)
+    "REGISTER_NAME (#{register_id})"
   end
 
   defp btns(state) do

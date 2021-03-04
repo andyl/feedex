@@ -24,7 +24,7 @@ defmodule FeedexUi.BtnComponent do
   # ----- view helpers -----
 
   def folder_btn(uistate) do
-    label = "<i class='fa fa-plus fa-fw' style='padding-right: 5px;'></i> Folder<br/>"
+    label = "#{FeedexUi.Icons.plus_circle("h-5 inline text-blue-500")} Folder<br/>"
     if uistate.mode == "add_folder" do
       label
     else
@@ -33,7 +33,7 @@ defmodule FeedexUi.BtnComponent do
   end
 
   def feed_btn(uistate) do
-    label = "<i class='fa fa-plus fa-fw' style='padding-right: 5px;'></i> Feed<br/>"
+    label = "#{FeedexUi.Icons.plus_circle("h-5 inline text-blue-500")} Feed<br/>"
     if uistate.mode == "add_feed" do
       label
     else

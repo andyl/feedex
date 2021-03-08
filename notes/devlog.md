@@ -417,7 +417,7 @@ Goal: reduce the number of database queries in the life-cycle
 
 - [x] Cleanup functions and write tests
 - [x] Eliminate unneeded DB lookups
-- [ ] News: write base body component
+- [x] News: write base body component
 
 ## TBD
 

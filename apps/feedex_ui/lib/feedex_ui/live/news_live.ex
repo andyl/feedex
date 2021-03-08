@@ -63,11 +63,8 @@ defmodule FeedexUi.NewsLive do
 
   @impl true
   def handle_info({"set_uistate", %{uistate: new_state}}, socket) do
-    opts = [
-      uistate: new_state,
-      id: "hdr"
-    ]
-    send_update(FeedexUi.HdrComponent, opts)
+    send_update(FeedexUi.HdrComponent, uistate: new_state, id: "hdr")
+    send_update(FeedexUi.BodyComponent, uistate: new_state, id: "bdy")
     {:noreply, socket}
   end
 

@@ -11,14 +11,12 @@ defmodule FeedexUi.TreeComponent do
   # compare to PragStudio - `use FeedexUi.view, :live_component`
   use Phoenix.LiveComponent
 
-  alias FeedexData.Repo
-  alias FeedexData.Ctx.Account.Register
   alias Phoenix.HTML
   import Phoenix.HTML
   import FeedexUi.CountHelpers
 
   def render(assigns) do
-    open_folder = get_open_fld(assigns.uistate)
+    open_folder = get_open_fld(assigns.treemap, assigns.uistate)
     ~L"""
     <div class='mt-2 desktop-only'>
       <%= all_btn(@uistate, @myself) %> <%= unread(@counts.all, :raw) %><br/>
@@ -63,25 +61,6 @@ defmodule FeedexUi.TreeComponent do
       reg: FeedexData.Ctx.News.unread_aggregate_count_for(user_id, type: "reg")
     }
   end
-
-  # def unread(0), do: ""
-  #
-  # def unread(count) do
-  #   """
-  #   <span class="inline-flex items-center px-1 ml-1 text-xs font-light text-blue-800 align-text-top bg-blue-100 rounded-full">
-  #     <small>
-  #       #{count}
-  #     </small>
-  #   </span>
-  #   """
-  #   |> raw()
-  # end
-  #
-  # def unread(id, unread_count) do
-  #   unread(unread_count[id] || 0)
-  # end
-
-  # ---
 
   def check_link(false), do: ""
 
@@ -160,14 +139,14 @@ defmodule FeedexUi.TreeComponent do
     |> HTML.raw()
   end
 
-  defp get_open_fld(uistate) do
-    uistate.fld_id || get_fld(uistate.reg_id)
+  defp get_open_fld(treemap, uistate) do
+    uistate.fld_id || get_fld(treemap, uistate.reg_id)
   end
 
-  defp get_fld(regid) do
+  defp get_fld(treemap, regid) do
     case regid do
       nil -> nil
-      id when is_number(id) -> Repo.get(Register, id).folder_id
+      id when is_number(id) -> FeedexData.Util.Treemap.register_parent_id(treemap, id)
       _ -> nil
     end
   end
@@ -185,10 +164,6 @@ defmodule FeedexUi.TreeComponent do
     """
   end
 
-  defp style do
-    "style='vertical-align: top; margin-top: 5px; margin-left: 2px;'"
-  end
-
   # ----- event handlers -----
 
   def handle_event("view_all", _payload, socket) do
@@ -202,7 +177,7 @@ defmodule FeedexUi.TreeComponent do
 
     new_state = Map.merge(socket.assigns.uistate, opts)
 
-    FeedexUi.Endpoint.broadcast_from(self(), "set_uistate", "BTN_VIEW_ALL", %{uistate: new_state})
+    # FeedexUi.Endpoint.broadcast_from(self(), "set_uistate", "BTN_VIEW_ALL", %{uistate: new_state})
     send(self(), {"set_uistate", %{uistate: new_state}})
 
     {:noreply, assign(socket, %{uistate: opts})}
@@ -217,7 +192,7 @@ defmodule FeedexUi.TreeComponent do
     }
 
     new_state = Map.merge(socket.assigns.uistate, opts)
-    FeedexUi.Endpoint.broadcast_from(self(), "set_uistate", "TREE_FOLDER", %{uistate: new_state})
+    # FeedexUi.Endpoint.broadcast_from(self(), "set_uistate", "TREE_FOLDER", %{uistate: new_state})
 
     send(self(), {"set_uistate", %{uistate: new_state}})
 
@@ -233,7 +208,7 @@ defmodule FeedexUi.TreeComponent do
     }
 
     new_state = Map.merge(socket.assigns.uistate, opts)
-    FeedexUi.Endpoint.broadcast_from(self(), "set_uistate", "TREE_FEED", %{uistate: new_state})
+    # FeedexUi.Endpoint.broadcast_from(self(), "set_uistate", "TREE_FEED", %{uistate: new_state})
 
     send(self(), {"set_uistate", %{uistate: new_state}})
 

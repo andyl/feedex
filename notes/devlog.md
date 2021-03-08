@@ -413,12 +413,14 @@ Goal: reduce the number of database queries in the life-cycle
 
 - [x] News: Fix unread count on header
 
+## 2021 Mar 08 Mon
+
+- [x] Cleanup functions and write tests
+- [x] Eliminate unneeded DB lookups
+- [ ] News: write base body component
+
 ## TBD
 
-- [ ] Cleanup functions and write tests
-- [ ] Eliminate unneeded DB lookups
-
-- [ ] News: write base body component
 - [ ] News: write 'mark read' working
 - [ ] News: get 'mark all as read' working
 

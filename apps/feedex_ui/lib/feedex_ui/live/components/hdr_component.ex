@@ -15,11 +15,6 @@ defmodule FeedexUi.HdrComponent do
   alias FeedexData.Util.Treemap
   import FeedexUi.CountHelpers
 
-  # def update(assigns, socket) do
-  #   IO.inspect assigns, label: "UPDATE"
-  #   {:ok, assign(socket, uistate: assigns.uistate, unread: 22)}
-  # end
-
   def render(assigns) do
     ~L"""
     <div class='px-2 bg-gray-400 desktop-only'>
@@ -41,14 +36,6 @@ defmodule FeedexUi.HdrComponent do
 
   # ----- view helpers -----
   
-  # defp title(state, unread) do
-  #   case {state.reg_id, state.fld_id} do
-  #     {nil    , nil} -> all_name(unread)
-  #     {reg_id, nil}  -> register_name(reg_id, unread)
-  #     {nil, fld_id}  -> folder_name(fld_id, unread)
-  #   end |> HTML.raw()
-  # end
-
   defp title(state, counts, treemap) do
     case {state.reg_id, state.fld_id} do
       {nil    , nil} -> all_name(counts)
@@ -101,13 +88,6 @@ defmodule FeedexUi.HdrComponent do
     label = if count > 0, do: unread(count), else: ""
     "#{fname} #{label}"
   end
-
-  # defp register_name(register_id, unread) do
-  #   reg = FeedexData.Ctx.Account.register_get(register_id)
-  #   fld = FeedexData.Ctx.Account.folder_get(reg.folder_id)
-  #   flnk = "<a href='#' phx-click='folder-clk' phx-value-fldid='#{fld.id}'>#{fld.name}</a> "
-  #   flnk <> "> " <> FeedexData.Ctx.Account.register_get(register_id).name <> checklink(unread)
-  # end
 
   defp register_name(register_id, counts, treemap) do
     reg_name = Treemap.register_name(treemap, register_id)

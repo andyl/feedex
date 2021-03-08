@@ -25,7 +25,7 @@ defmodule Feedex.Umbrella.MixProject do
       # ----- development and test
       {:scribe, "~> 0.10", only: :dev, runtime: false},
       # {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
-      # {:mix_test_interactive, "~> 1.0", only: :dev, runtime: false},
+      {:mix_test_interactive, "~> 1.0", only: :dev, runtime: false},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
       {:benchee, "~> 1.0", only: :dev, runtime: false}
     ]

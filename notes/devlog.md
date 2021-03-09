@@ -426,14 +426,12 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Tree: Folder Link
 - [x] Tree: Reg Link
 
-## TBD
+## 2021 Mar 09 Tue
 
 - [ ] BodyView: Article Display
-
 - [ ] HDR: Mark all Read
 
-- [ ] News: write 'mark read' working
-- [ ] News: get 'mark all as read' working
+## TBD
 
 - [ ] Create / Edit Folder
 - [ ] Create / Edit Feed

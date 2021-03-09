@@ -16,9 +16,9 @@ defmodule FeedexUi.BodyViewComponent do
   def update(session, socket) do
     opts = %{
       uistate: session.uistate,
-      posts: all_posts_for(session.uistate),
-      post_id: nil
+      posts: all_posts_for(session.uistate)
     }
+
     {:ok, assign(socket, opts)}
   end
 
@@ -30,7 +30,7 @@ defmodule FeedexUi.BodyViewComponent do
           <%= if @uistate.pst_id == post.id do %>
             <tr style='background-color: lightgrey;'>
               <td><small><i class="fa fa-check"></i></small></td>
-              <td><b><%= id_link(post.id) %></b></td>
+              <td><b><%= id_link(post.id, @myself) %></b></td>
               <td><b><a href='<%= post.link %>' class='bluelink' target='_blank'><%= time_ago(post.updated_at) %><%= post.title %></a></b></td>
             </tr>
             <tr style='background-color: lightgrey;'><td colspan=3>
@@ -43,7 +43,7 @@ defmodule FeedexUi.BodyViewComponent do
               <td>
               <%= if post.read_log, do: HTML.raw "<i class='fa fa-check'></i> " %>
               </td>
-              <td><%= id_link(post.id) %></td>
+              <td><%= id_link(post.id, @myself) %></td>
               <td class='truncate'>
               <%= time_ago(post.updated_at) %><%= post.title %>
               </td>
@@ -57,75 +57,82 @@ defmodule FeedexUi.BodyViewComponent do
 
   # ----- view helpers -----
 
-  def id_link(id) do
+  def id_link(id, myself) do
     """
-    <a href="#" class='bluelink' phx-click='click-post' phx-value-pstid='#{id}'>
+    <a href="#" class='bluelink' phx-target='#{myself}' phx-click='click-post' phx-value-pstid='#{id}'>
     #{id}
     </a>
-    """ |> HTML.raw()
+    """
+    |> HTML.raw()
   end
 
   def host_for(post) do
     URI.parse(post.link).host
     |> String.replace("co.uk", "couk")
     |> String.replace("com.br", "combr")
-    |> String.split(".") 
-    |> Enum.take(-2) 
+    |> String.split(".")
+    |> Enum.take(-2)
     |> List.first()
   end
 
   def time_ago(date) do
     delta = Timex.diff(Timex.now(), date, :minutes)
-    base  = case delta do
-      x when x in 0..60        -> "#{x}m"
-      x when x in 61..1440     -> "#{div(x, 60)}h"
-      x when x in 1441..10080  -> "#{div(x, 1440)}d"
-      x when x in 10081..99999 -> "#{div(x, 10080)}w"
-      _ -> "xx"
-    end
+
+    base =
+      case delta do
+        x when x in 0..60 -> "#{x}m"
+        x when x in 61..1440 -> "#{div(x, 60)}h"
+        x when x in 1441..10080 -> "#{div(x, 1440)}d"
+        x when x in 10081..99999 -> "#{div(x, 10080)}w"
+        _ -> "xx"
+      end
+
     "#{base} - "
   end
 
-
   def byline(post) do
     """
-    <a href='#' class='bluelink' phx-click='fld-clk' phx-value-fldid=#{post.fld_id}>#{post.fld_name}</a> 
+    <a href='#' class='bluelink' phx-click='fld-clk' phx-value-fldid=#{post.fld_id}>#{
+      post.fld_name
+    }</a> 
     > 
-    <a href='#' phx-click='reg-clk' phx-value-regid=#{post.reg_id}>#{post.reg_name}</a> (#{host_for(post)})
-    """ |> HTML.raw()
+    <a href='#' phx-click='reg-clk' phx-value-regid=#{post.reg_id}>#{post.reg_name}</a> (#{
+      host_for(post)
+    })
+    """
+    |> HTML.raw()
   end
 
   defp all_posts_for(uistate) do
     userid = uistate.usr_id
+
     case {uistate.fld_id, uistate.reg_id} do
-      {nil, nil   } -> News.posts_for(userid)
+      {nil, nil} -> News.posts_for(userid)
       {fld_id, nil} -> News.posts_for(userid, fld_id: fld_id)
       {nil, reg_id} -> News.posts_for(userid, reg_id: reg_id)
     end
   end
 
   # ----- callbacks -----
-   
+
   def handle_event("click-post", %{"pstid" => pstid}, socket) do
     # Toggle post on and off...
     uistate = socket.assigns.uistate
     user_id = uistate.usr_id
     post_id = String.to_integer(pstid)
-    new_id  = if uistate.pst_id == post_id, do: nil, else: post_id
-    opts =  %{pst_id: new_id}
-    newstate = 
-      socket.assigns.uistate
-      |> Map.merge(opts)
+    new_pid = if uistate.pst_id == post_id, do: nil, else: post_id
+    newstate = Map.merge(uistate, %{pst_id: new_pid})
 
-    if new_id do
+    if new_pid do
       FeedexData.Ctx.Account.mark_all_for(user_id, pst_id: post_id)
-      FeedexWeb.Endpoint.broadcast_from(self(), "read_one", "CLICK_POST", %{})
+      # FeedexWeb.Endpoint.broadcast_from(self(), "read_one", "CLICK_POST", %{})
     end
 
-    posts = all_posts_for(socket.assigns.uistate)
+    # posts = all_posts_for(socket.assigns.uistate)
+    # posts = all_posts_for(newstate)
 
-    {:noreply, assign(socket, %{posts: posts, uistate: newstate})}
+    send(self(), {"set_uistate", %{uistate: newstate}})
+
+    {:noreply, assign(socket, %{uistate: newstate})}
   end
-
-
 end

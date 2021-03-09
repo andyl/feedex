@@ -418,27 +418,25 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Cleanup functions and write tests
 - [x] Eliminate unneeded DB lookups
 - [x] News: write base body component
-
-- [ ] BTN: Folder Link
-- [ ] BTN: Feed Link
-
-- [ ] HDR: Folder Link
-
-- [ ] TREE/HDR/BTN - Link Style
+- [x] BTN: Folder Link
+- [x] BTN: Feed Link
+- [x] TREE/HDR/BTN - Link Style
+- [x] HDR: Folder Link
+- [x] BodyView: Smaller display font
+- [x] Tree: Folder Link
+- [x] Tree: Reg Link
 
 ## TBD
 
+- [ ] BodyView: Article Display
+
 - [ ] HDR: Mark all Read
-
-- [ ] BodyView: Smaller display font
-
-- [ ] Tree: Folder Link
-- [ ] Tree: Reg Link
 
 - [ ] News: write 'mark read' working
 - [ ] News: get 'mark all as read' working
 
-- [ ] News: write base button component
+- [ ] Create / Edit Folder
+- [ ] Create / Edit Feed
 
 - [ ] Feature: OPML-JSON Import/Export (needs file upload/download)
 

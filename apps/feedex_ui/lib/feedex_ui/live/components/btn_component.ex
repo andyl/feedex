@@ -16,27 +16,27 @@ defmodule FeedexUi.BtnComponent do
     ~L"""
     <div class="py-1 desktop-only">
       <hr/> 
-      <%= folder_btn(@uistate) %>
-      <%= feed_btn(@uistate) %>
+      <%= folder_btn(@uistate, @myself) %>
+      <%= feed_btn(@uistate, @myself) %>
     </div>
     """
   end
   
   # ----- view helpers -----
 
-  def folder_btn(uistate) do
+  def folder_btn(uistate, myself) do
     label = "#{plus_circle("h-5 inline text-blue-500")} Folder<br/>"
     if uistate.mode != "add_folder" do
-      "<a phx-click='add_folder' href='#'>#{label}</a>"
+      "<a phx-click='add_folder' class='bluelink' phx-target='#{myself}' href='#'>#{label}</a>"
     else
       ""
     end |> raw()
   end
 
-  def feed_btn(uistate) do
+  def feed_btn(uistate, myself) do
     label = "#{plus_circle("h-5 inline text-blue-500")} Feed<br/>"
     if uistate.mode != "add_feed" do
-      "<a phx-click='add_feed' href='#'>#{label}</a>"
+      "<a phx-click='add_feed' class='bluelink' phx-target='#{myself}' href='#'>#{label}</a>"
     else
       ""
     end |> raw()
@@ -61,8 +61,16 @@ defmodule FeedexUi.BtnComponent do
   end
 
   def handle_event("add_feed", _payload, socket) do
+    click_handle("add_feed", socket)
+  end
+
+  def handle_event("add_folder", _payload, socket) do
+    click_handle("add_folder", socket)
+  end
+
+  defp click_handle(mode, socket) do
     new_state = %{
-      mode: "add_feed",
+      mode: mode,
       usr_id: socket.assigns.uistate.usr_id,
       reg_id: nil,
       fld_id: nil,
@@ -72,9 +80,6 @@ defmodule FeedexUi.BtnComponent do
     send(self(), {"set_uistate", %{uistate: new_state}})
 
     {:noreply, assign(socket, %{uistate: new_state})}
-  end
-
-  def handle_event("add_folder", x, y) do
   end
 
 end

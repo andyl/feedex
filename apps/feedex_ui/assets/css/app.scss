@@ -15,6 +15,10 @@
   @apply block md:hidden
 }
 
+.bluelink {
+  @apply text-blue-500 hover:bg-gray-300 hover:bg-opacity-90
+}
+
 /* LiveView specific classes for your customizations */
 .phx-no-feedback.invalid-feedback,
 .phx-no-feedback .invalid-feedback {

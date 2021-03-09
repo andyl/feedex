@@ -31,7 +31,7 @@ defmodule FeedexUi.BodyViewComponent do
             <tr style='background-color: lightgrey;'>
               <td><small><i class="fa fa-check"></i></small></td>
               <td><b><%= id_link(post.id) %></b></td>
-              <td><b><a href='<%= post.link %>' target='_blank'><%= time_ago(post.updated_at) %><%= post.title %></a></b></td>
+              <td><b><a href='<%= post.link %>' class='bluelink' target='_blank'><%= time_ago(post.updated_at) %><%= post.title %></a></b></td>
             </tr>
             <tr style='background-color: lightgrey;'><td colspan=3>
               <small>
@@ -59,7 +59,7 @@ defmodule FeedexUi.BodyViewComponent do
 
   def id_link(id) do
     """
-    <a href="#" phx-click='click-post' phx-value-pstid='#{id}'>
+    <a href="#" class='bluelink' phx-click='click-post' phx-value-pstid='#{id}'>
     #{id}
     </a>
     """ |> HTML.raw()
@@ -89,7 +89,7 @@ defmodule FeedexUi.BodyViewComponent do
 
   def byline(post) do
     """
-    <a href='#' phx-click='fld-clk' phx-value-fldid=#{post.fld_id}>#{post.fld_name}</a> 
+    <a href='#' class='bluelink' phx-click='fld-clk' phx-value-fldid=#{post.fld_id}>#{post.fld_name}</a> 
     > 
     <a href='#' phx-click='reg-clk' phx-value-regid=#{post.reg_id}>#{post.reg_name}</a> (#{host_for(post)})
     """ |> HTML.raw()
@@ -103,5 +103,29 @@ defmodule FeedexUi.BodyViewComponent do
       {nil, reg_id} -> News.posts_for(userid, reg_id: reg_id)
     end
   end
+
+  # ----- callbacks -----
+   
+  def handle_event("click-post", %{"pstid" => pstid}, socket) do
+    # Toggle post on and off...
+    uistate = socket.assigns.uistate
+    user_id = uistate.usr_id
+    post_id = String.to_integer(pstid)
+    new_id  = if uistate.pst_id == post_id, do: nil, else: post_id
+    opts =  %{pst_id: new_id}
+    newstate = 
+      socket.assigns.uistate
+      |> Map.merge(opts)
+
+    if new_id do
+      FeedexData.Ctx.Account.mark_all_for(user_id, pst_id: post_id)
+      FeedexWeb.Endpoint.broadcast_from(self(), "read_one", "CLICK_POST", %{})
+    end
+
+    posts = all_posts_for(socket.assigns.uistate)
+
+    {:noreply, assign(socket, %{posts: posts, uistate: newstate})}
+  end
+
 
 end

@@ -110,7 +110,7 @@ defmodule FeedexUi.TreeComponent do
     if uistate.mode == "view" && uistate.fld_id == nil && uistate.reg_id == nil do
       "<b>ALL</b>"
     else
-      "<a phx-click='view_all' phx-target='#{myself}' href='#'>ALL</a>"
+      "<a phx-click='view_all' class='bluelink' phx-target='#{myself}' href='#'>ALL</a>"
     end
     |> HTML.raw()
   end
@@ -120,7 +120,7 @@ defmodule FeedexUi.TreeComponent do
       "<b>#{folder.name}</b>"
     else
       """
-      <a href='#' phx-click='clk_folder' phx-target='#{myself}' phx-value-fldid='#{folder.id}'>
+      <a href='#' class='bluelink' phx-click='clk_folder' phx-target='#{myself}' phx-value-fldid='#{folder.id}'>
       #{folder.name}
       </a>
       """
@@ -133,7 +133,7 @@ defmodule FeedexUi.TreeComponent do
       "<b>#{register.name}</b>"
     else
       """
-      <a href='#' phx-click='clk_feed' phx-target='#{myself}' phx-value-regid='#{register.id}'>#{register.name}</a> 
+      <a href='#' class='bluelink' phx-click='clk_feed' phx-target='#{myself}' phx-value-regid='#{register.id}'>#{register.name}</a> 
       """
     end
     |> HTML.raw()

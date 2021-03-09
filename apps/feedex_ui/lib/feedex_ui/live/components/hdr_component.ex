@@ -39,8 +39,8 @@ defmodule FeedexUi.HdrComponent do
   defp title(state, counts, treemap) do
     case {state.reg_id, state.fld_id} do
       {nil    , nil} -> all_name(counts)
-      {reg_id, nil}  -> register_name(reg_id, counts, treemap)
       {nil, fld_id}  -> folder_name(fld_id, counts, treemap)
+      {reg_id, nil}  -> register_name(reg_id, counts, treemap)
     end |> HTML.raw()
   end
 
@@ -90,12 +90,14 @@ defmodule FeedexUi.HdrComponent do
   end
 
   defp register_name(register_id, counts, treemap) do
-    reg_name = Treemap.register_name(treemap, register_id)
-    fld_name = Treemap.register_parent_name(treemap, register_id)
     count = counts.reg[register_id] || 0
-    # label = if unread > 0, do: "(#{unread})", else: ""
+    reg_name = Treemap.register_name(treemap, register_id)
+    fld_id   = Treemap.register_parent_id(treemap, register_id)
+    fld_name = Treemap.register_parent_name(treemap, register_id)
+    fld_base = "href='#' class='bluelink' phx-click='folder-clk' phx-value-fldid='#{fld_id}'"
+    fld_link = "<a #{fld_base}>#{fld_name}</a> "
     label = if count > 0, do: unread(count), else: ""
-    "#{fld_name} > #{reg_name} #{label}"
+    "#{fld_link} > #{reg_name} #{label}"
   end
 
   defp btns(state) do

@@ -24,7 +24,7 @@ defmodule FeedexWeb.News.BodyView do
       <tr style='background-color: lightgrey;'>
       <td><small><i class="fa fa-check"></i></small></td>
       <td><b><%= id_link(post.id) %></b></td>
-      <td><b><a href='<%= post.link %>' target='_blank'><%= time_ago(post.updated_at) %><%= post.title %></a></b></td>
+      <td><b><a href='<%= post.link %>' class='bluelink' target='_blank'><%= time_ago(post.updated_at) %><%= post.title %></a></b></td>
       </tr>
       <tr style='background-color: lightgrey;'><td colspan=3>
       <small>
@@ -36,7 +36,7 @@ defmodule FeedexWeb.News.BodyView do
       <td>
       <%= if post.read_log, do: HTML.raw "<small><i class='fa fa-check'></i></small> " %>
       </td>
-      <td><%= id_link(post.id) %></td>
+      <td><%= id_link(post.id) %> zz</td>
       <td>
       <%= time_ago(post.updated_at) %><%= post.title %>
       </td>
@@ -52,9 +52,9 @@ defmodule FeedexWeb.News.BodyView do
   
   def byline(post) do
     """
-    <a href='#' phx-click='fld-clk' phx-value-fldid=#{post.fld_id}>#{post.fld_name}</a> 
+    <a href='#' class='bluelink' phx-click='fld-clk' phx-value-fldid=#{post.fld_id}>#{post.fld_name}</a> 
     > 
-    <a href='#' phx-click='reg-clk' phx-value-regid=#{post.reg_id}>#{post.reg_name}</a> (#{host_for(post)})
+    <a href='#' class='bluelink' phx-click='reg-clk' phx-value-regid=#{post.reg_id}>#{post.reg_name}</a> (#{host_for(post)})
     """ |> HTML.raw()
   end
 
@@ -81,8 +81,8 @@ defmodule FeedexWeb.News.BodyView do
 
   def id_link(id) do
     """
-    <a href="#" phx-click='click-post' phx-value-pstid='#{id}'>
-    #{id}
+    <a href="#" class="bluelink" phx-click="click-post" phx-value-pstid='#{id}'>
+    #{id} xx
     </a>
     """ |> HTML.raw()
   end

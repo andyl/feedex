@@ -419,7 +419,21 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Eliminate unneeded DB lookups
 - [x] News: write base body component
 
+- [ ] BTN: Folder Link
+- [ ] BTN: Feed Link
+
+- [ ] HDR: Folder Link
+
+- [ ] TREE/HDR/BTN - Link Style
+
 ## TBD
+
+- [ ] HDR: Mark all Read
+
+- [ ] BodyView: Smaller display font
+
+- [ ] Tree: Folder Link
+- [ ] Tree: Reg Link
 
 - [ ] News: write 'mark read' working
 - [ ] News: get 'mark all as read' working

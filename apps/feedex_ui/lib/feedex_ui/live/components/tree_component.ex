@@ -167,7 +167,7 @@ defmodule FeedexUi.TreeComponent do
   # ----- event handlers -----
 
   def handle_event("view_all", _payload, socket) do
-    opts = %{
+    new_state = %{
       mode: "view",
       usr_id: socket.assigns.uistate.usr_id,
       reg_id: nil,
@@ -175,44 +175,37 @@ defmodule FeedexUi.TreeComponent do
       pst_id: nil
     }
 
-    new_state = Map.merge(socket.assigns.uistate, opts)
-
-    # FeedexUi.Endpoint.broadcast_from(self(), "set_uistate", "BTN_VIEW_ALL", %{uistate: new_state})
     send(self(), {"set_uistate", %{uistate: new_state}})
 
-    {:noreply, assign(socket, %{uistate: opts})}
+    {:noreply, assign(socket, %{uistate: new_state})}
   end
 
   def handle_event("clk_folder", %{"fldid" => fldid}, socket) do
-    opts = %{
+    new_state = %{
       mode: "view",
+      usr_id: socket.assigns.uistate.usr_id,
       fld_id: Integer.parse(fldid) |> elem(0),
       reg_id: nil,
       pst_id: nil
     }
 
-    new_state = Map.merge(socket.assigns.uistate, opts)
-    # FeedexUi.Endpoint.broadcast_from(self(), "set_uistate", "TREE_FOLDER", %{uistate: new_state})
-
     send(self(), {"set_uistate", %{uistate: new_state}})
 
-    {:noreply, assign(socket, %{uistate: new_state, treemap: socket.assigns.treemap})}
+    {:noreply, assign(socket, %{uistate: new_state})}
   end
 
   def handle_event("clk_feed", %{"regid" => regid}, socket) do
-    opts = %{
+    new_state = %{
       mode: "view",
+      usr_id: socket.assigns.uistate.usr_id, 
       reg_id: Integer.parse(regid) |> elem(0),
       fld_id: nil,
       pst_id: nil
     }
 
-    new_state = Map.merge(socket.assigns.uistate, opts)
-    # FeedexUi.Endpoint.broadcast_from(self(), "set_uistate", "TREE_FEED", %{uistate: new_state})
-
     send(self(), {"set_uistate", %{uistate: new_state}})
 
-    {:noreply, assign(socket, %{uistate: new_state, treemap: socket.assigns.treemap})}
+    {:noreply, assign(socket, %{uistate: new_state})}
   end
 
   def handle_event("mark-read", _click, socket) do

@@ -10,12 +10,14 @@ defmodule FeedexUi.NewsLive do
   def mount(_params, session, socket) do
     user = FeedexUi.SessionUtil.user_from_session(session)
     treemap = FeedexData.Ctx.Account.cleantree(user.id)
+
     opts = %{
       current_user: user,
       uistate: UiState.lookup(user.id),
       treemap: treemap,
       counts: gen_counts(user.id)
     }
+
     {:ok, assign(socket, opts)}
   end
 
@@ -56,16 +58,8 @@ defmodule FeedexUi.NewsLive do
   end
 
   @impl true
-  def handle_info({:tick, assigns}, socket) do
-    send_update(FeedexUi.ClockComponent, assigns)
-    {:noreply, socket}
-  end
-
-  @impl true
   def handle_info({"set_uistate", %{uistate: new_state}}, socket) do
-    send_update(FeedexUi.HdrComponent, uistate: new_state, id: "hdr")
-    send_update(FeedexUi.BodyComponent, uistate: new_state, id: "bdy")
-    {:noreply, socket}
+    {:noreply, assign(socket, uistate: new_state)}
   end
 
   defp search(query) do

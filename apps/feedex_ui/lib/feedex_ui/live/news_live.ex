@@ -6,6 +6,8 @@ defmodule FeedexUi.NewsLive do
   use FeedexUi, :live_view
   alias FeedexUi.Cache.UiState
 
+  # ----- lifecycle callbacks -----
+
   @impl true
   def mount(_params, session, socket) do
     user = FeedexUi.SessionUtil.user_from_session(session)
@@ -26,7 +28,7 @@ defmodule FeedexUi.NewsLive do
     {:noreply, assign(socket, path: URI.parse(uri).path)}
   end
 
-  # ----- view helpers -----
+  # ----- data helpers -----
 
   def gen_counts(user_id) do
     %{
@@ -36,41 +38,21 @@ defmodule FeedexUi.NewsLive do
     }
   end
 
-  # ----- callbacks -----
-
-  @impl true
-  def handle_event("suggest", %{"q" => query}, socket) do
-    {:noreply, assign(socket, results: search(query), query: query)}
-  end
-
-  @impl true
-  def handle_event("search", %{"q" => query}, socket) do
-    case search(query) do
-      %{^query => vsn} ->
-        {:noreply, redirect(socket, external: "https://hexdocs.pm/#{query}/#{vsn}")}
-
-      _ ->
-        {:noreply,
-         socket
-         |> put_flash(:error, "No dependencies found matching \"#{query}\"")
-         |> assign(results: %{}, query: query)}
-    end
-  end
-
+  # ----- message handlers -----
+  
   @impl true
   def handle_info({"set_uistate", %{uistate: new_state}}, socket) do
     {:noreply, assign(socket, uistate: new_state)}
   end
 
-  defp search(query) do
-    if not FeedexUi.Endpoint.config(:code_reloader) do
-      raise "action disabled when not in development"
-    end
+  @impl true
+  def handle_info("mark_all_read", socket) do
 
-    for {app, desc, vsn} <- Application.started_applications(),
-        app = to_string(app),
-        String.starts_with?(app, query) and not List.starts_with?(desc, ~c"ERTS"),
-        into: %{},
-        do: {app, vsn}
+    opts = %{
+      counts: gen_counts(socket.assigns.current_user.id)
+    }
+
+    {:noreply, assign(socket, opts)}
   end
+
 end

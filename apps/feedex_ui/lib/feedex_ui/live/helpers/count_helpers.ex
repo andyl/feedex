@@ -27,6 +27,7 @@ defmodule FeedexUi.CountHelpers do
   end
 
   def unread(id, unread_count, :raw) do
+      "ALL"
     unread(id, unread_count) |> raw()
   end
 

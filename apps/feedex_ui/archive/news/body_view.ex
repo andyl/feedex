@@ -34,7 +34,8 @@ defmodule FeedexWeb.News.BodyView do
     <% else %>
       <tr>
       <td>
-      <%= if post.read_log, do: HTML.raw "<small><i class='fa fa-check'></i></small> " %>
+      <%= check_svg(:raw) %>
+      <%= if post.read_log, do: check_svg(:raw) %>
       </td>
       <td><%= id_link(post.id) %> zz</td>
       <td>

@@ -14,6 +14,7 @@ defmodule FeedexUi.HdrComponent do
   alias FeedexData.Ctx.Account
   alias FeedexData.Util.Treemap
   import FeedexUi.CountHelpers
+  import FeedexUi.IconHelpers
 
   def render(assigns) do
     ~L"""
@@ -37,67 +38,47 @@ defmodule FeedexUi.HdrComponent do
   # ----- view helpers -----
   
   defp title(state, counts, treemap, myself) do
-    case {state.reg_id, state.fld_id} do
-      {nil    , nil} -> all_name(counts)
-      {nil, fld_id}  -> folder_name(fld_id, counts, treemap)
-      {reg_id, nil}  -> register_name(reg_id, counts, treemap, myself)
+    case {state.fld_id, state.reg_id} do
+      {nil   , nil} -> all_title(counts, myself)
+      {fld_id, nil} -> fld_title(fld_id, counts, treemap, myself)
+      {nil, reg_id} -> reg_title(reg_id, counts, treemap, myself)
     end |> HTML.raw()
   end
 
-  def mark_all_read(state) do
-    case {state.fld_id, state.reg_id} do
-      {nil   , nil} -> Account.mark_all_for(state.usr_id)
-      {fld_id, nil} -> Account.mark_all_for(state.usr_id, fld_id: fld_id)
-      {nil, reg_id} -> Account.mark_all_for(state.usr_id, reg_id: reg_id)
+  defp all_title(counts, myself) do
+    count = counts.all
+    if count > 0 do
+      "ALL " <> checklink(count, myself)
+    else 
+      "ALL"
     end
   end
 
-  def sync_all(state) do
-    case {state.fld_id, state.reg_id} do
-      {nil   , nil} -> FeedexJob.sync_for(state.usr_id)
-      {fld_id, nil} -> FeedexJob.sync_for(state.usr_id, fld_id: fld_id)
-      {nil, reg_id} -> FeedexJob.sync_for(state.usr_id, reg_id: reg_id)
-    end
-  end
-
-  # defp checklink(unread) do
-  #   style = "style='vertical-align: top; margin-top: 4px; margin-right: 5px; margin-left: 5px;'"
-  #   case unread do
-  #     0 -> ""
-  #     _ -> 
-  #     """
-  #     <small><span class="badge badge-light" #{style}>#{unread}</span></small>
-  #     <span style="margin-right: 10px">
-  #      <a href='#'>
-  #     <i class='fa fa-check' phx-click='mark-read'></i>
-  #     </a>  
-  #     </span>
-  #     """
-  #   end 
-  # end
-
-  defp all_name(counts) do
-    # "ALL " <> checklink(counts)
-    "ALL " <> unread(counts.all)
-  end
-
-  defp folder_name(folder_id, counts, treemap) do
-    fname = Treemap.folder_name(treemap, folder_id)
-    count = counts.fld[folder_id] || 0
-    # label = if unread > 0, do: "(#{unread})", else: ""
-    label = if count > 0, do: unread(count), else: ""
+  defp fld_title(fld_id, counts, treemap, myself) do
+    fname = Treemap.folder_name(treemap, fld_id)
+    count = counts.fld[fld_id] || 0
+    label = if count > 0, do: checklink(count, myself), else: ""
     "#{fname} #{label}"
   end
 
-  defp register_name(register_id, counts, treemap, myself) do
-    count = counts.reg[register_id] || 0
-    reg_name = Treemap.register_name(treemap, register_id)
-    fld_id   = Treemap.register_parent_id(treemap, register_id)
-    fld_name = Treemap.register_parent_name(treemap, register_id)
+  defp reg_title(reg_id, counts, treemap, myself) do
+    count = counts.reg[reg_id] || 0
+    reg_name = Treemap.register_name(treemap, reg_id)
+    fld_id   = Treemap.register_parent_id(treemap, reg_id)
+    fld_name = Treemap.register_parent_name(treemap, reg_id)
     fld_base = "href='#' class='bluelink' phx-click='folder-clk' phx-value-fldid='#{fld_id}'"
     fld_link = "<a #{fld_base} phx-target='#{myself}'>#{fld_name}</a> "
-    label = if count > 0, do: unread(count), else: ""
+    label = if count > 0, do: checklink(count, myself), else: ""
     "#{fld_link} > #{reg_name} #{label}"
+  end
+
+  defp checklink(count, myself) do
+    """
+    #{unread(count)}
+    <a href='#' phx-target="#{myself}" phx-click="mark-read">
+      #{check_circle_svg("h-5 bluelink inline")}
+    </a>
+    """
   end
 
   defp btns(state) do
@@ -121,7 +102,25 @@ defmodule FeedexUi.HdrComponent do
     """
   end
 
-  # ----- callbacks -----
+  # ----- data helpers -----
+
+  def mark_all_read(state) do
+    case {state.fld_id, state.reg_id} do
+      {nil   , nil} -> Account.mark_all_for(state.usr_id)
+      {fld_id, nil} -> Account.mark_all_for(state.usr_id, fld_id: fld_id)
+      {nil, reg_id} -> Account.mark_all_for(state.usr_id, reg_id: reg_id)
+    end
+  end
+
+  def sync_all(state) do
+    case {state.fld_id, state.reg_id} do
+      {nil   , nil} -> FeedexJob.sync_for(state.usr_id)
+      {fld_id, nil} -> FeedexJob.sync_for(state.usr_id, fld_id: fld_id)
+      {nil, reg_id} -> FeedexJob.sync_for(state.usr_id, reg_id: reg_id)
+    end
+  end
+
+  # ----- event handlers -----
 
   def handle_event("folder-clk", %{"fldid" => fldid}, socket) do
     new_state = %{
@@ -135,6 +134,14 @@ defmodule FeedexUi.HdrComponent do
     send(self(), {"set_uistate", %{uistate: new_state}})
 
     {:noreply, assign(socket, uistate: new_state)}
+  end
+
+  def handle_event("mark-read", _click, socket) do
+    mark_all_read(socket.assigns.uistate)
+    
+    send(self(), "mark_all_read")
+
+    {:noreply, socket}
   end
   
 end

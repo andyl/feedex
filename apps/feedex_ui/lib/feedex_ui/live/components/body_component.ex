@@ -21,9 +21,10 @@ defmodule FeedexUi.BodyComponent do
     <div class="px-2 pt-1">
       <%= render_body(@socket, @uistate) %>
 
-      <%= refresh("h-8 text-blue-400", :raw) %>
-      <%= pencil_alt("h-8 text-blue-400", :raw) %>
-      <%= check_circle("h-8 text-blue-400", :raw) %>
+      <%= refresh_svg("h-8 text-blue-400", :raw) %>
+      <%= pencil_alt_svg("h-8 text-blue-400", :raw) %>
+      <%= check_circle_svg("h-8 text-blue-400", :raw) %>
+      <%= check_svg("h-8 text-blue-400", :raw) %>
     </div>
     """
   end

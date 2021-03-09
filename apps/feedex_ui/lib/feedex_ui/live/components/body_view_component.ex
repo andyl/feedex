@@ -13,6 +13,11 @@ defmodule FeedexUi.BodyViewComponent do
 
   use Phoenix.LiveComponent
 
+  import FeedexUi.IconHelpers
+
+  # ----- lifecycle callbacks -----
+
+  @impl true
   def update(session, socket) do
     opts = %{
       uistate: session.uistate,
@@ -22,6 +27,7 @@ defmodule FeedexUi.BodyViewComponent do
     {:ok, assign(socket, opts)}
   end
 
+  @impl true
   def render(assigns) do
     ~L"""
     <div>
@@ -29,7 +35,7 @@ defmodule FeedexUi.BodyViewComponent do
         <%= for post <- @posts do %>
           <%= if @uistate.pst_id == post.id do %>
             <tr style='background-color: lightgrey;'>
-              <td><small><i class="fa fa-check"></i></small></td>
+              <td><%= check_svg('inline px-1 h-3', :raw) %></td>
               <td><b><%= id_link(post.id, @myself) %></b></td>
               <td><b><a href='<%= post.link %>' class='bluelink' target='_blank'><%= time_ago(post.updated_at) %><%= post.title %></a></b></td>
             </tr>
@@ -41,7 +47,7 @@ defmodule FeedexUi.BodyViewComponent do
           <% else %>
             <tr>
               <td>
-              <%= if post.read_log, do: HTML.raw "<i class='fa fa-check'></i> " %>
+              <%= if post.read_log, do: check_svg('inline px-1 h-3', :raw) %>
               </td>
               <td><%= id_link(post.id, @myself) %></td>
               <td class='truncate'>
@@ -82,8 +88,8 @@ defmodule FeedexUi.BodyViewComponent do
       case delta do
         x when x in 0..60 -> "#{x}m"
         x when x in 61..1440 -> "#{div(x, 60)}h"
-        x when x in 1441..10080 -> "#{div(x, 1440)}d"
-        x when x in 10081..99999 -> "#{div(x, 10080)}w"
+        x when x in 1441..10_080 -> "#{div(x, 1440)}d"
+        x when x in 10_081..99_999 -> "#{div(x, 10_080)}w"
         _ -> "xx"
       end
 
@@ -103,6 +109,8 @@ defmodule FeedexUi.BodyViewComponent do
     |> HTML.raw()
   end
 
+  # ----- data helpers -----
+
   defp all_posts_for(uistate) do
     userid = uistate.usr_id
 
@@ -113,8 +121,9 @@ defmodule FeedexUi.BodyViewComponent do
     end
   end
 
-  # ----- callbacks -----
+  # ----- event handlers -----
 
+  @impl true
   def handle_event("click-post", %{"pstid" => pstid}, socket) do
     # Toggle post on and off...
     uistate = socket.assigns.uistate
@@ -125,11 +134,7 @@ defmodule FeedexUi.BodyViewComponent do
 
     if new_pid do
       FeedexData.Ctx.Account.mark_all_for(user_id, pst_id: post_id)
-      # FeedexWeb.Endpoint.broadcast_from(self(), "read_one", "CLICK_POST", %{})
     end
-
-    # posts = all_posts_for(socket.assigns.uistate)
-    # posts = all_posts_for(newstate)
 
     send(self(), {"set_uistate", %{uistate: newstate}})
 

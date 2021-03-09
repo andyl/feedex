@@ -428,13 +428,20 @@ Goal: reduce the number of database queries in the life-cycle
 
 ## 2021 Mar 09 Tue
 
-- [ ] BodyView: Article Display
-- [ ] HDR: Mark all Read
+- [x] BodyView: Article Display
+- [x] HDR: Mark all Read Button
+- [x] HDR: Mark all Read Link Generation
+- [x] HDR: Mark all Read Handlers
+- [x] BodyView: Broadcast 'mark read' on view
+- [x] IconHelper: Add check_svg
+- [x] BodyView: Show read checkmark
 
 ## TBD
 
 - [ ] Create / Edit Folder
 - [ ] Create / Edit Feed
+
+- [ ] FeedexJob: Get cron working...
 
 - [ ] Feature: OPML-JSON Import/Export (needs file upload/download)
 

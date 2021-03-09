@@ -25,7 +25,7 @@ defmodule FeedexUi.BodyViewComponent do
   def render(assigns) do
     ~L"""
     <div>
-      <table class="table table-sm">
+      <table class="text-sm table-auto">
         <%= for post <- @posts do %>
           <%= if @uistate.pst_id == post.id do %>
             <tr style='background-color: lightgrey;'>
@@ -41,10 +41,10 @@ defmodule FeedexUi.BodyViewComponent do
           <% else %>
             <tr>
               <td>
-              <%= if post.read_log, do: HTML.raw "<small><i class='fa fa-check'></i></small> " %>
+              <%= if post.read_log, do: HTML.raw "<i class='fa fa-check'></i> " %>
               </td>
               <td><%= id_link(post.id) %></td>
-              <td>
+              <td class='truncate'>
               <%= time_ago(post.updated_at) %><%= post.title %>
               </td>
             </tr>

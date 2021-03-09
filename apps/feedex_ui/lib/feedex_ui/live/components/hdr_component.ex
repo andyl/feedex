@@ -21,7 +21,7 @@ defmodule FeedexUi.HdrComponent do
     <%= if @uistate.mode == "view" do %>
       <div class=''>
         <div class=''>
-          <%= title(@uistate, @counts, @treemap) %>
+          <%= title(@uistate, @counts, @treemap, @myself) %>
         </div>
         <!--
         <div class='text-right'>
@@ -36,11 +36,11 @@ defmodule FeedexUi.HdrComponent do
 
   # ----- view helpers -----
   
-  defp title(state, counts, treemap) do
+  defp title(state, counts, treemap, myself) do
     case {state.reg_id, state.fld_id} do
       {nil    , nil} -> all_name(counts)
       {nil, fld_id}  -> folder_name(fld_id, counts, treemap)
-      {reg_id, nil}  -> register_name(reg_id, counts, treemap)
+      {reg_id, nil}  -> register_name(reg_id, counts, treemap, myself)
     end |> HTML.raw()
   end
 
@@ -89,13 +89,13 @@ defmodule FeedexUi.HdrComponent do
     "#{fname} #{label}"
   end
 
-  defp register_name(register_id, counts, treemap) do
+  defp register_name(register_id, counts, treemap, myself) do
     count = counts.reg[register_id] || 0
     reg_name = Treemap.register_name(treemap, register_id)
     fld_id   = Treemap.register_parent_id(treemap, register_id)
     fld_name = Treemap.register_parent_name(treemap, register_id)
     fld_base = "href='#' class='bluelink' phx-click='folder-clk' phx-value-fldid='#{fld_id}'"
-    fld_link = "<a #{fld_base}>#{fld_name}</a> "
+    fld_link = "<a #{fld_base} phx-target='#{myself}'>#{fld_name}</a> "
     label = if count > 0, do: unread(count), else: ""
     "#{fld_link} > #{reg_name} #{label}"
   end
@@ -119,6 +119,22 @@ defmodule FeedexUi.HdrComponent do
     </a>
     #{pencil}
     """
+  end
+
+  # ----- callbacks -----
+
+  def handle_event("folder-clk", %{"fldid" => fldid}, socket) do
+    new_state = %{
+      mode: "view",
+      usr_id: socket.assigns.uistate.usr_id,
+      fld_id: Integer.parse(fldid) |> elem(0),
+      reg_id: nil,
+      pst_id: nil
+    }
+
+    send(self(), {"set_uistate", %{uistate: new_state}})
+
+    {:noreply, assign(socket, uistate: new_state)}
   end
   
 end

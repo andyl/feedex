@@ -10,8 +10,9 @@ defmodule FeedexData.Influx do
   # async send, fire and forget
   def send(body) do
     db  = Application.get_env(:feedex_data, FeedexData.Influx)[:database]
-    url = "localhost:8086/write?db=#{db}&time_precision=s"
-    opt = [body: body, basic_auth: {"admin", "admin"}]
-    Task.start(fn -> HTTPotion.post(url, opt) end)
+    _url = "localhost:8086/write?db=#{db}&time_precision=s"
+    _opt = [body: body, basic_auth: {"admin", "admin"}]
+    :ok 
+    # Task.start(fn -> HTTPotion.post(url, opt) end)
   end
 end

@@ -36,6 +36,7 @@ defmodule FeedexData.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 2.0"},
       # ----- database
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
@@ -46,8 +47,8 @@ defmodule FeedexData.MixProject do
       {:modex, path: "~/src/modex"},
       {:jason, "~> 1.0"},
       # ----- metrics
-      {:telemetry, "~> 0.4.0", only: [:dev, :prod]},
-      {:telemetry_poller, "~> 0.4.0", only: [:dev, :prod]}
+      {:telemetry, "~> 0.4"},
+      {:telemetry_poller, "~> 0.5"}
     ]
   end
 

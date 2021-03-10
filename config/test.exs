@@ -1,5 +1,15 @@
 use Mix.Config
 
+# Only in tests, remove the complexity from the password hashing algorithm
+config :bcrypt_elixir, :log_rounds, 1
+
+# ----- FeedexTsdb
+
+config :feedex_tsdb, FeedexTsdb,
+  database: "inf_feedex_test"
+
+# ----- FeedexData
+
 config :feedex_data, FeedexData.Repo,
   username: "postgres",
   password: "postgres",
@@ -7,12 +17,23 @@ config :feedex_data, FeedexData.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
+# ----- FeedexUi
+
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :feedex_web, FeedexWeb.Endpoint,
-  http: [port: 4001],
-  server: true
+config :feedex_ui, FeedexUi.Endpoint,
+  http: [port: 4062],
+  server: false
 
-config :hound, driver: "chrome_driver", browser: "chrome_headless"
+# ----- FeedexUi
 
-config :logger, level: :error
+# We don't run a server during test. If one is required,
+# you can enable the server option below.
+# config :feedex_web, FeedexWeb.Endpoint,
+#   http: [port: 4062],
+#   server: false
+
+# Print only warnings and errors during test
+config :logger, level: :warn
+
+

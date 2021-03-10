@@ -1,6 +1,6 @@
 defmodule FeedexData.Ctx.AccountTest do 
   use ExUnit.Case
-  use FeedexData.DataCase
+  use FeedexData.DataCase, async: true
 
   describe "#count" do
     test "valid results" do
@@ -13,8 +13,8 @@ defmodule FeedexData.Ctx.AccountTest do
 
   describe "#user_add" do
     test "valid user" do
-      attr = %{name: "asdf", email: "qwer.com", pwd: "bingbing"}
-      assert Account.count(User)== 0
+      attr = %{name: "asdf", email: "qwer.com", pwd: "bingbing", pwd_hash: "asdf"}
+      assert Account.count(User) == 0
       Account.user_add(attr)
       assert Account.count(User) == 1
     end
@@ -22,8 +22,10 @@ defmodule FeedexData.Ctx.AccountTest do
     test "missing password error" do
       attr = %{name: "asdf", email: "qwer.com"}
       assert Account.count(User) == 0
-      Account.user_add(attr)
-      assert Account.count(User) == 1
+      assert_raise Postgrex.Error, fn ->
+        Account.user_add(attr)
+      end
+      assert Account.count(User) == 0
     end
   end
 end

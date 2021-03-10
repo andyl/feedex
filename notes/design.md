@@ -6,6 +6,7 @@
 |-----------------|--------------------------|-------------------------|
 | x feedex_client | mix new feedex_client    | HTML Client - Reads RSS |
 | x feedex_data   | new.phx.ecto feedex_data | Ecto Interface          |
+| x feedex_tsdb   | mix new feedex_tsdb      | Time Series DB (Influx) |
 | x feedex_job    | mix new feedex_job       | Scheduled RSS Sync Jobs |
 | x feedex_web    | new.phx.web feedex_web   | Web UI                  |
 | - feedex_term   | mix new feedex_term      | Terminal UI             |

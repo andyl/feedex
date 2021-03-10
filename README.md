@@ -14,7 +14,18 @@ Simple RSS Aggregator
 
 ## Installing Development
 
-TBD
+To start your Phoenix server:
+
+  * Setup the project with `mix setup`
+  * Start Phoenix endpoint with `mix phx.server`
+
+Now you can visit [`localhost:4070`](http://localhost:4070) from your browser.
+
+## Running Tests
+
+    > MIX_ENV=test mix do compile, ecto.create, ecto.migrate
+    > mix test
+    > mix test.watch
 
 ## Installing Production
 

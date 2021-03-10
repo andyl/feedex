@@ -440,14 +440,12 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Header link / refresh
 - [x] Header link / edit
 - [x] Header link / sync
-
-- [ ] Create Feed
+- [x] Create Feed
 
 - [ ] Edit Folder
 - [ ] Edit Feed
 
 ## TBD
-
 
 - [ ] FeedexJob: Get cron working...
 

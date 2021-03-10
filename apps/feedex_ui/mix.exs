@@ -44,6 +44,7 @@ defmodule FeedexUi.MixProject do
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_dashboard, "~> 0.4"},
+      {:phoenix_live_editable, path: "~/lib/phoenix_live_editable"},
       {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
       {:telemetry_metrics, "~> 0.4"},
       {:phx_tailwind_generators, "~> 0.1.6"},

@@ -436,17 +436,24 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] IconHelper: Add check_svg
 - [x] BodyView: Show read checkmark
 - [x] Create Folder
+- [x] Header Buttons
+- [x] Header link / refresh
+- [x] Header link / edit
+- [x] Header link / sync
+
+- [ ] Create Feed
+
+- [ ] Edit Folder
+- [ ] Edit Feed
 
 ## TBD
 
-- [ ] Header Buttons
-- [ ] Edit Folder
-- [ ] Create Feed
-- [ ] Edit Feed
 
 - [ ] FeedexJob: Get cron working...
 
 - [ ] Feature: OPML-JSON Import/Export (needs file upload/download)
+
+- [ ] Remove archive code
 
 - [ ] Merge to Master
 - [ ] Deploy

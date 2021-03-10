@@ -16,6 +16,9 @@ defmodule FeedexUi.HdrComponent do
   import FeedexUi.CountHelpers
   import FeedexUi.IconHelpers
 
+  # ----- lifecycle callbacks -----
+
+  @impl true
   def render(assigns) do
     ~L"""
     <div class='px-2 bg-gray-400 desktop-only'>
@@ -25,7 +28,7 @@ defmodule FeedexUi.HdrComponent do
           <%= title(@uistate, @counts, @treemap, @myself) %>
         </div>
         <div class='flex-auto text-right'>
-          <%= HTML.raw btns(@uistate) %>
+          <%= HTML.raw btns(@uistate, @myself) %>
         </div>
       </div>
     <% end %>
@@ -79,12 +82,12 @@ defmodule FeedexUi.HdrComponent do
     """
   end
 
-  defp btns(state) do
+  defp btns(state, myself) do
     show_pencil = state.reg_id != nil || state.fld_id != nil
     pencil = 
       if show_pencil do
         """
-        <a href='#' phx-click='click-edit'>
+        <a href='#' phx-target='#{myself}' phx-click='click-edit'>
           #{pencil_alt_svg("h-4 bluelink inline")}
         </a>
         """
@@ -93,7 +96,7 @@ defmodule FeedexUi.HdrComponent do
       end
 
     """
-    <a href='#' phx-click='feed-sync'>
+    <a href='#' phx-target='#{myself}' phx-click='feed-sync'>
       #{ refresh_svg("h-4 bluelink inline") }
     </a>
     #{pencil}
@@ -120,6 +123,7 @@ defmodule FeedexUi.HdrComponent do
 
   # ----- event handlers -----
 
+  @impl true
   def handle_event("folder-clk", %{"fldid" => fldid}, socket) do
     new_state = %{
       mode: "view",
@@ -134,6 +138,25 @@ defmodule FeedexUi.HdrComponent do
     {:noreply, assign(socket, uistate: new_state)}
   end
 
+  @impl true
+  def handle_event("click-edit", _click, socket) do
+    uistate = socket.assigns.uistate
+    new_mode = case {uistate.fld_id, uistate.reg_id} do
+      {_id, nil} -> "edit_folder"
+      {nil, _id} -> "edit_feed"
+    end
+    new_state = Map.merge(uistate, %{mode: new_mode})
+    send(self(), {"set_uistate", %{uistate: new_state}})
+    {:noreply, assign(socket, %{uistate: new_state})}
+  end
+
+  @impl true
+  def handle_event("feed-sync", _click, socket) do
+    sync_all(socket.assigns.uistate)
+    {:noreply, socket}
+  end
+
+  @impl true
   def handle_event("mark-read", _click, socket) do
     mark_all_read(socket.assigns.uistate)
     

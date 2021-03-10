@@ -68,6 +68,7 @@ defmodule FeedexUi.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     get "/users/settings", UserSettingsController, :edit
+    get "/users/settings/subs", UserSettingsController, :subs
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
   end

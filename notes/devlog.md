@@ -441,9 +441,8 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Header link / edit
 - [x] Header link / sync
 - [x] Create Feed
-
-- [ ] Edit Folder
-- [ ] Edit Feed
+- [x] Edit Folder
+- [x] Edit Feed
 
 ## TBD
 
@@ -451,9 +450,14 @@ Goal: reduce the number of database queries in the life-cycle
 
 - [ ] Feature: OPML-JSON Import/Export (needs file upload/download)
 
+- [ ] Fix LiveEditable for Tailwind
+
 - [ ] Remove archive code
 
-- [ ] Merge to Master
+- [ ] Merge to Dev
+
+- [ ] Use locally
+
 - [ ] Deploy
 
 - [ ] UI: Generate admin pages: users / feeds / posts

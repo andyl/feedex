@@ -33,10 +33,7 @@ defmodule FeedexUi.TreeComponent do
         <% end %>
       <% end %>
       </small>
-      <p></p>
-      <small>
-      <%= HTML.raw state_table(@uistate) %>
-      </small>
+      <%# HTML.raw state_table(@uistate) %>
     </div>
     <div class='mobile-only'>
       <%= all_btn(@uistate, @myself) %> <%= all_unread(@uistate, @counts.all) %>

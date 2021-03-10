@@ -1,4 +1,9 @@
 defmodule FeedexData.Ctx.Account do
+
+  @moduledoc """
+  Affordances for Account Resources
+  """
+
   alias FeedexData.Ctx.Account.{User, Folder, Register, ReadLog}
   alias FeedexData.Ctx.News.{Post, Feed}
   alias FeedexData.Repo
@@ -82,21 +87,6 @@ defmodule FeedexData.Ctx.Account do
       preload: [registers: ^rq]
     )
     |> Repo.all()
-  end
-
-  # ----- folders -----
-
-  def folder_add do
-  end
-
-  def folder_get(id) do
-    Repo.get(Folder, id)
-  end
-
-  def folder_update do
-  end
-
-  def folder_delete do
   end
   
   # ----- registers -----

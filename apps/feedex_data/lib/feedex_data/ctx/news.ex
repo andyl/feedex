@@ -1,30 +1,17 @@
 defmodule FeedexData.Ctx.News do
+
+  @moduledoc """
+  Affordance for News Resources
+  """
+
   alias FeedexData.Ctx.News.{Feed, Post}
   alias FeedexData.Ctx.Account.{ReadLog, Register, Folder}
   alias FeedexData.Repo
 
   import Ecto.Query
 
-  @doc """
-  Scan a URL, find the true url, return the RSS data.
-
-  Called by `Account#folder_add()`.
-  """
-  def scan(_url) do
-  end
-
-  @doc """
-  Update a RSS URL.
-
-  Called by `Account#folder_update()`.
-  """
-  def update do
-  end
-
-  def for_user(_user_id) do
-  end
-
   # ----- feeds -----
+
   def feed_get(id) do
     Repo.get(Feed, id)
   end
@@ -98,8 +85,7 @@ defmodule FeedexData.Ctx.News do
     ) |> Repo.one()
   end
 
-  def unread_count_qry(userid) do
-    # from(pst in Post,
+  defp unread_count_qry(userid) do
     q1 = from(p in Post, distinct: :title, order_by: [desc: :id])
     from(pst in subquery(q1),
       left_join: log in ReadLog, on: pst.id == log.post_id,
@@ -132,7 +118,7 @@ defmodule FeedexData.Ctx.News do
     ) |> Repo.all()
   end
 
-  def posts_qry(user_id) do
+  defp posts_qry(user_id) do
     # use subquery to eliminate duplicate titles (forum posts) only show the latest
     # from(pst in Post,
     q1 = from(p in Post, distinct: :title, order_by: [desc: :id])

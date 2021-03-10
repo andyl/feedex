@@ -443,10 +443,13 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Remove archive code
 - [x] Merge to Dev
 
-## TBD
+## 2021 Mar 10 Wed
 
-- [ ] Settings: Subscription Display (json)
+- [x] Settings: Subscription Display (json)
+- [ ] FeedexData: Create API calls for feeds and folders
 - [ ] Settings: Load Subscriptions (json)
+
+## TBD
 
 - [ ] Use locally
 

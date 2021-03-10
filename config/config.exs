@@ -34,6 +34,29 @@ config :feedex_ui, FeedexUi.Endpoint,
   pubsub_server: Feedex.PubSub,
   live_view: [signing_salt: "UPuxN9Ta"]
 
+# ----- FeedexJob
+
+config :feedex_job,
+  env: Mix.env()
+
+config :feedex_job, FeedexJob.Scheduler,
+  jobs: [
+    # {"*/15 * * * *",   fn -> System.cmd("rm", ["/tmp/tmp_"]) end},
+    # {"0 18-6/2 * * *", fn -> :mnesia.backup('/var/backup/mnesia') end},
+    # {"@daily",         {Backup, :backup, []}}
+    # {"* * * * *",      {IO, :puts, ["CRON JOB"]}}
+    {"* * * * *",        {FeedexData.Metrics.AppPoller, :post_counts, []}},
+    {"*/3 * * * *",      {FeedexJob, :sync_next, []}}
+  ]
+
+unless Mix.env() == :test do
+  config :telemetry_poller, :default, vm_measurements: :default, period: 30_000
+end
+
+config :logger, :console,
+  format: "$time $metadata[$level] $message\n",
+  metadata: [:request_id]
+
 # ----- FeedexWeb 
 
 # config :feedex_web,

@@ -1,3 +1,8 @@
 defmodule FeedexJob.Scheduler do
-  # use Quantum.Scheduler, otp_app: :feedex_job
+  @moduledoc """
+  Job scheduler
+  """
+
+  use Quantum, otp_app: :feedex_job
+
 end

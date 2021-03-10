@@ -17,6 +17,12 @@ defmodule FeedexUi.UserSettingsController do
     |> render("subs.html")
   end
 
+  def subs_json(conn, _params) do
+    conn
+    |> assign(:subs, Subs.show(userid(conn)))
+    |> json(Subs.show(userid(conn)))
+  end
+
   def update(conn, %{"action" => "update_email"} = params) do
     %{"current_password" => password, "user" => user_params} = params
     user = conn.assigns.current_user

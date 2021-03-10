@@ -1,5 +1,9 @@
 <h3 style='margin-top: 20px;'>SUBSCRIPTIONS</h3>
 
+<div>
+  <a class="bluelink" href="/api/users/settings/subs.json">JSON</a>
+</div>
+
 <style>
 span { display: inline-block; width: 180px;}
 </style>

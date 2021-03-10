@@ -441,27 +441,28 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] FeedexJob: Get cron working...
 - [x] Settings: Subscription Display (text)
 - [x] Remove archive code
+- [x] Merge to Dev
 
 ## TBD
 
 - [ ] Settings: Subscription Display (json)
 - [ ] Settings: Load Subscriptions (json)
 
-- [ ] Fix LiveEditable for Tailwind
-
-- [ ] Merge to Dev
-
 - [ ] Use locally
 
-- [ ] Deploy
+- [ ] Fix LiveEditable for Tailwind
 
 - [ ] UI: Generate admin pages: users / feeds / posts
 - [ ] UI: Admin-links to Dashboard and Admin pages on settings page
 - [ ] UI: Admin-only access to admin pages
 
+- [ ] Fix telemetry
 - [ ] Add telemetry for FcTesla (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
 
 - [ ] Add bamboo 2.0
+
+- [ ] Deploy on privhost
+- [ ] Deploy on pubhost
 
 - [ ] Infra: Restful API: RSS/JSON (Feeds and Folders)
 - [ ] Infra: Restful API: SyncNow (Feeds and Folders)

@@ -15,6 +15,8 @@ defmodule FeedexUi.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
+    plug :fetch_current_user
   end
 
   scope "/", FeedexUi do
@@ -28,10 +30,11 @@ defmodule FeedexUi.Router do
 
     live "/news", NewsLive, :index
   end
-  # Other scopes may use custom stacks.
-  # scope "/api", FeedexUi do
-  #   pipe_through :api
-  # end
+  
+  scope "/api", FeedexUi do
+    pipe_through [:api, :require_authenticated_user]
+    get "/users/settings/subs.json", UserSettingsController, :subs_json
+  end
 
   # Enables LiveDashboard only for development
   #

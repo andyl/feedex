@@ -1,5 +1,9 @@
 <h1 class="py-4 text-xl font-bold">Settings</h1>
 
+<div>
+  <a href="/users/settings/subs" class="bluelink">Subscriptions</a>
+</div>
+
 <h3 class="py-3 font-bold">Change email</h3>
 
 <%= form_for @email_changeset, Routes.user_settings_path(@conn, :update), fn f -> %>

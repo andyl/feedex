@@ -435,11 +435,14 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] BodyView: Broadcast 'mark read' on view
 - [x] IconHelper: Add check_svg
 - [x] BodyView: Show read checkmark
+- [x] Create Folder
 
 ## TBD
 
-- [ ] Create / Edit Folder
-- [ ] Create / Edit Feed
+- [ ] Header Buttons
+- [ ] Edit Folder
+- [ ] Create Feed
+- [ ] Edit Feed
 
 - [ ] FeedexJob: Get cron working...
 

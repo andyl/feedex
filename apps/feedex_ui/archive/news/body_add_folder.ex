@@ -18,7 +18,7 @@ defmodule FeedexWeb.News.BodyAddFolder do
     ~L"""
     <H1>Create a new Folder</H1>
     <div>
-    <%= f = form_for @changeset, "#", [phx_change: :validate, phx_submit: :save] %>
+    <%= f = form_for @changeset, "#", [id: "NEWFORM", phx_target: @myself, phx_change: :validate, phx_submit: :save] %>
     
       <div class="form-group">
         <%= text_input f, :name, placeholder: "Enter a folder name...", class: "form-control" %>

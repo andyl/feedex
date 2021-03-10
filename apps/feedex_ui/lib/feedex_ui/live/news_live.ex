@@ -39,20 +39,41 @@ defmodule FeedexUi.NewsLive do
   end
 
   # ----- message handlers -----
-  
+
   @impl true
   def handle_info({"set_uistate", %{uistate: new_state}}, socket) do
     {:noreply, assign(socket, uistate: new_state)}
   end
 
   @impl true
-  def handle_info("mark_all_read", socket) do
+  def handle_info("mod_tree", socket) do
+    user = socket.assigns.current_user
+
+    treemap = FeedexData.Ctx.Account.cleantree(user.id)
+
+    new_opts = %{
+      mode: "view",
+      pst_id: nil,
+      fld_id: nil,
+      reg_id: nil
+    }
+
+    new_state =
+      socket.assigns.uistate
+      |> Map.merge(new_opts)
 
     opts = %{
-      counts: gen_counts(socket.assigns.current_user.id)
+      treemap: treemap,
+      counts: gen_counts(user.id),
+      uistate: new_state
     }
 
     {:noreply, assign(socket, opts)}
   end
 
+  @impl true
+  def handle_info("mark_all_read", socket) do
+    opts = %{counts: gen_counts(socket.assigns.current_user.id)}
+    {:noreply, assign(socket, opts)}
+  end
 end

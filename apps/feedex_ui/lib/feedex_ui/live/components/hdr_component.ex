@@ -20,15 +20,13 @@ defmodule FeedexUi.HdrComponent do
     ~L"""
     <div class='px-2 bg-gray-400 desktop-only'>
     <%= if @uistate.mode == "view" do %>
-      <div class=''>
-        <div class=''>
+      <div class='flex'>
+        <div class='flex-auto'>
           <%= title(@uistate, @counts, @treemap, @myself) %>
         </div>
-        <!--
-        <div class='text-right'>
+        <div class='flex-auto text-right'>
           <%= HTML.raw btns(@uistate) %>
         </div>
-        --> 
       </div>
     <% end %>
     </div>
@@ -87,7 +85,7 @@ defmodule FeedexUi.HdrComponent do
       if show_pencil do
         """
         <a href='#' phx-click='click-edit'>
-        <i class='fa fa-pencil-alt'></i>
+          #{pencil_alt_svg("h-4 bluelink inline")}
         </a>
         """
       else
@@ -95,8 +93,8 @@ defmodule FeedexUi.HdrComponent do
       end
 
     """
-    <a href='#'>
-    <i class='fa fa-redo' phx-click='feed-sync' style='margin-right: 10px;'></i>
+    <a href='#' phx-click='feed-sync'>
+      #{ refresh_svg("h-4 bluelink inline") }
     </a>
     #{pencil}
     """

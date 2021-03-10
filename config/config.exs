@@ -45,7 +45,8 @@ config :feedex_job, FeedexJob.Scheduler,
     # {"0 18-6/2 * * *", fn -> :mnesia.backup('/var/backup/mnesia') end},
     # {"@daily",         {Backup, :backup, []}}
     # {"* * * * *",      {IO, :puts, ["CRON JOB"]}}
-    {"* * * * *",        {FeedexData.Metrics.AppPoller, :post_counts, []}},
+    # {"* * * * *",      {FeedexData.Metrics.AppPoller, :post_counts, []}},
+    # {"* * * * *",      {FeedexJob, :sync_next, []}}
     {"*/3 * * * *",      {FeedexJob, :sync_next, []}}
   ]
 

@@ -267,11 +267,6 @@ Editing Design Notes:
 
 - test runner is not working
 - problem is with quantum scheduler (telemetry poller, jobs)
-- possible solution: replace quantum with oban(?)
-
-## 2020 Apr 23 Thu
-
-- [x] re-implement with Phoenix 1.5 and latest LiveView
 
 ## 2021 Feb 08 Mon
 
@@ -443,16 +438,16 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Create Feed
 - [x] Edit Folder
 - [x] Edit Feed
+- [x] FeedexJob: Get cron working...
+- [x] Settings: Subscription Display (text)
+- [x] Remove archive code
 
 ## TBD
 
-- [ ] FeedexJob: Get cron working...
-
-- [ ] Feature: OPML-JSON Import/Export (needs file upload/download)
+- [ ] Settings: Subscription Display (json)
+- [ ] Settings: Load Subscriptions (json)
 
 - [ ] Fix LiveEditable for Tailwind
-
-- [ ] Remove archive code
 
 - [ ] Merge to Dev
 

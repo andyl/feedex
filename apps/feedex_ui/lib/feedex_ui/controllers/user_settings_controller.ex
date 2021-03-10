@@ -3,11 +3,18 @@ defmodule FeedexUi.UserSettingsController do
 
   alias FeedexData.Accounts
   alias FeedexUi.UserAuth
+  alias FeedexData.Api.Subs
 
   plug :assign_email_and_password_changesets
 
   def edit(conn, _params) do
     render(conn, "edit.html")
+  end
+
+  def subs(conn, _params) do
+    conn
+    |> assign(:subs, Subs.show(userid(conn)))
+    |> render("subs.html")
   end
 
   def update(conn, %{"action" => "update_email"} = params) do
@@ -71,4 +78,9 @@ defmodule FeedexUi.UserSettingsController do
     |> assign(:email_changeset, Accounts.change_user_email(user))
     |> assign(:password_changeset, Accounts.change_user_password(user))
   end
+
+  defp userid(conn) do
+    conn.assigns.current_user.id
+  end
+
 end

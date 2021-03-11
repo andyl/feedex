@@ -41,7 +41,7 @@ defmodule FeedexData.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       # ----- test
-      {:ex_machina, "~> 2.3"},
+      {:ex_machina, "~> 2.7"},
       # ----- misc
       {:pbkdf2_elixir, "~> 1.0"},
       {:modex, path: "~/src/modex"},

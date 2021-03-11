@@ -70,7 +70,7 @@ defmodule FeedexUi.BodyAddFolderComponent do
   def handle_event("save", payload, socket) do
     userid = socket.assigns.uistate.usr_id
     name = payload["folder"]["name"]
-    Api.Folder.create_folder(userid, name)
+    Api.Folder.find_or_create_folder(userid, name)
 
     new_state =
       socket.assigns.uistate

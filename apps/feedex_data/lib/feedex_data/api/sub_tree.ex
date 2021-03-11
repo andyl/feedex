@@ -1,8 +1,9 @@
 defmodule FeedexData.Api.SubTree do
+
   @moduledoc """
   Utilities for working with Subscription Trees.
 
-  List all folders and reg_feeds for a user.
+  Subscription trees are concerned with Users, Folders, Registers, and Feeds.
   """
 
   alias FeedexData.Ctx.Account.Folder
@@ -12,6 +13,11 @@ defmodule FeedexData.Api.SubTree do
   alias Modex.AltMap
   import Ecto.Query
 
+  @doc """
+  List SubTrees.
+
+  Used on the user_settings/subscriptions page.
+  """
   def list(user_id) do
     user_id
     |> query()
@@ -19,11 +25,19 @@ defmodule FeedexData.Api.SubTree do
     |> convert()
   end
 
+  @doc """
+  List SubTrees - stripped down data.
+
+  Used by live/components/tree_component.
+  """
   def cleantree(user_id) do
     rawtree(user_id) 
     |> AltMap.retake([:id, :name, :user_id, :registers])
   end
 
+  @doc """
+  List SubTrees - full data.
+  """
   def rawtree(user_id) do
     rq = from(r in Register, order_by: r.name, select: %{folder_id: r.folder_id, id: r.id, name: r.name})
 
@@ -36,7 +50,10 @@ defmodule FeedexData.Api.SubTree do
     |> Repo.all()
   end
 
-  def import(_tdata) do
+  def import(_user_id, _data) do
+    # data 
+    # |> Map.keys()
+    # |> Enum.each(&(Folder.
     :ok
   end
 

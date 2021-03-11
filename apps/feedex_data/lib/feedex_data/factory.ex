@@ -1,4 +1,8 @@
 defmodule FeedexData.Factory do
+  @moduledoc """
+  ExMachina test constructors.
+  """
+
   use ExMachina.Ecto, repo: FeedexData.Repo
   alias FeedexData.Ctx.Account.{User, Folder, Register}
   alias FeedexData.Ctx.News.{Feed, Post}
@@ -13,6 +17,7 @@ defmodule FeedexData.Factory do
     %Post{
       body: sequence(:body, &"body_#{&1}"),
       exid: sequence(:exid, &"exid_#{&1}"),
+      feed: insert(:feed)
     }
   end
 
@@ -28,14 +33,15 @@ defmodule FeedexData.Factory do
   def folder_factory do
     %Folder{
       name: sequence(:name, &"folder_#{&1}"),
-      user: insert(:user)
+      user: fn -> insert(:user) end
     }
   end
 
   def register_factory do
     %Register{
       name: sequence(:name, &"register_#{&1}"),
-      folder: insert(:folder)
+      folder: fn -> insert(:folder) end,
+      feed: insert(:feed)
     }
   end
 end

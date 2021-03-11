@@ -57,6 +57,7 @@ defmodule FeedexData.Repo.Migrations.CreateAll do
       timestamps(type: :utc_datetime)
     end
     create index(:folders, [:user_id])
+    create unique_index(:folders, [:user_id, :name], name: :folder_user_name_index)
 
     # Account.Register
     create table(:registers) do
@@ -67,6 +68,7 @@ defmodule FeedexData.Repo.Migrations.CreateAll do
     end
     create index(:registers, [:folder_id])
     create index(:registers, [:feed_id])
+    create unique_index(:registers, [:folder_id, :name])
 
     # Account.ReadLogs
     create table(:read_logs) do

@@ -26,6 +26,7 @@ defmodule FeedexData.Ctx.Account.Folder do
     |> cast(attrs, required_fields ++ optional_fields)
     |> validate_required(required_fields)
     |> validate_length(:name, min: 3, max: 10)
+    |> unique_constraint(:name, name: :folder_user_name_index)
   end
 
   def new_changeset do

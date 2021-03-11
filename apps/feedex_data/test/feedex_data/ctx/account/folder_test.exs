@@ -66,6 +66,25 @@ defmodule FeedexData.Ctx.Account.FolderTest do
     end
   end
 
+  describe "duplicate folder names" do
+    test "raise error using factory" do
+      name = "bing"
+      user = insert(:user)
+      assert insert(:folder, user: user, name: name)
+      assert_raise Ecto.ConstraintError, fn -> insert(:folder, user: user, name: name) end
+    end
+
+    test "invalid using changeset" do
+      name = "bing"
+      user = insert(:user)
+      assert insert(:folder, user: user, name: name)
+      params = params_for(:folder, user: user, name: name)
+      attrs = %Folder{} |> Folder.changeset(params)
+      {:error, changeset} = Repo.insert(attrs)
+      refute changeset.valid?
+    end
+  end
+
   describe "user association" do
     test "finds the user from the folder" do
       fusr =

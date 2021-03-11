@@ -9,7 +9,7 @@ defmodule FeedexUi.BodyAddFolderComponent do
   """
 
   alias FeedexData.Ctx.Account
-  alias FeedexData.Repo
+  alias FeedexData.Api
 
   import Phoenix.HTML.Form
   import FeedexUi.ErrorHelpers
@@ -26,6 +26,7 @@ defmodule FeedexUi.BodyAddFolderComponent do
       changeset: Account.Folder.new_changeset(),
       uistate: session.uistate
     }
+
     {:ok, assign(socket, opts)}
   end
 
@@ -36,7 +37,7 @@ defmodule FeedexUi.BodyAddFolderComponent do
     <H1>Create a new Folder</H1>
     <div>
     <%= f = form_for @changeset, "#", [phx_target: "#{@myself}", phx_change: :validate, phx_submit: :save] %>
-    
+
       <div class="form-group">
         <%= text_input f, :name, placeholder: "Enter a folder name...", class: "form-control" %>
         <%= error_tag f, :name %>
@@ -58,28 +59,24 @@ defmodule FeedexUi.BodyAddFolderComponent do
 
   @impl true
   def handle_event("validate", payload, socket) do
-    params = %{name: payload["folder"]["name"]}
-    changeset = 
-      %Account.Folder{}
-      |> Account.Folder.changeset(params)
-    opts = %{
-      changeset: changeset,
-    }
-    {:noreply, assign(socket, opts)}
+    changeset =
+      payload["folder"]["name"]
+      |> Api.Folder.folder_validation_changeset()
+
+    {:noreply, assign(socket, :changeset, changeset)}
   end
 
   @impl true
   def handle_event("save", payload, socket) do
     userid = socket.assigns.uistate.usr_id
-    name   = payload["folder"]["name"]
-    params = %Account.Folder{user_id: userid, name: name}
-    Repo.insert(params)
-    new_state = 
+    name = payload["folder"]["name"]
+    Api.Folder.create_folder(userid, name)
+
+    new_state =
       socket.assigns.uistate
       |> Map.merge(%{mode: "view", fld_id: nil, reg_id: nil})
-      Map.merge(socket.assigns.uistate, params)
+
     send(self(), "mod_tree")
     {:noreply, assign(socket, %{uistate: new_state})}
   end
-
 end

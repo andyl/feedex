@@ -7,7 +7,6 @@ defmodule FeedexData.Ctx.Account do
   alias FeedexData.Ctx.Account.{User, Folder, Register, ReadLog}
   alias FeedexData.Ctx.News.{Post, Feed}
   alias FeedexData.Repo
-  alias Modex.AltMap
   import Ecto.Query
 
   # ----- users -----
@@ -72,22 +71,22 @@ defmodule FeedexData.Ctx.Account do
 
   # ----- tree -----
 
-  def cleantree(user_id) do
-    rawtree(user_id) 
-    |> AltMap.retake([:id, :name, :user_id, :registers])
-  end
-
-  def rawtree(user_id) do
-    rq = from(r in Register, order_by: r.name, select: %{folder_id: r.folder_id, id: r.id, name: r.name})
-      
-    from(
-      f in Folder,
-      where: f.user_id == ^user_id,
-      order_by: f.name,
-      preload: [registers: ^rq]
-    )
-    |> Repo.all()
-  end
+  # def cleantree(user_id) do
+  #   rawtree(user_id) 
+  #   |> AltMap.retake([:id, :name, :user_id, :registers])
+  # end
+  #
+  # def rawtree(user_id) do
+  #   rq = from(r in Register, order_by: r.name, select: %{folder_id: r.folder_id, id: r.id, name: r.name})
+  #     
+  #   from(
+  #     f in Folder,
+  #     where: f.user_id == ^user_id,
+  #     order_by: f.name,
+  #     preload: [registers: ^rq]
+  #   )
+  #   |> Repo.all()
+  # end
   
   # ----- registers -----
 

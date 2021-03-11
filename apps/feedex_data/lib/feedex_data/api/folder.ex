@@ -10,5 +10,10 @@ defmodule FeedexData.Api.Folder do
     params = %Folder{user_id: user_id, name: name}
     Repo.insert(params)
   end
+
+  def folder_validation_changeset(name) do
+    params = %{name: name}
+    %Folder{} |> Folder.changeset(params)
+  end
   
 end

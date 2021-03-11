@@ -11,7 +11,7 @@ defmodule FeedexUi.NewsLive do
   @impl true
   def mount(_params, session, socket) do
     user = FeedexUi.SessionUtil.user_from_session(session)
-    treemap = FeedexData.Ctx.Account.cleantree(user.id)
+    treemap = FeedexData.Api.SubTree.cleantree(user.id)
 
     opts = %{
       current_user: user,
@@ -49,7 +49,7 @@ defmodule FeedexUi.NewsLive do
   def handle_info("mod_tree", socket) do
     user = socket.assigns.current_user
 
-    treemap = FeedexData.Ctx.Account.cleantree(user.id)
+    treemap = FeedexData.Api.SubTree.cleantree(user.id)
 
     new_opts = %{
       mode: "view",

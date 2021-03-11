@@ -3,7 +3,7 @@ defmodule FeedexUi.UserSettingsController do
 
   alias FeedexData.Accounts
   alias FeedexUi.UserAuth
-  alias FeedexData.Api.Subscription
+  alias FeedexData.Api.SubTree
 
   plug :assign_email_and_password_changesets
 
@@ -12,14 +12,14 @@ defmodule FeedexUi.UserSettingsController do
   end
 
   def subs(conn, _params) do
-    subs = conn |> current_user_id() |> Subscription.list()
+    subs = conn |> current_user_id() |> SubTree.list()
     conn
     |> assign(:subs, subs)
     |> render("subs.html")
   end
 
   def subs_json(conn, _params) do
-    subs = conn |> current_user_id() |> Subscription.list()
+    subs = conn |> current_user_id() |> SubTree.list()
     conn
     |> json(subs)
   end

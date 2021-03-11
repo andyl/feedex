@@ -148,7 +148,7 @@ defmodule FeedexUi.TreeComponent do
     end
   end
 
-  defp state_table(uistate) do
+  def state_table(uistate) do
     """
       <hr/>
       <table class='table table-sm'>
@@ -210,7 +210,7 @@ defmodule FeedexUi.TreeComponent do
 
     FeedexUi.Endpoint.broadcast_from(self(), "read_all", "mark-read", %{})
 
-    treemap = FeedexData.Ctx.Account.cleantree(socket.assigns.uistate.usr_id)
+    treemap = FeedexData.Api.SubTree.cleantree(socket.assigns.uistate.usr_id)
     counts = gen_counts(socket.assigns.uistate.usr_id)
 
     {:noreply, assign(socket, %{treemap: treemap, counts: counts})}

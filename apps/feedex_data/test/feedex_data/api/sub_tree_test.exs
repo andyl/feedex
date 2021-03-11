@@ -1,13 +1,10 @@
-defmodule FeedexData.Api.SubscriptionTest do
+defmodule FeedexData.Api.SubTreeTest do
   use ExUnit.Case, async: true
   use FeedexData.DataCase
 
   test "greet the world" do
     assert "hello" == "hello"
   end
-
-
-
 
   # describe "changesets" do
   #   test "accepts valid input" do

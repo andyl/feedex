@@ -14,7 +14,7 @@ defmodule FeedexUi.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      xref: [exclude: [FeedexData.Api.Subscription]], 
+      xref: [exclude: [FeedexData.Api.SubTree]], 
       deps: deps()
     ]
   end

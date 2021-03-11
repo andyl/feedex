@@ -19,7 +19,6 @@ defmodule FeedexUi.BodyAddFeedComponent do
   import Ecto.Query
 
   use Phoenix.LiveComponent
-  # import FeedexUi.IconHelpers
 
   # ----- lifecycle callbacks -----
 

@@ -1,7 +1,8 @@
 <h3 style='margin-top: 20px;'>SUBSCRIPTIONS</h3>
 
 <div>
-  <a class="bluelink" href="/api/users/settings/subs.json">JSON</a>
+  <a class="bluelink" href="/api/users/settings/subs.json">JSON</a> | 
+  <a class="bluelink" href="/users/settings/sub_import">IMPORT</a>  
 </div>
 
 <style>

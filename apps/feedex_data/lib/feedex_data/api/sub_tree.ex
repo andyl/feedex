@@ -1,5 +1,4 @@
 defmodule FeedexData.Api.SubTree do
-
   @moduledoc """
   Utilities for working with Subscription Trees.
 
@@ -10,6 +9,7 @@ defmodule FeedexData.Api.SubTree do
   alias FeedexData.Ctx.Account.Register
   alias FeedexData.Ctx.News.Feed
   alias FeedexData.Repo
+  alias FeedexData.Api
   alias Modex.AltMap
   import Ecto.Query
 
@@ -31,7 +31,7 @@ defmodule FeedexData.Api.SubTree do
   Used by live/components/tree_component.
   """
   def cleantree(user_id) do
-    rawtree(user_id) 
+    rawtree(user_id)
     |> AltMap.retake([:id, :name, :user_id, :registers])
   end
 
@@ -39,28 +39,51 @@ defmodule FeedexData.Api.SubTree do
   List SubTrees - full data.
   """
   def rawtree(user_id) do
-    rq = from(r in Register, order_by: r.name, select: %{folder_id: r.folder_id, id: r.id, name: r.name})
+    uid = user_id
+    rq =
+      from(r in Register,
+        order_by: r.name,
+        select: %{folder_id: r.folder_id, id: r.id, name: r.name}
+      )
 
     from(
       f in Folder,
-      where: f.user_id == ^user_id,
+      where: f.user_id == ^uid,
       order_by: f.name,
       preload: [registers: ^rq]
     )
     |> Repo.all()
   end
 
-  def import(_user_id, _data) do
-    # data 
-    # |> Map.keys()
-    # |> Enum.each(&(Folder.
-    :ok
+  def import_tree_json(user_id, json) do
+    {:ok, data} = Jason.decode(json)
+    import_tree(user_id, data)
   end
 
-  def import_json(_json) do
-    :ok
+  def import_tree(user_id, data) do
+    data |> Enum.map(fn({fname, flist}) -> import_folder(user_id, fname, flist) end)
   end
-  
+
+  def import_folder(user_id, folder_name, feed_list) when is_list(feed_list) do
+    folder = Api.Folder.find_or_create_folder(user_id, folder_name)
+
+    reg_list =
+      feed_list
+      |> Enum.map(&Api.RegFeed.find_or_create_regfeed(folder.id, &1["feed_name"], &1["feed_url"]))
+
+    %{folder: folder, reg_list: reg_list}
+  end
+
+  def import_folder(user_id, folder_name, feed_map) when is_map(feed_map) do
+    fld = Api.Folder.find_or_create_folder(user_id, folder_name)
+    reg = Api.RegFeed.find_or_create_regfeed(fld.id, feed_map["feed_name"], feed_map["feed_url"])
+    %{folder: fld, reg_list: [reg]}
+  end
+
+  def import_register(fld_id, reg_name, feed_url) do
+    Api.RegFeed.find_or_create_regfeed(fld_id, reg_name, feed_url)
+  end
+
   defp query(user_id) do
     from(fld in Folder,
       left_join: reg in Register,

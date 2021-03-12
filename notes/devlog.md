@@ -446,12 +446,18 @@ Goal: reduce the number of database queries in the life-cycle
 ## 2021 Mar 10 Wed
 
 - [x] Settings: Subscription Display (json)
-- [ ] FeedexData: Create API calls for feeds and folders
-- [ ] Settings: Load Subscriptions (json)
+- [x] FeedexData: Create API calls for feeds and folders
 
-## TBD
+## 2021 Mar 11 Thu
+
+- [x] API.SubTree functions to Load Subscriptions (data)
+- [x] API.SubTree functions to Load Subscriptions (json)
+- [x] Refactor "CreateFeed" Liveview page to use API.SubTree
+- [ ] LiveView page to upload Subscription Json
 
 - [ ] Use locally
+
+## TBD
 
 - [ ] Fix LiveEditable for Tailwind
 

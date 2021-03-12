@@ -1,4 +1,4 @@
-defmodule FeedexData.AccountsTest do
+defmodule FeedexData.FactoryTest do
   use FeedexData.DataCase, async: true
 
   describe "data creation" do

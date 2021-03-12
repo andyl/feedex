@@ -29,6 +29,7 @@ defmodule FeedexUi.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     live "/news", NewsLive, :index
+    live "/users/settings/sub_import", SubTreeLive, :index
   end
   
   scope "/api", FeedexUi do

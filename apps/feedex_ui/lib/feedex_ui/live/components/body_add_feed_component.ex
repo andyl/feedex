@@ -101,22 +101,11 @@ defmodule FeedexUi.BodyAddFeedComponent do
   # finally, redirect to the reg/feed
   @impl true
   def handle_event("save", payload, socket) do
-    url  = payload["reg_feed"]["url"]
-    {:ok, feed} = feed_for(url)
-    {:ok, reg}  = %Register{
-      name:      payload["reg_feed"]["name"],
-      feed_id:   feed.id,
-      folder_id: String.to_integer(payload["reg_feed"]["folder_id"])
-    } |> Repo.insert()
-    _new_state = 
-      socket.assigns.uistate
-      |> Map.merge(%{mode: "view", fld_id: nil, reg_id: reg.id})
-    # FeedexUI.Endpoint.broadcast_from(self(), "tree_mod", "create_feed", %{uistate: new_state})
+    reg_name  = payload["reg_feed"]["name"]
+    feed_url  = payload["reg_feed"]["url"]
+    folder_id = payload["reg_feed"]["folder_id"] |> String.to_integer()
+    _reg = FeedexData.Api.SubTree.import_register(folder_id, reg_name, feed_url)
     {:noreply, socket}
   end
 
-  defp feed_for(url) do
-    Repo.get_by(Feed, url: url) || Repo.insert(%Feed{url: url})
-  end
-  
 end

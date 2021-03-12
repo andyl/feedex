@@ -453,8 +453,7 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] API.SubTree functions to Load Subscriptions (data)
 - [x] API.SubTree functions to Load Subscriptions (json)
 - [x] Refactor "CreateFeed" Liveview page to use API.SubTree
-- [ ] LiveView page to upload Subscription Json
-
+- [x] LiveView page to upload Subscription Json
 - [ ] Use locally
 
 ## TBD

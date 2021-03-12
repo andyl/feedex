@@ -31,7 +31,7 @@ Now you can visit [`localhost:4070`](http://localhost:4070) from your browser.
 
 - Clone the repo
 - Install assets
-    > cd apps/feedex_web/assets
+    > cd apps/feedex_ui/assets
     > npm install
     > npm run deploy
     > cd ../../..

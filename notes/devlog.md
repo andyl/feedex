@@ -454,10 +454,14 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] API.SubTree functions to Load Subscriptions (json)
 - [x] Refactor "CreateFeed" Liveview page to use API.SubTree
 - [x] LiveView page to upload Subscription Json
-- [ ] Use locally
+
+## 2021 Mar 14 Sun
+
+- [x] Use locally
 
 ## TBD
 
+- [ ] Fix NewsLive Page Updates
 - [ ] Fix LiveEditable for Tailwind
 
 - [ ] UI: Generate admin pages: users / feeds / posts

@@ -31,7 +31,7 @@ config :feedex_ui, FeedexUi.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "0J0y7WjjZbElQAjZnF8qFVV/4Cr21mwLWslASkMj/p5XyvRBWeNDlwKEVakFP8Ra",
   render_errors: [view: FeedexUi.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Feedex.PubSub,
+  pubsub_server: FeedexUi.PubSub,
   live_view: [signing_salt: "UPuxN9Ta"]
 
 # ----- FeedexJob

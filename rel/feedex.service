@@ -10,7 +10,7 @@ WorkingDirectory=/home/aleak
 ExecStart=/bin/bash --login -c 'source /home/aleak/.bashrc; cd /home/aleak; /home/aleak/src/feedex/_build/prod/rel/feedex/bin/feedex foreground'
 Restart=on-failure
 RestartSec=5
-Environment=PORT=5070
+Environment=PORT=4065
 Environment=LANG=en_US.UTF-8
 SyslogIdentifier=feedex
 RemainAfterExit=no

@@ -21,7 +21,7 @@ config :feedex_data, FeedexData.Repo,
 
 key = "veryverysecretkeyeryverysecretkeyveryverysecretkeyveryverysecretkey"
 config :feedex_ui, FeedexUi.Endpoint,
-  # url: [host: "localhost", port: 5060],
+  url: [host: "localhost", port: 4065],
   http: [port: "4065"],
   cache_static_manifest: "priv/static/cache_manifest.json",
   check_origin: false,

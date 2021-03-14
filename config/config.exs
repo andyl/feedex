@@ -20,7 +20,7 @@ config :feedex_data,
   ecto_repos: [FeedexData.Repo],
   env: Mix.env()
 
-# ----- FeedexData 
+# ----- FeedexUi
 
 config :feedex_ui,
   ecto_repos: [FeedexData.Repo],

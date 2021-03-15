@@ -460,9 +460,11 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Use locally
 - [x] Fix NewsLive Page Updates
 
-## TBD
+## 2021 Mar 15 Mon
 
-- [ ] Update display upon loading new docs
+- [x] Update display upon loading new docs
+
+## TBD
 
 - [ ] Study LiveDashboard Styling
 - [ ] Study Surface Demo Site

@@ -87,9 +87,8 @@ defmodule FeedexUi.NewsLive do
   end
 
   @impl true
-  def handle_info("new_posts", socket) do
-
-    IO.inspect socket, label: "NEW_POSTS"
+  # def handle_info("new_posts", socket) do
+  def handle_info(%{topic: "new_posts", event: "SYNC_FEED"}, socket) do
 
     user = socket.assigns.current_user
 
@@ -103,5 +102,12 @@ defmodule FeedexUi.NewsLive do
     {:noreply, assign(socket, opts)}
 
   end
+
+  # @impl true
+  # def handle_info(default, socket) do
+  #   IO.inspect default, label: "DEFAULT PARAMS"
+  #   IO.inspect socket, label: "DEFAULT SOCKET"
+  #   {:noreply, socket}
+  # end
 
 end

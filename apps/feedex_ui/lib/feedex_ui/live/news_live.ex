@@ -13,6 +13,8 @@ defmodule FeedexUi.NewsLive do
     user = FeedexUi.SessionUtil.user_from_session(session)
     treemap = FeedexData.Api.SubTree.cleantree(user.id)
 
+    FeedexUi.Endpoint.subscribe("new_posts")
+
     opts = %{
       current_user: user,
       uistate: UiState.lookup(user.id),
@@ -86,6 +88,8 @@ defmodule FeedexUi.NewsLive do
 
   @impl true
   def handle_info("new_posts", socket) do
+
+    IO.inspect socket, label: "NEW_POSTS"
 
     user = socket.assigns.current_user
 

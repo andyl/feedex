@@ -7,6 +7,28 @@
 // @import "./phoenix.css";
 @import "../node_modules/nprogress/nprogress.css";
 
+@layer utilities {
+
+  .up-1  { margin-top:  -1px; }
+  .up-2  { margin-top:  -2px; }
+  .up-3  { margin-top:  -3px; }
+  .up-4  { margin-top:  -4px; }
+  .up-5  { margin-top:  -5px; }
+  .up-6  { margin-top:  -6px; }
+  .up-7  { margin-top:  -7px; }
+  .up-8  { margin-top:  -8px; }
+
+  .dn-1  { margin-top:   1px; }
+  .dn-2  { margin-top:   2px; }
+  .dn-3  { margin-top:   3px; }
+  .dn-4  { margin-top:   4px; }
+  .dn-5  { margin-top:   5px; }
+  .dn-6  { margin-top:   6px; }
+  .dn-7  { margin-top:   7px; }
+  .dn-8  { margin-top:   8px; }
+
+}
+
 .desktop-only {
   @apply hidden md:block
 }

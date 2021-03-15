@@ -10,7 +10,7 @@ defmodule FeedexUi.CountHelpers do
 
   def unread(count) do
     """
-    <span class="inline-flex items-center px-1 ml-1 text-xs font-light text-blue-800 align-text-top bg-blue-100 rounded-full">
+    <span class="inline-flex items-center px-1 ml-1 text-xs font-light text-blue-800 align-text-top bg-blue-100 rounded-full dn-2">
       <small>
         #{count}
       </small>

@@ -1,10 +1,10 @@
 <div class="md:flex">
-  <div class="px-2 bg-gray-400 md:w-1/5">
+  <div class="flex-none px-2">
     <%= live_render(@socket, FeedexUi.ClockLive, id: "clock") %>
     <%= live_component(@socket, FeedexUi.TreeComponent, id: "tre", uistate: @uistate, treemap: @treemap, counts: @counts) %>
     <%= live_component(@socket, FeedexUi.BtnComponent, id: "btn", uistate: @uistate) %>
   </div>
-  <div class="md:w-4/5">
+  <div class="flex-auto">
     <%= live_component(@socket, FeedexUi.HdrComponent, id: "hdr", uistate: @uistate, treemap: @treemap, counts: @counts) %>
     <%= live_component(@socket, FeedexUi.BodyComponent, id: "bdy", uistate: @uistate) %>
   </div>

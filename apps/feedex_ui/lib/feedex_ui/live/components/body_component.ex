@@ -18,13 +18,8 @@ defmodule FeedexUi.BodyComponent do
 
   def render(assigns) do
     ~L"""
-    <div class="px-2 pt-1">
+    <div class="px-2 pt-1 bg-white">
       <%= render_body(@socket, @uistate) %>
-
-      <%# refresh_svg("h-8 text-blue-400", :raw) %>
-      <%# pencil_alt_svg("h-8 text-blue-400", :raw) %>
-      <%# check_circle_svg("h-8 text-blue-400", :raw) %>
-      <%# check_svg("h-8 text-blue-400", :raw) %>
     </div>
     """
   end

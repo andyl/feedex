@@ -77,7 +77,7 @@ defmodule FeedexUi.HdrComponent do
     """
     #{unread(count)}
     <a href='#' phx-target="#{myself}" phx-click="mark-read">
-      #{check_circle_svg("h-5 bluelink inline")}
+      #{check_circle_svg("h-5 bluelink inline up-8")}
     </a>
     """
   end

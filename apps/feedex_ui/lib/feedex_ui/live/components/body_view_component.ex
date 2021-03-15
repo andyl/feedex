@@ -21,6 +21,7 @@ defmodule FeedexUi.BodyViewComponent do
   def update(session, socket) do
     opts = %{
       uistate: session.uistate,
+      counts: session.counts,
       posts: all_posts_for(session.uistate)
     }
 
@@ -142,7 +143,7 @@ defmodule FeedexUi.BodyViewComponent do
       FeedexData.Ctx.Account.mark_all_for(user_id, pst_id: post_id)
     end
 
-    send(self(), {"set_uistate", %{uistate: newstate}})
+    send(self(), {"set_uistate", %{uistate: newstate, recount: true}})
 
     {:noreply, assign(socket, %{uistate: newstate})}
   end

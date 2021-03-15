@@ -6,6 +6,6 @@
   </div>
   <div class="flex-auto">
     <%= live_component(@socket, FeedexUi.HdrComponent, id: "hdr", uistate: @uistate, treemap: @treemap, counts: @counts) %>
-    <%= live_component(@socket, FeedexUi.BodyComponent, id: "bdy", uistate: @uistate) %>
+    <%= live_component(@socket, FeedexUi.BodyComponent, id: "bdy", uistate: @uistate, counts: @counts) %>
   </div>
 </div>

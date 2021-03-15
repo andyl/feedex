@@ -19,27 +19,27 @@ defmodule FeedexUi.BodyComponent do
   def render(assigns) do
     ~L"""
     <div class="px-2 pt-1 bg-white">
-      <%= render_body(@socket, @uistate) %>
+      <%= render_body(@socket, @counts, @uistate) %>
     </div>
     """
   end
 
   # ----- view helpers -----
   
-  def render_body(_socket, uistate) do
+  def render_body(socket, counts, uistate) do
     case uistate.mode do
-      "view"        -> live_component(socket, BodyViewComponent,       session(uistate, "view"))
-      "add_feed"    -> live_component(socket, BodyAddFeedComponent,    session(uistate, "afee"))
-      "add_folder"  -> live_component(socket, BodyAddFolderComponent,  session(uistate, "afol"))
-      "edit_feed"   -> live_component(socket, BodyEditFeedComponent,   session(uistate, "efee"))
-      "edit_folder" -> live_component(socket, BodyEditFolderComponent, session(uistate, "efol"))
-      _             -> live_component(socket, BodyViewComponent,       session(uistate, "view"))
+      "view"        -> live_component(socket, BodyViewComponent,       opts(counts, uistate, "view"))
+      "add_feed"    -> live_component(socket, BodyAddFeedComponent,    opts(counts, uistate, "afee"))
+      "add_folder"  -> live_component(socket, BodyAddFolderComponent,  opts(counts, uistate, "afol"))
+      "edit_feed"   -> live_component(socket, BodyEditFeedComponent,   opts(counts, uistate, "efee"))
+      "edit_folder" -> live_component(socket, BodyEditFolderComponent, opts(counts, uistate, "efol"))
+      _             -> live_component(socket, BodyViewComponent,       opts(counts, uistate, "view"))
     end
   end
 
-  def session(uistate, element) do
+  def opts(counts, uistate, element) do
     num = Enum.random(100_000..999_999)
-    [uistate: uistate, id: "#{element}_#{num}"]
+    [counts: counts, uistate: uistate, id: "#{element}_#{num}"]
   end
 
 end

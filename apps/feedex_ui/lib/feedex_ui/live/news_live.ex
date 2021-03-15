@@ -41,6 +41,13 @@ defmodule FeedexUi.NewsLive do
   # ----- message handlers -----
 
   @impl true
+  def handle_info({"set_uistate", %{uistate: new_state, recount: true}}, socket) do
+    new_counts = gen_counts(socket.assigns.current_user.id)
+
+    {:noreply, assign(socket, uistate: new_state, counts: new_counts)}
+  end
+
+  @impl true
   def handle_info({"set_uistate", %{uistate: new_state}}, socket) do
     {:noreply, assign(socket, uistate: new_state)}
   end

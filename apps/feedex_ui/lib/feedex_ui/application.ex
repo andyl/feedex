@@ -14,7 +14,7 @@ defmodule FeedexUi.Application do
       FeedexUi.Endpoint
       # Start a worker by calling: FeedexUi.Worker.start_link(arg)
       # {FeedexUi.Worker, arg}
-    ] |> IO.inspect(label: "STARTING")
+    ] 
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

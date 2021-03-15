@@ -25,7 +25,7 @@ defmodule FeedexUi.BtnComponent do
   # ----- view helpers -----
 
   def folder_btn(uistate, myself) do
-    label = "#{plus_circle_svg("h-5 inline text-blue-500")} Folder<br/>"
+    label = "#{plus_circle_svg("up-3 h-5 inline text-blue-500")} Folder<br/>"
     if uistate.mode != "add_folder" do
       "<a phx-click='add_folder' class='bluelink' phx-target='#{myself}' href='#'>#{label}</a>"
     else
@@ -34,7 +34,7 @@ defmodule FeedexUi.BtnComponent do
   end
 
   def feed_btn(uistate, myself) do
-    label = "#{plus_circle_svg("h-5 inline text-blue-500")} Feed<br/>"
+    label = "#{plus_circle_svg("up-3 h-5 inline text-blue-500")} Feed<br/>"
     if uistate.mode != "add_feed" do
       "<a phx-click='add_feed' class='bluelink' phx-target='#{myself}' href='#'>#{label}</a>"
     else

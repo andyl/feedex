@@ -47,8 +47,8 @@ config :feedex_job, FeedexJob.Scheduler,
     # {"* * * * *",      {IO, :puts, ["CRON JOB"]}}
     # {"* * * * *",      {FeedexData.Metrics.AppPoller, :post_counts, []}},
     # {"* * * * *",      {FeedexJob, :sync_next, []}}
-    # {"*/3 * * * *",      {FeedexJob, :sync_next, []}}
-    {"* * * * *",      {FeedexJob, :sync_next, []}}
+    {"*/3 * * * *",      {FeedexJob, :sync_next, []}}
+    # {"* * * * *",      {FeedexJob, :sync_next, []}}
   ]
 
 unless Mix.env() == :test do

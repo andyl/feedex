@@ -83,4 +83,21 @@ defmodule FeedexUi.NewsLive do
     opts = %{counts: gen_counts(socket.assigns.current_user.id)}
     {:noreply, assign(socket, opts)}
   end
+
+  @impl true
+  def handle_info("new_posts", socket) do
+
+    user = socket.assigns.current_user
+
+    treemap = FeedexData.Api.SubTree.cleantree(user.id)
+
+    opts = %{
+      treemap: treemap,
+      counts: gen_counts(user.id),
+    }
+
+    {:noreply, assign(socket, opts)}
+
+  end
+
 end

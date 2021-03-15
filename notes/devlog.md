@@ -458,10 +458,14 @@ Goal: reduce the number of database queries in the life-cycle
 ## 2021 Mar 14 Sun
 
 - [x] Use locally
+- [x] Fix NewsLive Page Updates
 
 ## TBD
 
-- [ ] Fix NewsLive Page Updates
+- [ ] Update display upon loading new docs
+
+- [ ] Study LiveDashboard Styling
+- [ ] Study Surface Demo Site
 - [ ] Fix LiveEditable for Tailwind
 
 - [ ] UI: Generate admin pages: users / feeds / posts

@@ -463,6 +463,7 @@ Goal: reduce the number of database queries in the life-cycle
 ## 2021 Mar 15 Mon
 
 - [x] Update display upon loading new docs
+- [x] Install Twilwind JIT Compiler
 
 ## TBD
 

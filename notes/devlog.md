@@ -465,11 +465,15 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Update display upon loading new docs
 - [x] Install Twilwind JIT Compiler
 
+## 2021 Mar 17 Wed
+
+- [x] Study LiveDashboard Styling
+- [x] Study Surface Demo Site
+- [x] Fix LiveEditable for Tailwind
+
 ## TBD
 
-- [ ] Study LiveDashboard Styling
-- [ ] Study Surface Demo Site
-- [ ] Fix LiveEditable for Tailwind
+- [ ] Use new LiveEditable on edit pages
 
 - [ ] UI: Generate admin pages: users / feeds / posts
 - [ ] UI: Admin-links to Dashboard and Admin pages on settings page

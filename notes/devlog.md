@@ -473,6 +473,10 @@ Goal: reduce the number of database queries in the life-cycle
 
 ## TBD
 
+- [ ] Convert from Tailwind to Bootstrap
+- [ ] Change feedex_data to feedex_core
+- [ ] Move schemas to `FeedexCore.Data`
+
 - [ ] Use new LiveEditable on edit pages
 
 - [ ] UI: Generate admin pages: users / feeds / posts

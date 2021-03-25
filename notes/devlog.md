@@ -471,10 +471,13 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Study Surface Demo Site
 - [x] Fix LiveEditable for Tailwind
 
+## 2021 Mar 24 Wed
+
+- [x] Change feedex_core to feedex_core
+
 ## TBD
 
 - [ ] Convert from Tailwind to Bootstrap
-- [ ] Change feedex_core to feedex_core
 - [ ] Move schemas to `FeedexCore.Data`
 
 - [ ] Use new LiveEditable on edit pages

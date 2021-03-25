@@ -9,7 +9,7 @@ defmodule FeedexTsdb do
 
   # async send, fire and forget
   def send(body) do
-    db  = Application.get_env(:feedex_data, FeedexData.Influx)[:database]
+    db  = Application.get_env(:feedex_core, FeedexCore.Influx)[:database]
     url = "localhost:8086/write?db=#{db}&time_precision=s"
     opt = [body: body, basic_auth: {"admin", "admin"}]
     Task.start(fn -> FcTesla.fc_post(url, opt) end)

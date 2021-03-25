@@ -34,7 +34,7 @@
 - [ ] Split scrolling
 - [ ] Expand scan-list for feedex_client
 
-- [ ] TEST - unit - FeedexData.Account
+- [ ] TEST - unit - FeedexCore.Account
 - [ ] TEST - intc - login/logout 
 - [ ] TEST - intw - login/logout 
 - [ ] TEST - clean up documentation

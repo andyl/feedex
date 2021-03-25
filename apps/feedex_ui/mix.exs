@@ -14,7 +14,7 @@ defmodule FeedexUi.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      xref: [exclude: [FeedexData.Api.SubTree]], 
+      xref: [exclude: [FeedexCore.Api.SubTree]], 
       deps: deps()
     ]
   end
@@ -48,7 +48,7 @@ defmodule FeedexUi.MixProject do
       {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
       {:telemetry_metrics, "~> 0.4"},
       {:phx_tailwind_generators, "~> 0.1.6"},
-      {:feedex_data, in_umbrella: true},
+      {:feedex_core, in_umbrella: true},
       {:feedex_job, in_umbrella: true},
       {:surface, "~> 0.2"},
       {:telemetry_poller, "~> 0.4"},

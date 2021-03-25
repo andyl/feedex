@@ -1,8 +1,8 @@
 defmodule FeedexUi.UserSettingsControllerTest do
   use FeedexUi.ConnCase, async: true
 
-  alias FeedexData.Accounts
-  import FeedexData.AccountsFixtures
+  alias FeedexCore.Accounts
+  import FeedexCore.AccountsFixtures
 
   setup :register_and_log_in_user
 

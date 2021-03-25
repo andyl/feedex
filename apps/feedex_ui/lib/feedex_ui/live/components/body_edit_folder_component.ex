@@ -10,9 +10,9 @@ defmodule FeedexUi.BodyEditFolderComponent do
 
   use Phoenix.LiveComponent
   use Phoenix.LiveEditable
-  alias FeedexData.Ctx.Account.Folder
-  alias FeedexData.Ctx.Account.Register
-  alias FeedexData.Repo
+  alias FeedexCore.Ctx.Account.Folder
+  alias FeedexCore.Ctx.Account.Register
+  alias FeedexCore.Repo
 
   import Ecto.Query
 

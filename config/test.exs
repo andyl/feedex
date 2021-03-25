@@ -8,12 +8,12 @@ config :bcrypt_elixir, :log_rounds, 1
 config :feedex_tsdb, FeedexTsdb,
   database: "inf_feedex_test"
 
-# ----- FeedexData
+# ----- FeedexCore
 
-config :feedex_data, FeedexData.Repo,
+config :feedex_core, FeedexCore.Repo,
   username: "postgres",
   password: "postgres",
-  database: "feedex_data_test",
+  database: "feedex_core_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 

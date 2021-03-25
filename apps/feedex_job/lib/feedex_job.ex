@@ -1,9 +1,9 @@
 defmodule FeedexJob do
-  alias FeedexData.Repo
-  alias FeedexData.Ctx.Account.Register
-  alias FeedexData.Ctx.Account.Folder
-  alias FeedexData.Ctx.News.Post
-  alias FeedexData.Ctx.News.Feed
+  alias FeedexCore.Repo
+  alias FeedexCore.Ctx.Account.Register
+  alias FeedexCore.Ctx.Account.Folder
+  alias FeedexCore.Ctx.News.Post
+  alias FeedexCore.Ctx.News.Feed
 
   require Logger
 

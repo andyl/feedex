@@ -1,7 +1,7 @@
 [
   {
     "request": {
-      "body": "feedex_data_repo_query,host=hana decode_time=4341,query_time=439280,queue_time=579720,total_time=1023341",
+      "body": "feedex_core_repo_query,host=hana decode_time=4341,query_time=439280,queue_time=579720,total_time=1023341",
       "headers": [],
       "method": "post",
       "options": {
@@ -44,7 +44,7 @@
   },
   {
     "request": {
-      "body": "feedex_data_repo_query,host=hana decode_time=6231,query_time=589155,queue_time=87377,total_time=682763",
+      "body": "feedex_core_repo_query,host=hana decode_time=6231,query_time=589155,queue_time=87377,total_time=682763",
       "headers": [],
       "method": "post",
       "options": {
@@ -87,7 +87,7 @@
   },
   {
     "request": {
-      "body": "feedex_data_repo_query,host=hana decode_time=5466,query_time=411016,queue_time=834198,total_time=1250680",
+      "body": "feedex_core_repo_query,host=hana decode_time=5466,query_time=411016,queue_time=834198,total_time=1250680",
       "headers": [],
       "method": "post",
       "options": {

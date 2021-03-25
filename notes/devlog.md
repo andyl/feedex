@@ -9,13 +9,13 @@
 - [x] Get probe to work
 - [x] Setup VCR for feedex_client
 - [x] Setup VCR for feedex_client.url
-- [x] Add feedex_data
-- [x] Build first feedex_data tests
+- [x] Add feedex_core
+- [x] Build first feedex_core tests
 - [x] Add feedex_jobs
 
 ## 2019 Jul 30 Tue
 
-- [x] Update FeedexData migration
+- [x] Update FeedexCore migration
 - [x] Take "Mastering SQL" course
 - [x] Read Ecto Book 
 - [x] Add ecto-data contexts
@@ -271,7 +271,7 @@ Editing Design Notes:
 ## 2021 Feb 08 Mon
 
 - [x] add LiveView Dashboard
-- [x] add FeedexData
+- [x] add FeedexCore
 - [x] create FeedexTsdb
 - [x] create FcRss
 - [x] create FcHtml
@@ -446,7 +446,7 @@ Goal: reduce the number of database queries in the life-cycle
 ## 2021 Mar 10 Wed
 
 - [x] Settings: Subscription Display (json)
-- [x] FeedexData: Create API calls for feeds and folders
+- [x] FeedexCore: Create API calls for feeds and folders
 
 ## 2021 Mar 11 Thu
 
@@ -474,7 +474,7 @@ Goal: reduce the number of database queries in the life-cycle
 ## TBD
 
 - [ ] Convert from Tailwind to Bootstrap
-- [ ] Change feedex_data to feedex_core
+- [ ] Change feedex_core to feedex_core
 - [ ] Move schemas to `FeedexCore.Data`
 
 - [ ] Use new LiveEditable on edit pages

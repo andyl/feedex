@@ -8,11 +8,11 @@ defmodule FeedexUi.BodyAddFeedComponent do
 
   """
 
-  alias FeedexData.Ctx.Account
-  alias FeedexData.Ctx.Account.Folder 
-  alias FeedexData.Ctx.Account.Register
-  alias FeedexData.Ctx.News.Feed
-  alias FeedexData.Repo
+  alias FeedexCore.Ctx.Account
+  alias FeedexCore.Ctx.Account.Folder 
+  alias FeedexCore.Ctx.Account.Register
+  alias FeedexCore.Ctx.News.Feed
+  alias FeedexCore.Repo
 
   import Phoenix.HTML.Form
   import FeedexUi.ErrorHelpers
@@ -104,7 +104,7 @@ defmodule FeedexUi.BodyAddFeedComponent do
     reg_name  = payload["reg_feed"]["name"]
     feed_url  = payload["reg_feed"]["url"]
     folder_id = payload["reg_feed"]["folder_id"] |> String.to_integer()
-    _reg = FeedexData.Api.SubTree.import_register(folder_id, reg_name, feed_url)
+    _reg = FeedexCore.Api.SubTree.import_register(folder_id, reg_name, feed_url)
     {:noreply, socket}
   end
 

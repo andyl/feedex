@@ -8,11 +8,11 @@ defmodule FeedexUi.BodyEditFeedComponent do
 
   """
 
-  alias FeedexData.Ctx.News.Post
-  alias FeedexData.Ctx.News.Feed
-  alias FeedexData.Ctx.Account.Register
-  alias FeedexData.Ctx.Account.Folder
-  alias FeedexData.Repo
+  alias FeedexCore.Ctx.News.Post
+  alias FeedexCore.Ctx.News.Feed
+  alias FeedexCore.Ctx.Account.Register
+  alias FeedexCore.Ctx.Account.Folder
+  alias FeedexCore.Repo
 
   import Ecto.Query
   import Phoenix.HTML

@@ -8,6 +8,6 @@ defmodule FeedexUi.SessionUtil do
   """
   def user_from_session(session) do
     session["user_token"]
-    |> FeedexData.Accounts.get_user_by_session_token()
+    |> FeedexCore.Accounts.get_user_by_session_token()
   end
 end

@@ -1,9 +1,9 @@
 defmodule FeedexUi.UserSettingsController do
   use FeedexUi, :controller
 
-  alias FeedexData.Accounts
+  alias FeedexCore.Accounts
   alias FeedexUi.UserAuth
-  alias FeedexData.Api.SubTree
+  alias FeedexCore.Api.SubTree
 
   plug :assign_email_and_password_changesets
 

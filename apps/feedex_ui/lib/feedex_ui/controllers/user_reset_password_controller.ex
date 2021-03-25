@@ -1,7 +1,7 @@
 defmodule FeedexUi.UserResetPasswordController do
   use FeedexUi, :controller
 
-  alias FeedexData.Accounts
+  alias FeedexCore.Accounts
 
   plug :get_user_by_reset_password_token when action in [:edit, :update]
 

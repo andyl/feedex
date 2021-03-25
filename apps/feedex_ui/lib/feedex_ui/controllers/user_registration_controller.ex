@@ -1,8 +1,8 @@
 defmodule FeedexUi.UserRegistrationController do
   use FeedexUi, :controller
 
-  alias FeedexData.Accounts
-  alias FeedexData.Accounts.User
+  alias FeedexCore.Accounts
+  alias FeedexCore.Accounts.User
   alias FeedexUi.UserAuth
 
   def new(conn, _params) do

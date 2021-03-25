@@ -11,7 +11,7 @@ defmodule FeedexUi.NewsLive do
   @impl true
   def mount(_params, session, socket) do
     user = FeedexUi.SessionUtil.user_from_session(session)
-    treemap = FeedexData.Api.SubTree.cleantree(user.id)
+    treemap = FeedexCore.Api.SubTree.cleantree(user.id)
 
     FeedexUi.Endpoint.subscribe("new_posts")
 
@@ -34,9 +34,9 @@ defmodule FeedexUi.NewsLive do
 
   def gen_counts(user_id) do
     %{
-      all: FeedexData.Ctx.News.unread_count_for(user_id),
-      fld: FeedexData.Ctx.News.unread_aggregate_count_for(user_id, type: "fld"),
-      reg: FeedexData.Ctx.News.unread_aggregate_count_for(user_id, type: "reg")
+      all: FeedexCore.Ctx.News.unread_count_for(user_id),
+      fld: FeedexCore.Ctx.News.unread_aggregate_count_for(user_id, type: "fld"),
+      reg: FeedexCore.Ctx.News.unread_aggregate_count_for(user_id, type: "reg")
     }
   end
 
@@ -58,7 +58,7 @@ defmodule FeedexUi.NewsLive do
   def handle_info("mod_tree", socket) do
     user = socket.assigns.current_user
 
-    treemap = FeedexData.Api.SubTree.cleantree(user.id)
+    treemap = FeedexCore.Api.SubTree.cleantree(user.id)
 
     new_opts = %{
       mode: "view",
@@ -92,7 +92,7 @@ defmodule FeedexUi.NewsLive do
 
     user = socket.assigns.current_user
 
-    treemap = FeedexData.Api.SubTree.cleantree(user.id)
+    treemap = FeedexCore.Api.SubTree.cleantree(user.id)
 
     opts = %{
       treemap: treemap,

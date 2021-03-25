@@ -25,7 +25,7 @@ defmodule FeedexJob.MixProject do
   defp deps do
     [
       {:fc_rss, in_umbrella: true},
-      {:feedex_data, in_umbrella: true},
+      {:feedex_core, in_umbrella: true},
       {:quantum, "~> 3.3"},
       {:timex, "~> 3.0"},
     ]

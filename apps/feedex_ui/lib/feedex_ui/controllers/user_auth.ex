@@ -2,7 +2,7 @@ defmodule FeedexUi.UserAuth do
   import Plug.Conn
   import Phoenix.Controller
 
-  alias FeedexData.Accounts
+  alias FeedexCore.Accounts
   alias FeedexUi.Router.Helpers, as: Routes
 
   # Make the remember me cookie valid for 60 days.

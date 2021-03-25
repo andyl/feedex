@@ -14,7 +14,7 @@ defmodule FeedexUi.HdrComponent do
   alias FeedexCore.Ctx.Account
   alias FeedexCore.Util.Treemap
   import FeedexUi.CountHelpers
-  import FeedexUi.IconHelpers
+  import FeedexUi.BootstrapIconHelpers
 
   # ----- lifecycle callbacks -----
 

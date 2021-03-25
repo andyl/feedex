@@ -5,6 +5,34 @@
 
 @import "~bootstrap/scss/bootstrap";
 
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
+
+// .desktop-only {
+//   @apply hidden md:block
+// }
+//
+// .mobile-only {
+//   @apply block md:hidden
+// }
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none !important
+  }
+  .desktop-only {
+    display: block !important
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block !important
+  }
+  .desktop-only {
+    display: none !important
+  }
+}
+
 /* 
 @layer utilities {
 
@@ -26,14 +54,6 @@
   .dn-7  { margin-top:   7px; }
   .dn-8  { margin-top:   8px; }
 
-}
-
-.desktop-only {
-  @apply hidden md:block
-}
-
-.mobile-only {
-  @apply block md:hidden
 }
 
 .bluelink {

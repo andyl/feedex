@@ -10,7 +10,7 @@ defmodule FeedexUi.BtnComponent do
 
   use Phoenix.LiveComponent
   import Phoenix.HTML
-  import FeedexUi.IconHelpers
+  import FeedexUi.BootstrapIconHelpers
 
   def render(assigns) do
     ~L"""

@@ -32,10 +32,10 @@ defmodule FeedexUi.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(FeedexData.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(FeedexCore.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(FeedexData.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(FeedexCore.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}
@@ -50,7 +50,7 @@ defmodule FeedexUi.ConnCase do
   test context.
   """
   def register_and_log_in_user(%{conn: conn}) do
-    user = FeedexData.AccountsFixtures.user_fixture()
+    user = FeedexCore.AccountsFixtures.user_fixture()
     %{conn: log_in_user(conn, user), user: user}
   end
 
@@ -60,7 +60,7 @@ defmodule FeedexUi.ConnCase do
   It returns an updated `conn`.
   """
   def log_in_user(conn, user) do
-    token = FeedexData.Accounts.generate_user_session_token(user)
+    token = FeedexCore.Accounts.generate_user_session_token(user)
 
     conn
     |> Phoenix.ConnTest.init_test_session(%{})

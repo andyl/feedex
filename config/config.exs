@@ -14,17 +14,17 @@ use Mix.Config
 
 config :tesla, adapter: Tesla.Adapter.Hackney
 
-# ----- FeedexData 
+# ----- FeedexCore 
 
-config :feedex_data,
-  ecto_repos: [FeedexData.Repo],
+config :feedex_core,
+  ecto_repos: [FeedexCore.Repo],
   env: Mix.env()
 
 # ----- FeedexUi
 
 config :feedex_ui,
-  ecto_repos: [FeedexData.Repo],
-  generators: [context_app: :feedex_data, binary_id: true]
+  ecto_repos: [FeedexCore.Repo],
+  generators: [context_app: :feedex_core, binary_id: true]
 
 # Configures the endpoint
 config :feedex_ui, FeedexUi.Endpoint,
@@ -45,7 +45,7 @@ config :feedex_job, FeedexJob.Scheduler,
     # {"0 18-6/2 * * *", fn -> :mnesia.backup('/var/backup/mnesia') end},
     # {"@daily",         {Backup, :backup, []}}
     # {"* * * * *",      {IO, :puts, ["CRON JOB"]}}
-    # {"* * * * *",      {FeedexData.Metrics.AppPoller, :post_counts, []}},
+    # {"* * * * *",      {FeedexCore.Metrics.AppPoller, :post_counts, []}},
     # {"* * * * *",      {FeedexJob, :sync_next, []}}
     {"*/3 * * * *",      {FeedexJob, :sync_next, []}}
     # {"* * * * *",      {FeedexJob, :sync_next, []}}
@@ -62,8 +62,8 @@ config :logger, :console,
 # ----- FeedexWeb 
 
 # config :feedex_web,
-#   ecto_repos: [FeedexData.Repo],
-#   generators: [context_app: :feedex_data, binary_id: true]
+#   ecto_repos: [FeedexCore.Repo],
+#   generators: [context_app: :feedex_core, binary_id: true]
 #
 # # Configures the endpoint
 # config :feedex_web, FeedexWeb.Endpoint,
@@ -84,7 +84,7 @@ config :feedex_job, FeedexJob.Scheduler,
     # {"0 18-6/2 * * *", fn -> :mnesia.backup('/var/backup/mnesia') end},
     # {"@daily",         {Backup, :backup, []}}
     # {"* * * * *",      {IO, :puts, ["CRON JOB"]}}
-    {"* * * * *",        {FeedexData.Metrics.AppPoller, :post_counts, []}},
+    {"* * * * *",        {FeedexCore.Metrics.AppPoller, :post_counts, []}},
     {"*/3 * * * *",      {FeedexJob, :sync_next, []}}
   ]
 

@@ -1,7 +1,7 @@
 defmodule FeedexUi.UserRegistrationControllerTest do
   use FeedexUi.ConnCase, async: true
 
-  import FeedexData.AccountsFixtures
+  import FeedexCore.AccountsFixtures
 
   describe "GET /users/register" do
     test "renders registration page", %{conn: conn} do

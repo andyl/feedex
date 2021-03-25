@@ -1,7 +1,7 @@
 defmodule FeedexUi.UserConfirmationController do
   use FeedexUi, :controller
 
-  alias FeedexData.Accounts
+  alias FeedexCore.Accounts
 
   def new(conn, _params) do
     render(conn, "new.html")

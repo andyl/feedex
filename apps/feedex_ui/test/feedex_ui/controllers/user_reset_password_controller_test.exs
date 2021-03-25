@@ -1,9 +1,9 @@
 defmodule FeedexUi.UserResetPasswordControllerTest do
   use FeedexUi.ConnCase, async: true
 
-  alias FeedexData.Accounts
-  alias FeedexData.Repo
-  import FeedexData.AccountsFixtures
+  alias FeedexCore.Accounts
+  alias FeedexCore.Repo
+  import FeedexCore.AccountsFixtures
 
   setup do
     %{user: user_fixture()}

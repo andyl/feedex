@@ -7,9 +7,9 @@ use Mix.Config
 config :feedex_tsdb, FeedexTsdb,
   database: "inf_feedex_dev"
 
-# ----- FeedexData
+# ----- FeedexCore
 
-config :feedex_data, FeedexData.Repo,
+config :feedex_core, FeedexCore.Repo,
   username: "postgres",
   password: "postgres",
   database: "feedex_dev",

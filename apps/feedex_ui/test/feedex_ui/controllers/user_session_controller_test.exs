@@ -1,7 +1,7 @@
 defmodule FeedexUi.UserSessionControllerTest do
   use FeedexUi.ConnCase, async: true
 
-  import FeedexData.AccountsFixtures
+  import FeedexCore.AccountsFixtures
 
   setup do
     %{user: user_fixture()}

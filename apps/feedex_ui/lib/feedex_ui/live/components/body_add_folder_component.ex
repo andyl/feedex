@@ -8,8 +8,8 @@ defmodule FeedexUi.BodyAddFolderComponent do
 
   """
 
-  alias FeedexData.Ctx.Account
-  alias FeedexData.Api
+  alias FeedexCore.Ctx.Account
+  alias FeedexCore.Api
 
   import Phoenix.HTML.Form
   import FeedexUi.ErrorHelpers

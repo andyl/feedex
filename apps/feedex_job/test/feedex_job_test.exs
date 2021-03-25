@@ -1,6 +1,6 @@
 defmodule FeedexJobTest do
   use ExUnit.Case
-  use FeedexData.DataCase
+  use FeedexCore.DataCase
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   setup do

@@ -1,10 +1,10 @@
 # Remove all application data
 # > mix run priv/repo/clear.exs
 
-alias FeedexData.Ctx.Account.User
-alias FeedexData.Ctx.Account.{Folder, Register}
-alias FeedexData.Ctx.News.{Feed, Post}
-alias FeedexData.Repo
+alias FeedexCore.Ctx.Account.User
+alias FeedexCore.Ctx.Account.{Folder, Register}
+alias FeedexCore.Ctx.News.{Feed, Post}
+alias FeedexCore.Repo
 
 Repo.delete_all(Post)
 Repo.delete_all(Feed)

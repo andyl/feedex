@@ -8,7 +8,7 @@ defmodule FeedexUi.BodyViewComponent do
 
   """
 
-  alias FeedexData.Ctx.News
+  alias FeedexCore.Ctx.News
   alias Phoenix.HTML
 
   use Phoenix.LiveComponent
@@ -140,7 +140,7 @@ defmodule FeedexUi.BodyViewComponent do
     newstate = Map.merge(uistate, %{pst_id: new_pid})
 
     if new_pid do
-      FeedexData.Ctx.Account.mark_all_for(user_id, pst_id: post_id)
+      FeedexCore.Ctx.Account.mark_all_for(user_id, pst_id: post_id)
     end
 
     send(self(), {"set_uistate", %{uistate: newstate, recount: true}})

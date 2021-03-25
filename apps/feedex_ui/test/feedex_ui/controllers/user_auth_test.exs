@@ -1,9 +1,9 @@
 defmodule FeedexUi.UserAuthTest do
   use FeedexUi.ConnCase, async: true
 
-  alias FeedexData.Accounts
+  alias FeedexCore.Accounts
   alias FeedexUi.UserAuth
-  import FeedexData.AccountsFixtures
+  import FeedexCore.AccountsFixtures
 
   @remember_me_cookie "_feedex_ui_user_remember_me"
 

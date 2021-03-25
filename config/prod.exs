@@ -7,12 +7,12 @@ use Mix.Config
 config :feedex_tsdb, FeedexTsdb,
   database: "inf_feedex_prod"
 
-# ----- FeedexData
+# ----- FeedexCore
 
-config :feedex_data, FeedexData.Repo,
+config :feedex_core, FeedexCore.Repo,
   username: "postgres",
   password: "postgres",
-  database: "feedex_data_prod",
+  database: "feedex_core_prod",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

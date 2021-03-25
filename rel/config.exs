@@ -51,7 +51,7 @@ release :feedex do
   set applications: [
     :runtime_tools,
     # feedex_client: :permanent,
-    feedex_data: :permanent,
+    feedex_core: :permanent,
     feedex_ui: :permanent
   ]
 end

@@ -53,9 +53,9 @@ defmodule FeedexUi.TreeComponent do
 
   def gen_counts(user_id) do
     %{
-      all: FeedexData.Ctx.News.unread_count_for(user_id),
-      fld: FeedexData.Ctx.News.unread_aggregate_count_for(user_id, type: "fld"),
-      reg: FeedexData.Ctx.News.unread_aggregate_count_for(user_id, type: "reg")
+      all: FeedexCore.Ctx.News.unread_count_for(user_id),
+      fld: FeedexCore.Ctx.News.unread_aggregate_count_for(user_id, type: "fld"),
+      reg: FeedexCore.Ctx.News.unread_aggregate_count_for(user_id, type: "reg")
     }
   end
 
@@ -91,7 +91,7 @@ defmodule FeedexUi.TreeComponent do
 
   def fold_unread(uistate, id, count) do
     """
-    <span class="inline-flex items-center px-1 ml-1 text-xs font-light text-blue-800 align-text-top bg-blue-100 up-3 rounded-full">
+    <span class="inline-flex items-center px-1 ml-1 text-xs font-light text-blue-800 align-text-top bg-blue-100 rounded-full up-3">
       <small>
         #{count}
       </small>
@@ -143,7 +143,7 @@ defmodule FeedexUi.TreeComponent do
   defp get_fld(treemap, regid) do
     case regid do
       nil -> nil
-      id when is_number(id) -> FeedexData.Util.Treemap.register_parent_id(treemap, id)
+      id when is_number(id) -> FeedexCore.Util.Treemap.register_parent_id(treemap, id)
       _ -> nil
     end
   end
@@ -210,7 +210,7 @@ defmodule FeedexUi.TreeComponent do
 
     FeedexUi.Endpoint.broadcast_from(self(), "read_all", "mark-read", %{})
 
-    treemap = FeedexData.Api.SubTree.cleantree(socket.assigns.uistate.usr_id)
+    treemap = FeedexCore.Api.SubTree.cleantree(socket.assigns.uistate.usr_id)
     counts = gen_counts(socket.assigns.uistate.usr_id)
 
     {:noreply, assign(socket, %{treemap: treemap, counts: counts})}

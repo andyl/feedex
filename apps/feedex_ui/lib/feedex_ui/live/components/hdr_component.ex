@@ -11,8 +11,8 @@ defmodule FeedexUi.HdrComponent do
   use Phoenix.LiveComponent
 
   alias Phoenix.HTML
-  alias FeedexData.Ctx.Account
-  alias FeedexData.Util.Treemap
+  alias FeedexCore.Ctx.Account
+  alias FeedexCore.Util.Treemap
   import FeedexUi.CountHelpers
   import FeedexUi.IconHelpers
 

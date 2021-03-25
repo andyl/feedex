@@ -53,7 +53,7 @@ defmodule FeedexUi.SubTreeLive do
     json = session["json"]
 
     result = try do
-      FeedexData.Api.SubTree.import_tree_json(user.id, json)
+      FeedexCore.Api.SubTree.import_tree_json(user.id, json)
       "SUCCESS"
     rescue
       _ -> "ERROR BAD DATA"

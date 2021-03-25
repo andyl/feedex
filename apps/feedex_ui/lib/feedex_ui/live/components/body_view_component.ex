@@ -13,7 +13,7 @@ defmodule FeedexUi.BodyViewComponent do
 
   use Phoenix.LiveComponent
 
-  import FeedexUi.IconHelpers
+  import FeedexUi.BootstrapIconHelpers
 
   # ----- lifecycle callbacks -----
 

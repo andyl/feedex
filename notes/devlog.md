@@ -474,11 +474,19 @@ Goal: reduce the number of database queries in the life-cycle
 ## 2021 Mar 24 Wed
 
 - [x] Change feedex_core to feedex_core
+- [x] Convert from Tailwind to Bootstrap
+
+## 2021 Mar 25 Thu
+
+- [x] Restyle navbar with BootstrapCSS
+- [x] Add Bootstrap Icons
+- [x] Restyle news page with BootstrapCSS
+- [x] Merge to dev
+- [x] Deploy to staging
 
 ## TBD
 
-- [ ] Convert from Tailwind to Bootstrap
-- [ ] Move schemas to `FeedexCore.Data`
+- [ ] Cleanup Bootstrap Responsive classes (desktop-only, mobile-only)
 
 - [ ] Use new LiveEditable on edit pages
 

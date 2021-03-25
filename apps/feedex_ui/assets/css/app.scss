@@ -1,12 +1,39 @@
 /* This file is for your main application css. */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-// @import "./phoenix.css";
+/* @import "./phoenix.css"; */
 @import "../node_modules/nprogress/nprogress.css";
 
+@import "~bootstrap/scss/bootstrap";
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
+
+// .desktop-only {
+//   @apply hidden md:block
+// }
+//
+// .mobile-only {
+//   @apply block md:hidden
+// }
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none !important
+  }
+  .desktop-only {
+    display: block !important
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block !important
+  }
+  .desktop-only {
+    display: none !important
+  }
+}
+
+/* 
 @layer utilities {
 
   .up-1  { margin-top:  -1px; }
@@ -29,17 +56,10 @@
 
 }
 
-.desktop-only {
-  @apply hidden md:block
-}
-
-.mobile-only {
-  @apply block md:hidden
-}
-
 .bluelink {
   @apply text-blue-500 hover:bg-gray-300 hover:bg-opacity-90
 }
+*/
 
 /* LiveView specific classes for your customizations */
 .phx-no-feedback.invalid-feedback,

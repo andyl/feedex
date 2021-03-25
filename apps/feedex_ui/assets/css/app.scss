@@ -1,12 +1,11 @@
 /* This file is for your main application css. */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-// @import "./phoenix.css";
+/* @import "./phoenix.css"; */
 @import "../node_modules/nprogress/nprogress.css";
 
+@import "~bootstrap/scss/bootstrap";
+
+/* 
 @layer utilities {
 
   .up-1  { margin-top:  -1px; }
@@ -40,6 +39,7 @@
 .bluelink {
   @apply text-blue-500 hover:bg-gray-300 hover:bg-opacity-90
 }
+*/
 
 /* LiveView specific classes for your customizations */
 .phx-no-feedback.invalid-feedback,

@@ -14,17 +14,17 @@
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
           <img src="/images/rss-4-32.png" alt="Home"> FeedexUi
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navData">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navData">
           <div class="me-auto">
             <!-- spacer -->
           </div>
@@ -37,7 +37,7 @@
 
       <div class="row">
 
-            <%= @inner_content %>
+        <%= @inner_content %>
 
       </div>
 

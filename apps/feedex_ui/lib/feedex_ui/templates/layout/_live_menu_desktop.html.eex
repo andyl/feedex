@@ -1,11 +1,21 @@
-<%= if @current_user do %>
-  <div class="px-3 py-2 text-sm font-medium text-white">
-    <%= @current_user.email %>
-  </div>
-  <%= FeedexUi.NavUtil.link(@conn, "/news", "News") %>
-  <%= FeedexUi.NavUtil.link(@conn, "/users/settings", "Settings") %>
-  <%= link "Logout", to: Routes.user_session_path(@conn, :delete), method: :delete, class: FeedexUi.NavUtil.normal_klas() %>
-<% else %>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: FeedexUi.NavUtil.normal_klas() %>
-  <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: FeedexUi.NavUtil.normal_klas() %>
-<% end %>
+<%= if @current_user, do: @current_user.email %>
+<ul class="mb-2 navbar-nav mb-lg-0">
+  <%= if @current_user do %>
+    <li class="nav-item">
+      <%= FeedexUi.NavUtil.link(@conn, "/news", "News") %>
+    </li>
+    <li class="nav-item">
+      <%= FeedexUi.NavUtil.link(@conn, "/users/settings", "Settings") %>
+    </li>
+    <li class="nav-item">
+      <%= link "Logout", to: Routes.user_session_path(@conn, :delete), method: :delete, class: FeedexUi.NavUtil.normal_klas() %>
+    </li>
+  <% else %>
+    <li class="nav-item">
+      <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: FeedexUi.NavUtil.normal_klas() %>
+    </li>
+    <li class="nav-item">
+      <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: FeedexUi.NavUtil.normal_klas() %>
+    </li>
+  <% end %>
+</ul> 

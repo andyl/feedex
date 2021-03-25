@@ -16,11 +16,11 @@ defmodule FeedexUi.NavUtil do
   end
   
   def active_klas do
-    "px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-md"
+    "nav-link disabled"
   end
 
   def normal_klas do
-    "px-3 py-2 text-sm font-medium text-gray-400 hover:bg-gray-700 hover:text-white rounded-md" 
+    "nav-link active" 
   end
 
 end

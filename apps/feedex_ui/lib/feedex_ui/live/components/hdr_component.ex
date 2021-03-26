@@ -22,16 +22,16 @@ defmodule FeedexUi.HdrComponent do
   def render(assigns) do
     ~L"""
     <div class="desktop-only" style="background-color: lightgray; padding-right: 20px;">
-    <%= if @uistate.mode == "view" do %>
-      <div class='flex'>
-        <div class='flex-auto'>
-          <%= title(@uistate, @counts, @treemap, @myself) %>
+      <%= if @uistate.mode == "view" do %>
+        <div class='d-flex'>
+          <div class='flex-grow-1'>
+            <%= title(@uistate, @counts, @treemap, @myself) %>
+          </div>
+          <div class='text-right'>
+            <%= HTML.raw btns(@uistate, @myself) %>
+          </div>
         </div>
-        <div class='flex-auto text-right'>
-          <%# HTML.raw btns(@uistate, @myself) %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
     </div>
     """
   end

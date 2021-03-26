@@ -13,8 +13,8 @@
     <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+  <body class="gap-0" style="padding: 0; margin: 0;">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: lightblue;">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
           <img src="/images/rss-4-32.png" alt="Home"> FeedexUi
@@ -33,13 +33,9 @@
       </div>
     </nav>
 
-    <div class="container-xl">
-
-      <div class="row">
+    <div class="container-fluid" style="padding: 0;">
 
         <%= @inner_content %>
-
-      </div>
 
     </div>
   </body>

@@ -482,17 +482,13 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Add Bootstrap Icons
 - [x] Restyle news page with BootstrapCSS
 - [x] Merge to dev
-- [x] Deploy to staging
+- [x] Cleanup Bootstrap Responsive classes (desktop-only, mobile-only - sass alias?)
 
 ## TBD
 
-- [ ] Cleanup Bootstrap Responsive classes (desktop-only, mobile-only)
-
 - [ ] Use new LiveEditable on edit pages
 
-- [ ] UI: Generate admin pages: users / feeds / posts
-- [ ] UI: Admin-links to Dashboard and Admin pages on settings page
-- [ ] UI: Admin-only access to admin pages
+- [ ] Deploy to staging
 
 - [ ] Fix telemetry
 - [ ] Add telemetry for FcTesla (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
@@ -501,6 +497,12 @@ Goal: reduce the number of database queries in the life-cycle
 
 - [ ] Deploy on privhost
 - [ ] Deploy on pubhost
+
+- [ ] Minimize CSS in production (PurgeCSS)
+
+- [ ] UI: Generate admin pages: users / feeds / posts
+- [ ] UI: Admin-links to Dashboard and Admin pages on settings page
+- [ ] UI: Admin-only access to admin pages
 
 - [ ] Infra: Restful API: RSS/JSON (Feeds and Folders)
 - [ ] Infra: Restful API: SyncNow (Feeds and Folders)

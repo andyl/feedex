@@ -486,6 +486,7 @@ Goal: reduce the number of database queries in the life-cycle
 
 ## TBD
 
+- [ ] Enable target options: "use Phonix.LiveEditable, target: @myself"
 - [ ] Use new LiveEditable on edit pages
 
 - [ ] Deploy to staging

@@ -42,8 +42,8 @@ defmodule FeedexUi.BodyEditFolderComponent do
     <div>
       <h1>EDIT FOLDER</h1>
       <table class="table">
-        <tr><td>Folder Name:</td><td><%= live_edit(assigns, @folder.name, type: "text", id: "name", on_submit: "set_name") %></td></tr>
-        <tr><td>Stopwords:</td><td><%= live_edit(assigns, @folder.stopwords || "NA", type: "text", id: "stopwords", on_submit: "set_stopwords") %></td></tr>
+        <tr><td>Folder Name:</td><td><%= live_edit(assigns, @folder.name, type: "text", id: "name", target: @myself, on_submit: "set_name") %></td></tr>
+        <tr><td>Stopwords:</td><td><%= live_edit(assigns, @folder.stopwords || "NA", type: "text", target: "@myself", id: "stopwords", on_submit: "set_stopwords") %></td></tr>
         <tr><td>Folder ID:</td><td><%= @folder.id %></td></tr>
         <tr><td>Num Feeds:</td><td><%= @feed_count %></td></tr>
       </table>
@@ -62,17 +62,19 @@ defmodule FeedexUi.BodyEditFolderComponent do
   # ----- event handlers -----
 
   def handle_event("set_name", %{"editable_text" => newname}, socket) do
-    Folder
-    |> Repo.get(socket.assigns.uistate.fld_id)
-    |> Ecto.Changeset.change(name: newname)
-    |> Repo.update()
-
-    new_state =
-      socket.assigns.uistate
-      |> Map.merge(%{mode: "view"})
+    # Folder
+    # |> Repo.get(socket.assigns.uistate.fld_id)
+    # |> Ecto.Changeset.change(name: newname)
+    # |> Repo.update()
+    #
+    # new_state =
+    #   socket.assigns.uistate
+    #   |> Map.merge(%{mode: "view"})
 
     # FeedexUi.Endpoint.broadcast_from(self(), "tree_mod", "rename_folder", %{uistate: new_state})
-    {:noreply, assign(socket, %{uistate: new_state})}
+    # {:noreply, assign(socket, %{uistate: new_state})}
+    IO.inspect newname, label: "NEWNAME"
+    {:noreply, socket}
   end
 
   def handle_event("set_stopwords", %{"editable_text" => new_words}, socket) do

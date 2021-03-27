@@ -62,18 +62,12 @@ defmodule FeedexUi.BodyEditFolderComponent do
   # ----- event handlers -----
 
   def handle_event("set_name", %{"editable_text" => newname}, socket) do
-    # Folder
-    # |> Repo.get(socket.assigns.uistate.fld_id)
-    # |> Ecto.Changeset.change(name: newname)
-    # |> Repo.update()
-    #
-    # new_state =
-    #   socket.assigns.uistate
-    #   |> Map.merge(%{mode: "view"})
+    Folder
+    |> Repo.get(socket.assigns.uistate.fld_id)
+    |> Ecto.Changeset.change(name: newname)
+    |> Repo.update()
 
-    # FeedexUi.Endpoint.broadcast_from(self(), "tree_mod", "rename_folder", %{uistate: new_state})
-    # {:noreply, assign(socket, %{uistate: new_state})}
-    IO.inspect newname, label: "NEWNAME"
+    send(self(), "update_folder")
     {:noreply, socket}
   end
 

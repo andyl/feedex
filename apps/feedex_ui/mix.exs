@@ -55,7 +55,8 @@ defmodule FeedexUi.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:pets, path: "~/src/pets"},
-      {:phoenix_live_editable, github: "andyl/phoenix_live_editable", sparse: "apps/phoenix_live_editable"},
+      # {:phoenix_live_editable, github: "andyl/phoenix_live_editable", sparse: "apps/phoenix_live_editable"},
+      {:phoenix_live_editable, path: "~/src/phoenix_live_editable/apps/phoenix_live_editable"},
       {:plug_cowboy, "~> 2.0"}
     ]
   end

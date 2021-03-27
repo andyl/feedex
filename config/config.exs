@@ -106,7 +106,7 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 # Phoenix Live Editable
-config :phoenix_live_editable, css_framework: Phoenix.LiveEditable.Bootstrap5
+config :phoenix_live_editable, css_framework: Phoenix.LiveEditable.Ui.Bootstrap5
 
 
 # Import environment specific config. This must remain at the bottom

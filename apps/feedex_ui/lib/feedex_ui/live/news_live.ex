@@ -81,6 +81,30 @@ defmodule FeedexUi.NewsLive do
   end
 
   @impl true
+  def handle_info("update_folder", socket) do
+    user = socket.assigns.current_user
+
+    treemap = FeedexCore.Api.SubTree.cleantree(user.id)
+
+    new_opts = %{
+      mode: "view",
+      pst_id: nil,
+      reg_id: nil
+    }
+
+    new_state =
+      socket.assigns.uistate
+      |> Map.merge(new_opts)
+
+    opts = %{
+      treemap: treemap,
+      uistate: new_state
+    }
+
+    {:noreply, assign(socket, opts)}
+  end
+
+  @impl true
   def handle_info("mark_all_read", socket) do
     opts = %{counts: gen_counts(socket.assigns.current_user.id)}
     {:noreply, assign(socket, opts)}

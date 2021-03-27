@@ -491,14 +491,15 @@ Goal: reduce the number of database queries in the life-cycle
 ## 2021 Mar 27 Sat
 
 - [x] Use new LiveEditable on folder edit pages
-- [ ] Use new LiveEditable on feed edit pages
+- [x] Use new LiveEditable on feed edit pages
+- [ ] Deploy to staging
 
 ## TBD
 
-- [ ] Deploy to staging
-
 - [ ] Fix telemetry
 - [ ] Add telemetry for FcTesla (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
+
+- [ ] Copy feeds to staging
 
 - [ ] Add bamboo 2.0
 

@@ -67,7 +67,7 @@ defmodule FeedexUi.BodyEditFolderComponent do
     |> Ecto.Changeset.change(name: newname)
     |> Repo.update()
 
-    send(self(), "update_folder")
+    send(self(), "rename_folder")
     {:noreply, socket}
   end
 

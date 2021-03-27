@@ -77,8 +77,8 @@ defmodule FeedexUi.BodyEditFeedComponent do
     <h1>EDIT FEED</h1>
     <%= if @register do %>
       <table class="table">
-      <tr><td>Reg Name:</td><td><%= live_edit(assigns, @register.name, type: "text", id: "name", on_submit: "rename") %></td></tr>
-      <tr><td>Reg Folder:</td><td><%= live_edit(assigns, @folder.name, type: "select", options: @folders, id: "folder", on_submit: "refolder") %></td></tr>
+      <tr><td>Reg Name:</td><td><%= live_edit(assigns, @register.name, type: "text", id: "name", target: @myself, on_submit: "rename") %></td></tr>
+      <tr><td>Reg Folder:</td><td><%= live_edit(assigns, @folder.name, type: "select", options: @folders, target: @myself, id: "folder", on_submit: "refolder") %></td></tr>
       <tr><td>FeedUrl:</td><td><%= feed_link(@feed) %></td></tr>
       <tr><td>Usr/Registry ID:</td><td><%= @register.id %></td></tr>
       <tr><td>Attached Registries:</td><td><%= @feed_count %></td></tr>
@@ -143,11 +143,8 @@ defmodule FeedexUi.BodyEditFeedComponent do
     |> Repo.get(socket.assigns.uistate.reg_id)
     |> Ecto.Changeset.change(name: newname)
     |> Repo.update()
-    new_state = 
-      socket.assigns.uistate
-      |> Map.merge(%{mode: "view"})
-    # FeedexWeb.Endpoint.broadcast_from(self(), "tree_mod", "rename_feed", %{uistate: new_state})
-    {:noreply, assign(socket, %{uistate: new_state})}
+    send(self(), "rename_feed")
+    {:noreply, socket}
   end
 
   @impl true
@@ -156,11 +153,9 @@ defmodule FeedexUi.BodyEditFeedComponent do
     |> Repo.get(socket.assigns.uistate.reg_id)
     |> Ecto.Changeset.change(folder_id: String.to_integer(fldid))
     |> Repo.update()
-    new_state = 
-      socket.assigns.uistate
-      |> Map.merge(%{mode: "view"})
-    # FeedexWeb.Endpoint.broadcast_from(self(), "tree_mod", "rename_feed", %{uistate: new_state})
-    {:noreply, socket |> assign(%{uistate: new_state})}
+
+    send(self(), "refolder_feed")
+    {:noreply, socket}
   end
 
 end

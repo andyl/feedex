@@ -484,10 +484,16 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Merge to dev
 - [x] Cleanup Bootstrap Responsive classes (desktop-only, mobile-only - sass alias?)
 
-## TBD
+## 2021 Mar 26 Fri
 
-- [ ] Enable target options: "use Phonix.LiveEditable, target: @myself"
-- [ ] Use new LiveEditable on edit pages
+- [x] Enable target options: "use Phonix.LiveEditable, target: @myself"
+
+## 2021 Mar 27 Sat
+
+- [x] Use new LiveEditable on folder edit pages
+- [ ] Use new LiveEditable on feed edit pages
+
+## TBD
 
 - [ ] Deploy to staging
 

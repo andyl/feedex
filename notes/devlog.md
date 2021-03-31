@@ -492,7 +492,7 @@ Goal: reduce the number of database queries in the life-cycle
 
 - [x] Use new LiveEditable on folder edit pages
 - [x] Use new LiveEditable on feed edit pages
-- [ ] Deploy to staging
+- [x] Deploy to staging
 
 ## TBD
 

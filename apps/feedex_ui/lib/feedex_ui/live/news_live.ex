@@ -105,6 +105,32 @@ defmodule FeedexUi.NewsLive do
   end
 
   @impl true
+  def handle_info("delete_folder", socket) do
+    user = socket.assigns.current_user
+
+    treemap = FeedexCore.Api.SubTree.cleantree(user.id)
+
+    new_opts = %{
+      mode: "view",
+      pst_id: nil,
+      fld_id: nil,
+      reg_id: nil
+    }
+
+    new_state =
+      socket.assigns.uistate
+      |> Map.merge(new_opts)
+
+    opts = %{
+      treemap: treemap,
+      uistate: new_state
+    }
+
+    {:noreply, assign(socket, opts)}
+  end
+
+
+  @impl true
   def handle_info("rename_feed", socket) do
     user = socket.assigns.current_user
 
@@ -122,6 +148,33 @@ defmodule FeedexUi.NewsLive do
 
     opts = %{
       treemap: treemap,
+      uistate: new_state
+    }
+
+    {:noreply, assign(socket, opts)}
+  end
+
+  @impl true
+  def handle_info({"delete_feed", %{fld_id: fld_id}}, socket) do
+
+    user = socket.assigns.current_user
+
+    treemap = FeedexCore.Api.SubTree.cleantree(user.id)
+
+    new_opts = %{
+      mode: "view",
+      pst_id: nil,
+      reg_id: nil,
+      fld_id: fld_id
+    }
+
+    new_state =
+      socket.assigns.uistate
+      |> Map.merge(new_opts)
+
+    opts = %{
+      treemap: treemap,
+      counts: gen_counts(user.id), 
       uistate: new_state
     }
 

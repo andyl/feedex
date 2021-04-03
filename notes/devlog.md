@@ -499,8 +499,9 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Copy feeds to staging
 - [x] Clickable tree folder while in edit mode
 - [x] Clickable tree feed while in edit mode
-- [ ] Fix "delete feed"
-- [ ] Fix "delete folder"
+- [x] Fix "delete feed"
+- [x] Fix "delete folder"
+- [ ] Deploy to staging
 - [ ] Edit folder stopwords
 - [ ] Enable recycle button
 

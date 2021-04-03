@@ -49,7 +49,7 @@ defmodule FeedexUi.BodyEditFolderComponent do
       </table>
       <p style='margin-bottom: 60px;'></p>
       <%= if @feed_count == 0 do %>
-      <button type="button" phx-click='delete' class="btn btn-danger">Delete Folder</button>
+      <button type="button" phx-click='delete' phx-target='<%= @myself %>' class="btn btn-danger">Delete Folder</button>
       <% end %>
     </div>
     """
@@ -104,11 +104,8 @@ defmodule FeedexUi.BodyEditFolderComponent do
     Repo.get(Folder, socket.assigns.uistate.fld_id)
     |> Repo.delete()
 
-    new_state =
-      socket.assigns.uistate
-      |> Map.merge(%{fld_id: nil, mode: "view"})
+    send(self(), "delete_folder")
 
-    # FeedexUi.Endpoint.broadcast_from(self(), "tree_mod", "remove_folder", %{uistate: new_state})
-    {:noreply, assign(socket, %{uistate: new_state})}
+    {:noreply, socket}
   end
 end

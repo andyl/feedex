@@ -86,9 +86,7 @@ defmodule FeedexUi.BodyEditFeedComponent do
       <tr><td>Sync Count:</td><td><%= @feed.sync_count %></td></tr>
       </table>
     <p style='margin-bottom: 60px;'></p>
-    <%= if @feed_count == 1 do %>
-    <button type="button" phx-click='delete' class="btn btn-danger">Delete Feed</button>
-    <% end %>
+    <button type="button" phx-click='delete' phx-target='<%= @myself %>' class="btn btn-danger">Delete Feed</button>
     <% end %>
     """
   end
@@ -111,6 +109,8 @@ defmodule FeedexUi.BodyEditFeedComponent do
   def handle_event("delete", _payload, socket) do
     register = Repo.get(Register, socket.assigns.uistate.reg_id)
 
+    fld_id = register.folder_id
+
     feed_count =
       from(r in Register, select: count(r.id), where: r.feed_id == ^register.feed_id)
       |> Repo.one()
@@ -129,12 +129,9 @@ defmodule FeedexUi.BodyEditFeedComponent do
       _ -> Logger.info("Warning: delete register error")
     end
 
-    new_state =
-      socket.assigns.uistate
-      |> Map.merge(%{fld_id: nil, reg_id: nil, mode: "view"})
+    send(self(), {"delete_feed", %{fld_id: fld_id}})
 
-    # FeedexWeb.Endpoint.broadcast_from(self(), "tree_mod", "remove_feed", %{uistate: new_state})
-    {:noreply, assign(socket, %{uistate: new_state})}
+    {:noreply, socket}
   end
 
   @impl true

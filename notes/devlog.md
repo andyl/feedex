@@ -494,12 +494,20 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Use new LiveEditable on feed edit pages
 - [x] Deploy to staging
 
+## 2021 Apr 03 Sat
+
+- [x] Copy feeds to staging
+- [ ] Clickable tree folder while in edit mode
+- [ ] Clickable tree feed while in edit mode
+- [ ] Fix "delete feed"
+- [ ] Fix "delete folder"
+- [ ] Edit folder stopwords
+- [ ] Enable recycle button
+
 ## TBD
 
 - [ ] Fix telemetry
 - [ ] Add telemetry for FcTesla (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
-
-- [ ] Copy feeds to staging
 
 - [ ] Add bamboo 2.0
 

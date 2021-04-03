@@ -1,0 +1,96 @@
+{
+    "DSML": [
+        {
+            "feed_name": "EyeOnAI",
+            "feed_url": "https://aneyeonai.libsyn.com/rss"
+        }
+    ],
+    "News": [
+        {
+            "feed_name": "Vox",
+            "feed_url": "http://voxday.blogspot.com/feeds/posts/default"
+        },
+        {
+            "feed_name": "Zman",
+            "feed_url": "https://thezman.com/wordpress/?feed=rss2"
+        }
+    ],
+    "Tech": [
+        {
+            "feed_name": "AlpineJS",
+            "feed_url": "https://buttondown.email/alpinejs/rss"
+        },
+        {
+            "feed_name": "PragStudio",
+            "feed_url": "https://buttondown.email/alpinejs/rss"
+        }
+    ],
+    "Xlang": [
+        {
+            "feed_name": "Amberbit",
+            "feed_url": "https://www.amberbit.com/blog.rss"
+        },
+        {
+            "feed_name": "Dashbit",
+            "feed_url": "https://dashbit.co/feed"
+        },
+        {
+            "feed_name": "ExForum",
+            "feed_url": "https://elixirforum.com/posts.rss"
+        },
+        {
+            "feed_name": "ExSchool",
+            "feed_url": "https://elixirschool.com/feed.xml"
+        },
+        {
+            "feed_name": "RIP",
+            "feed_url": "https://runninginproduction.com/podcast/feed.xml"
+        }
+    ],
+    "TechNews": [
+        {
+            "feed_name": "MitReview",
+            "feed_url": "https://www.technologyreview.com/topnews.rss"
+        },
+        {
+            "feed_name": "TechCrunch",
+            "feed_url": "http://feeds.feedburner.com/TechCrunch"
+        },
+        {
+            "feed_name": "TechMeme",
+            "feed_url": "http://www.techmeme.com/feed.xml"
+        }
+    ],
+    "Xmeyers": [
+        {
+            "feed_name": "Caltrans9",
+            "feed_url": "https://rsshub.app/twitter/user/Caltrans9"
+        },
+        {
+            "feed_name": "NWSReno",
+            "feed_url": "https://rsshub.app/twitter/user/NWSReno"
+        },
+        {
+            "feed_name": "US50chains",
+            "feed_url": "https://rsshub.app/twitter/user/US50chains"
+        }
+    ],
+    "YouTube": [
+        {
+            "feed_name": "CodeSync",
+            "feed_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC47eUBNO8KBH_V8AfowOWOw"
+        },
+        {
+            "feed_name": "ElixirConf",
+            "feed_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC0l2QTnO1P2iph-86HHilMQ"
+        },
+        {
+            "feed_name": "Empex",
+            "feed_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCIYiFWyuEytDzyju6uXW40Q"
+        },
+        {
+            "feed_name": "Plangora",
+            "feed_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCiTNXma-lzM6XjhgPQzKREg"
+        }
+    ]
+}

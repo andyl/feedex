@@ -26,6 +26,10 @@
 
 a { text-decoration: none; }
 
+.disabled {
+  font-weight: bold;
+}
+
 .up-1  { vertical-align: middle; margin-top:  -1px; }
 .up-2  { vertical-align: middle; margin-top:  -2px; }
 .up-3  { vertical-align: middle; margin-top:  -3px; }

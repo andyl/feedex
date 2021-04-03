@@ -497,8 +497,8 @@ Goal: reduce the number of database queries in the life-cycle
 ## 2021 Apr 03 Sat
 
 - [x] Copy feeds to staging
-- [ ] Clickable tree folder while in edit mode
-- [ ] Clickable tree feed while in edit mode
+- [x] Clickable tree folder while in edit mode
+- [x] Clickable tree feed while in edit mode
 - [ ] Fix "delete feed"
 - [ ] Fix "delete folder"
 - [ ] Edit folder stopwords

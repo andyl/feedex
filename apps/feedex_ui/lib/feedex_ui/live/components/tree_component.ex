@@ -113,7 +113,7 @@ defmodule FeedexUi.TreeComponent do
   end
 
   defp fold_link(uistate, myself, folder) do
-    if uistate.fld_id == folder.id do
+    if uistate.fld_id == folder.id && uistate.mode == "view" do
       "<b>#{folder.name}</b>"
     else
       """
@@ -126,7 +126,7 @@ defmodule FeedexUi.TreeComponent do
   end
 
   defp reg_link(uistate, myself, register) do
-    if uistate.reg_id == register.id do
+    if uistate.reg_id == register.id && uistate.mode == "view" do
       "<b>#{register.name}</b>"
     else
       """

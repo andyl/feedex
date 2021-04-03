@@ -65,7 +65,7 @@ defmodule FeedexUi.TreeComponent do
     """
       <span style="margin-right: 10px">
       <a href='#'>
-      <i class='fa fa-check' phx-click='mark-read'></i>
+      <i class='bi-check' phx-click='mark-read'></i>
       </a>  
       </span>
     """
@@ -76,7 +76,7 @@ defmodule FeedexUi.TreeComponent do
 
   def all_unread(uistate, count) do
     """
-    <span class="inline-flex items-center px-1 ml-1 text-xs font-light text-blue-800 align-text-top bg-blue-100 rounded-full">
+    <span class="badge bg-secondary up-3">
       <small>
         #{count}
       </small>
@@ -91,7 +91,7 @@ defmodule FeedexUi.TreeComponent do
 
   def fold_unread(uistate, id, count) do
     """
-    <span class="inline-flex items-center px-1 ml-1 text-xs font-light text-blue-800 align-text-top bg-blue-100 rounded-full up-3">
+    <span class="badge bg-secondary up-5" >
       <small>
         #{count}
       </small>
@@ -130,7 +130,7 @@ defmodule FeedexUi.TreeComponent do
       "<b>#{register.name}</b>"
     else
       """
-      <a href='#' class='bluelink' phx-click='clk_feed' phx-target='#{myself}' phx-value-regid='#{register.id}'>#{register.name}</a> 
+      <a href='#' phx-click='clk_feed' phx-target='#{myself}' phx-value-regid='#{register.id}'>#{register.name}</a> 
       """
     end
     |> HTML.raw()

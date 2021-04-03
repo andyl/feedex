@@ -32,7 +32,7 @@ defmodule FeedexUi.BodyViewComponent do
   def render(assigns) do
     ~L"""
     <div>
-      <table class="text-sm table-auto">
+      <table class="table text-sm table-auto ">
         <%= for post <- @posts do %>
           <%= if @uistate.pst_id == post.id do %>
             <tr style='background-color: lightgrey;'>

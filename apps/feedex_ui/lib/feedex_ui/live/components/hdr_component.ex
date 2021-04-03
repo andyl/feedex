@@ -21,7 +21,7 @@ defmodule FeedexUi.HdrComponent do
   @impl true
   def render(assigns) do
     ~L"""
-    <div class="desktop-only" style="background-color: lightgray; padding-right: 20px;">
+    <div class="desktop-only" style="background-color: lightgray; padding: 5px; padding-right: 20px;">
       <%= if @uistate.mode == "view" do %>
         <div class='d-flex'>
           <div class='flex-grow-1'>
@@ -67,7 +67,7 @@ defmodule FeedexUi.HdrComponent do
     reg_name = Treemap.register_name(treemap, reg_id)
     fld_id   = Treemap.register_parent_id(treemap, reg_id)
     fld_name = Treemap.register_parent_name(treemap, reg_id)
-    fld_base = "href='#' class='bluelink' phx-click='folder-clk' phx-value-fldid='#{fld_id}'"
+    fld_base = "href='#' phx-click='folder-clk' phx-value-fldid='#{fld_id}'"
     fld_link = "<a #{fld_base} phx-target='#{myself}'>#{fld_name}</a> "
     label = if count > 0, do: checklink(count, myself), else: ""
     "#{fld_link} > #{reg_name} #{label}"
@@ -77,7 +77,7 @@ defmodule FeedexUi.HdrComponent do
     """
     #{unread(count)}
     <a href='#' phx-target="#{myself}" phx-click="mark-read">
-      #{check_circle_svg("h-5 bluelink inline up-8")}
+      #{check_circle_svg("h-8 inline")}
     </a>
     """
   end
@@ -88,7 +88,7 @@ defmodule FeedexUi.HdrComponent do
       if show_pencil do
         """
         <a href='#' phx-target='#{myself}' phx-click='click-edit'>
-          #{pencil_alt_svg("h-4 bluelink inline")}
+          #{pencil_alt_svg("h-4 inline")}
         </a>
         """
       else
@@ -97,7 +97,7 @@ defmodule FeedexUi.HdrComponent do
 
     """
     <a href='#' phx-target='#{myself}' phx-click='feed-sync'>
-      #{ refresh_svg("h-4 bluelink inline") }
+      #{ refresh_svg("h-4 inline") }
     </a>
     #{pencil}
     """

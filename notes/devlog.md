@@ -501,18 +501,22 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Clickable tree feed while in edit mode
 - [x] Fix "delete feed"
 - [x] Fix "delete folder"
-- [ ] Deploy to staging
+- [x] Deploy to staging
+- [x] Update feeds
+
+- [ ] Fix telemetry (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
+- [ ] Change favicon to purple
+- [ ] Deploy on privhost
+
+- [ ] Add-feed needs to refresh display
+- [ ] Add-folder needs to refresh display
 - [ ] Edit folder stopwords
 - [ ] Enable recycle button
+- [ ] Need to import/export stopwords
 
 ## TBD
 
-- [ ] Fix telemetry
-- [ ] Add telemetry for FcTesla (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
-
 - [ ] Add bamboo 2.0
-
-- [ ] Deploy on privhost
 - [ ] Deploy on pubhost
 
 - [ ] Minimize CSS in production (PurgeCSS)

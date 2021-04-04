@@ -509,8 +509,8 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Edit folder stopwords
 - [x] Update dependencies
 - [x] Settings link to dashboard page
-
-- [ ] Enable all dashboard options
+- [x] Enable all dashboard options
+- [x] Enable dashboard for production
 
 ## TBD
 
@@ -522,9 +522,13 @@ Goal: reduce the number of database queries in the life-cycle
 - [ ] Change favicon to purple
 - [ ] Deploy on privhost
 
+- [ ] Update tests
 - [ ] Add bamboo 2.0
 - [ ] Add trackers
 - [ ] Deploy on pubhost
+
+- [ ] Protect dashboard for admins
+- [ ] Admin-Select Dashboard link on Settings page
 
 - [ ] JSON import/export stopwords
 

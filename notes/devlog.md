@@ -505,20 +505,26 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Update feeds
 - [x] Add-folder needs to refresh display
 - [x] Add-feed needs to refresh display
-
-- [ ] Enable recycle button
-- [ ] Edit folder stopwords
-- [ ] Need to import/export stopwords
-
-- [ ] Fix telemetry (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
-- [ ] Change favicon to purple
-- [ ] Deploy on privhost
+- [x] Enable refresh button
+- [x] Edit folder stopwords
+- [ ] Update dependencies
+- [ ] Enable all dashboard options
 
 ## TBD
+
+- [ ] Add telemetry to dashboard
+- [ ] Add telemetry to influx (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
+- [ ] Get grafana stats working
+- [ ] Try influx2 again...
+
+- [ ] Change favicon to purple
+- [ ] Deploy on privhost
 
 - [ ] Add bamboo 2.0
 - [ ] Add trackers
 - [ ] Deploy on pubhost
+
+- [ ] JSON import/export stopwords
 
 - [ ] Minimize CSS in production (PurgeCSS)
 

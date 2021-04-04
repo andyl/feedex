@@ -182,6 +182,58 @@ defmodule FeedexUi.NewsLive do
   end
 
   @impl true
+  def handle_info({"new_feed", %{reg_id: reg_id}}, socket) do
+
+    user = socket.assigns.current_user
+
+    treemap = FeedexCore.Api.SubTree.cleantree(user.id)
+
+    new_opts = %{
+      mode: "view",
+      pst_id: nil,
+      reg_id: reg_id,
+      fld_id: nil
+    }
+
+    new_state =
+      socket.assigns.uistate
+      |> Map.merge(new_opts)
+
+    opts = %{
+      treemap: treemap,
+      uistate: new_state
+    }
+
+    {:noreply, assign(socket, opts)}
+  end
+
+  @impl true
+  def handle_info({"new_folder", %{fld_id: fld_id}}, socket) do
+
+    user = socket.assigns.current_user
+
+    treemap = FeedexCore.Api.SubTree.cleantree(user.id)
+
+    new_opts = %{
+      mode: "view",
+      pst_id: nil,
+      reg_id: nil,
+      fld_id: fld_id
+    }
+
+    new_state =
+      socket.assigns.uistate
+      |> Map.merge(new_opts)
+
+    opts = %{
+      treemap: treemap,
+      uistate: new_state
+    }
+
+    {:noreply, assign(socket, opts)}
+  end
+
+  @impl true
   def handle_info("refolder_feed", socket) do
     user = socket.assigns.current_user
 
@@ -212,7 +264,6 @@ defmodule FeedexUi.NewsLive do
   end
 
   @impl true
-  # def handle_info("new_posts", socket) do
   def handle_info(%{topic: "new_posts", event: "SYNC_FEED"}, socket) do
 
     user = socket.assigns.current_user
@@ -225,7 +276,6 @@ defmodule FeedexUi.NewsLive do
     }
 
     {:noreply, assign(socket, opts)}
-
   end
 
   # @impl true

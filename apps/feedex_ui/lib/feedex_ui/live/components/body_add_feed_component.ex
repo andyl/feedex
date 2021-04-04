@@ -10,8 +10,8 @@ defmodule FeedexUi.BodyAddFeedComponent do
 
   alias FeedexCore.Ctx.Account
   alias FeedexCore.Ctx.Account.Folder 
-  alias FeedexCore.Ctx.Account.Register
-  alias FeedexCore.Ctx.News.Feed
+  # alias FeedexCore.Ctx.Account.Register
+  # alias FeedexCore.Ctx.News.Feed
   alias FeedexCore.Repo
 
   import Phoenix.HTML.Form
@@ -76,8 +76,6 @@ defmodule FeedexUi.BodyAddFeedComponent do
     |> Enum.map(fn(el) -> {el.name, el.id} end)
   end
 
-  # ----- data helpers -----
-  
   # ----- event handlers -----
 
   @impl true
@@ -104,7 +102,9 @@ defmodule FeedexUi.BodyAddFeedComponent do
     reg_name  = payload["reg_feed"]["name"]
     feed_url  = payload["reg_feed"]["url"]
     folder_id = payload["reg_feed"]["folder_id"] |> String.to_integer()
-    _reg = FeedexCore.Api.SubTree.import_register(folder_id, reg_name, feed_url)
+    reg = FeedexCore.Api.SubTree.import_register(folder_id, reg_name, feed_url)
+    send(self(), {"new_feed", %{reg_id: reg.id}})
+
     {:noreply, socket}
   end
 

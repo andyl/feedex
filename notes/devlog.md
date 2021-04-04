@@ -503,20 +503,21 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Fix "delete folder"
 - [x] Deploy to staging
 - [x] Update feeds
+- [x] Add-folder needs to refresh display
+- [x] Add-feed needs to refresh display
+
+- [ ] Enable recycle button
+- [ ] Edit folder stopwords
+- [ ] Need to import/export stopwords
 
 - [ ] Fix telemetry (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
 - [ ] Change favicon to purple
 - [ ] Deploy on privhost
 
-- [ ] Add-feed needs to refresh display
-- [ ] Add-folder needs to refresh display
-- [ ] Edit folder stopwords
-- [ ] Enable recycle button
-- [ ] Need to import/export stopwords
-
 ## TBD
 
 - [ ] Add bamboo 2.0
+- [ ] Add trackers
 - [ ] Deploy on pubhost
 
 - [ ] Minimize CSS in production (PurgeCSS)

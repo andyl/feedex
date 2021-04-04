@@ -70,13 +70,9 @@ defmodule FeedexUi.BodyAddFolderComponent do
   def handle_event("save", payload, socket) do
     userid = socket.assigns.uistate.usr_id
     name = payload["folder"]["name"]
-    Api.Folder.find_or_create_folder(userid, name)
+    folder = Api.Folder.find_or_create_folder(userid, name)
 
-    new_state =
-      socket.assigns.uistate
-      |> Map.merge(%{mode: "view", fld_id: nil, reg_id: nil})
-
-    send(self(), "mod_tree")
-    {:noreply, assign(socket, %{uistate: new_state})}
+    send(self(), {"new_folder", %{fld_id: folder.id}})
+    {:noreply, socket}
   end
 end

@@ -25,7 +25,7 @@ defmodule FeedexUi.MixProject do
   def application do
     [
       mod: {FeedexUi.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :os_mon]
     ]
   end
 
@@ -47,6 +47,7 @@ defmodule FeedexUi.MixProject do
       {:phoenix_live_dashboard, "~> 0.4"},
       {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
       {:telemetry_metrics, "~> 0.4"},
+      {:ecto_psql_extras, "~> 0.2"},
       {:phx_tailwind_generators, "~> 0.1.6"},
       {:feedex_core, in_umbrella: true},
       {:feedex_job, in_umbrella: true},

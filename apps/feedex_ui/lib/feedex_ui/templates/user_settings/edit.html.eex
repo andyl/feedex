@@ -1,7 +1,8 @@
 <h1 class="py-4 text-xl font-bold">Settings</h1>
 
 <div>
-  <a href="/users/settings/subs" class="bluelink">Subscriptions</a>
+  <a href="/users/settings/subs">Subscriptions</a> | 
+  <a href="/dashboard" target="_blank">Dashboard</a>
 </div>
 
 <h3 class="py-3 font-bold">Change email</h3>

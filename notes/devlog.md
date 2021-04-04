@@ -507,7 +507,9 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Add-feed needs to refresh display
 - [x] Enable refresh button
 - [x] Edit folder stopwords
-- [ ] Update dependencies
+- [x] Update dependencies
+- [x] Settings link to dashboard page
+
 - [ ] Enable all dashboard options
 
 ## TBD

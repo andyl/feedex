@@ -14,7 +14,6 @@ defmodule Feedex.Umbrella.MixProject do
   def application do
     [
       extra_applications: [:mix_test_interactive]
-      # extra_applications: []
     ]
   end
 

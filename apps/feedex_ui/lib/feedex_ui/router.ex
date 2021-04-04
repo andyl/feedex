@@ -49,7 +49,7 @@ defmodule FeedexUi.Router do
 
     scope "/" do
       pipe_through :browser
-      live_dashboard "/dashboard", metrics: FeedexUi.Telemetry
+      live_dashboard "/dashboard", metrics: FeedexUi.Telemetry, ecto_repos: [FeedexCore.Repo]
     end
   end
 

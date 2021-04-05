@@ -48,7 +48,9 @@ defmodule FeedexCore.MixProject do
       {:jason, "~> 1.0"},
       # ----- metrics
       {:telemetry, "~> 0.4"},
-      {:telemetry_poller, "~> 0.5"}
+      {:telemetry_poller, "~> 0.5"}, 
+      # ----- tsdb
+      {:feedex_tsdb, in_umbrella: true}
     ]
   end
 

@@ -10,8 +10,6 @@ defmodule FeedexUi.BodyComponent do
 
   use Phoenix.LiveComponent
 
-  # import FeedexUi.IconHelpers
-
   alias FeedexUi.{BodyAddFeedComponent, BodyAddFolderComponent}
   alias FeedexUi.{BodyEditFeedComponent, BodyEditFolderComponent}
   alias FeedexUi.{BodyViewComponent}
@@ -27,13 +25,16 @@ defmodule FeedexUi.BodyComponent do
   # ----- view helpers -----
   
   def render_body(socket, counts, uistate) do
-    case uistate.mode do
-      "view"        -> live_component(socket, BodyViewComponent,       opts(counts, uistate, "view"))
-      "add_feed"    -> live_component(socket, BodyAddFeedComponent,    opts(counts, uistate, "afee"))
-      "add_folder"  -> live_component(socket, BodyAddFolderComponent,  opts(counts, uistate, "afol"))
-      "edit_feed"   -> live_component(socket, BodyEditFeedComponent,   opts(counts, uistate, "efee"))
-      "edit_folder" -> live_component(socket, BodyEditFolderComponent, opts(counts, uistate, "efol"))
-      _             -> live_component(socket, BodyViewComponent,       opts(counts, uistate, "view"))
+    # without this if-statement, there is a compiler warning: `socket` variable is not used. Hmm...
+    if socket do
+      case uistate.mode do
+        "view"        -> live_component(socket, BodyViewComponent,       opts(counts, uistate, "view"))
+        "add_feed"    -> live_component(socket, BodyAddFeedComponent,    opts(counts, uistate, "afee"))
+        "add_folder"  -> live_component(socket, BodyAddFolderComponent,  opts(counts, uistate, "afol"))
+        "edit_feed"   -> live_component(socket, BodyEditFeedComponent,   opts(counts, uistate, "efee"))
+        "edit_folder" -> live_component(socket, BodyEditFolderComponent, opts(counts, uistate, "efol"))
+        _             -> live_component(socket, BodyViewComponent,       opts(counts, uistate, "view"))
+      end
     end
   end
 

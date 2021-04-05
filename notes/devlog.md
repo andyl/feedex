@@ -512,21 +512,39 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Enable all dashboard options
 - [x] Enable dashboard for production
 
+## 2021 Apr 04 Sun
+
+- [x] Telemetry: Get polling writers working (influx)
+- [x] Get rid of compiler warnings
+
+- [ ] Telemetry: Enable built-in telemetry (ecto)
+- [ ] Telemetry: Enable built-in telemetry (system)
+- [ ] Telemetry: Enable built-in telemetry (phoenix)
+- [ ] Telemetry: Enable built-in telemetry (tesla)
+
+- [ ] Telemetry: Get grafana displays working
+
 ## TBD
 
-- [ ] Add telemetry to dashboard
-- [ ] Add telemetry to influx (https://claudio-ortolina.org/posts/tips-for-finch-and-telemetry/)
-- [ ] Get grafana stats working
-- [ ] Try influx2 again...
+- [ ] Telemetry: Clean up current metrics writers
+- [ ] Telemetry: Study Elixir Metrics Infrastructure
+- [ ] Telemetry: Get InfluxReporter V1 working
+- [ ] Telemetry: Get InfluxReporter V2 working
+- [ ] Telemetry: Get PromEx working
 
 - [ ] Change favicon to purple
 - [ ] Deploy on privhost
+
+- [ ] Get rid of Timex
+- [ ] Get rid of Distillery
 
 - [ ] Update tests
 - [ ] Add bamboo 2.0
 - [ ] Add trackers
 - [ ] Deploy on pubhost
 
+- [ ] Try influx2 again...
+- [ ] Add telemetry to dashboard
 - [ ] Protect dashboard for admins
 - [ ] Admin-Select Dashboard link on Settings page
 

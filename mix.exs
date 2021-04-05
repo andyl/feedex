@@ -25,7 +25,6 @@ defmodule Feedex.Umbrella.MixProject do
       {:scribe, "~> 0.10", only: :dev, runtime: false},
       {:mix_test_interactive, "~> 1.0", only: :dev, runtime: false},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
-      {:benchee, "~> 1.0", only: :dev, runtime: false},
       # ----- release
       {:distillery, "~> 2.1", warn_missing: false}
     ]

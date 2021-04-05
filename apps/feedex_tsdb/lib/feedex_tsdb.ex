@@ -1,18 +1,27 @@
 defmodule FeedexTsdb do
 
-  def write_point(measurement, vals, tags) do
-    tagstr = Enum.map(tags, fn({k,v}) -> "#{k}=#{v}" end) |> Enum.join(",")
-    valstr = Enum.map(vals, fn({k,v}) -> "#{k}=#{v}" end) |> Enum.join(",")
-    "#{measurement},#{tagstr} #{valstr}"
+  @moduledoc """
+  TSDB Api
+  """
+
+  @doc """
+  Writes a point to the TSDB
+
+  example:
+      write_point("post_count", %{total: 2343, unread: 222}, %{host: "myhost"})
+
+  """
+  def write_point(measurement, flds, tags) do
+    tagstr = Enum.map(tags, fn({k, v}) -> "#{k}=#{v}" end) |> Enum.join(",")
+    fldstr = Enum.map(flds, fn({k, v}) -> "#{k}=#{v}" end) |> Enum.join(",")
+    "#{measurement},#{tagstr} #{fldstr}"
     |> send()
   end
 
   # async send, fire and forget
-  def send(body) do
-    db  = Application.get_env(:feedex_core, FeedexCore.Influx)[:database]
-    url = "localhost:8086/write?db=#{db}&time_precision=s"
-    opt = [body: body, basic_auth: {"admin", "admin"}]
-    Task.start(fn -> FcTesla.fc_post(url, opt) end)
+  def send(line) do
+    db = Application.get_env(:feedex_tsdb, FeedexTsdb)[:database]
+    Task.start(fn -> FcTesla.influx_post(db, line) end)
   end
 
 end

@@ -3,22 +3,12 @@ defmodule FcTesla do
   Documentation for `FcTesla`.
   """
 
-  use Tesla
-
-  plug Tesla.Middleware.FollowRedirects
-
-  def fc_post(url, opt \\ []) do
-    case post(url, opt) do
-      {:ok, response} -> response
-      error -> error
-    end
+  def influx_post(db, line) do
+    FcTesla.InfluxV1.influx_post(db, line)
   end
 
   def fc_get(url, opt \\ []) do
-    case get(url, opt) do
-      {:ok, response} -> response
-      error -> error
-    end
+    FcTesla.Base.get(url, opt)
   end
 
   def fc_success?(%Tesla.Env{status: code}) do

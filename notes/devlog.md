@@ -521,16 +521,20 @@ Goal: reduce the number of database queries in the life-cycle
 - [ ] Telemetry: Enable built-in telemetry (system)
 - [ ] Telemetry: Enable built-in telemetry (phoenix)
 - [ ] Telemetry: Enable built-in telemetry (tesla)
+- [ ] Telemetry: Enable built-in telemetry (liveview)
 
 - [ ] Telemetry: Get grafana displays working
 
 ## TBD
 
+- [ ] Telemetry: Convert the polling writer to a telemetry generator
 - [ ] Telemetry: Clean up current metrics writers
 - [ ] Telemetry: Study Elixir Metrics Infrastructure
 - [ ] Telemetry: Get InfluxReporter V1 working
 - [ ] Telemetry: Get InfluxReporter V2 working
 - [ ] Telemetry: Get PromEx working
+- [ ] Telemetry: Number of logged-in users
+- [ ] Telemetry: Number of active sessions
 
 - [ ] Change favicon to purple
 - [ ] Deploy on privhost

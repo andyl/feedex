@@ -517,6 +517,10 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Telemetry: Get polling writers working (influx)
 - [x] Get rid of compiler warnings
 
+## 2021 Apr 05 Mon
+
+- [ ] create `jobex_telemetry` app
+
 - [ ] Telemetry: Enable built-in telemetry (ecto)
 - [ ] Telemetry: Enable built-in telemetry (system)
 - [ ] Telemetry: Enable built-in telemetry (phoenix)

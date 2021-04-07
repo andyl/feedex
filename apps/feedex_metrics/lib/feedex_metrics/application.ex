@@ -8,6 +8,7 @@ defmodule FeedexMetrics.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      FeedexMetrics.Telemetry
       # Starts a worker by calling: FeedexMetrics.Worker.start_link(arg)
       # {FeedexMetrics.Worker, arg}
     ]

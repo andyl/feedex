@@ -1,4 +1,4 @@
-defmodule FeedexMetrics.Telemetry do
+defmodule FeedexUi.Telemetry do
 
   @moduledoc """
   Telemetry for Feedex applications.
@@ -15,7 +15,21 @@ defmodule FeedexMetrics.Telemetry do
   def init(_arg) do
     children = [
       {:telemetry_poller, measurements: periodic_measurements(), period: 60_000},
-      {Telemetry.Metrics.ConsoleReporter, metrics: metrics()}
+      {Telemetry.Metrics.ConsoleReporter, metrics: metrics()},
+      {TelemetryInfluxDB, [
+        events: [
+          %{name: [:feedex_core, :post_count]},
+          %{name: [:phoenix, :endpoint, :stop, :duration]},
+          %{name: [:vm, :memory, :total]}
+        ],
+        protocol: :http,
+        host: "localhost",
+        port: 8086,
+        db: "inf_feedex_dev",
+        username: "admin", 
+        password: "admin"
+        ]
+      }
     ]
 
     Supervisor.init(children, strategy: :one_for_one)
@@ -33,11 +47,11 @@ defmodule FeedexMetrics.Telemetry do
       ),
 
       # Database Metrics
-      summary("feedex_core.repo.query.total_time", unit: {:native, :millisecond}),
-      summary("feedex_core.repo.query.decode_time", unit: {:native, :millisecond}),
-      summary("feedex_core.repo.query.query_time", unit: {:native, :millisecond}),
-      summary("feedex_core.repo.query.queue_time", unit: {:native, :millisecond}),
-      summary("feedex_core.repo.query.idle_time", unit: {:native, :millisecond}),
+      summary("feedex_ui.repo.query.total_time", unit: {:native, :millisecond}),
+      summary("feedex_ui.repo.query.decode_time", unit: {:native, :millisecond}),
+      summary("feedex_ui.repo.query.query_time", unit: {:native, :millisecond}),
+      summary("feedex_ui.repo.query.queue_time", unit: {:native, :millisecond}),
+      summary("feedex_ui.repo.query.idle_time", unit: {:native, :millisecond}),
 
       # VM Metrics
       summary("vm.memory.total", unit: {:byte, :kilobyte}),

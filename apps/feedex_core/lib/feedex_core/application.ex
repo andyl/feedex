@@ -11,7 +11,7 @@ defmodule FeedexCore.Application do
     current_env = Application.get_env(:feedex_core, :environment)
     if current_env != :test do
       # FeedexCore.Metrics.InspectHandler.setup()
-      FeedexCore.Metrics.InfluxHandler.setup()
+      # FeedexCore.Metrics.InfluxHandler.setup()
     end
 
     Supervisor.start_link(children, strategy: :one_for_one, name: FeedexCore.Supervisor)

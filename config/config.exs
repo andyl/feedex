@@ -46,7 +46,7 @@ config :feedex_job, FeedexJob.Scheduler,
     # {"@daily",         {Backup, :backup, []}}
     # {"* * * * *",      {IO, :puts, ["CRON JOB"]}}
     # {"* * * * *",        {FeedexCore.Metrics.AppPoller, :post_counts, []}},
-    {"*/3 * * * *",      {FeedexJob, :sync_next, []}}
+    # {"*/3 * * * *",      {FeedexJob, :sync_next, []}}
   ]
 
 # ----- Testing

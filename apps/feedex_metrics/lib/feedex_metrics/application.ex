@@ -9,8 +9,6 @@ defmodule FeedexMetrics.Application do
   def start(_type, _args) do
     children = [
       FeedexMetrics.Telemetry
-      # Starts a worker by calling: FeedexMetrics.Worker.start_link(arg)
-      # {FeedexMetrics.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

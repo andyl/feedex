@@ -33,7 +33,7 @@ defmodule FeedexUi.SubTreeLive do
       </form>
 
       <div class="mt-10">
-        <%= IO.inspect(@result) %>
+        <%# IO.inspect(@result) %>
       </div>
     </div>
     """

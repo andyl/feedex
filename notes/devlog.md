@@ -519,29 +519,29 @@ Goal: reduce the number of database queries in the life-cycle
 
 ## 2021 Apr 05 Mon
 
-- [ ] create `jobex_telemetry` app
+- [x] create `jobex_telemetry` app
 
-- [ ] Telemetry: Enable built-in telemetry (ecto)
-- [ ] Telemetry: Enable built-in telemetry (system)
-- [ ] Telemetry: Enable built-in telemetry (phoenix)
-- [ ] Telemetry: Enable built-in telemetry (tesla)
-- [ ] Telemetry: Enable built-in telemetry (liveview)
+## 2021 Apr 08 Thu
 
-- [ ] Telemetry: Get grafana displays working
+- [x] Telemetry: Enable built-in telemetry (ecto)
+- [x] Telemetry: Enable built-in telemetry (system)
+- [x] Telemetry: Enable built-in telemetry (phoenix)
+- [x] Telemetry: Enable built-in telemetry (tesla)
+- [x] Telemetry: Enable built-in telemetry (liveview)
+- [x] Telemetry: Study Elixir Metrics Infrastructure
+- [x] Telemetry: Convert the polling writer to a telemetry generator
+- [x] Telemetry: Clean up current metrics writers
 
 ## TBD
 
-- [ ] Telemetry: Convert the polling writer to a telemetry generator
-- [ ] Telemetry: Clean up current metrics writers
-- [ ] Telemetry: Study Elixir Metrics Infrastructure
-- [ ] Telemetry: Get InfluxReporter V1 working
-- [ ] Telemetry: Get InfluxReporter V2 working
-- [ ] Telemetry: Get PromEx working
-- [ ] Telemetry: Number of logged-in users
-- [ ] Telemetry: Number of active sessions
+- [ ] Telemetry: Get grafana displays working
 
 - [ ] Change favicon to purple
 - [ ] Deploy on privhost
+
+- [ ] Telemetry: Get PromEx working
+- [ ] Telemetry: Number of logged-in users
+- [ ] Telemetry: Number of active sessions
 
 - [ ] Get rid of Timex
 - [ ] Get rid of Distillery

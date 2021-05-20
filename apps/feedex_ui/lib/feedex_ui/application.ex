@@ -7,8 +7,6 @@ defmodule FeedexUi.Application do
 
   def start(_type, _args) do
     children = [
-      # Start the Telemetry supervisor
-      FeedexUi.Telemetry,
       {Phoenix.PubSub, name: FeedexUi.PubSub},
       # Start the Endpoint (http/https)
       FeedexUi.Endpoint

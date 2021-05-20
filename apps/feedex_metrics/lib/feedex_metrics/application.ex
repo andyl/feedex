@@ -8,7 +8,7 @@ defmodule FeedexMetrics.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      FeedexMetrics.Telemetry
+      # FeedexMetrics.Telemetry
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -6,6 +6,8 @@ defmodule FeedexUi.NewsLive do
   use FeedexUi, :live_view
   alias FeedexUi.Cache.UiState
 
+  require Logger
+
   # ----- lifecycle callbacks -----
 
   @impl true
@@ -264,9 +266,11 @@ defmodule FeedexUi.NewsLive do
   end
 
   @impl true
-  def handle_info(%{topic: "new_posts", event: "SYNC_FEED"}, socket) do
+  def handle_info("SYNC_FEED", socket) do
 
     user = socket.assigns.current_user
+
+    Logger.info("RECEIVED SYNC_FEED")
 
     treemap = FeedexCore.Api.SubTree.cleantree(user.id)
 

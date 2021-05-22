@@ -532,6 +532,10 @@ Goal: reduce the number of database queries in the life-cycle
 - [x] Telemetry: Convert the polling writer to a telemetry generator
 - [x] Telemetry: Clean up current metrics writers
 
+## 2021 May 20 Thu
+
+- [x] Upgrade to Elixir 1.12-otp24
+
 ## TBD
 
 - [ ] Telemetry: Get grafana displays working

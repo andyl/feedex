@@ -8,7 +8,10 @@ defmodule FcTesla do
   end
 
   def fc_get(url, opt \\ []) do
-    FcTesla.Base.get(url, opt)
+    case FcTesla.Base.get(url, opt) do
+      {:ok, resp} -> resp
+      alt -> alt
+    end
   end
 
   def fc_success?(%Tesla.Env{status: code}) do

@@ -49,6 +49,7 @@ defmodule FeedexUi.MixProject do
       {:telemetry_metrics, "~> 0.4"},
       {:ecto_psql_extras, "~> 0.2"},
       {:phx_tailwind_generators, "~> 0.1.6"},
+      {:feedex, in_umbrella: true},
       {:feedex_core, in_umbrella: true},
       {:feedex_job, in_umbrella: true},
       {:surface, "~> 0.2"},

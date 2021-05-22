@@ -19,9 +19,9 @@ defmodule FeedexJob do
   def safe_sync(feed) do
     delta = Timex.diff(Timex.now(), feed.updated_at, :minutes)
     if delta > 5 || feed.sync_count == 0 do
-      sync(feed)
-      FeedexUi.Endpoint.broadcast_from(self(), "new_posts", "SYNC_FEED", %{})
-      IO.puts "BROADCASTING NEW POST"
+      status = sync(feed)
+      Phoenix.PubSub.broadcast_from(Feedex.PubSub, self(), "new_posts", "SYNC_FEED")
+      Logger.info "BROADCASTING SYNC_FEED (status: #{status})"
     else
       Logger.info "----- FEED SYNC SKIPPED ------------------"
       Logger.info "  FEED ID: #{feed.id}"

@@ -31,7 +31,7 @@ config :feedex_ui, FeedexUi.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "0J0y7WjjZbElQAjZnF8qFVV/4Cr21mwLWslASkMj/p5XyvRBWeNDlwKEVakFP8Ra",
   render_errors: [view: FeedexUi.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: FeedexUi.PubSub,
+  pubsub_server: Feedex.PubSub,
   live_view: [signing_salt: "UPuxN9Ta"]
 
 # ----- FeedexJob
@@ -46,7 +46,7 @@ config :feedex_job, FeedexJob.Scheduler,
     # {"@daily",         {Backup, :backup, []}}
     # {"* * * * *",      {IO, :puts, ["CRON JOB"]}}
     # {"* * * * *",        {FeedexCore.Metrics.AppPoller, :post_counts, []}},
-    # {"*/3 * * * *",      {FeedexJob, :sync_next, []}}
+    {"*/2 * * * *",      {FeedexJob, :sync_next, []}}
   ]
 
 # ----- Testing

@@ -543,8 +543,12 @@ Goal: reduce the number of database queries in the life-cycle
 
 ## TBD
 
-- [ ] Deploy on staging
+- [x] Deploy on staging
+- [x] Change to purple favicon
+- [x] Change from FeedexUi to Feedex
 - [ ] Merge to master
+- [ ] Update staging
+- [ ] Upgrade privhost to 1.12
 - [ ] Deploy on privhost
 - [ ] Shut down staging
 

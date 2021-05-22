@@ -4,12 +4,12 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" href="/images/rss-4-32.ico" sizes="32x32">
     <!--
-      <link rel="icon" href="/images/rss-4-32.ico" sizes="32x32">
+      <link rel="icon" href="/images/orange-rss-32.ico" sizes="32x32">
     -->
-    <link rel="icon" href="/images/orange-rss-32.ico" sizes="32x32">
     <%= csrf_meta_tag() %>
-    <%= live_title_tag assigns[:page_title] || "FeedexUi" %>
+    <%= live_title_tag assigns[:page_title] || "Feedex" %>
     <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand-md navbar-dark" style="padding: 3px; background-color: black;">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
-          <img src="/images/rss-4-32.png" alt="Home"> FeedexUi
+          <img src="/images/rss-4-32.png" alt="Home"> Feedex
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navData">

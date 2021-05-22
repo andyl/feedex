@@ -50,9 +50,9 @@ release :feedex do
   set version: "0.1.0"
   set applications: [
     :runtime_tools,
-    feedex_client: :permanent,
-    feedex_data: :permanent,
-    feedex_web: :permanent
+    # feedex_client: :permanent,
+    feedex_core: :permanent,
+    feedex_ui: :permanent
   ]
 end
 

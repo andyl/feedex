@@ -12,11 +12,26 @@ Simple RSS Aggregator
 - SystemD
 - Postgres (user/pass = postgres/postgres)
 
+## Installing Development
+
+To start your Phoenix server:
+
+  * Setup the project with `mix setup`
+  * Start Phoenix endpoint with `mix phx.server`
+
+Now you can visit [`localhost:4070`](http://localhost:4070) from your browser.
+
+## Running Tests
+
+    > MIX_ENV=test mix do compile, ecto.create, ecto.migrate
+    > mix test
+    > mix test.watch
+
 ## Installing Production
 
 - Clone the repo
 - Install assets
-    > cd apps/badger_web/assets
+    > cd apps/feedex_ui/assets
     > npm install
     > npm run deploy
     > cd ../../..

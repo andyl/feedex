@@ -10,7 +10,7 @@ defmodule FeedexJob.Application do
       FeedexJob.Scheduler
     ]
 
-
-    Supervisor.start_link(children, strategy: :one_for_one, name: FeedexJob.Supervisor)
+    opts = [strategy: :one_for_one, name: FeedexJob.Supervisor]
+    Supervisor.start_link(children, opts)
   end
 end

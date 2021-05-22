@@ -1,0 +1,124 @@
+{
+    "DSML": [
+        {
+            "feed_name": "AmzSci",
+            "feed_url": "https://www.amazon.science/index.rss"
+        },
+        {
+            "feed_name": "AwsML",
+            "feed_url": "https://aws.amazon.com/blogs/machine-learning/feed/"
+        },
+        {
+            "feed_name": "Bair",
+            "feed_url": "https://bair.berkeley.edu/blog/feed.xml"
+        },
+        {
+            "feed_name": "CmuML",
+            "feed_url": "https://blog.ml.cmu.edu/feed/"
+        },
+        {
+            "feed_name": "EyeOnAI",
+            "feed_url": "https://aneyeonai.libsyn.com/rss"
+        },
+        {
+            "feed_name": "GoogAI",
+            "feed_url": "https://feeds.feedburner.com/blogspot/gJZg"
+        },
+        {
+            "feed_name": "MitAI",
+            "feed_url": "https://news.mit.edu/topic/mitmachine-learning-rss.xml"
+        },
+        {
+            "feed_name": "MLTheory",
+            "feed_url": "https://feeds2.feedburner.com/MachineLearningtheory"
+        }
+    ],
+    "News": [
+        {
+            "feed_name": "Vox",
+            "feed_url": "http://voxday.blogspot.com/feeds/posts/default"
+        },
+        {
+            "feed_name": "Zman",
+            "feed_url": "https://thezman.com/wordpress/?feed=rss2"
+        }
+    ],
+    "Tech": [
+        {
+            "feed_name": "AlpineJS",
+            "feed_url": "https://buttondown.email/alpinejs/rss"
+        },
+        {
+            "feed_name": "PragStudio",
+            "feed_url": "https://buttondown.email/alpinejs/rss"
+        }
+    ],
+    "TechNews": [
+        {
+            "feed_name": "MitReview",
+            "feed_url": "https://www.technologyreview.com/topnews.rss"
+        },
+        {
+            "feed_name": "TechCrunch",
+            "feed_url": "http://feeds.feedburner.com/TechCrunch"
+        },
+        {
+            "feed_name": "TechMeme",
+            "feed_url": "http://www.techmeme.com/feed.xml"
+        }
+    ],
+    "Xlang": [
+        {
+            "feed_name": "Amberbit",
+            "feed_url": "https://www.amberbit.com/blog.rss"
+        },
+        {
+            "feed_name": "Dashbit",
+            "feed_url": "https://dashbit.co/feed"
+        },
+        {
+            "feed_name": "ExForum",
+            "feed_url": "https://elixirforum.com/posts.rss"
+        },
+        {
+            "feed_name": "ExSchool",
+            "feed_url": "https://elixirschool.com/feed.xml"
+        },
+        {
+            "feed_name": "RIP",
+            "feed_url": "https://runninginproduction.com/podcast/feed.xml"
+        }
+    ],
+    "Xmeyers": [
+        {
+            "feed_name": "Caltrans9",
+            "feed_url": "https://rsshub.app/twitter/user/Caltrans9"
+        },
+        {
+            "feed_name": "NWSReno",
+            "feed_url": "https://rsshub.app/twitter/user/NWSReno"
+        },
+        {
+            "feed_name": "US50chains",
+            "feed_url": "https://rsshub.app/twitter/user/US50chains"
+        }
+    ],
+    "YouTube": [
+        {
+            "feed_name": "CodeSync",
+            "feed_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC47eUBNO8KBH_V8AfowOWOw"
+        },
+        {
+            "feed_name": "ElixirConf",
+            "feed_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC0l2QTnO1P2iph-86HHilMQ"
+        },
+        {
+            "feed_name": "Empex",
+            "feed_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCIYiFWyuEytDzyju6uXW40Q"
+        },
+        {
+            "feed_name": "Plangora",
+            "feed_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCiTNXma-lzM6XjhgPQzKREg"
+        }
+    ]
+}

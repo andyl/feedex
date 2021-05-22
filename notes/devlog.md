@@ -536,12 +536,19 @@ Goal: reduce the number of database queries in the life-cycle
 
 - [x] Upgrade to Elixir 1.12-otp24
 
+## 2021 May 21 Fri
+
+- [x] Fix Tesla RSS Client
+- [x] Move PubSub to apps/feedex
+
 ## TBD
 
-- [ ] Telemetry: Get grafana displays working
-
-- [ ] Change favicon to purple
+- [ ] Deploy on staging
+- [ ] Merge to master
 - [ ] Deploy on privhost
+- [ ] Shut down staging
+
+- [ ] Telemetry: Get grafana displays working
 
 - [ ] Telemetry: Get PromEx working
 - [ ] Telemetry: Number of logged-in users

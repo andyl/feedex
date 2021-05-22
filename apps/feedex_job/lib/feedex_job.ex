@@ -21,7 +21,7 @@ defmodule FeedexJob do
     if delta > 5 || feed.sync_count == 0 do
       status = sync(feed)
       Phoenix.PubSub.broadcast_from(Feedex.PubSub, self(), "new_posts", "SYNC_FEED")
-      Logger.info "BROADCASTING SYNC_FEED (status: #{status})"
+      Logger.info "BROADCAST SYNC_FEED (status: #{status})"
     else
       Logger.info "----- FEED SYNC SKIPPED ------------------"
       Logger.info "  FEED ID: #{feed.id}"

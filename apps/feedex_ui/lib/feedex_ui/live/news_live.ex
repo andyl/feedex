@@ -270,7 +270,7 @@ defmodule FeedexUi.NewsLive do
 
     user = socket.assigns.current_user
 
-    Logger.info("RECEIVED SYNC_FEED")
+    Logger.info("RECEIVE SYNC_FEED")
 
     treemap = FeedexCore.Api.SubTree.cleantree(user.id)
 

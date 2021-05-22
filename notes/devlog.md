@@ -540,17 +540,22 @@ Goal: reduce the number of database queries in the life-cycle
 
 - [x] Fix Tesla RSS Client
 - [x] Move PubSub to apps/feedex
-
-## TBD
-
 - [x] Deploy on staging
 - [x] Change to purple favicon
 - [x] Change from FeedexUi to Feedex
-- [ ] Merge to master
-- [ ] Update staging
-- [ ] Upgrade privhost to 1.12
-- [ ] Deploy on privhost
-- [ ] Shut down staging
+- [x] Merge to master
+- [x] Update staging
+- [x] Upgrade pubhost to 1.12
+
+## 2021 May 22 Sat
+
+- [x] Deploy on pubhost
+- [x] Shut down staging
+
+## TBD
+
+- [ ] Setup DNS, ssl, reverse-proxy on chap
+- [ ] Test with travel router and phone
 
 - [ ] Telemetry: Get grafana displays working
 

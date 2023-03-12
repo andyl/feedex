@@ -12,6 +12,7 @@ Simple RSS Aggregator
 - SystemD
 - Postgres (user/pass = postgres/postgres)
 - Phoenix ~> 1.7
+- Latest LiveView
 
 ## Installing Development
 

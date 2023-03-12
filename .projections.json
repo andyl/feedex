@@ -1,0 +1,66 @@
+{
+  "apps/fc_http/lib/*.ex": {
+    "alternate": "apps/fc_http/test/{}_test.exs",
+    "type": "src"
+  },
+  "apps/fc_http/test/*_test.exs": {
+    "alternate": "apps/fc_http/lib/{}.ex",
+    "type": "src"
+  },
+  "apps/fc_rss/lib/*.ex": {
+    "alternate": "apps/fc_rss/test/{}_test.exs",
+    "type": "src"
+  },
+  "apps/fc_rss/test/*_test.exs": {
+    "alternate": "apps/fc_rss/lib/{}.ex",
+    "type": "src"
+  },
+  "apps/feedex/lib/*.ex": {
+    "alternate": "apps/feedex/test/{}_test.exs",
+    "type": "src"
+  },
+  "apps/feedex/test/*_test.exs": {
+    "alternate": "apps/feedex/lib/{}.ex",
+    "type": "src"
+  },
+  "apps/feedex_data/lib/*.ex": {
+    "alternate": "apps/feedex_data/test/{}_test.exs",
+    "type": "src"
+  },
+  "apps/feedex_data/test/*_test.exs": {
+    "alternate": "apps/feedex_data/lib/{}.ex",
+    "type": "src"
+  },
+  "apps/feedex_job/lib/*.ex": {
+    "alternate": "apps/feedex_job/test/{}_test.exs",
+    "type": "src"
+  },
+  "apps/feedex_job/test/*_test.exs": {
+    "alternate": "apps/feedex_job/lib/{}.ex",
+    "type": "src"
+  },
+  "apps/feedex_tsdb/lib/*.ex": {
+    "alternate": "apps/feedex_tsdb/test/{}_test.exs",
+    "type": "src"
+  },
+  "apps/feedex_tsdb/test/*_test.exs": {
+    "alternate": "apps/feedex_tsdb/lib/{}.ex",
+    "type": "src"
+  },
+  "apps/feedex_ui/lib/*.ex": {
+    "alternate": "apps/feedex_ui/test/{}_test.exs",
+    "type": "src"
+  },
+  "apps/feedex_ui/test/*_test.exs": {
+    "alternate": "apps/feedex_ui/lib/{}.ex",
+    "type": "src"
+  },
+  "apps/feedex_web/lib/*.ex": {
+    "alternate": "apps/feedex_web/test/{}_test.exs",
+    "type": "src"
+  },
+  "apps/feedex_web/test/*_test.exs": {
+    "alternate": "apps/feedex_web/lib/{}.ex",
+    "type": "src"
+  }
+}

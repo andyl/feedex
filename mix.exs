@@ -13,7 +13,7 @@ defmodule Feedex.MixProject do
 
       # Docs
       name: "Feedex",
-      source_url: "https://github.com/andyl/feedex/feedex",
+      source_url: "https://github.com/andyl/feedex",
       homepage_url: "http://TBD",
       docs: [
         main: "Feedex",

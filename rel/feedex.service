@@ -1,0 +1,20 @@
+[Unit]
+Description=Feedex
+After=network.target
+
+[Service]
+Type=simple
+User=aleak
+Group=aleak
+WorkingDirectory=/home/aleak
+ExecStart=/bin/bash --login -c 'source /home/aleak/.bashrc; cd /home/aleak; PHX_SERVER=true /home/aleak/src/feedex/_build/dev/rel/feedex/bin/feedex start'
+Restart=on-failure
+RestartSec=5
+Environment=PORT=4010
+Environment=LANG=en_US.UTF-8
+SyslogIdentifier=feedex
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target
+

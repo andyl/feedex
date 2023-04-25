@@ -3,10 +3,10 @@
 ## Roadmap 
 
 Schemas and Forms 
-- [ ] Watch prag studio videos 
 - [ ] Use `sch` and `ctx` structure for data access components 
 - [ ] Update forms 
 - [ ] Update `core_components`(?)
+- [ ] Add tests 
 
 Long Term Fixes 
 - [ ] Learn tailwind very well 
@@ -771,5 +771,12 @@ Conversion Cleanup
 - [x] rename feedx to feedex 
 - [x] remove archive 
 - [x] remove feedex repository 
+
+## 2023 Apr 24 Mon
+
+- [x] Watch prag studio videos 
+- [x] Fix news page when not logged in 
+- [x] Get LSP working 
+- [x] Get src/tst nav working 
 
 ## Next Steps 

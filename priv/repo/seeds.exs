@@ -18,7 +18,7 @@ Repo.insert(%User{
   hashed_password: User.pwd_hash("123456789012"),
   folders: [
     %Folder{
-      name: "ZxExKillme",
+      name: "SeedElixir",
       registers: [
         %Register{
           name: "Plataformatec",
@@ -30,23 +30,40 @@ Repo.insert(%User{
         },
       ]
     },
-    # %Folder{
-    #   name: "ZxYouTube",
-    #   registers: [
-    #     %Register{
-    #       name: "Empex",
-    #       feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCIYiFWyuEytDzyju6uXW40Q"}
-    #     },
-    #     %Register{
-    #       name: "ElixirConf",
-    #       feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC0l2QTnO1P2iph-86HHilMQ"}
-    #     },
-    #     %Register{
-    #       name: "CodeSync",
-    #       feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC47eUBNO8KBH_V8AfowOWOw"}
-    #     }
-    #   ]
-    # }
+     %Folder{
+      name: "SeedTech",
+      registers: [
+        %Register{
+          name: "TechMeme",
+          feed: %Feed{url: "http://www.techmeme.com/feed.xml"}
+        },
+        %Register{
+          name: "TechCrunch",
+          feed: %Feed{url: "http://feeds.feedburner.com/TechCrunch"}
+        },
+        %Register{
+          name: "MitReview",
+          feed: %Feed{url: "https://www.technologyreview.com/topnews.rss"}
+        },
+      ]
+    },
+    %Folder{
+      name: "SeedYouTube",
+      registers: [
+        %Register{
+          name: "Empex",
+          feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCIYiFWyuEytDzyju6uXW40Q"}
+        },
+        %Register{
+          name: "ElixirConf",
+          feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC0l2QTnO1P2iph-86HHilMQ"}
+        },
+        %Register{
+          name: "CodeSync",
+          feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC47eUBNO8KBH_V8AfowOWOw"}
+        }
+      ]
+    }
   ]
   }
 )

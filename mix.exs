@@ -51,7 +51,7 @@ defmodule Feedex.MixProject do
       {:plug_cowboy, "~> 2.0"},
       # Web UI
       {:swoosh,                 "~> 1.3"},
-      {:phoenix,                "~> 1.7.0"},
+      {:phoenix,                "~> 1.7"},
       {:phoenix_ecto,           "~> 4.4"},
       {:phoenix_live_dashboard, "~> 0.7"},
       {:phoenix_html,           "~> 3.0"},
@@ -60,7 +60,7 @@ defmodule Feedex.MixProject do
       {:heroicons,              "~> 0.5"},
       {:gettext,                "~> 0.20"},
       {:esbuild,                "~> 0.5", runtime: Mix.env() == :dev},
-      {:tailwind,               "~> 0.1.8", runtime: Mix.env() == :dev},
+      {:tailwind,               "~> 0.2", runtime: Mix.env() == :dev},
       # Testing
       {:ex_machina, "~> 2.7"},
       {:floki,      ">= 0.30.0", only: :test},

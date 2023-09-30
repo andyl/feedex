@@ -17,53 +17,53 @@ Repo.insert(%User{
   email: "aaa@aaa.com",
   hashed_password: User.pwd_hash("123456789012"),
   folders: [
-    %Folder{
-      name: "SeedElixir",
-      registers: [
-        %Register{
-          name: "Plataformatec",
-          feed: %Feed{url: "http://blog.plataformatec.com.br/tag/elixir/feed"}
-        },
-        %Register{
-          name: "Amberbit",
-          feed: %Feed{url: "https://www.amberbit.com/blog.rss"}
-        },
-      ]
-    },
-     %Folder{
-      name: "SeedTech",
-      registers: [
-        %Register{
-          name: "TechMeme",
-          feed: %Feed{url: "http://www.techmeme.com/feed.xml"}
-        },
-        %Register{
-          name: "TechCrunch",
-          feed: %Feed{url: "http://feeds.feedburner.com/TechCrunch"}
-        },
-        %Register{
-          name: "MitReview",
-          feed: %Feed{url: "https://www.technologyreview.com/topnews.rss"}
-        },
-      ]
-    },
-    %Folder{
-      name: "SeedYouTube",
-      registers: [
-        %Register{
-          name: "Empex",
-          feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCIYiFWyuEytDzyju6uXW40Q"}
-        },
-        %Register{
-          name: "ElixirConf",
-          feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC0l2QTnO1P2iph-86HHilMQ"}
-        },
-        %Register{
-          name: "CodeSync",
-          feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC47eUBNO8KBH_V8AfowOWOw"}
-        }
-      ]
-    }
+    # %Folder{
+    #   name: "SeedElixir",
+    #   registers: [
+    #     %Register{
+    #       name: "Plataformatec",
+    #       feed: %Feed{url: "http://blog.plataformatec.com.br/tag/elixir/feed"}
+    #     },
+    #     %Register{
+    #       name: "Amberbit",
+    #       feed: %Feed{url: "https://www.amberbit.com/blog.rss"}
+    #     },
+    #   ]
+    # },
+    #  %Folder{
+    #   name: "SeedTech",
+    #   registers: [
+    #     %Register{
+    #       name: "TechMeme",
+    #       feed: %Feed{url: "http://www.techmeme.com/feed.xml"}
+    #     },
+    #     %Register{
+    #       name: "TechCrunch",
+    #       feed: %Feed{url: "http://feeds.feedburner.com/TechCrunch"}
+    #     },
+    #     %Register{
+    #       name: "MitReview",
+    #       feed: %Feed{url: "https://www.technologyreview.com/topnews.rss"}
+    #     },
+    #   ]
+    # },
+    # %Folder{
+    #   name: "SeedYouTube",
+    #   registers: [
+    #     %Register{
+    #       name: "Empex",
+    #       feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCIYiFWyuEytDzyju6uXW40Q"}
+    #     },
+    #     %Register{
+    #       name: "ElixirConf",
+    #       feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC0l2QTnO1P2iph-86HHilMQ"}
+    #     },
+    #     %Register{
+    #       name: "CodeSync",
+    #       feed: %Feed{url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC47eUBNO8KBH_V8AfowOWOw"}
+    #     }
+    #   ]
+    # }
   ]
   }
 )

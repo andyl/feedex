@@ -25,8 +25,8 @@ defmodule FeedexWeb.ClockLive do
 
   @impl true
   def render(assigns) do
-    ~L"""
-    <div class="<%= @klas %> desktop-only mt-1">
+    ~H"""
+    <div class={ @klas <> ' desktop-only mt-1' } >
       <small>
         <%= @date %>
       </small>

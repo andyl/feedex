@@ -17,36 +17,36 @@ Repo.insert(%User{
   email: "aaa@aaa.com",
   hashed_password: User.pwd_hash("123456789012"),
   folders: [
-    # %Folder{
-    #   name: "SeedElixir",
-    #   registers: [
-    #     %Register{
-    #       name: "Plataformatec",
-    #       feed: %Feed{url: "http://blog.plataformatec.com.br/tag/elixir/feed"}
-    #     },
-    #     %Register{
-    #       name: "Amberbit",
-    #       feed: %Feed{url: "https://www.amberbit.com/blog.rss"}
-    #     },
-    #   ]
-    # },
-    #  %Folder{
-    #   name: "SeedTech",
-    #   registers: [
-    #     %Register{
-    #       name: "TechMeme",
-    #       feed: %Feed{url: "http://www.techmeme.com/feed.xml"}
-    #     },
-    #     %Register{
-    #       name: "TechCrunch",
-    #       feed: %Feed{url: "http://feeds.feedburner.com/TechCrunch"}
-    #     },
-    #     %Register{
-    #       name: "MitReview",
-    #       feed: %Feed{url: "https://www.technologyreview.com/topnews.rss"}
-    #     },
-    #   ]
-    # },
+    %Folder{
+      name: "SeedElixir",
+      registers: [
+        %Register{
+          name: "Plataformatec",
+          feed: %Feed{url: "http://blog.plataformatec.com.br/tag/elixir/feed"}
+        },
+        %Register{
+          name: "Amberbit",
+          feed: %Feed{url: "https://www.amberbit.com/blog.rss"}
+        },
+      ]
+    },
+     %Folder{
+      name: "SeedTech",
+      registers: [
+        %Register{
+          name: "TechMeme",
+          feed: %Feed{url: "http://www.techmeme.com/feed.xml"}
+        },
+        %Register{
+          name: "TechCrunch",
+          feed: %Feed{url: "http://feeds.feedburner.com/TechCrunch"}
+        },
+        %Register{
+          name: "MitReview",
+          feed: %Feed{url: "https://www.technologyreview.com/topnews.rss"}
+        },
+      ]
+    },
     # %Folder{
     #   name: "SeedYouTube",
     #   registers: [

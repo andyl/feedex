@@ -21,7 +21,7 @@ ARG RUNNER_IMAGE="debian:${DEBIAN_VERSION}"
 FROM ${BUILDER_IMAGE} as builder
 
 # install build dependencies
-RUN apt-get update -y && apt-get install -y build-essential git \
+RUN apt-get update -y && apt-get install -y build-essential git npm \
     && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
 # prepare build dir
@@ -33,6 +33,10 @@ RUN mix local.hex --force && \
 
 # set build ENV
 ENV MIX_ENV="prod"
+
+# copy tool to test for PG availability... 
+
+COPY /usr/bin/pg_isready /usr/bin/pg_isready           
 
 # install mix dependencies
 COPY mix.exs mix.lock ./
@@ -50,6 +54,9 @@ COPY priv priv
 COPY lib lib
 
 COPY assets assets
+
+# install daisyui 
+RUN (cd assets && npm install) 
 
 # compile assets
 RUN mix assets.deploy
@@ -94,4 +101,4 @@ USER nobody
 # above and adding an entrypoint. See https://github.com/krallin/tini for details
 # ENTRYPOINT ["/tini", "--"]
 
-CMD ["/app/bin/server"]
+CMD ["/app/bin/migrate_run"]

@@ -23,7 +23,7 @@ config :feedex, FeedexWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "K2j7UPRqKTl+tdPtyZn5DdBvjVJafPAED80k2i3A/YNELYQNezLHr2G5tS36WTqs",
+  secret_key_base: "K2j7UPRqKTl+tdPtyZnasdl;sdfl;sdfasdfasdfasdfasdfl;5DdBvjVJafPAED80k2i3A/YNELYQNezLHr2G5tS36WTqs",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}

@@ -66,20 +66,21 @@ defmodule FeedexWeb.NewsLive do
             <%= live_render(@socket, FeedexWeb.ClockLive, id: "clock") %>
           </div>
           <div>
-            <.live_component module: FeedexWeb.TreeComponent
-              id='tre' uistate: {@uistate} treemap: {@treemap} counts: {@counts} />
+            <.live_component module={FeedexWeb.TreeComponent}
+              id='tre' uistate={@uistate} treemap={@treemap} counts={@counts} />
           </div>
           <div>
-            <.live_component module: FeedexWeb.BtnComponent id='btn' uistate: {@uistate} />
+            <.live_component module={FeedexWeb.BtnComponent} id='btn' uistate={@uistate} />
           </div>
         </div>
         <div class="flex-auto">
           <div class="bg-slate-300">
-            <.live_component module: FeedexWeb.HdrComponent
-              id='hdr' uistate: {@uistate} treemap: {@treemap} counts: {@counts} />
+            <.live_component module={FeedexWeb.HdrComponent}
+              id='hdr' uistate={@uistate} treemap={@treemap} counts={@counts} />
           </div>
           <div class="bg-white">
-            <.live_component module: FeedexWeb.BodyComponent id='bdy' uistate: {@uistate} counts: {@counts} />
+            <.live_component module={FeedexWeb.BodyComponent} id='bdy' uistate={@uistate}
+              counts={@counts} />
           </div>
         </div>
       </div>

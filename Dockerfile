@@ -28,15 +28,10 @@ RUN apt-get update -y && apt-get install -y build-essential git npm \
 WORKDIR /app
 
 # install hex + rebar
-RUN mix local.hex --force && \
-    mix local.rebar --force
+RUN mix local.hex --force && mix local.rebar --force
 
 # set build ENV
 ENV MIX_ENV="prod"
-
-# copy tool to test for PG availability... 
-
-COPY /usr/bin/pg_isready /usr/bin/pg_isready           
 
 # install mix dependencies
 COPY mix.exs mix.lock ./
@@ -102,3 +97,4 @@ USER nobody
 # ENTRYPOINT ["/tini", "--"]
 
 CMD ["/app/bin/migrate_run"]
+# CMD ["/bin/bash"]

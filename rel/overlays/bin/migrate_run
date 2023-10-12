@@ -1,4 +1,7 @@
 #!/bin/sh
+
+echo "MIGRATE RUN!!" 
+
 cd -P -- "$(dirname -- "$0")"
 
 # Run migrations. If they fail, don't start the server

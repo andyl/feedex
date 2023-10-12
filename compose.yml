@@ -1,9 +1,14 @@
 version: "3" 
 
+networks: 
+  default: 
+    name: feedex_net 
+
 services: 
   web: 
     build: . 
-    # command: /app/scripts/entry_point.sh 
+    # command: /app/bin/migrate_run
+    # command: /bin/bash 
     ports: 
       - 5000:4000 
     volumes:
@@ -13,12 +18,15 @@ services:
       PGPASSWORD: postgres
       PGDATABASE: feedex_prod
       PGHOST: phx_db
-      PGPORT: 5432
+      PGPORT: 5433
     depends_on:
       - phxdb
+
   phxdb:
     image: postgres
     container_name: phx_db
+    ports: 
+      - 5433:5432 
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres

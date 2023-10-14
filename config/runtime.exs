@@ -21,7 +21,8 @@ if System.get_env("PHX_SERVER") do
 end
 
 if config_env() == :prod do
-  database_url = "ecto://postgres:postgres@localhost/feedex_prod"
+  # database_url = "ecto://postgres:postgres@localhost/feedex_prod"
+  database_url = System.get_env("DATABASE_URL")
     # System.get_env("DATABASE_URL") ||
     #   raise """
     #   environment variable DATABASE_URL is missing.

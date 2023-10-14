@@ -22,6 +22,13 @@ config :feedex, FeedexWeb.Endpoint,
   live_view: [signing_salt: "57/ietvK"],
   live_editable: [ple_renderer: Phoenix.Editable.Renderer.Tailwind3]
 
+config :feedex, Feedex.PromEx,
+  disabled: false,
+  manual_metrics_start_delay: :no_delay,
+  drop_metrics_groups: [],
+  grafana: :disabled,
+  metrics_server: :disabled
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

@@ -13,6 +13,7 @@ defmodule Feedex.Application do
       {Phoenix.PubSub, name: Feedex.PubSub},
       {Finch, name: Feedex.Finch},
       FeedexWeb.Endpoint,
+      Feedex.PromEx,
       {FeedexJob.Application, []},
       {FcFinch.Application, []}
     ]

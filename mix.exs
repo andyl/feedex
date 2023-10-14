@@ -77,6 +77,7 @@ defmodule Feedex.MixProject do
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller,  "~> 1.0"},
       {:ecto_psql_extras,  "~> 0.6"},
+      {:prom_ex,           "~> 1.9"},
       # Fc
       {:jason, "~> 1.2"},
       # FcFinch

@@ -87,6 +87,8 @@ RUN chown nobody /app
 # set runner ENV
 ENV MIX_ENV="prod"
 
+COPY priv/repo/seeds.exs /app/repo/seeds.exs 
+
 # Only copy the final release from the build stage
 COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/feedex ./
 

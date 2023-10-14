@@ -1,0 +1,18 @@
+#!/bin/sh
+
+echo "STARTUP_SCRIPT" 
+
+cd -P -- "$(dirname -- "$0")"
+
+tgt=db:5432
+
+if $(./wait-for-it.sh $tgt); then  
+  ./migrate && ./server 
+else 
+  echo "ERROR: NO DATABASE ACCESS ($tgt)" 
+  echo "SLEEP INFINITY" 
+  sleep infinity
+fi
+
+
+

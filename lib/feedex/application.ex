@@ -8,12 +8,12 @@ defmodule Feedex.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      # Feedex.PromEx,
       FeedexWeb.Telemetry,
       Feedex.Repo,
       {Phoenix.PubSub, name: Feedex.PubSub},
       {Finch, name: Feedex.Finch},
       FeedexWeb.Endpoint,
-      Feedex.PromEx,
       {FeedexJob.Application, []},
       {FcFinch.Application, []}
     ]

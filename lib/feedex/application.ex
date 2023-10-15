@@ -21,7 +21,11 @@ defmodule Feedex.Application do
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Feedex.Supervisor]
-    Supervisor.start_link(children, opts)
+    results = Supervisor.start_link(children, opts)
+
+    Feedex.Seeds.load_if_empty()
+
+    results
   end
 
   # Tell Phoenix to update the endpoint configuration

@@ -5,15 +5,14 @@ defmodule Feedex.Seeds do
 
   import Ecto.Query
 
-  def sayhi do
-    IO.puts("HI")
-  end
-
   def load_if_empty do
     qry = from u in "users", select: u.id
     num = Repo.all(qry) |> length
-    IO.puts "Num Users is #{num}"
-    if num == 0, do: load()
+    if num == 0 do
+      require Logger
+      Logger.info("No users - loading seeds...")
+      load()
+    end
   end
 
   def load do

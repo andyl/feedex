@@ -70,10 +70,13 @@ defmodule FeedexWeb.Router do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
       live "/users/settings/sub_import", SubTreeLive, :index
+      live "/users/settings/backup", BackupLive, :index
     end
 
     get "/users/settings/subs", UserSettingsController, :subs
     get "/users/settings/subs.json", UserSettingsController, :subs_json
+    get "/users/settings/export", UserSettingsController, :export
+    get "/users/settings/import", UserSettingsController, :import
   end
 
   scope "/", FeedexWeb do

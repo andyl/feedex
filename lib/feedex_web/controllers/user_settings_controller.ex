@@ -6,8 +6,7 @@ defmodule FeedexWeb.UserSettingsController do
 
   def subs_json(conn, _params) do
     subs = conn |> current_user_id() |> SubTree.list()
-    conn
-    |> json(subs)
+    json(conn, subs)
   end
 
   def subs(conn, _params) do

@@ -69,6 +69,7 @@ defmodule Feedex.MixProject do
       # Util
       {:bcrypt_elixir, "~> 3.0"},
       {:pbkdf2_elixir, "~> 2.0"},
+      {:json,          "~> 1.4"},
       {:modex, github: "andyl/modex"},
       # Repo
       {:ecto_sql, "~> 3.6"},

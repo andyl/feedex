@@ -27,10 +27,7 @@ else
   config :feedex, data_dir: File.cwd!() <> "/data"
 end
 
-# project_root = Application.fetch_env!(:some_app, :project_root)
-
 if config_env() == :prod do
-  # database_url = "ecto://postgres:postgres@localhost/feedex_prod"
   database_url = System.get_env("DATABASE_URL") ||
       raise """
       Environment variable DATABASE_URL is missing.

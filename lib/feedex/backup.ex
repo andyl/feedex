@@ -11,12 +11,12 @@ defmodule Feedex.Backup do
     backup_dir() <> "/backup.json"
   end
 
-  def export do
-    IO.puts("EXPORTING")
-  end
+  # def export do
+  #   IO.puts("EXPORTING")
+  # end
 
-  def import do
-    File.read(backup_path())
-  end
+  # def import do
+  #   File.read(backup_path())
+  # end
 
 end

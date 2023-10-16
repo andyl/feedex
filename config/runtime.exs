@@ -21,10 +21,19 @@ if System.get_env("PHX_SERVER") do
 end
 
 if config_env() == :prod do
+  config :feedex, data_dir: System.get_env("DATA_DIR") ||
+    raise "Missing environment variable DATA_DIR."
+else
+  config :feedex, data_dir: File.cwd!() <> "/data"
+end
+
+# project_root = Application.fetch_env!(:some_app, :project_root)
+
+if config_env() == :prod do
   # database_url = "ecto://postgres:postgres@localhost/feedex_prod"
   database_url = System.get_env("DATABASE_URL") ||
       raise """
-      environment variable DATABASE_URL is missing.
+      Environment variable DATABASE_URL is missing.
       For example: ecto://USER:PASS@HOST/DATABASE
       """
 

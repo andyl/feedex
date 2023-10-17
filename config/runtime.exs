@@ -24,12 +24,12 @@ config :feedex,
   linux_host: System.get_env("LINUX_HOST") || System.get_env("SYSNAME"),
   docker_img: System.get_env("DOCKER_IMG") || "NA"
 
-if config_env() == :prod do
-  config :feedex, data_dir: System.get_env("DATA_DIR") ||
-    raise "Missing environment variable DATA_DIR."
-else
-  config :feedex, data_dir: File.cwd!() <> "/data"
-end
+# if config_env() == :prod do
+#   config :feedex, data_dir: System.get_env("DATA_DIR") ||
+#     raise "Missing environment variable DATA_DIR."
+# else
+#   config :feedex, data_dir: File.cwd!() <> "/data"
+# end
 
 if config_env() == :prod do
   database_url = System.get_env("DATABASE_URL") ||

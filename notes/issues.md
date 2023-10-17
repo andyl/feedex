@@ -16,5 +16,3 @@ solution alternatives:
 - `fswatch lib test | mix test --stale --read-from-stdin`
 - something else ??
 
-
-

@@ -20,6 +20,10 @@ if System.get_env("PHX_SERVER") do
   config :feedex, FeedexWeb.Endpoint, server: true
 end
 
+config :feedex,
+  linux_host: System.get_env("LINUX_HOST") || System.get_env("SYSNAME"),
+  docker_img: System.get_env("DOCKER_IMG") || "NA"
+
 if config_env() == :prod do
   config :feedex, data_dir: System.get_env("DATA_DIR") ||
     raise "Missing environment variable DATA_DIR."

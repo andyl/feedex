@@ -15,10 +15,6 @@ Long Term Fixes
 - [ ] Clean up Feed import page 
 - [ ] Optimize Formatting for mobile 
 
-Docker 
-- [ ] Build docker container 
-- [ ] Use in production 
-
 Features
 - [ ] User accounts / auth / email confirmation 
 - [ ] Simultaneous login count 
@@ -26,11 +22,6 @@ Features
 - [ ] Full-text search 
 - [ ] Mobile interface 
 - [ ] Vim-style Keyboard mode 
-
-Networking 
-- [ ] Setup DNS, ssl, reverse-proxy on chap
-- [ ] Selective Wireguard routing - only chap apps 
-- [ ] Test with travel router and phone 
 
 Checklist 
 - [ ] UI: Generate admin pages: users / feeds / posts 

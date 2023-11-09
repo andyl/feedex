@@ -9,6 +9,12 @@ defmodule Feedex.Ctx.Account do
   alias Feedex.Repo
   import Ecto.Query
 
+  # ----- metrics -----
+
+  def user_count do
+    Repo.one(from u in User, select: count("*"))
+  end
+
   # ----- users -----
 
   def user_list do

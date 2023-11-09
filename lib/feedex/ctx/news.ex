@@ -10,6 +10,29 @@ defmodule Feedex.Ctx.News do
 
   import Ecto.Query
 
+  # ----- metrics -----
+
+  def folder_count do
+    Repo.one(from f in Folder, select: count("*"))
+  end
+
+  def feed_count do
+    Repo.one(from f in Feed, select: count("*"))
+  end
+
+  def post_count do
+    Repo.one(from p in Post, select: count("*"))
+  end
+
+  def unread_count do
+    from(pst in Post,
+      left_join: log in ReadLog, on: pst.id == log.post_id,
+      where: is_nil(log.id),
+      select: count(pst.id)
+    )
+    |> Repo.one
+  end
+
   # ----- feeds -----
 
   def feed_get(id) do
@@ -43,7 +66,6 @@ defmodule Feedex.Ctx.News do
   end
 
   def unread_aggregate_count_qry(userid) do
-    # from(pst in Post,
     q1 = from(p in Post, distinct: :title, order_by: [desc: :id])
     from(pst in subquery(q1),
       left_join: log in ReadLog, on: pst.id == log.post_id,

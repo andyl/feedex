@@ -91,12 +91,8 @@ defmodule FeedexWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      {__MODULE__, :app_count, []}
+      {FeedexWeb.Metrics.InfluxHandler, :app_count, []}
     ]
-  end
-
-  def app_count do
-    :telemetry.execute([:feedex, :app, :count], Feedex.Metrics.count())
   end
 
 end

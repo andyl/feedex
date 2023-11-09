@@ -78,7 +78,6 @@ defmodule Feedex.MixProject do
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller,  "~> 1.0"},
       {:ecto_psql_extras,  "~> 0.6"},
-      # {:prom_ex,           "~> 1.9"},
       # Fc
       {:jason, "~> 1.2"},
       # FcFinch
@@ -109,6 +108,7 @@ defmodule Feedex.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      seed: ["run priv/repo/seeds.exs"],
       "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
     ]
   end

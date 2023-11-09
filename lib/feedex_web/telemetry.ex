@@ -42,39 +42,39 @@ defmodule FeedexWeb.Telemetry do
       #   tags: [:route],
       #   unit: {:native, :millisecond}
       # ),
-      # summary("phoenix.socket_connected.duration",
-      #   unit: {:native, :millisecond}
-      # ),
-      # summary("phoenix.channel_join.duration",
-      #   unit: {:native, :millisecond}
-      # ),
-      # summary("phoenix.channel_handled_in.duration",
-      #   tags: [:event],
-      #   unit: {:native, :millisecond}
-      # ),
+      summary("phoenix.socket_connected.duration",
+        unit: {:native, :millisecond}
+      ),
+      summary("phoenix.channel_join.duration",
+        unit: {:native, :millisecond}
+      ),
+      summary("phoenix.channel_handled_in.duration",
+        tags: [:event],
+        unit: {:native, :millisecond}
+      ),
 
       # Database Metrics
       summary("feedex.repo.query.total_time",
         unit: {:native, :millisecond},
         description: "The sum of the other measurements"
       ),
-      summary("feedex.repo.query.decode_time",
-        unit: {:native, :millisecond},
-        description: "The time spent decoding the data received from the database"
-      ),
-      summary("feedex.repo.query.query_time",
-        unit: {:native, :millisecond},
-        description: "The time spent executing the query"
-      ),
+      # summary("feedex.repo.query.decode_time",
+      #   unit: {:native, :millisecond},
+      #   description: "The time spent decoding the data received from the database"
+      # ),
+      # summary("feedex.repo.query.query_time",
+      #   unit: {:native, :millisecond},
+      #   description: "The time spent executing the query"
+      # ),
       summary("feedex.repo.query.queue_time",
         unit: {:native, :millisecond},
         description: "The time spent waiting for a database connection"
       ),
-      summary("feedex.repo.query.idle_time",
-        unit: {:native, :millisecond},
-        description:
-          "The time the connection spent waiting before being checked out for the query"
-      ),
+      # summary("feedex.repo.query.idle_time",
+      #   unit: {:native, :millisecond},
+      #   description:
+      #     "The time the connection spent waiting before being checked out for the query"
+      # ),
 
       # VM Metrics
       summary("vm.memory.total", unit: {:byte, :kilobyte}),

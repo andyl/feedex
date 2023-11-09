@@ -13,6 +13,10 @@ config :feedex, FeedexWeb.Endpoint,
   check_origin: false,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
+config :feedex, FeedexTsdb,
+     host: "influx",
+     db:   "feedex_prod"
+
 # Configures Swoosh API Client
 config :swoosh, :api_client, Feedex.Finch
 

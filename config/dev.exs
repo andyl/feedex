@@ -29,6 +29,10 @@ config :feedex, FeedexWeb.Endpoint,
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
+config :feedex, FeedexTsdb,
+     host: "vork",
+     db:   "feedex_dev"
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

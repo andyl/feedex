@@ -12,12 +12,12 @@ defmodule Feedex.Api.SubTreeTest do
     end
   end
 
-  # describe "#cleantree" do
-  #   test "returns a value" do
-  #     data = gentree()
-  #     assert SubTree.cleantree(data.user.id)
-  #   end
-  # end
+  describe "#cleantree" do
+    test "returns a value" do
+      data = gentree()
+      assert SubTree.cleantree(data.user.id)
+    end
+  end
 
   describe "#list" do
     test "returns a value" do
@@ -28,6 +28,7 @@ defmodule Feedex.Api.SubTreeTest do
 
   describe "#import_folder / map" do
     test "basic input" do
+      clear_all([User, Folder, Feed, Register])
       user = insert(:user)
       fld_name = "fld_name"
       reg_data = %{"feed_name" => "aaa", "feed_url" => "http://bbb.com"}
@@ -43,6 +44,7 @@ defmodule Feedex.Api.SubTreeTest do
     end
 
     test "idempotency" do
+      clear_all([User, Folder, Feed, Register])
       user = insert(:user)
       fld_name = "fld_name"
       reg_data = %{"feed_name" => "aaa", "feed_url" => "http://bbb.com"}
@@ -57,6 +59,7 @@ defmodule Feedex.Api.SubTreeTest do
 
   describe "#import_folder / list" do
     test "basic input" do
+      clear_all([User, Folder, Feed, Register])
       user = insert(:user)
       fld_name = "fld_name"
       reg_data = [
@@ -75,6 +78,7 @@ defmodule Feedex.Api.SubTreeTest do
     end
 
     test "idempotency" do
+      clear_all([User, Folder, Feed, Register])
       user = insert(:user)
       fld_name = "fld_name"
       reg_data = [
@@ -93,6 +97,7 @@ defmodule Feedex.Api.SubTreeTest do
   describe "#import_register" do
 
     test "basic input" do
+      clear_all([Folder, User, Feed, Register])
       fld = insert(:folder)
       reg_name = "asdf"
       feed_url = "qwer"
@@ -108,6 +113,7 @@ defmodule Feedex.Api.SubTreeTest do
     end
 
     test "idempotency" do
+      clear_all([Folder, User, Feed, Register])
       fld = insert(:folder)
       reg_name = "asdf"
       feed_url = "qwer"
@@ -124,6 +130,7 @@ defmodule Feedex.Api.SubTreeTest do
 
   describe "#import_tree" do
     test "basic input" do
+      clear_all([Folder, User, Feed, Register])
       user = insert(:user)
       data = %{
         "BASE1" => [
@@ -143,6 +150,7 @@ defmodule Feedex.Api.SubTreeTest do
     end
 
     test "idempotency" do
+      clear_all([Folder, User, Feed, Register])
       user = insert(:user)
       data = %{
         "BASE1" => [
@@ -165,6 +173,7 @@ defmodule Feedex.Api.SubTreeTest do
 
   describe "#import_json_tree" do
     test "basic input" do
+      clear_all([Folder, User, Feed, Register])
       user = insert(:user)
       json = """
       {

@@ -13,6 +13,7 @@ defmodule Feedex.Ctx.Account.FolderTest do
 
   describe "inserting records" do
     test "adds a record" do
+      clear_all(Folder)
       tmap = %Folder{}
       attr = %{name: "asdf"}
       cset = Folder.changeset(tmap, attr)
@@ -28,12 +29,14 @@ defmodule Feedex.Ctx.Account.FolderTest do
     end
 
     test "inserting an entity" do
+      clear_all(Folder)
       assert count(Folder) == 0
       assert insert(:folder)
       assert count(Folder) == 1
     end
 
     test "inserting two entities" do
+      clear_all([User, Folder])
       fqry = from(t in "folders", select: count(t.id))
       uqry = from(t in "users", select: count(t.id))
       assert Repo.one(fqry) == 0
@@ -44,6 +47,7 @@ defmodule Feedex.Ctx.Account.FolderTest do
     end
 
     test "uses alternate attrs" do
+      clear_all(Folder)
       altname = "NEWNAME"
       assert count(Folder) == 0
       assert trak = insert(:folder, %{name: altname})
@@ -54,6 +58,7 @@ defmodule Feedex.Ctx.Account.FolderTest do
 
   describe "deleting records" do
     test "all folders" do
+      clear_all(Folder)
       assert count(Folder) == 0
       insert(:folder)
       assert count(Folder) == 1
@@ -64,6 +69,7 @@ defmodule Feedex.Ctx.Account.FolderTest do
 
   describe "duplicate folder names" do
     test "raise error using factory" do
+      clear_all([User, Folder])
       name = "bing"
       user = insert(:user)
       assert insert(:folder, user: user, name: name)
@@ -71,6 +77,7 @@ defmodule Feedex.Ctx.Account.FolderTest do
     end
 
     test "invalid using changeset" do
+      clear_all([User, Folder])
       name = "bing"
       user = insert(:user)
       assert insert(:folder, user: user, name: name)
@@ -83,6 +90,7 @@ defmodule Feedex.Ctx.Account.FolderTest do
 
   describe "user association" do
     test "finds the user from the folder" do
+      clear_all([User, Folder])
       fusr =
         from(f in "folders",
           join: u in "users",
@@ -95,6 +103,7 @@ defmodule Feedex.Ctx.Account.FolderTest do
     end
 
     test "finds the folder from the user" do
+      clear_all([User, Folder])
       ufold =
         from(u in "users",
           join: f in "folders",
@@ -109,6 +118,7 @@ defmodule Feedex.Ctx.Account.FolderTest do
 
   describe "#create_folder" do
     test "creates a folder" do
+      clear_all([User, Folder])
       assert count(Folder) == 0
       user = insert(:user)
       result = Folder.create_folder(user.id, "asdf")

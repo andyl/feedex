@@ -6,6 +6,7 @@ defmodule Feedex.Api.FolderTest do
 
   describe "#find_or_create_folder" do
     test "create a folder" do
+      clear_all(Folder)
       name = "ping"
       user = insert(:user)
       assert count(Folder) == 0
@@ -16,6 +17,7 @@ defmodule Feedex.Api.FolderTest do
     end
 
     test "find a folder" do
+      clear_all([User, Folder])
       user = insert(:user)
       folder1 = insert(:folder, user: user)
       assert count(Folder) == 1
@@ -28,6 +30,7 @@ defmodule Feedex.Api.FolderTest do
 
   describe "#by_id" do
     test "return a folder" do
+      clear_all([User, Folder])
       user = insert(:user)
       folder1 = insert(:folder, user: user)
       assert count(Folder) == 1
@@ -39,6 +42,7 @@ defmodule Feedex.Api.FolderTest do
 
   describe "#map_subset" do
     test "returns a map" do
+      clear_all([User, Folder])
       user = insert(:user)
       folder1 = insert(:folder, user: user)
       assert count(Folder) == 1

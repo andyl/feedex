@@ -17,6 +17,7 @@ defmodule Feedex.Ctx.News.FeedTest do
 
   describe "inserting records" do
     test "adds a record" do
+      clear_all(Feed)
       tmap = %Feed{}
       attr = %{url: "asdf"}
       cset = Feed.changeset(tmap, attr)
@@ -32,12 +33,14 @@ defmodule Feedex.Ctx.News.FeedTest do
     end
 
     test "inserting an entity" do
+      clear_all(Feed)
       assert count(Feed) == 0
       assert insert(:feed)
       assert count(Feed) == 1
     end
 
     test "inserting two entities" do
+      clear_all(Feed)
       assert count(Feed) == 0
       assert insert(:feed)
       assert insert(:feed)
@@ -45,6 +48,7 @@ defmodule Feedex.Ctx.News.FeedTest do
     end
 
     test "uses alternate attrs" do
+      clear_all(Feed)
       altname = "NEWNAME"
       assert count(Feed) == 0
       assert trak = insert(:feed, %{url: altname})
@@ -55,6 +59,7 @@ defmodule Feedex.Ctx.News.FeedTest do
 
   describe "deleting records" do
     test "all feeds" do
+      clear_all(Feed)
       assert count(Feed) == 0
       insert(:feed)
       assert count(Feed) == 1

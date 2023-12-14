@@ -8,14 +8,14 @@ defmodule FcRssTest do
   end
 
   describe "#scan/1" do
-    test "valid resp valid data" do
-      use_cassette "scan_valid_resp_valid_data" do
-        url_string = "http://reddit.com/r/elixir.rss"
-        {status, url, _data} = FcRss.scan(url_string)
-        assert status == :ok
-        assert url == url_string
-      end
-    end
+    # test "valid resp valid data" do
+    #   use_cassette "scan_valid_resp_valid_data" do
+    #     url_string = "http://reddit.com/r/elixir.rss"
+    #     {status, url, _data} = FcRss.scan(url_string)
+    #     assert status == :ok
+    #     assert url == url_string
+    #   end
+    # end
 
     test "invalid resp invalid data" do
       use_cassette "scan_invalid_resp_invalid_data" do

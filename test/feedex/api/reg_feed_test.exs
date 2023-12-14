@@ -1,5 +1,5 @@
 defmodule Feedex.Api.RegFeedTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case # , async: true
   use Feedex.DataCase
 
   alias Feedex.Api
@@ -7,6 +7,7 @@ defmodule Feedex.Api.RegFeedTest do
   describe "#find_or_create_regfeed" do
 
     test "with no precursors" do
+      clear_all([Feed, Register, Folder])
       fld = insert(:folder)
       assert count(Feed) == 0
       assert count(Register) == 0
@@ -18,6 +19,7 @@ defmodule Feedex.Api.RegFeedTest do
     end
 
     test "with existing feed" do
+      clear_all([Feed, Register, Folder])
       url = "http://ping.com"
       fld = insert(:folder)
       insert(:feed, url: url)

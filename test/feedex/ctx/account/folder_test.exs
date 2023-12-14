@@ -1,5 +1,5 @@
 defmodule Feedex.Ctx.Account.FolderTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case # , async: true
   use Feedex.DataCase
 
   describe "changesets" do

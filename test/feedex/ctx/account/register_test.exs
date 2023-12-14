@@ -1,5 +1,5 @@
 defmodule Feedex.Ctx.Account.RegisterTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case # , async: true
   use Feedex.DataCase
 
   test "greet the world" do

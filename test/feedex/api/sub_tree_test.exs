@@ -1,5 +1,5 @@
 defmodule Feedex.Api.SubTreeTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case # , async: true
   use Feedex.DataCase
 
   alias Feedex.Api.SubTree

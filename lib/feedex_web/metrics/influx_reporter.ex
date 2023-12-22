@@ -51,6 +51,7 @@ defmodule FeedexWeb.Metrics.InfluxReporter do
     metric = pkg.event_name |> metric_name()
     values = pkg.measurements |> value()
     line="#{metric} #{values}"
+    IO.puts "POSTZZ: #{line}"
     FcTesla.metrics_post(line)
   end
 

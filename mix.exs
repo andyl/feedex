@@ -5,7 +5,7 @@ defmodule Feedex.MixProject do
     [
       app: :feedex,
       version: "0.0.1",
-      elixir: "~> 1.14",
+      elixir: "~> 1.16",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -54,7 +54,7 @@ defmodule Feedex.MixProject do
       {:phoenix,                "~> 1.7"},
       {:phoenix_ecto,           "~> 4.4"},
       {:phoenix_live_dashboard, "~> 0.7"},
-      {:phoenix_html,           "~> 3.0"},
+      {:phoenix_html,           "~> 4.0"},
       {:phoenix_live_view,      "~> 0.18"},
       {:phoenix_live_reload,    "~> 1.2", only: :dev},
       {:heroicons,              "~> 0.5"},

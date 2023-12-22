@@ -20,5 +20,7 @@ Networking
 - [x] Selective Wireguard routing - only chap apps 
 - [x] Test with travel router and phone 
 
+## 2023 Dec 22 Fri
+
 
 

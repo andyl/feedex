@@ -1,5 +1,26 @@
 # Feedex Roadmap 
 
+Feedex2 Core 
+- [ ] Feature: Feed reader (mobile and web) 
+- [ ] Feature: Podcast player 
+- [ ] Feature: LiveSAASKit Functions 
+- [ ] Private code 
+- [ ] Login / Email Confirmation 
+- [ ] Mobile UI 
+- [ ] Teams 
+
+Feedex2 Stretch: ML 
+- [ ] search 
+- [ ] audio transcription 
+- [ ] document chat 
+- [ ] classification 
+
+Feedex2 Stretch: Misc 
+- [ ] Blog Authoring 
+- [ ] PWA with client-side storage of shows 
+- [ ] Documentation 
+- [ ] Blog comments
+
 Schemas and Forms 
 - [ ] Use `sch` and `ctx` structure for data access components 
 - [ ] Update forms 

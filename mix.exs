@@ -75,7 +75,7 @@ defmodule Feedex.MixProject do
       {:ecto_sql, "~> 3.6"},
       {:postgrex, ">= 0.0.0"},
       # Telemetry
-      {:telemetry_metrics, "~> 0.6"},
+      {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller,  "~> 1.0"},
       {:ecto_psql_extras,  "~> 0.6"},
       # Fc

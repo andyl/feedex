@@ -62,8 +62,9 @@ defmodule Feedex.MixProject do
       {:esbuild,                "~> 0.5", runtime: Mix.env() == :dev},
       {:tailwind,               "~> 0.2", runtime: Mix.env() == :dev},
       # Testing
-      {:ex_machina, "~> 2.7"},
-      {:floki,      ">= 0.30.0", only: :test},
+      {:ex_machina,     "~> 2.7"},
+      {:floki,          ">= 0.30.0", only: :test},
+      {:mix_test_interactive, "~> 2.0", only: :dev, runtime: false},
       # Documentation
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       # Util

@@ -55,7 +55,7 @@ defmodule Feedex.MixProject do
       {:phoenix_ecto,           "~> 4.4"},
       {:phoenix_live_dashboard, "~> 0.7"},
       {:phoenix_html,           "~> 4.0"},
-      {:phoenix_live_view,      "~> 0.18"},
+      {:phoenix_live_view,      "~> 0.20"},
       {:phoenix_live_reload,    "~> 1.2", only: :dev},
       {:heroicons,              "~> 0.5"},
       {:gettext,                "~> 0.20"},

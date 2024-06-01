@@ -71,6 +71,7 @@ defmodule FeedexWeb.Router do
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
       live "/users/settings/sub_import", SubTreeLive, :index
       live "/users/settings/backup", BackupLive, :index
+      live "/demo", DemoLive, :index
     end
 
     get "/users/settings/subs", UserSettingsController, :subs

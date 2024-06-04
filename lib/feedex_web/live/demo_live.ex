@@ -1,5 +1,4 @@
 defmodule FeedexWeb.DemoLive do
-
   use FeedexWeb, :live_view
 
   # ----- lifecycle callbacks -----
@@ -7,12 +6,7 @@ defmodule FeedexWeb.DemoLive do
   @impl true
   def mount(_params, _session, socket) do
 
-    # IO.inspect(params, label: "DEMO_PARAMS")
-    # IO.inspect(session, label: "DEMO_SESSION")
-    # IO.inspect(socket, label: "DEMO_SOCKET")
-
-    opts = %{
-    }
+    opts = %{}
 
     {:ok, assign(socket, opts)}
   end
@@ -29,10 +23,10 @@ defmodule FeedexWeb.DemoLive do
         </h1>
       </div>
       <div class="mt-2 mb-2 p-2 border-solid border-orange-500 border">
-        Border demo<br/>
+        Border demo<br />
         <.alink href="http://google.com">GOOGLE</.alink>
       </div>
-      DONE
+      done
     </div>
     """
   end

@@ -39,6 +39,8 @@ defmodule FeedexWeb.NewsLive do
       fld_id: params["fld_id"] |> numify(),
       reg_id: params["reg_id"] |> numify(),
       pst_id: params["pst_id"] |> numify(),
+      search: params["search"] || "",
+      status: params["status"] || "all",
       timestamp: DateTime.utc_now()
     }
 

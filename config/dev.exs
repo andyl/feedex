@@ -63,6 +63,8 @@ config :feedex, FeedexWeb.Endpoint,
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/feedex_web/(live|views)/.*(ex)$",
+      ~r"lib/feedex_web/components/.*(ex)$",
+      ~r"lib/feedex_web/components/news/.*(ex)$",
       ~r"lib/feedex_web/templates/.*(eex)$"
     ]
   ]

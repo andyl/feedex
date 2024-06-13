@@ -16,7 +16,8 @@ defmodule FcTesla do
   end
 
   def fc_get(url, opt \\ []) do
-    case FcTesla.Base.get(url, opt) do
+    result = FcTesla.Base.get(url, opt) |> IO.inspect(label: "ZINGG")
+    case result do
       {:ok, resp} -> resp
       alt -> alt
     end
@@ -29,4 +30,9 @@ defmodule FcTesla do
   def fc_success?(_unknown) do
     false
   end
+
+  def hello do
+    :world
+  end
+
 end

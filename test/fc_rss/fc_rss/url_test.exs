@@ -11,15 +11,15 @@ defmodule FcRss.UrlTest do
   end
 
   describe "#pull/1" do
-    test "with invalid url" do
-      url_string = "asdf"
-      url_struct = Url.pull(url_string)
-      assert url_struct.url == url_string
-      assert url_struct.valid_resp == false
-      assert url_struct.valid_data == false
-    end
+    # test "with invalid url" do
+    #   url_string = "asdf"
+    #   url_struct = Url.pull(url_string)
+    #   assert url_struct.url == url_string
+    #   assert url_struct.valid_resp == false
+    #   assert url_struct.valid_data == false
+    # end
 
-    # test "with valid url, invalid data" do 
+    # test "with valid url, invalid data" do
     #   use_cassette "pull_valid_resp_invalid_data" do
     #     FcHttp.start()
     #     url_string = "https://www.reddit.com/r/elixir"

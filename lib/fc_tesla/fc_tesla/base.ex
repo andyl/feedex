@@ -8,14 +8,16 @@ defmodule FcTesla.Base do
   plug Tesla.Middleware.FollowRedirects
 
   def fc_post(url, opt \\ []) do
-    case post(url, opt) do
+    result = post(url, opt) |> IO.inspect(label: "FC_POST")
+    case result do
       {:ok, response} -> response
       error -> error
     end
   end
 
   def fc_get(url, opt \\ []) do
-    case get(url, opt) do
+    result = get(url, opt) |> IO.inspect(label: "FC_GET")
+    case result do
       {:ok, response} -> response
       error -> error
     end

@@ -44,6 +44,13 @@ config :feedex, FeedexJob.Scheduler,
     {"*/2 * * * *",      {FeedexJob, :sync_next, []}}
   ]
 
+# ----- MixTestInteractive
+
+# clear the screen between each test run
+if Mix.env == :dev do
+  config :mix_test_interactive, clear: true
+end
+
 # ----- Esbuild
 
 config :esbuild,

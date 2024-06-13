@@ -20,7 +20,7 @@ defmodule FcRssTest do
     test "invalid resp invalid data" do
       use_cassette "scan_invalid_resp_invalid_data" do
         url_string = "https://zzz.reddit.com/z/elixir.rss"
-        result = FcRss.scan(url_string) |> IO.inspect(label: "BINGO")
+        result = FcRss.scan(url_string) # |> IO.inspect(label: "BINGO")
         assert result == {:error, "Bad URL"}
       end
     end

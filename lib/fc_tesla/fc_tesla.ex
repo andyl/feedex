@@ -16,7 +16,7 @@ defmodule FcTesla do
   end
 
   def fc_get(url, opt \\ []) do
-    result = FcTesla.Base.get(url, opt) |> IO.inspect(label: "ZINGG")
+    result = FcTesla.Base.get(url, opt)
     case result do
       {:ok, resp} -> resp
       alt -> alt

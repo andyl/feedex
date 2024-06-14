@@ -7,6 +7,8 @@ defmodule FcTesla.Base do
 
   plug Tesla.Middleware.FollowRedirects
 
+  adapter Tesla.Adapter.Finch, name: Feedex.Finch
+
   def fc_post(url, opt \\ []) do
     result = post(url, opt) |> IO.inspect(label: "FC_POST")
     case result do

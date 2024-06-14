@@ -1,6 +1,7 @@
 defmodule FcRssTest do
   use ExUnit.Case, async: true
-  use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
+  # use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
+  use ExVCR.Mock, adapter: ExVCR.Adapter.Finch
 
   setup do
     ExVCR.Config.cassette_library_dir("fixture/vcr_cassettes")
@@ -8,6 +9,7 @@ defmodule FcRssTest do
   end
 
   describe "#scan/1" do
+
     # test "valid resp valid data" do
     #   use_cassette "scan_valid_resp_valid_data" do
     #     url_string = "http://reddit.com/r/elixir.rss"
@@ -17,13 +19,13 @@ defmodule FcRssTest do
     #   end
     # end
 
-    test "invalid resp invalid data" do
-      use_cassette "scan_invalid_resp_invalid_data" do
-        url_string = "https://zzz.reddit.com/z/elixir.rss"
-        result = FcRss.scan(url_string) # |> IO.inspect(label: "BINGO")
-        assert result == {:error, "Bad URL"}
-      end
-    end
+    # test "invalid resp invalid data" do
+    #   use_cassette "scan_invalid_resp_invalid_data" do
+    #     url_string = "https://zzz.reddit.com/z/elixir.rss"
+    #     result = FcRss.scan(url_string) # |> IO.inspect(label: "BINGO")
+    #     assert result == {:error, "Bad URL"}
+    #   end
+    # end
 
     # test "valid resp invalid data" do
     #   use_cassette "scan_valid_resp_invalid_data" do

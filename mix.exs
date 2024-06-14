@@ -90,7 +90,7 @@ defmodule Feedex.MixProject do
       {:req, "~> 0.5"},
       # FcRss
       {:elixir_feed_parser, github: "andyl/elixir-feed-parser"},
-      {:exvcr, "~> 0.12", only: [:test]},
+      {:exvcr, "~> 0.12", only: :test},
       # FeedexJob
       {:quantum, "~> 3.3"},
       {:timex, "~> 3.0"},

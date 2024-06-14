@@ -85,10 +85,9 @@ defmodule Feedex.MixProject do
       {:finch, "~> 0.13"},
       # FcTesla
       {:tesla,   "~> 1.4"},
-      {:hackney, "~> 1.18"},
       # FcRss
       {:elixir_feed_parser, github: "andyl/elixir-feed-parser"},
-      {:exvcr, "~> 0.12", only: :test},
+      {:exvcr, "~> 0.12", only: [:dev, :test]},
       # FeedexJob
       {:quantum, "~> 3.3"},
       {:timex, "~> 3.0"},

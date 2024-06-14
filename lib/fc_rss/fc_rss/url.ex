@@ -24,6 +24,7 @@ defmodule FcRss.Url do
     resp = FcTesla.fc_get(input_url)
     succ = FcTesla.fc_success?(resp)
     %{%Url{} | url: input_url, resp: resp, valid_resp: succ}
+    |> IO.inspect(label: "TANGO")
   end
 
   defp parse(url_data = %Url{valid_resp: false}) do

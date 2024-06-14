@@ -11,13 +11,13 @@ defmodule FcReq do
     end
   end
 
-  # def fc_success?(%Req.Env{status: code}) do
-  #   code in 200..299
-  # end
-  #
-  # def fc_success?(_unknown) do
-  #   false
-  # end
+  def fc_success?(%Req.Response{status: code}) do
+    code in 200..299
+  end
+
+  def fc_success?(_unknown) do
+    false
+  end
 
   def hello do
     :world

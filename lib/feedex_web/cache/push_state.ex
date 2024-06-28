@@ -65,7 +65,7 @@ defmodule FeedexWeb.Cache.PushState do
     sig()
     |> Pets.all()
     |> Enum.filter(&(&1))
-    |> Enum.each(&(Pets.remove(sig(), elem(&1, 0))))
+    |> Enum.each(&(Pets.delete(sig(), elem(&1, 0))))
     :ok
   end
 

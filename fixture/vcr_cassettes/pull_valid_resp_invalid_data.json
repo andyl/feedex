@@ -1,0 +1,39 @@
+[
+  {
+    "request": {
+      "options": {
+        "receive_timeout": 15000
+      },
+      "body": "",
+      "url": "https://www.reddit.com/r/elixir",
+      "headers": [],
+      "method": "get",
+      "request_body": ""
+    },
+    "response": {
+      "binary": false,
+      "type": "ok",
+      "body": "\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html>\n  <head>\n    <title>302 Found</title>\n  </head>\n  <body>\n    <h1>Error 302 Found</h1>\n    <p>Found</p>\n    <h3>Error 54113</h3>\n    <p>Details: cache-sjc10053-SJC 1718398784 2293244763</p>\n    <hr>\n    <p>Varnish cache server</p>\n  </body>\n</html>\n",
+      "headers": {
+        "connection": "close",
+        "content-length": "406",
+        "retry-after": "0",
+        "set-cookie": "rdt=c6dece7b4fad6bbee18bff96543684e6; path=/; domain=.reddit.com; samesite=none; secure;",
+        "location": "/r/elixir?rdt=58953",
+        "content-type": "text/html; charset=utf-8",
+        "accept-ranges": "bytes",
+        "date": "Fri, 14 Jun 2024 20:59:43 GMT",
+        "via": "1.1 varnish",
+        "strict-transport-security": "max-age=31536000; includeSubdomains",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "cache-control": "private, max-age=3600",
+        "server": "snooserv",
+        "report-to": "{\"group\": \"w3-reporting-nel\", \"max_age\": 14400, \"include_subdomains\": true,  \"endpoints\": [{ \"url\": \"https://w3-reporting-nel.reddit.com/reports\" }]}, {\"group\": \"w3-reporting\", \"max_age\": 14400, \"include_subdomains\": true, \"endpoints\": [{ \"url\": \"https://w3-reporting.reddit.com/reports\" }]}, {\"group\": \"w3-reporting-csp\", \"max_age\": 14400, \"include_subdomains\": true, \"endpoints\": [{ \"url\": \"https://w3-reporting-csp.reddit.com/reports\" }]}",
+        "nel": "{\"report_to\": \"w3-reporting-nel\", \"max_age\": 14400, \"include_subdomains\": false, \"success_fraction\": 1.0, \"failure_fraction\": 1.0}"
+      },
+      "status_code": 302
+    }
+  }
+]

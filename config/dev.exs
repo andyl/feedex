@@ -19,15 +19,19 @@ config :feedex, Feedex.Repo,
 config :feedex, FeedexWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {0, 0, 0, 0}, port: 4000],
+  http: [ip: {0, 0, 0, 0}, port: 4010],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "K2j7UPRqKTl+tdPtyZn5DdBvjVJafPAED80k2i3A/YNELYQNezLHr2G5tS36WTqs",
+  secret_key_base: "K2j7UPRqKTl+tdPtyZnasdl;sdfl;sdfasdfasdfasdfasdfl;5DdBvjVJafPAED80k2i3A/YNELYQNezLHr2G5tS36WTqs",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
+
+config :feedex, FeedexTsdb,
+     host: "vork",
+     db:   "feedex_dev"
 
 # ## SSL Support
 #
@@ -59,6 +63,8 @@ config :feedex, FeedexWeb.Endpoint,
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/feedex_web/(live|views)/.*(ex)$",
+      ~r"lib/feedex_web/components/.*(ex)$",
+      ~r"lib/feedex_web/components/news/.*(ex)$",
       ~r"lib/feedex_web/templates/.*(eex)$"
     ]
   ]

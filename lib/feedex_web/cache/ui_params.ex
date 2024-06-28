@@ -26,9 +26,6 @@ defmodule FeedexWeb.Cache.UiParams do
 
   def merge(old, params) do
     new = params |> sanitize_params()
-    IO.inspect(params, label: "PARAMZZ")
-    IO.inspect(old, label: "OLD")
-    IO.inspect(new, label: "NEW")
     merge_params(old, new) |> IO.inspect(label: "MERGED")
   end
 

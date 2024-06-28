@@ -6,12 +6,21 @@ defmodule FcTesla.InfluxV1 do
   use Tesla
 
   plug Tesla.Middleware.FormUrlencoded
-  plug Tesla.Middleware.BasicAuth, 
-    username: db_username(), password: db_password()
+  plug Tesla.Middleware.BasicAuth,
+    username: tsdb_username(), password: tsdb_password()
 
   def influx_post(db, line) do
     body = line
     url  = "http://localhost:8086/write?db=#{db}&time_precision=s"
+    case post(url, body) do
+      {:ok, response} -> response
+      error -> error
+    end
+  end
+
+  def metrics_post(line) do
+    body = line
+    url  = "http://#{tsdb_host()}:8086/write?db=#{tsdb_db()}&time_precision=s"
     case post(url, body) do
       {:ok, response} -> response
       error -> error
@@ -26,11 +35,23 @@ defmodule FcTesla.InfluxV1 do
     false
   end
 
-  defp db_username do
-    Application.get_env(:feedex_tsdb, FeedexTsdb)[:username] || "admin"
+  defp tsdb_db do
+    Application.get_env(:feedex, FeedexTsdb)[:db]
   end
 
-  defp db_password do
-    Application.get_env(:feedex_tsdb, FeedexTsdb)[:password] || "admin"
+  defp tsdb_host do
+    Application.get_env(:feedex, FeedexTsdb)[:host]
+  end
+
+  def tsdb_dbhost do
+    {tsdb_db(), tsdb_host()}
+  end
+
+  defp tsdb_username do
+    Application.get_env(:feedex, FeedexTsdb)[:username] || "admin"
+  end
+
+  defp tsdb_password do
+    Application.get_env(:feedex, FeedexTsdb)[:password] || "admin123"
   end
 end

@@ -1,5 +1,5 @@
 defmodule Feedex.Ctx.Account.RegisterTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case # , async: true
   use Feedex.DataCase
 
   test "greet the world" do
@@ -17,6 +17,7 @@ defmodule Feedex.Ctx.Account.RegisterTest do
 
   describe "inserting records" do
     test "adds a record" do
+      clear_all(Register)
       tmap = %Register{}
       attr = %{name: "asdf"}
       cset = Register.changeset(tmap, attr)
@@ -32,22 +33,25 @@ defmodule Feedex.Ctx.Account.RegisterTest do
     end
 
     test "inserting an entity" do
+      clear_all(Register)
       assert count(Register) == 0
       assert insert(:register)
       assert count(Register) == 1
     end
 
-    # test "inserting two entities" do
-    #   fqry = from(t in "registers", select: count(t.id))
-    #   uqry = from(t in "users", select: count(t.id))
-    #   assert Repo.one(fqry) == 0
-    #   assert insert(:register)
-    #   assert insert(:register)
-    #   assert Repo.one(fqry) == 2
-    #   assert Repo.one(uqry) == 2
-    # end
+    test "inserting two entities" do
+      clear_all(User)
+      fqry = from(t in "registers", select: count(t.id))
+      uqry = from(t in "users", select: count(t.id))
+      assert Repo.one(fqry) == 0
+      assert insert(:register)
+      assert insert(:register)
+      assert Repo.one(fqry) == 2
+      assert Repo.one(uqry) == 2
+    end
 
     test "uses alternate attrs" do
+      clear_all(User)
       altname = "NEWNAME"
       assert count(Register) == 0
       assert trak = insert(:register, %{name: altname})
@@ -58,6 +62,7 @@ defmodule Feedex.Ctx.Account.RegisterTest do
 
   describe "deleting records" do
     test "all registers" do
+      clear_all(Register)
       assert count(Register) == 0
       insert(:register)
       assert count(Register) == 1
@@ -68,6 +73,7 @@ defmodule Feedex.Ctx.Account.RegisterTest do
 
   describe "folder association" do
     test "finds the folder from the register" do
+      clear_all(Register)
       fusr =
         from(f in "registers",
           join: u in "folders",
@@ -80,6 +86,7 @@ defmodule Feedex.Ctx.Account.RegisterTest do
     end
 
     test "finds the register from the folder" do
+      clear_all(Register)
       ufold =
         from(u in "folders",
           join: f in "registers",

@@ -19,7 +19,10 @@ defmodule FeedexJob do
   def safe_sync(feed) do
     delta = Timex.diff(Timex.now(), feed.updated_at, :minutes)
     if delta > 5 || feed.sync_count == 0 do
-      status = sync(feed)
+      status = case sync(feed) do
+        {:error, msg} -> "Error #{msg}"
+        msg -> msg
+      end
       Phoenix.PubSub.broadcast_from(Feedex.PubSub, self(), "new_posts", "SYNC_FEED")
       Logger.info "BROADCAST SYNC_FEED (status: #{status})"
     else

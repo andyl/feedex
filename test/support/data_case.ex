@@ -67,6 +67,14 @@ defmodule Feedex.DataCase do
     end)
   end
 
+  def clear_all(list) when is_list(list) do
+    list |> Enum.map(&(clear_all(&1)))
+  end
+
+  def clear_all(type) do
+    Feedex.Repo.delete_all(type)
+  end
+
   def count(type) do
     Ecto.Query.from(element in type, select: count(element.id))
     |> Repo.one()

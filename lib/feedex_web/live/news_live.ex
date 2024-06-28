@@ -20,7 +20,7 @@ defmodule FeedexWeb.NewsLive do
     FeedexWeb.Endpoint.subscribe("new_posts")
 
     opts = %{
-      email: live_flash(socket.assigns.flash, :email),
+      email: Phoenix.Flash.get(socket.assigns.flash, :email),
       current_user: user,
       uistate: UiState.lookup(user.id) |> UiParams.merge_params(params),
       treemap: treemap
@@ -39,6 +39,8 @@ defmodule FeedexWeb.NewsLive do
       fld_id: params["fld_id"] |> numify(),
       reg_id: params["reg_id"] |> numify(),
       pst_id: params["pst_id"] |> numify(),
+      search: params["search"] || "",
+      status: params["status"] || "all",
       timestamp: DateTime.utc_now()
     }
 
@@ -66,28 +68,21 @@ defmodule FeedexWeb.NewsLive do
             <%= live_render(@socket, FeedexWeb.ClockLive, id: "clock") %>
           </div>
           <div>
-            <%= live_component(FeedexWeb.TreeComponent,
-              id: "tre",
-              uistate: @uistate,
-              treemap: @treemap,
-              counts: @counts
-            ) %>
+            <.live_component module={FeedexWeb.TreeComponent}
+              id='tre' uistate={@uistate} treemap={@treemap} counts={@counts} />
           </div>
           <div>
-            <%= live_component(FeedexWeb.BtnComponent, id: "btn", uistate: @uistate) %>
+            <.live_component module={FeedexWeb.BtnComponent} id='btn' uistate={@uistate} />
           </div>
         </div>
         <div class="flex-auto">
           <div class="bg-slate-300">
-            <%= live_component(FeedexWeb.HdrComponent,
-              id: "hdr",
-              uistate: @uistate,
-              treemap: @treemap,
-              counts: @counts
-            ) %>
+            <.live_component module={FeedexWeb.HdrComponent}
+              id='hdr' uistate={@uistate} treemap={@treemap} counts={@counts} />
           </div>
           <div class="bg-white">
-            <%= live_component(FeedexWeb.BodyComponent, id: "bdy", uistate: @uistate, counts: @counts) %>
+            <.live_component module={FeedexWeb.BodyComponent} id='bdy' uistate={@uistate}
+              counts={@counts} />
           </div>
         </div>
       </div>

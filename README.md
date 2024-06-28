@@ -32,16 +32,11 @@ Now you can visit [`localhost:4070`](http://localhost:4070) from your browser.
 ## Installing Production
 
 - Clone the repo
-- Install assets
-    > cd apps/feedex_ui/assets
-    > npm install
-    > npm run deploy
-    > cd ../../..
 - Setup Release
     > MIX_ENV=prod mix do phx.digest
-    > MIX_ENV=prod mix do deps.get, ecto.create, ecto.setup, distillery.release
+    > MIX_ENV=prod mix do deps.get, ecto.create, ecto.setup, release
 - Start the release
-- Browse to `locahost:5070`
+- Browse to `locahost:5010`
 
 ## Using SystemD
 
@@ -65,4 +60,3 @@ Make sure your service starts when the system reboots
 
 Reboot and test!
 
-![](https://badger.casmacc.net/png0/7162d8?path=NA)

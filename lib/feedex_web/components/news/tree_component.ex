@@ -31,8 +31,11 @@ defmodule FeedexWeb.TreeComponent do
         <% end %>
         <% end %>
       <% end %>
+      <div>
+      query zz
+      </div>
       </small>
-      <%# HTML.raw state_table(@uistate) %>
+      <%= HTML.raw state_table(@uistate) %>
     </div>
     """
   end

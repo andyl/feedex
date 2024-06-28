@@ -1,1 +1,78 @@
-[]
+[
+  {
+    "request": {
+      "options": {
+        "receive_timeout": 15000
+      },
+      "body": "",
+      "url": "https://zzz.reddit.com/z/elir.rss",
+      "headers": [],
+      "method": "get",
+      "request_body": ""
+    },
+    "response": {
+      "binary": false,
+      "type": "ok",
+      "body": "",
+      "headers": {
+        "connection": "keep-alive",
+        "location": "https://www.reddit.com/r/zzz/z/elir.rss",
+        "x-ratelimit-used": "4",
+        "x-ratelimit-remaining": "96",
+        "accept-ranges": "bytes",
+        "date": "Fri, 14 Jun 2024 23:34:02 GMT",
+        "via": "1.1 varnish",
+        "vary": "Accept-Encoding",
+        "strict-transport-security": "max-age=31536000; includeSubdomains",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": "csv=2; Max-Age=63072000; Domain=.reddit.com; Path=/; Secure; SameSite=None",
+        "cache-control": "private, max-age=3600",
+        "server": "snooserv",
+        "report-to": "{\"group\": \"w3-reporting-nel\", \"max_age\": 14400, \"include_subdomains\": true,  \"endpoints\": [{ \"url\": \"https://w3-reporting-nel.reddit.com/reports\" }]}, {\"group\": \"w3-reporting\", \"max_age\": 14400, \"include_subdomains\": true, \"endpoints\": [{ \"url\": \"https://w3-reporting.reddit.com/reports\" }]}, {\"group\": \"w3-reporting-csp\", \"max_age\": 14400, \"include_subdomains\": true, \"endpoints\": [{ \"url\": \"https://w3-reporting-csp.reddit.com/reports\" }]}",
+        "nel": "{\"report_to\": \"w3-reporting-nel\", \"max_age\": 14400, \"include_subdomains\": false, \"success_fraction\": 1.0, \"failure_fraction\": 1.0}",
+        "transfer-encoding": "chunked"
+      },
+      "status_code": 301
+    }
+  },
+  {
+    "request": {
+      "options": {
+        "receive_timeout": 15000
+      },
+      "body": "",
+      "url": "https://www.reddit.com/r/zzz/z/elir.rss",
+      "headers": [],
+      "method": "get",
+      "request_body": ""
+    },
+    "response": {
+      "binary": false,
+      "type": "ok",
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><feed xmlns=\"http://www.w3.org/2005/Atom\" xmlns:media=\"http://search.yahoo.com/mrss/\"><category term=\"zzz\" label=\"r/zzz\"/><updated>2024-06-14T23:34:02+00:00</updated><id>/r/zzz/z/elir.rss</id><link rel=\"self\" href=\"https://www.reddit.com/r/zzz/z/elir.rss\" type=\"application/atom+xml\" /><link rel=\"alternate\" href=\"https://www.reddit.com/r/zzz/z/elir\" type=\"text/html\" /><title>zzz: private</title></feed>",
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "442",
+        "content-type": "application/atom+xml; charset=UTF-8",
+        "x-ua-compatible": "IE=edge",
+        "x-ratelimit-used": "5",
+        "x-ratelimit-remaining": "95",
+        "accept-ranges": "bytes",
+        "date": "Fri, 14 Jun 2024 23:34:02 GMT",
+        "via": "1.1 varnish",
+        "strict-transport-security": "max-age=31536000; includeSubdomains",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": "session_tracker=MNCFPiQdBPxEls6S3x.0.1718408042735.Z0FBQUFBQm1iTk5xS1l0QkV6X0xNZDVEV09EZlRPX3RkV21oYWNvMmg3d1NmUTNfdlo1VzdQeE9IRFRJSVlyaGZXRkZNZnlRc0huYmhOcThTUkNEa0t4ZHNlcF9ObXNhS2VKUUlUU3V5d0V0dDJ4aTBlelM3YW0zeml5N0t5N18wOTdpYkJIUGd4dmU; Domain=reddit.com; Max-Age=7199; Path=/; expires=Sat, 15-Jun-2024 01:34:02 GMT; secure; SameSite=None; Secure",
+        "cache-control": "private, max-age=3600",
+        "server": "snooserv",
+        "report-to": "{\"group\": \"w3-reporting-nel\", \"max_age\": 14400, \"include_subdomains\": true,  \"endpoints\": [{ \"url\": \"https://w3-reporting-nel.reddit.com/reports\" }]}, {\"group\": \"w3-reporting\", \"max_age\": 14400, \"include_subdomains\": true, \"endpoints\": [{ \"url\": \"https://w3-reporting.reddit.com/reports\" }]}, {\"group\": \"w3-reporting-csp\", \"max_age\": 14400, \"include_subdomains\": true, \"endpoints\": [{ \"url\": \"https://w3-reporting-csp.reddit.com/reports\" }]}",
+        "nel": "{\"report_to\": \"w3-reporting-nel\", \"max_age\": 14400, \"include_subdomains\": false, \"success_fraction\": 1.0, \"failure_fraction\": 1.0}"
+      },
+      "status_code": 403
+    }
+  }
+]

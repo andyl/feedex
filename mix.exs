@@ -4,8 +4,8 @@ defmodule Feedex.MixProject do
   def project do
     [
       app: :feedex,
-      version: "0.1.0",
-      elixir: "~> 1.14",
+      version: "0.0.1",
+      elixir: "~> 1.15",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -13,7 +13,7 @@ defmodule Feedex.MixProject do
 
       # Docs
       name: "Feedex",
-      source_url: "https://github.com/andyl/feedex/feedex",
+      source_url: "https://github.com/andyl/feedex",
       homepage_url: "http://TBD",
       docs: [
         main: "Feedex",
@@ -51,30 +51,32 @@ defmodule Feedex.MixProject do
       {:plug_cowboy, "~> 2.0"},
       # Web UI
       {:swoosh,                 "~> 1.3"},
-      {:phoenix,                "~> 1.7.0"},
+      {:phoenix,                "~> 1.7"},
       {:phoenix_ecto,           "~> 4.4"},
       {:phoenix_live_dashboard, "~> 0.7"},
-      {:phoenix_html,           "~> 3.0"},
-      {:phoenix_live_view,      "~> 0.18"},
+      {:phoenix_html,           "~> 4.0"},
+      {:phoenix_live_view,      "~> 0.20"},
       {:phoenix_live_reload,    "~> 1.2", only: :dev},
       {:heroicons,              "~> 0.5"},
       {:gettext,                "~> 0.20"},
       {:esbuild,                "~> 0.5", runtime: Mix.env() == :dev},
-      {:tailwind,               "~> 0.1.8", runtime: Mix.env() == :dev},
+      {:tailwind,               "~> 0.2", runtime: Mix.env() == :dev},
       # Testing
-      {:ex_machina, "~> 2.7"},
-      {:floki,      ">= 0.30.0", only: :test},
+      {:ex_machina,     "~> 2.7"},
+      {:floki,          ">= 0.30.0", only: :test},
+      {:mix_test_interactive, "~> 2.0", only: :dev, runtime: false},
       # Documentation
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       # Util
       {:bcrypt_elixir, "~> 3.0"},
       {:pbkdf2_elixir, "~> 2.0"},
+      {:json,          "~> 1.4"},
       {:modex, github: "andyl/modex"},
       # Repo
       {:ecto_sql, "~> 3.6"},
       {:postgrex, ">= 0.0.0"},
       # Telemetry
-      {:telemetry_metrics, "~> 0.6"},
+      {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller,  "~> 1.0"},
       {:ecto_psql_extras,  "~> 0.6"},
       # Fc
@@ -83,10 +85,9 @@ defmodule Feedex.MixProject do
       {:finch, "~> 0.13"},
       # FcTesla
       {:tesla,   "~> 1.4"},
-      {:hackney, "~> 1.18"},
       # FcRss
       {:elixir_feed_parser, github: "andyl/elixir-feed-parser"},
-      {:exvcr, "~> 0.12", only: [:test]},
+      {:exvcr, "~> 0.12", only: [:dev, :test]},
       # FeedexJob
       {:quantum, "~> 3.3"},
       {:timex, "~> 3.0"},
@@ -107,6 +108,7 @@ defmodule Feedex.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      seed: ["run priv/repo/seeds.exs"],
       "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
     ]
   end

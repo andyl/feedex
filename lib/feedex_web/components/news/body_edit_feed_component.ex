@@ -29,11 +29,9 @@ defmodule FeedexWeb.BodyEditFeedComponent do
   @impl true
   def update(session, socket) do
 
-    IO.inspect("APRIL FOOLS")
-
     reg_id = session.uistate.reg_id
     usr_id = session.uistate.usr_id
-    register = Repo.get(Account.Register, reg_id, [:id, :name, :feed_id])
+    register = Repo.get(Account.Register, reg_id)
     regform = Repo.get(Account.RegForm, reg_id)
 
     opts =
@@ -62,7 +60,7 @@ defmodule FeedexWeb.BodyEditFeedComponent do
           folders: folders,
           post_count: post_count,
           uistate: session.uistate
-        } |> IO.inspect(label: "WANGO")
+        }
       else
         %{
           register: nil,
@@ -73,7 +71,7 @@ defmodule FeedexWeb.BodyEditFeedComponent do
           post_count: 0,
           changeset: %Account.RegForm{},
           uistate: session.uistate
-        } |> IO.inspect(label: "TANGO")
+        }
       end
     {:ok, assign(socket, opts)}
   end

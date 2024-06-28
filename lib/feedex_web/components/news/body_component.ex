@@ -29,13 +29,14 @@ defmodule FeedexWeb.BodyComponent do
   # ----- view helpers -----
 
   def render_body(counts, uistate) do
+    assigns = %{counts: counts, uistate: uistate}
     case uistate.mode do
-      "view" -> live_component(BodyViewComponent, opts(counts, uistate, "view"))
-      "add_feed" -> live_component(BodyAddFeedComponent, opts(counts, uistate, "afee"))
-      "add_folder" -> live_component(BodyAddFolderComponent, opts(counts, uistate, "afol"))
-      "edit_feed" -> live_component(BodyEditFeedComponent, opts(counts, uistate, "efee"))
-      "edit_folder" -> live_component(BodyEditFolderComponent, opts(counts, uistate, "efol"))
-      _ -> live_component(BodyViewComponent, opts(counts, uistate, "view"))
+      "view" -> ~H"<.live_component module={BodyViewComponent} counts={@counts} uistate={@uistate} id='view' />"
+      "add_feed" -> ~H"<.live_component module={BodyAddFeedComponent} counts={@counts} uistate={@uistate} id='afee' />"
+      "add_folder" -> ~H"<.live_component module={BodyAddFolderComponent} counts={@counts} uistate={@uistate} id='afol' />"
+      "edit_feed" -> ~H"<.live_component module={BodyEditFeedComponent} counts={@counts} uistate={@uistate} id='efee' />"
+      "edit_folder" -> ~H"<.live_component module={BodyEditFolderComponent} counts={@counts} uistate={@uistate} id='efol' />"
+      _ -> ~H"<.live_component module={BodyViewComponent} counts={@counts} uistate={@uistate} id='view' />"
     end
   end
 

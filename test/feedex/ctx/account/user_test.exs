@@ -16,6 +16,7 @@ defmodule Feedex.Ctx.Account.UserTest do
       tmap = %User{}
       attr = %{name: "asdff", email: "zqwer@asdf.com", hashed_password: "xxx"}
       cset = User.changeset(tmap, attr)
+      clear_all(User)
       assert count(User) == 0
       assert {:ok, _result} = Repo.insert(cset)
       assert count(User) == 1
@@ -26,6 +27,7 @@ defmodule Feedex.Ctx.Account.UserTest do
     test "adds a user with password" do
       attr = %{name: "asdf", email: "qwer.com", pwd: "bingbing"}
       cset = User.signup_changeset(%User{}, attr)
+      clear_all(User)
       assert count(User) == 0
       assert {:ok, _trak} = Repo.insert(cset)
       assert count(User) == 1
@@ -38,20 +40,23 @@ defmodule Feedex.Ctx.Account.UserTest do
     end
 
     test "inserting an entity" do
+      clear_all(User)
       assert count(User) == 0
       assert insert(:user)
       assert count(User) == 1
     end
 
-    # test "inserting two entities" do
-    #   assert count(User) == 0
-    #   assert insert(:user)
-    #   assert insert(:user)
-    #   assert count(User) == 2
-    # end
+    test "inserting two entities" do
+      clear_all(User)
+      assert count(User) == 0
+      assert insert(:user)
+      assert insert(:user)
+      assert count(User) == 2
+    end
 
     test "uses alternate attrs" do
       altname = "NEWNAME"
+      clear_all(User)
       assert count(User) == 0
       assert trak = insert(:user, %{name: altname})
       assert count(User) == 1
@@ -61,6 +66,7 @@ defmodule Feedex.Ctx.Account.UserTest do
 
   describe "deleting records" do
     test "all users" do
+      clear_all(User)
       assert count(User) == 0
       insert(:user)
       assert count(User) == 1

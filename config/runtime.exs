@@ -20,11 +20,21 @@ if System.get_env("PHX_SERVER") do
   config :feedex, FeedexWeb.Endpoint, server: true
 end
 
+config :feedex,
+  linux_host: System.get_env("LINUX_HOST") || System.get_env("SYSNAME"),
+  docker_img: System.get_env("DOCKER_IMG") || "NA"
+
+# if config_env() == :prod do
+#   config :feedex, data_dir: System.get_env("DATA_DIR") ||
+#     raise "Missing environment variable DATA_DIR."
+# else
+#   config :feedex, data_dir: File.cwd!() <> "/data"
+# end
+
 if config_env() == :prod do
-  database_url =
-    System.get_env("DATABASE_URL") ||
+  database_url = System.get_env("DATABASE_URL") ||
       raise """
-      environment variable DATABASE_URL is missing.
+      Environment variable DATABASE_URL is missing.
       For example: ecto://USER:PASS@HOST/DATABASE
       """
 
@@ -41,12 +51,13 @@ if config_env() == :prod do
   # want to use a different value for prod and you most likely don't want
   # to check this value into version control, so we use an environment
   # variable instead.
-  secret_key_base =
-    System.get_env("SECRET_KEY_BASE") ||
-      raise """
-      environment variable SECRET_KEY_BASE is missing.
-      You can generate one by calling: mix phx.gen.secret
-      """
+  # secret_key_base =
+  secret_key_base = "K2j7UPRqKTl+tdPtyZnasdl;sdfl;sdfasdfasdfasdfasdfl;5DdBvjVJafPAED80k2i3A/YNELYQNezLHr2G5tS36WTqs"
+    # System.get_env("SECRET_KEY_BASE") ||
+    #   raise """
+    #   environment variable SECRET_KEY_BASE is missing.
+    #   You can generate one by calling: mix phx.gen.secret
+    #   """
 
   host = System.get_env("PHX_HOST") || "example.com"
   port = String.to_integer(System.get_env("PORT") || "4000")
@@ -107,9 +118,9 @@ if config_env() == :prod do
   #       domain: System.get_env("MAILGUN_DOMAIN")
   #
   # For this example you need include a HTTP client required by Swoosh API client.
-  # Swoosh supports Hackney and Finch out of the box:
+  # Swoosh supports H-ackney and Finch out of the box:
   #
-  #     config :swoosh, :api_client, Swoosh.ApiClient.Hackney
+  #     config :swoosh, :api_client, Swoosh.ApiClient.Finch
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 end

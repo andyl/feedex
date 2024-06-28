@@ -41,7 +41,7 @@ defmodule FeedexWeb.BodyViewComponent do
               <td><b><%= id_link(post.id, @myself) %></b></td>
               <td>
                 <b>
-                <.alink href={post.link} {%{target: '_blank'}}>
+                <.alink href={post.link} {%{target: "_blank"}}>
                 <%= time_ago(post.updated_at) %><%= post.title %>
                 </.alink>
                 </b>
@@ -58,9 +58,9 @@ defmodule FeedexWeb.BodyViewComponent do
           <% else %>
             <tr class="border-b decoration-slate-300">
               <td>
-              <%= if post.read_log, do: check_svg('inline px-1 h-3', :raw) %>
+              <%= if post.read_log, do: check_svg("inline px-1 h-3", :raw) %>
               </td>
-              <td class='align-top'><%= id_link(post.id, @myself) %></td>
+              <td class="align-top"><%= id_link(post.id, @myself) %></td>
               <td class=''>
               <%= time_ago(post.updated_at) %><%= post.title %>
               </td>
@@ -76,7 +76,7 @@ defmodule FeedexWeb.BodyViewComponent do
 
   def id_link(id, myself) do
     """
-    <a href="#" class='px-2 text-blue-400 hover:text-blue-800' phx-target='#{myself}' phx-click='click-post' phx-value-pstid='#{id}'>
+    <a href="#" class="px-2 text-blue-400 hover:text-blue-800" phx-target='#{myself}' phx-click='click-post' phx-value-pstid='#{id}'>
     #{id}
     </a>
     """

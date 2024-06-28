@@ -8,8 +8,8 @@ defmodule Feedex.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      FeedexWeb.Telemetry,
       Feedex.Repo,
+      FeedexWeb.Telemetry,
       {Phoenix.PubSub, name: Feedex.PubSub},
       {Finch, name: Feedex.Finch},
       FeedexWeb.Endpoint,
@@ -20,7 +20,11 @@ defmodule Feedex.Application do
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Feedex.Supervisor]
-    Supervisor.start_link(children, opts)
+    results = Supervisor.start_link(children, opts)
+
+    Feedex.Seeds.load_if_empty()
+
+    results
   end
 
   # Tell Phoenix to update the endpoint configuration

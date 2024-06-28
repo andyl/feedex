@@ -1,8 +1,8 @@
-<h3 class='mt-20'>SUBSCRIPTIONS</h3>
-
-<div>
+<h3 class='pt-10 mb-5'><b>SUBSCRIPTIONS</b></h3> 
+<div class='mb-5'>
   <.alink href={~p"/users/settings/subs.json"}>JSON</.alink> | 
-  <.alink href="/users/settings/sub_import">IMPORT</.alink>  
+  <.alink href="/users/settings/sub_import">IMPORT</.alink> | 
+  <.alink href="/users/settings/backup">BACKUP</.alink>  <br/> 
 </div>
 
 <style>
@@ -11,7 +11,7 @@ span { display: inline-block; width: 180px;}
 
 <div class='text-monospace'>
   <%= for folder <- Map.keys(@subs) do %>
-  <p></p>
+  <div style="height: 10px;"></div>
   <%= folder %><br/>
   <%= for feed <- @subs[folder] do %>
     <span>-> <%= feed.feed_name %></span><%= feed.feed_url %><br/>

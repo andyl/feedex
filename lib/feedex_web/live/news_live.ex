@@ -20,7 +20,7 @@ defmodule FeedexWeb.NewsLive do
     FeedexWeb.Endpoint.subscribe("new_posts")
 
     opts = %{
-      email: live_flash(socket.assigns.flash, :email),
+      email: Phoenix.Flash.get(socket.assigns.flash, :email),
       current_user: user,
       uistate: UiState.lookup(user.id) |> UiParams.merge_params(params),
       treemap: treemap

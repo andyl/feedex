@@ -60,6 +60,7 @@ defmodule Feedex.MixProject do
       {:phoenix_live_reload,    "~> 1.2", only: :dev},
       {:heroicons,              "~> 0.5"},
       {:gettext,                "~> 0.20"},
+      # Assets
       {:esbuild,                "~> 0.5", runtime: Mix.env() == :dev},
       {:tailwind,               "~> 0.2", runtime: Mix.env() == :dev},
       # Testing

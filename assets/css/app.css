@@ -3,3 +3,8 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+.zing {
+  @apply p-4 bg-blue-200 text-blue-800 rounded-lg;
+}
+

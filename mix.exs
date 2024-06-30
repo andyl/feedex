@@ -55,10 +55,12 @@ defmodule Feedex.MixProject do
       {:phoenix_ecto,           "~> 4.4"},
       {:phoenix_live_dashboard, "~> 0.7"},
       {:phoenix_html,           "~> 4.0"},
-      {:phoenix_live_view,      "~> 0.20"},
+      # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
+      {:phoenix_live_view,      "~> 1.0.0-rc.6", override: true},
       {:phoenix_live_reload,    "~> 1.2", only: :dev},
       {:heroicons,              "~> 0.5"},
       {:gettext,                "~> 0.20"},
+      # Assets
       {:esbuild,                "~> 0.5", runtime: Mix.env() == :dev},
       {:tailwind,               "~> 0.2", runtime: Mix.env() == :dev},
       # Testing
@@ -104,11 +106,12 @@ defmodule Feedex.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ecto.setup"],
+      setup: ["deps.get", "ecto.setup", "assets.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       seed: ["run priv/repo/seeds.exs"],
+      "assets.setup": ["tailwind.install --if-missing"],
       "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
     ]
   end

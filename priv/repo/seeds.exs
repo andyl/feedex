@@ -7,4 +7,4 @@ Logger.info("------------------------------------------------------")
 Logger.info("----- LOADING_SEED_DATA ")
 Logger.info("------------------------------------------------------")
 
-Feedex.Seeds.load()
+Feedex.Seeds.load_if_empty()

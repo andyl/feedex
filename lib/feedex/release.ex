@@ -6,6 +6,11 @@ defmodule Feedex.Release do
   @app :feedex
 
   def migrate do
+    require Logger
+    Logger.info("------------------------------------------------------")
+    Logger.info("----- ECTO_MIGRATION")
+    Logger.info("------------------------------------------------------")
+
     load_app()
 
     for repo <- repos() do

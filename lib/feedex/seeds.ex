@@ -18,6 +18,7 @@ defmodule Feedex.Seeds do
     else
       Logger.info("----- Users exist - skipping seeds...")
     end
+    Logger.info("------------------------------------------------------")
   end
 
   def load do

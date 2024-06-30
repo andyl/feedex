@@ -32,7 +32,7 @@ defmodule FeedexWeb.TreeComponent do
         <% end %>
       <% end %>
       </small>
-      <%= HTML.raw state_table(@uistate) %>
+      <%# HTML.raw state_table(@uistate) %>
     </div>
     """
   end

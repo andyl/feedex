@@ -1,8 +1,10 @@
 <div class="pt-10 px-10">
-<div><b>HOME PAGE</b></div>
-<div class="pt-5"> 
-LINUX_HOST: <%= Application.fetch_env!(:feedex, :linux_host) %> <br/>
-DOCKER_IMG: <%= Application.fetch_env!(:feedex, :docker_img) %> 
-</div>
-<div class="zing">HELLO WORLD</div>
+  <div><b>HOME PAGE</b></div>
+  <div class="pt-5">
+    LINUX_HOST: <%= Application.fetch_env!(:feedex, :linux_host) %> <br />
+    DOCKER_IMG: <%= Application.fetch_env!(:feedex, :docker_img) %>
+  </div>
+  <div class="home-status">
+    <%= DateTime.utc_now() %>
+  </div>
 </div>

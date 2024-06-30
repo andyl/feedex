@@ -8,3 +8,11 @@
   @apply p-4 bg-blue-200 text-blue-800 mt-5 rounded-lg;
 }
 
+.action-warn {
+  @apply p-4 bg-red-200 m-5 rounded-lg;
+}
+
+.big-button {
+  @apply p-4 bg-blue-500 m-5 rounded-lg hover:bg-blue-300;
+}
+

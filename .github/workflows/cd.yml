@@ -51,6 +51,7 @@ jobs:
   cd: 
     runs-on: self-hosted
     needs: ci 
+    name: Build and Deploy 
     env: 
       MIX_ENV: prod
       ImageOS: ubuntu22

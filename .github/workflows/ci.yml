@@ -20,6 +20,7 @@ jobs:
           --health-retries 5
     env:
       MIX_ENV: test
+      ImageOS: ubuntu22
     steps:
       - uses: actions/checkout@v4
       - name: Setup Elixir

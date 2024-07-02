@@ -23,7 +23,7 @@ jobs:
       ImageOS: ubuntu22
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Elixir
+      - name: Setup Beam
         uses: erlef/setup-beam@v1.17.3
         with:
           version-file: .tool-versions

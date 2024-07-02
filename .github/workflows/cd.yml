@@ -1,7 +1,7 @@
-name: CI_FEEDEX
+name: CD_FEEDEX
 on:
   push:
-    branches-ignore: 
+    branches: 
       - master
   workflow_dispatch:
 jobs:
@@ -21,6 +21,7 @@ jobs:
           --health-retries 5
     env:
       MIX_ENV: test
+      ImageOS: ubuntu22
     steps:
       - uses: actions/checkout@v4
       - name: Setup Beam
@@ -47,6 +48,13 @@ jobs:
         run: mix compile --warnings-as-errors
       - name: run test
         run: mix test
-      - name: run local script 
+  cd: 
+    runs-on: self-hosted
+    needs: ci 
+    env: 
+      MIX_ENV: prod
+      ImageOS: ubuntu22
+    steps: 
+      - name: run deploy script 
         run: /home/aleak/script/test.sh
 

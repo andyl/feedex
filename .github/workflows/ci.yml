@@ -26,8 +26,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-mix
       - name: Get dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: mix deps.get
       - name: Compile dependencies
         run: mix deps.compile
       - name: Compile application
         run: mix compile --warnings-as-errors
+

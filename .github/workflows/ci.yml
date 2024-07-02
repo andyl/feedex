@@ -6,45 +6,7 @@ on:
   workflow_dispatch:
 jobs:
   ci:
-    runs-on: ubuntu-latest
-    name: Compile and Test
-    services:
-      postgres:
-        image: postgres:15
-        ports: ['5432:5432']
-        env:
-          POSTGRES_PASSWORD: postgres
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    env:
-      MIX_ENV: test
+    uses: ./.github/workflows/base_ci.yml
+  alt: 
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Beam
-        uses: erlef/setup-beam@v1.17.3
-        with:
-          version-file: .tool-versions
-          version-type: strict
-      - name: Cache deps directory
-        uses: actions/cache@v4
-        id: cache-deps
-        with:
-          path: |
-            deps
-            _build
-          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-mix
-      - name: Get dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: mix deps.get
-      - name: Compile dependencies
-        run: mix deps.compile
-      - name: Compile app
-        run: mix compile --warnings-as-errors
-      - name: run test
-        run: mix test
-
+      - run echo "HELLO WORLD"

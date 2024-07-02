@@ -5,6 +5,17 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        ports: ['5432:5432']
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     name: Compile
     env:
       MIX_ENV: test
@@ -32,4 +43,6 @@ jobs:
         run: mix deps.compile
       - name: Compile app
         run: mix compile --warnings-as-errors
+      - name: run test
+        run: mix test
 

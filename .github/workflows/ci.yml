@@ -30,6 +30,6 @@ jobs:
         run: mix deps.get
       - name: Compile dependencies
         run: mix deps.compile
-      - name: Compile application
+      - name: Compile app
         run: mix compile --warnings-as-errors
 

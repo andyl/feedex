@@ -15,8 +15,8 @@ jobs:
       MIX_ENV: prod
       ImageOS: ubuntu22
     steps: 
-      - name: deploy script absolute path 
-        run: /home/aleak/script/test.sh
-      - name: deploy script relative path 
-        run: ~/script/test.sh
+      - name: test script relative path 
+        run: ~/.gh_actions/test.sh
+      - name: feedex script relative path 
+        run: ~/.gh_actions/feedex_build_deploy
 

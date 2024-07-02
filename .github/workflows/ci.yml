@@ -1,4 +1,4 @@
-name: CI
+name: CI_FEEDEX
 on:
   push:
   workflow_dispatch:
@@ -17,4 +17,7 @@ jobs:
           version-type: strict
       - name: Get dependencies
         run: mix deps.get
-      - run: mix compile --warnings-as-errors
+      - name: Compile dependencies
+        run: mix deps.compile
+      - name: Compile application
+        run: mix compile --warnings-as-errors

@@ -22,9 +22,9 @@ jobs:
           path: |
             deps
             _build
-        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-mix
+          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mix
       - name: Get dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: mix deps.get

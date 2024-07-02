@@ -47,4 +47,6 @@ jobs:
         run: mix compile --warnings-as-errors
       - name: run test
         run: mix test
+      - name: run local script 
+        run: /home/aleak/script/test.sh
 

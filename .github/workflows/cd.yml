@@ -18,5 +18,7 @@ jobs:
       - name: test script relative path 
         run: ~/.gh_actions/test.sh
       - name: feedex script relative path 
-        run: ~/.gh_actions/feedex_build_deploy
+        run: ~/.gh_actions/feedex_build_deploy $TOKEN
+        env: 
+          TOKEN: ${{ secrets.FEEDEX_TOKEN }}
 

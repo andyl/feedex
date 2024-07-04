@@ -5,7 +5,7 @@ defmodule Util.BuildInfo do
   def last_commit_time do
     {output, 0} = System.cmd("git", ["log", "-1", "--format=%ct"])
     timestamp = String.trim(output) |> String.to_integer()
-    DateTime.from_unix!(timestamp) |> Calendar.strftime("%y-%m-%d_%H:%M PT")
+    DateTime.from_unix!(timestamp) |> Calendar.strftime("%y-%m-%d_%H:%M UTC")
   end
 
   def last_commit_hash do

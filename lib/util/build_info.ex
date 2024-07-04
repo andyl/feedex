@@ -1,6 +1,6 @@
 defmodule Util.BuildInfo do
 
-  @ data_file "priv/build_info.yml"
+  @ data_file "priv/.build_info.yml"
 
   def last_commit_time do
     {output, 0} = System.cmd("git", ["log", "-1", "--format=%ct"])

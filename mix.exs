@@ -50,43 +50,45 @@ defmodule Feedex.MixProject do
       # Web Server
       {:plug_cowboy, "~> 2.0"},
       # Web UI
-      {:swoosh,                 "~> 1.3"},
-      {:phoenix,                "~> 1.7"},
-      {:phoenix_ecto,           "~> 4.4"},
+      {:swoosh, "~> 1.3"},
+      {:phoenix, "~> 1.7"},
+      {:phoenix_ecto, "~> 4.4"},
       {:phoenix_live_dashboard, "~> 0.7"},
-      {:phoenix_html,           "~> 4.0"},
+      {:phoenix_html, "~> 4.0"},
       # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
-      {:phoenix_live_view,      "~> 1.0.0-rc.6", override: true},
-      {:phoenix_live_reload,    "~> 1.2", only: :dev},
-      {:heroicons,              "~> 0.5"},
-      {:gettext,                "~> 0.20"},
+      {:phoenix_live_view, "~> 1.0.0-rc.6", override: true},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:heroicons, "~> 0.5"},
+      {:gettext, "~> 0.20"},
       # Assets
-      {:esbuild,                "~> 0.5", runtime: Mix.env() == :dev},
-      {:tailwind,               "~> 0.2", runtime: Mix.env() == :dev},
+      {:esbuild, "~> 0.5", runtime: Mix.env() == :dev},
+      {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
       # Testing
-      {:ex_machina,     "~> 2.7"},
-      {:floki,          ">= 0.30.0", only: :test},
+      {:ex_machina, "~> 2.7"},
+      {:floki, ">= 0.30.0", only: :test},
       {:mix_test_interactive, "~> 2.0", only: :dev, runtime: false},
       # Documentation
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       # Util
       {:bcrypt_elixir, "~> 3.0"},
       {:pbkdf2_elixir, "~> 2.0"},
-      {:json,          "~> 1.4"},
+      {:json, "~> 1.4"},
       {:modex, github: "andyl/modex"},
       # Repo
       {:ecto_sql, "~> 3.6"},
       {:postgrex, ">= 0.0.0"},
       # Telemetry
       {:telemetry_metrics, "~> 1.0"},
-      {:telemetry_poller,  "~> 1.0"},
-      {:ecto_psql_extras,  "~> 0.6"},
+      {:telemetry_poller, "~> 1.0"},
+      {:ecto_psql_extras, "~> 0.6"},
       # Fc
       {:jason, "~> 1.2"},
+      {:yaml_elixir, "~> 2.8"},
+      {:ymlr, "~> 5.0"},
       # FcFinch
       {:finch, "~> 0.13"},
       # FcTesla
-      {:tesla,   "~> 1.4"},
+      {:tesla, "~> 1.4"},
       # FcRss
       {:elixir_feed_parser, github: "andyl/elixir-feed-parser"},
       {:exvcr, "~> 0.12", only: [:dev, :test]},
@@ -94,7 +96,7 @@ defmodule Feedex.MixProject do
       {:quantum, "~> 3.3"},
       {:timex, "~> 3.0"},
       # Persistence
-      {:pets, github: "andyl/pets"},
+      {:pets, github: "andyl/pets"}
     ]
   end
 
@@ -109,6 +111,7 @@ defmodule Feedex.MixProject do
       setup: ["deps.get", "ecto.setup", "assets.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
+      compile: ["build"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       seed: ["run priv/repo/seeds.exs"],
       "assets.setup": ["tailwind.install --if-missing"],

@@ -52,8 +52,8 @@ defmodule Util.BuildInfo do
       compiled_at: current_time(),
       commit_time: last_commit_time(),
       commit_hash: last_commit_hash(),
-      git_branch: current_branch(),
-      build_host: get_hostname()
+      git_branch:  current_branch(),
+      build_host:  get_hostname()
     }
   end
 
@@ -76,11 +76,11 @@ defmodule Util.BuildInfo do
       YamlElixir.read_from_file(@data_file)
     else
       %{
-        compiled_at: "NA",
-        commit_time: "NA",
-        commit_hash: "NA",
-        git_branch: "NA",
-        build_host: "NA"
+        "compiled_at" => "NA",
+        "commit_time" => "NA",
+        "commit_hash" => "NA",
+        "git_branch"  => "NA",
+        "build_host"  => "NA"
       }
     end
   end

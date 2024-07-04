@@ -6,6 +6,8 @@ defmodule FeedexWeb.PageController do
 
     IO.inspect(values, label: "TANGOFOR")
 
+    System.cmd("pwd", []) |> IO.inspect(label: "BINGOBOB")
+
     render(conn, :home, layout: false, attributes: values)
   end
 end

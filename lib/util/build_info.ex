@@ -73,8 +73,10 @@ defmodule Util.BuildInfo do
 
   def read do
     if File.exists?(@data_file) do
-      {:ok, value} = YamlElixir.read_from_file(@data_file)
-      value
+      case YamlElixir.read_from_file(@data_file) do
+        {:ok, value} -> value
+        value -> IO.inspect(value, label: "PLAIN_MATCH")
+      end
     else
       %{
         "compiled_at" => "NA",

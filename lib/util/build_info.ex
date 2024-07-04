@@ -23,7 +23,7 @@ defmodule Util.BuildInfo do
       {output, 0} = System.cmd("git", ["log", "-1", "--format=%H"])
 
       String.trim(output)
-      |> String.slice(-7, 7)
+      |> String.slice(0, 8)
     else
       "NG"
     end

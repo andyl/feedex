@@ -1,23 +1,27 @@
 <div class="pt-10 px-10">
   <div><b>HOME PAGE</b></div>
-  <table class="table-auto border-separate border-spacing-2 border-slate-500">
-  <tbody>
-    <tr>
-      <td class="align-top pr-5 pl-5 border border-slate-300">
-        RUNTIME_HOST: <%= Application.fetch_env!(:feedex, :linux_host) %> <br />
-        DOCKER_IMG: <%= Application.fetch_env!(:feedex, :docker_img) %> <br />
-      </td>
-      <td class="align-top pr-5 pl-5 border border-slate-300">
-        BUILD_HOST:  <%= @attributes["build_host"] %> <br />
-        COMPILED_AT: <%= @attributes["compiled_at"] %> <br />
-        COMMIT_TIME: <%= @attributes["commit_time"] %> <br />
-        COMMIT_HASH: <%= @attributes["commit_hash"] %> <br />
-        GIT_BRANCH:  <%= @attributes["git_branch"] %> <br />
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <div class="flex space-x-2">
+    <div class="flex-shrink-0 mt-2 pl-4 pr-4 bg-white shadow-md rounded border border-slate-500">
+      <table class="table-auto border-separate border-spacing-0">
+        <tbody>
+          <tr><td class="text-right"> BUILD_HOST: </td><td> <%= @attributes["build_host"] %>   </td> </tr>
+          <tr><td class="text-right">COMPILED_AT: </td><td> <%= @attributes["compiled_at"] %>  </td> </tr>
+          <tr><td class="text-right">COMMIT_TIME: </td><td> <%= @attributes["commit_time"] %>  </td> </tr>
+          <tr><td class="text-right">COMMIT_HASH: </td><td> <%= @attributes["commit_hash"] %>  </td> </tr>
+          <tr><td class="text-right"> GIT_BRANCH: </td><td> <%= @attributes["git_branch"] %>   </td> </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flex-shrink-0 mt-2 pl-4 pr-4 bg-white shadow-md rounded border border-slate-500">
+      <table class="table-auto border-separate border-spacing-0 ph-2">
+        <tbody>
+          <tr> <td class="text-right">RUNTIME_HOST: </td> <td><%= Application.fetch_env!(:feedex, :linux_host) %></td> </tr>
+          <tr> <td class="text-right">  DOCKER_IMG: </td> <td><%= Application.fetch_env!(:feedex, :docker_img) %></td> </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
   <div class="home-status">
-    <%= DateTime.utc_now() |> Calendar.strftime("%y-%m-%d %H:%M:%S UTC")%>
+    <%= DateTime.utc_now() |> Calendar.strftime("%y-%m-%d %H:%M:%S UTC") %>
   </div>
 </div>

@@ -1,22 +1,41 @@
 defmodule Util.BuildInfo do
+  @data_file "priv/.build_info.yml"
 
-  @ data_file "priv/.build_info.yml"
+  def in_git_repo? do
+    current_dir = File.cwd!()
+    git_dir = Path.join(current_dir, ".git")
+
+    File.dir?(git_dir)
+  end
 
   def last_commit_time do
-    {output, 0} = System.cmd("git", ["log", "-1", "--format=%ct"])
-    timestamp = String.trim(output) |> String.to_integer()
-    DateTime.from_unix!(timestamp) |> Calendar.strftime("%y-%m-%d_%H:%M UTC")
+    if in_git_repo?() do
+      {output, 0} = System.cmd("git", ["log", "-1", "--format=%ct"])
+      timestamp = String.trim(output) |> String.to_integer()
+      DateTime.from_unix!(timestamp) |> Calendar.strftime("%y-%m-%d_%H:%M UTC")
+    else
+      "NG"
+    end
   end
 
   def last_commit_hash do
-    {output, 0} = System.cmd("git", ["log", "-1", "--format=%H"])
-    String.trim(output)
-    |> String.slice(-7, 7)
+    if in_git_repo?() do
+      {output, 0} = System.cmd("git", ["log", "-1", "--format=%H"])
+
+      String.trim(output)
+      |> String.slice(-7, 7)
+    else
+      "NG"
+    end
   end
 
   def current_branch do
-    {output, 0} = System.cmd("git", ["rev-parse", "--abbrev-ref", "HEAD"])
-    String.trim(output)
+    if in_git_repo?() do
+      {output, 0} = System.cmd("git", ["rev-parse", "--abbrev-ref", "HEAD"])
+      String.trim(output)
+    else
+      "NG"
+    end
   end
 
   def current_time do
@@ -34,7 +53,7 @@ defmodule Util.BuildInfo do
       commit_time: last_commit_time(),
       commit_hash: last_commit_hash(),
       git_branch: current_branch(),
-      build_host: get_hostname(),
+      build_host: get_hostname()
     }
   end
 
@@ -60,10 +79,9 @@ defmodule Util.BuildInfo do
         compiled_at: "NA",
         commit_time: "NA",
         commit_hash: "NA",
-        git_branch:  "NA",
-        build_host:  "NA"
+        git_branch: "NA",
+        build_host: "NA"
       }
     end
   end
-
 end

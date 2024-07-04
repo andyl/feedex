@@ -15,8 +15,8 @@ jobs:
       MIX_ENV: prod
       ImageOS: ubuntu22
     steps: 
-      - name: test script relative path 
+      - name: test script 
         run: ~/.gh_actions/test.sh
-      - name: feedex script relative path 
+      - name: feedex rebuild script
         run: ~/.gh_actions/feedex_build_deploy "${{ secrets.FEEDEX_TOKEN }}"
 

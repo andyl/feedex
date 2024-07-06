@@ -23,18 +23,43 @@ defmodule FeedexWeb.AppComponents do
   end
 
   @doc """
+  Conditionally renders a styled link.
+  """
+  attr :href, :string, doc: "the link href"
+  attr :current_path, :string, doc: "current path", default: ""
+  attr :class, :string, doc: "custom classes", default: ""
+  attr :rest, :global, doc: "custom HTML attributes", default: %{}
+  slot :inner_block, required: true
+
+  def clink(assigns) do
+    if assigns.current_path == assigns.href do
+    ~H"""
+    <%= render_slot(@inner_block) %>
+    """
+    else
+    ~H"""
+    <.link
+      class={"underline decoration-2 decoration-blue-400 hover:decoration-blue-800 #{@class}"}
+      href={@href}
+      {@rest}
+    ><%= render_slot(@inner_block) %></.link>
+    """
+    end
+  end
+
+  @doc """
   Renders a navbar for demo pages
   """
   def demonav(assigns) do
     ~H"""
     <div>
-      <.alink href="/demo_base">Base</.alink>
+      <.clink current_path={@current_path} href="/demo_base">Base</.clink>
       |
-      <.alink href="/demo_daisy">Daisy</.alink>
+      <.clink current_path={@current_path} href="/demo_daisy">Daisy</.clink>
       |
-      <.alink href="/demo_salad">Salad</.alink>
+      <.clink current_path={@current_path} href="/demo_salad">Salad</.clink>
       |
-      <.alink href="/demo_tailwind">Tailwind</.alink>
+      <.clink current_path={@current_path} href="/demo_tailwind">Tailwind</.clink>
     </div>
     """
   end

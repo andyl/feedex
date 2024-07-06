@@ -53,13 +53,13 @@ defmodule FeedexWeb.AppComponents do
   def demonav(assigns) do
     ~H"""
     <div>
-      <.clink current_path={@current_path} href="/demo_base">Base</.clink>
+      <.alink href="/demo_base">Base</.alink>
       |
-      <.clink current_path={@current_path} href="/demo_daisy">Daisy</.clink>
+      <.alink href="/demo_daisy">Daisy</.alink>
       |
-      <.clink current_path={@current_path} href="/demo_salad">Salad</.clink>
+      <.alink href="/demo_salad">Salad</.alink>
       |
-      <.clink current_path={@current_path} href="/demo_tailwind">Tailwind</.clink>
+      <.alink href="/demo_tailwind">Tailwind</.alink>
     </div>
     """
   end

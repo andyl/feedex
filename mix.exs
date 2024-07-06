@@ -55,6 +55,7 @@ defmodule Feedex.MixProject do
       {:phoenix_ecto, "~> 4.4"},
       {:phoenix_live_dashboard, "~> 0.7"},
       {:phoenix_html, "~> 4.0"},
+      {:salad_ui, "~> 0.5"},
       # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
       {:phoenix_live_view, "~> 1.0.0-rc.6", override: true},
       {:phoenix_live_reload, "~> 1.2", only: :dev},

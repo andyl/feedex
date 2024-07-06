@@ -72,7 +72,10 @@ defmodule FeedexWeb.Router do
       live "/users/settings/sub_import", SubTreeLive, :index
       live "/users/settings/sub_clear", ClearTreeLive, :index
       live "/users/settings/backup", BackupLive, :index
-      live "/demo", DemoLive, :index
+      live "/demo_base",  DemoBaseLive, :index
+      live "/demo_daisy", DemoDaisyLive, :index
+      live "/demo_salad", DemoSaladLive, :index
+      live "/demo_tailwind", DemoTailwindLive, :index
     end
 
     get "/users/settings/subs", UserSettingsController, :subs

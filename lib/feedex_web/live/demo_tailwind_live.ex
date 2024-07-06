@@ -1,11 +1,10 @@
-defmodule FeedexWeb.DemoLive do
+defmodule FeedexWeb.DemoTailwindLive do
   use FeedexWeb, :live_view
 
   # ----- lifecycle callbacks -----
 
   @impl true
   def mount(_params, _session, socket) do
-
     opts = %{}
 
     {:ok, assign(socket, opts)}
@@ -19,14 +18,21 @@ defmodule FeedexWeb.DemoLive do
     <div>
       <div>
         <h1 class="pt-2 pb-1 text-xl font-bold">
-          HEEX / Tailwind Demo Page
+          Demo Tailwind
         </h1>
+        <.demonav />
       </div>
       <div class="mt-2 mb-2 p-2 border-solid border-orange-500 border">
-        Border demo<br />
-        <.alink href="http://google.com">GOOGLE</.alink>
+        Demo Tailwind
+        <ul>
+          <li>in LiveViews</li>
+          <li>in HTML/HEEX</li>
+          <li>in function components</li>
+        </ul>
       </div>
-      done
+      <div class="">
+        done
+      </div>
     </div>
     """
   end

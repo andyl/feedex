@@ -1,6 +1,6 @@
 defmodule FeedexWeb.LiveHelpers do
-  def current_path(socket) do
-    IO.inspect(socket, label: "SOCKKK")
-    socket.assigns.uri.path
+  def path_for(url) do
+    parsed_url = URI.parse(url)
+    parsed_url.path
   end
 end

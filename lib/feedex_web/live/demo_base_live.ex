@@ -5,9 +5,14 @@ defmodule FeedexWeb.DemoBaseLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    opts = %{current_path: current_path(socket)}
+    opts = %{}
 
     {:ok, assign(socket, opts)}
+  end
+
+  @impl true
+  def handle_params(_params, url, socket) do
+    {:noreply, assign(socket, :current_path, path_for(url))}
   end
 
   # ----- HEEX -----

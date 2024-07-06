@@ -34,7 +34,9 @@ defmodule FeedexWeb.AppComponents do
   def clink(assigns) do
     if assigns.current_path == assigns.href do
     ~H"""
-    <%= render_slot(@inner_block) %>
+      <b>
+        <%= render_slot(@inner_block) %>
+      </b>
     """
     else
     ~H"""
@@ -50,16 +52,18 @@ defmodule FeedexWeb.AppComponents do
   @doc """
   Renders a navbar for demo pages
   """
+  attr :current_path, :string, doc: "current path", default: ""
+
   def demonav(assigns) do
     ~H"""
     <div>
-      <.alink href="/demo_base">Base</.alink>
+      <.clink current_path={@current_path} href="/demo_base">Base</.clink>
       |
-      <.alink href="/demo_daisy">Daisy</.alink>
+      <.clink current_path={@current_path} href="/demo_daisy">Daisy</.clink>
       |
-      <.alink href="/demo_salad">Salad</.alink>
+      <.clink current_path={@current_path} href="/demo_salad">Salad</.clink>
       |
-      <.alink href="/demo_tailwind">Tailwind</.alink>
+      <.clink current_path={@current_path} href="/demo_tailwind">Tailwind</.clink>
     </div>
     """
   end

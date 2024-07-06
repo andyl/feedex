@@ -16,3 +16,7 @@
   @apply p-4 bg-blue-500 m-5 rounded-lg hover:bg-blue-300;
 }
 
+.orangebox { 
+  @apply mt-2 mb-2 p-2 border-solid border-orange-500 border
+}
+

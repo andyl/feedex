@@ -10,6 +10,11 @@ defmodule FeedexWeb.DemoDaisyLive do
     {:ok, assign(socket, opts)}
   end
 
+  @impl true
+  def handle_params(_params, url, socket) do
+    {:noreply, assign(socket, :current_path, path_for(url))}
+  end
+
   # ----- HEEX -----
 
   @impl true
@@ -20,15 +25,15 @@ defmodule FeedexWeb.DemoDaisyLive do
         <h1 class="pt-2 pb-1 text-xl font-bold">
           Demo Daisy
         </h1>
-        <.demonav />
+        <.demonav current_path={@current_path} />
       </div>
-      <div class="mt-2 mb-2 p-2 border-solid border-orange-500 border">
+      <div class="orangebox">
         <div class="badge badge-outline">default</div>
         <div class="badge badge-primary badge-outline">primary</div>
         <div class="badge badge-secondary badge-outline">secondary</div>
         <div class="badge badge-accent badge-outline">accent</div>
       </div>
-      <div class="mt-2 mb-2 p-2 border-solid border-orange-500 border">
+      <div class="orangebox">
         <button class="btn">Button</button>
         <button class="btn btn-neutral">Neutral</button>
         <button class="btn btn-primary">Primary</button>
@@ -37,7 +42,7 @@ defmodule FeedexWeb.DemoDaisyLive do
         <button class="btn btn-ghost">Ghost</button>
         <button class="btn btn-link">Link</button>
       </div>
-      <div class="mt-2 mb-2 p-2 border-solid border-orange-500 border">
+      <div class="orangebox">
         <div class="chat chat-start">
           <div class="chat-bubble">
             It's over Anakin, <br /> I have the high ground.
@@ -48,14 +53,14 @@ defmodule FeedexWeb.DemoDaisyLive do
         </div>
       </div>
 
-      <div class="mt-2 mb-2 p-2 border-solid border-orange-500 border">
+      <div class="orangebox">
         <kbd class="kbd kbd-lg">Shift</kbd>
         <kbd class="kbd kbd-md">Shift</kbd>
         <kbd class="kbd kbd-sm">Shift</kbd>
         <kbd class="kbd kbd-xs">Shift</kbd>
       </div>
 
-      <div class="mt-2 mb-2 p-2 border-solid border-orange-500 border">
+      <div class="orangebox">
         <div class="overflow-x-auto">
           <table class="table">
             <!-- head -->

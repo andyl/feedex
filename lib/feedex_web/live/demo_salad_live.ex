@@ -10,6 +10,11 @@ defmodule FeedexWeb.DemoSaladLive do
     {:ok, assign(socket, opts)}
   end
 
+  @impl true
+  def handle_params(_params, url, socket) do
+    {:noreply, assign(socket, :current_path, path_for(url))}
+  end
+
   # ----- HEEX -----
 
   @impl true
@@ -20,7 +25,7 @@ defmodule FeedexWeb.DemoSaladLive do
         <h1 class="pt-2 pb-1 text-xl font-bold">
           Demo Salad
         </h1>
-        <.demonav />
+        <.demonav current_path={@current_path} />
       </div>
       <div class="mt-2 mb-2 p-2 border-solid border-orange-500 border">
         Tailwind Autocomplete

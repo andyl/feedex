@@ -18,9 +18,24 @@ defmodule FeedexWeb.AppComponents do
       class={"underline decoration-2 decoration-blue-400 hover:decoration-blue-800 #{@class}"}
       href={@href}
       {@rest}
-    >
-      <%= render_slot(@inner_block) %>
-    </.link>
+    ><%= render_slot(@inner_block) %></.link>
+    """
+  end
+
+  @doc """
+  Renders a navbar for demo pages
+  """
+  def demonav(assigns) do
+    ~H"""
+    <div>
+      <.alink href="/demo_base">Base</.alink>
+      |
+      <.alink href="/demo_daisy">Daisy</.alink>
+      |
+      <.alink href="/demo_salad">Salad</.alink>
+      |
+      <.alink href="/demo_tailwind">Tailwind</.alink>
+    </div>
     """
   end
 end

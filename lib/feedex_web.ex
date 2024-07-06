@@ -55,6 +55,8 @@ defmodule FeedexWeb do
       use Phoenix.LiveView,
         layout: {FeedexWeb.Layouts, :app}
 
+      import FeedexWeb.LiveHelpers
+
       unquote(html_helpers())
     end
   end

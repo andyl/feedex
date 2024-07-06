@@ -5,7 +5,7 @@ defmodule FeedexWeb.DemoBaseLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    opts = %{}
+    opts = %{current_path: current_path(socket)}
 
     {:ok, assign(socket, opts)}
   end
@@ -20,7 +20,7 @@ defmodule FeedexWeb.DemoBaseLive do
         <h1 class="pt-2 pb-1 text-xl font-bold">
           Demo Base
         </h1>
-        <.demonav />
+        <.demonav current_path={@current_path} />
       </div>
       <div class="mt-2 mb-2 p-2 border-solid border-orange-500 border">
         Border demo<br />
@@ -32,4 +32,5 @@ defmodule FeedexWeb.DemoBaseLive do
     </div>
     """
   end
+
 end

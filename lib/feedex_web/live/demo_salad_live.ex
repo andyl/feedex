@@ -32,7 +32,6 @@ defmodule FeedexWeb.DemoSaladLive do
       </div>
       <div class="orangebox">
         <.alert>
-          <.icon name="hero-command-line" class="h-4 w-4" />
           <.alert_title>Heads up!</.alert_title>
           <.alert_description>
             You can add components to your app using the cli

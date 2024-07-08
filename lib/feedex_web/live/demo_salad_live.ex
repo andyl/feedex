@@ -1,6 +1,8 @@
 defmodule FeedexWeb.DemoSaladLive do
   use FeedexWeb, :live_view
 
+  alias Heroicons, as: Icon
+
   import SaladUI.Alert
 
   # ----- lifecycle callbacks -----
@@ -32,6 +34,7 @@ defmodule FeedexWeb.DemoSaladLive do
       </div>
       <div class="orangebox">
         <.alert>
+          <Icon.cake class="icon"/>
           <.alert_title>Heads up!</.alert_title>
           <.alert_description>
             You can add components to your app using the cli

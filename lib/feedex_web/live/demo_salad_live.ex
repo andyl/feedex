@@ -1,6 +1,8 @@
 defmodule FeedexWeb.DemoSaladLive do
   use FeedexWeb, :live_view
 
+  import SaladUI.Alert
+
   # ----- lifecycle callbacks -----
 
   @impl true
@@ -17,6 +19,7 @@ defmodule FeedexWeb.DemoSaladLive do
 
   # ----- HEEX -----
 
+
   @impl true
   def render(assigns) do
     ~H"""
@@ -27,13 +30,14 @@ defmodule FeedexWeb.DemoSaladLive do
         </h1>
         <.demonav current_path={@current_path} />
       </div>
-      <div class="mt-2 mb-2 p-2 border-solid border-orange-500 border">
-        Tailwind Autocomplete
-        <ul>
-          <li>in LiveViews</li>
-          <li>in HTML/HEEX</li>
-          <li>in function components</li>
-        </ul>
+      <div class="orangebox">
+        <.alert>
+          <.icon name="hero-command-line" class="h-4 w-4" />
+          <.alert_title>Heads up!</.alert_title>
+          <.alert_description>
+            You can add components to your app using the cli
+          </.alert_description>
+        </.alert>
       </div>
       <div class="">
         done
@@ -41,4 +45,10 @@ defmodule FeedexWeb.DemoSaladLive do
     </div>
     """
   end
+
+  # ----- DING -----
+
+  # def pong do
+  #   SaladUI.Alert.
+  # end
 end

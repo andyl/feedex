@@ -61,6 +61,8 @@ defmodule FeedexWeb.AppComponents do
       |
       <.clink current_path={@current_path} href="/demo_daisy">Daisy</.clink>
       |
+      <.clink current_path={@current_path} href="/demo_hero">Hero</.clink>
+      |
       <.clink current_path={@current_path} href="/demo_salad">Salad</.clink>
       |
       <.clink current_path={@current_path} href="/demo_tailwind">Tailwind</.clink>

@@ -1,10 +1,6 @@
 defmodule FeedexWeb.DemoSaladLive do
   use FeedexWeb, :live_view
 
-  alias Heroicons, as: Icon
-
-  import SaladUI.Alert
-
   # ----- lifecycle callbacks -----
 
   @impl true
@@ -33,13 +29,7 @@ defmodule FeedexWeb.DemoSaladLive do
         <.demonav current_path={@current_path} />
       </div>
       <div class="orangebox">
-        <.alert>
-          <Icon.cake class="icon"/>
-          <.alert_title>Heads up!</.alert_title>
-          <.alert_description>
-            You can add components to your app using the cli
-          </.alert_description>
-        </.alert>
+        2024 Jul 09 Tue: Salad doesn't work
       </div>
       <div class="">
         done
@@ -48,9 +38,4 @@ defmodule FeedexWeb.DemoSaladLive do
     """
   end
 
-  # ----- DING -----
-
-  # def pong do
-  #   SaladUI.Alert.
-  # end
 end

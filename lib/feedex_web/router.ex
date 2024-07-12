@@ -77,6 +77,7 @@ defmodule FeedexWeb.Router do
       live "/demo_hero",     DemoHeroLive, :index
       live "/demo_salad",    DemoSaladLive, :index
       live "/demo_tailwind", DemoTailwindLive, :index
+      live "/demo_tailpage", DemoTailpageLive, :index
     end
 
     get "/users/settings/subs", UserSettingsController, :subs

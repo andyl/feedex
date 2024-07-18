@@ -27,8 +27,8 @@ defmodule FeedexWeb.DemoTailpageLive do
         </h1>
         <.demonav current_path={@current_path} />
       </div>
-      <div class="mt-2 mb-2 p-2 border-solid border-orange-500 border">
-        Demo Tailpage
+      <div class="orangebox">
+        Demo Tailpage!!
         <ul>
           <li>in LiveViews</li>
           <li>in HTML/HEEX</li>

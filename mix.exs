@@ -66,7 +66,7 @@ defmodule Feedex.MixProject do
       # Testing
       {:ex_machina, "~> 2.7"},
       {:floki, ">= 0.30.0", only: :test},
-      {:mix_test_interactive, "~> 2.0", only: :dev, runtime: false},
+      {:mix_test_interactive, "~> 3.0", only: :dev, runtime: false},
       # Documentation
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       # Util

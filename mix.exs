@@ -57,7 +57,7 @@ defmodule Feedex.MixProject do
       {:phoenix_html, "~> 4.0"},
       # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
       {:phoenix_live_view, "~> 1.0.0-rc.6", override: true},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_live_reload, "~> 1.5", only: :dev},
       {:heroicons, "~> 0.5"},
       {:gettext, "~> 0.20"},
       # Assets

@@ -59,6 +59,8 @@ config :feedex, FeedexTsdb,
 # Watch static and templates for browser reloading.
 config :feedex, FeedexWeb.Endpoint,
   live_reload: [
+    interval: 250,
+    web_console_logger: true,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
@@ -69,6 +71,8 @@ config :feedex, FeedexWeb.Endpoint,
       ~r"lib/feedex_web/templates/.*(eex)$"
     ]
   ]
+
+config :phoenix_live_view, debug_heex_annotations: true
 
 # Enable dev routes for dashboard and mailbox
 config :feedex, dev_routes: true

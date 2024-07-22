@@ -9,11 +9,11 @@ defmodule Feedex.Application do
   def start(_type, _args) do
     children = [
       Feedex.Repo,
-      FeedexWeb.Telemetry,
+      # FeedexWeb.Telemetry,
       {Phoenix.PubSub, name: Feedex.PubSub},
       {Finch, name: Feedex.Finch},
       FeedexWeb.Endpoint,
-      {FeedexJob.Application, []},
+      # {FeedexJob.Application, []},
       {FcFinch.Application, []}
     ]
 

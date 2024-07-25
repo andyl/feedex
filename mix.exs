@@ -1,10 +1,13 @@
 defmodule Feedex.MixProject do
   use Mix.Project
 
+  @version "0.0.1"
+  @source_url "https://github.com/andyl/feedex"
+
   def project do
     [
       app: :feedex,
-      version: "0.0.1",
+      version: @version,
       elixir: "~> 1.15",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -13,7 +16,7 @@ defmodule Feedex.MixProject do
 
       # Docs
       name: "Feedex",
-      source_url: "https://github.com/andyl/feedex",
+      source_url: @source_url,
       homepage_url: "http://TBD",
       docs: [
         main: "Feedex",
@@ -55,10 +58,9 @@ defmodule Feedex.MixProject do
       {:phoenix_ecto, "~> 4.4"},
       {:phoenix_live_dashboard, "~> 0.7"},
       {:phoenix_html, "~> 4.0"},
-      {:salad_ui, "~> 0.5"},
       # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
       {:phoenix_live_view, "~> 1.0.0-rc.6", override: true},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_live_reload, "~> 1.5", only: :dev},
       {:heroicons, "~> 0.5"},
       {:gettext, "~> 0.20"},
       # Assets
@@ -67,9 +69,10 @@ defmodule Feedex.MixProject do
       # Testing
       {:ex_machina, "~> 2.7"},
       {:floki, ">= 0.30.0", only: :test},
-      {:mix_test_interactive, "~> 2.0", only: :dev, runtime: false},
+      {:mix_test_interactive, "~> 3.0", only: :dev, runtime: false},
       # Documentation
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
+      {:git_ops, "~> 2.6", only: :dev},
       # Util
       {:bcrypt_elixir, "~> 3.0"},
       {:pbkdf2_elixir, "~> 2.0"},

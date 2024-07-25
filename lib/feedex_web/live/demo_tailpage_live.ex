@@ -1,4 +1,4 @@
-defmodule FeedexWeb.DemoSaladLive do
+defmodule FeedexWeb.DemoTailpageLive do
   use FeedexWeb, :live_view
 
   # ----- lifecycle callbacks -----
@@ -17,19 +17,23 @@ defmodule FeedexWeb.DemoSaladLive do
 
   # ----- HEEX -----
 
-
   @impl true
   def render(assigns) do
     ~H"""
     <div>
       <div>
         <h1 class="pt-2 pb-1 text-xl font-bold">
-          Demo Salad
+          Demo Tailpage
         </h1>
         <.demonav current_path={@current_path} />
       </div>
       <div class="orangebox">
-        2024 Jul 09 Tue: Salad doesn't work
+        Demo Tailpage!!
+        <ul>
+          <li>in LiveViews</li>
+          <li>in HTML/HEEX</li>
+          <li>in function components</li>
+        </ul>
       </div>
       <div class="">
         done
@@ -37,5 +41,4 @@ defmodule FeedexWeb.DemoSaladLive do
     </div>
     """
   end
-
 end

@@ -1,10 +1,13 @@
 defmodule Feedex.MixProject do
   use Mix.Project
 
+  @version "0.0.1"
+  @source_url "https://github.com/andyl/feedex"
+
   def project do
     [
       app: :feedex,
-      version: "0.0.1",
+      version: @version,
       elixir: "~> 1.15",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -13,7 +16,7 @@ defmodule Feedex.MixProject do
 
       # Docs
       name: "Feedex",
-      source_url: "https://github.com/andyl/feedex",
+      source_url: @source_url,
       homepage_url: "http://TBD",
       docs: [
         main: "Feedex",
@@ -69,6 +72,7 @@ defmodule Feedex.MixProject do
       {:mix_test_interactive, "~> 3.0", only: :dev, runtime: false},
       # Documentation
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
+      {:git_ops, "~> 2.6", only: :dev},
       # Util
       {:bcrypt_elixir, "~> 3.0"},
       {:pbkdf2_elixir, "~> 2.0"},

@@ -120,8 +120,7 @@ defmodule Feedex.MixProject do
       seed: ["run priv/repo/seeds.exs"],
       "assets.setup": ["tailwind.install --if-missing"],
       "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"],
-      release: "git_ops.release",
-      deploy: "compile"
+      gorel: "git_ops.release"
     ]
   end
 end

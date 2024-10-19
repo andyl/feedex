@@ -41,14 +41,16 @@ config :feedex, FeedexJob.Scheduler,
     # {"@daily",         {Backup, :backup, []}}
     # {"* * * * *",      {IO, :puts, ["CRON JOB"]}}
     # {"* * * * *",        {FeedexCore.Metrics.AppPoller, :post_counts, []}},
-    {"*/2 * * * *",      {FeedexJob, :sync_next, []}}
+    {"*/2 * * * *", {FeedexJob, :sync_next, []}}
   ]
 
 # ----- MixTestInteractive
 
 # clear the screen between each test run
-if Mix.env == :dev do
-  config :mix_test_interactive, clear: true
+if Mix.env() == :dev do
+  config :mix_test_interactive,
+    clear: true,
+    timestamp: true
 end
 
 # ----- Esbuild

@@ -14,8 +14,8 @@ config :feedex, FeedexWeb.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 config :feedex, FeedexTsdb,
-     host: "vork.lan",
-     db:   "feedex_prod"
+  host: "vork.lan",
+  db: "feedex_prod"
 
 # Configures Swoosh API Client
 config :swoosh, :api_client, Feedex.Finch

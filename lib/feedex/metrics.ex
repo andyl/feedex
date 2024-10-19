@@ -1,5 +1,4 @@
 defmodule Feedex.Metrics do
-
   alias Feedex.Ctx.News
   alias Feedex.Ctx.Account
 
@@ -9,7 +8,7 @@ defmodule Feedex.Metrics do
       folders: folder_count(),
       feeds: feed_count(),
       posts: post_count(),
-      unread: unread_count(),
+      unread: unread_count()
     }
   end
 
@@ -32,5 +31,4 @@ defmodule Feedex.Metrics do
   def unread_count do
     News.unread_count()
   end
-
 end

@@ -88,6 +88,7 @@ defmodule FeedexWeb.BodyEditFolderComponent do
   @impl true
   def handle_event("save", payload, socket) do
     fldid = socket.assigns.uistate.fld_id
+
     opts =
       payload["folder"]
       |> Map.merge(%{"stopwords" => clean_stopwords(payload["stopwords"])})

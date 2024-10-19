@@ -94,5 +94,4 @@ defmodule FeedexWeb.Telemetry do
       {FeedexWeb.Metrics.InfluxHandler, :app_count, []}
     ]
   end
-
 end

@@ -11,4 +11,3 @@ defmodule Mix.Tasks.Build do
     Mix.Task.run("compile")
   end
 end
-

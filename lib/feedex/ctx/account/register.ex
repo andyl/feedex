@@ -14,7 +14,7 @@ defmodule Feedex.Ctx.Account.Register do
     field(:name, :string)
     timestamps(type: :utc_datetime)
 
-    has_many   :read_logs, Account.ReadLog
+    has_many :read_logs, Account.ReadLog
     belongs_to :folder, Account.Folder
     belongs_to :feed, News.Feed
   end

@@ -23,12 +23,12 @@ defmodule FeedexWeb.HdrComponent do
     ~H"""
     <div class="desktop-only bg-slate-300" style="padding: 5px; padding-right: 20px;">
       <%= if @uistate.mode == "view" do %>
-        <div class='flex'>
-          <div class='flex-auto'>
+        <div class="flex">
+          <div class="flex-auto">
             <%= title(@uistate, @counts, @treemap, @myself) %>
           </div>
-          <div class='text-right'>
-            <%= HTML.raw btns(@uistate, @myself) %>
+          <div class="text-right">
+            <%= HTML.raw(btns(@uistate, @myself)) %>
           </div>
         </div>
       <% end %>
@@ -40,14 +40,16 @@ defmodule FeedexWeb.HdrComponent do
 
   defp title(state, counts, treemap, myself) do
     case {state.fld_id, state.reg_id} do
-      {nil   , nil} -> all_title(counts, myself)
+      {nil, nil} -> all_title(counts, myself)
       {fld_id, nil} -> fld_title(fld_id, counts, treemap, myself)
       {nil, reg_id} -> reg_title(reg_id, counts, treemap, myself)
-    end |> HTML.raw()
+    end
+    |> HTML.raw()
   end
 
   defp all_title(counts, myself) do
     count = counts.all
+
     if count > 0 do
       "ALL " <> checklink(count, myself)
     else
@@ -65,7 +67,7 @@ defmodule FeedexWeb.HdrComponent do
   defp reg_title(reg_id, counts, treemap, myself) do
     count = counts.reg[reg_id] || 0
     reg_name = Treemap.register_name(treemap, reg_id)
-    fld_id   = Treemap.register_parent_id(treemap, reg_id)
+    fld_id = Treemap.register_parent_id(treemap, reg_id)
     fld_name = Treemap.register_parent_name(treemap, reg_id)
     fld_base = "href='#' phx-click='folder-clk' phx-value-fldid='#{fld_id}'"
     fld_link = "<a #{fld_base} phx-target='#{myself}'>#{fld_name}</a> "
@@ -84,6 +86,7 @@ defmodule FeedexWeb.HdrComponent do
 
   defp btns(state, myself) do
     show_pencil = state.reg_id != nil || state.fld_id != nil
+
     pencil =
       if show_pencil do
         """
@@ -107,7 +110,7 @@ defmodule FeedexWeb.HdrComponent do
 
   def mark_all_read(state) do
     case {state.fld_id, state.reg_id} do
-      {nil   , nil} -> Account.mark_all_for(state.usr_id)
+      {nil, nil} -> Account.mark_all_for(state.usr_id)
       {fld_id, nil} -> Account.mark_all_for(state.usr_id, fld_id: fld_id)
       {nil, reg_id} -> Account.mark_all_for(state.usr_id, reg_id: reg_id)
     end
@@ -115,7 +118,7 @@ defmodule FeedexWeb.HdrComponent do
 
   def sync_all(state) do
     case {state.fld_id, state.reg_id} do
-      {nil   , nil} -> FeedexJob.sync_for(state.usr_id)
+      {nil, nil} -> FeedexJob.sync_for(state.usr_id)
       {fld_id, nil} -> FeedexJob.sync_for(state.usr_id, fld_id: fld_id)
       {nil, reg_id} -> FeedexJob.sync_for(state.usr_id, reg_id: reg_id)
     end
@@ -141,10 +144,13 @@ defmodule FeedexWeb.HdrComponent do
   @impl true
   def handle_event("click-edit", _click, socket) do
     uistate = socket.assigns.uistate
-    new_mode = case {uistate.fld_id, uistate.reg_id} do
-      {_id, nil} -> "edit_folder"
-      {nil, _id} -> "edit_feed"
-    end
+
+    new_mode =
+      case {uistate.fld_id, uistate.reg_id} do
+        {_id, nil} -> "edit_folder"
+        {nil, _id} -> "edit_feed"
+      end
+
     new_state = Map.merge(uistate, %{mode: new_mode})
     send(self(), {"set_uistate", %{uistate: new_state}})
     {:noreply, assign(socket, %{uistate: new_state})}
@@ -164,5 +170,4 @@ defmodule FeedexWeb.HdrComponent do
 
     {:noreply, socket}
   end
-
 end

@@ -18,7 +18,9 @@ defmodule FeedexWeb.AppComponents do
       class={"underline decoration-2 decoration-blue-400 hover:decoration-blue-800 #{@class}"}
       href={@href}
       {@rest}
-    ><%= render_slot(@inner_block) %></.link>
+    >
+      <%= render_slot(@inner_block) %>
+    </.link>
     """
   end
 
@@ -33,19 +35,21 @@ defmodule FeedexWeb.AppComponents do
 
   def clink(assigns) do
     if assigns.current_path == assigns.href do
-    ~H"""
+      ~H"""
       <b>
         <%= render_slot(@inner_block) %>
       </b>
-    """
+      """
     else
-    ~H"""
-    <.link
-      class={"underline decoration-2 decoration-blue-400 hover:decoration-blue-800 #{@class}"}
-      href={@href}
-      {@rest}
-    ><%= render_slot(@inner_block) %></.link>
-    """
+      ~H"""
+      <.link
+        class={"underline decoration-2 decoration-blue-400 hover:decoration-blue-800 #{@class}"}
+        href={@href}
+        {@rest}
+      >
+        <%= render_slot(@inner_block) %>
+      </.link>
+      """
     end
   end
 

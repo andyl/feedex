@@ -16,23 +16,27 @@ defmodule FeedexWeb.TreeComponent do
 
   def render(assigns) do
     assigns = assign(assigns, :open_folder, get_open_fld(assigns.treemap, assigns.uistate))
+
     ~H"""
-    <div class='mt-2'>
-      <%= all_btn(@uistate, @myself) %> <%= unread(@counts.all, :raw) %><br/>
+    <div class="mt-2">
+      <%= all_btn(@uistate, @myself) %> <%= unread(@counts.all, :raw) %><br />
       <small>
-      <%= for folder <- @treemap do %>
-        <p></p>
-        <%= fold_link(@uistate, @myself, folder) %>
-        <%= unread(folder.id, @counts.fld, :raw) %>
-        <%= if @open_folder == folder.id do %>
-        <%= for register <- folder.registers do %>
-          <br/>
-          > <%= reg_link(@uistate, @myself, register) %> <%= unread(register.id, @counts.reg, :raw) %>
+        <%= for folder <- @treemap do %>
+          <p></p>
+          <%= fold_link(@uistate, @myself, folder) %>
+          <%= unread(folder.id, @counts.fld, :raw) %>
+          <%= if @open_folder == folder.id do %>
+            <%= for register <- folder.registers do %>
+              <br />
+              > <%= reg_link(@uistate, @myself, register) %> <%= unread(
+                register.id,
+                @counts.reg,
+                :raw
+              ) %>
+            <% end %>
+          <% end %>
         <% end %>
-        <% end %>
-      <% end %>
       </small>
-      <%# HTML.raw state_table(@uistate) %>
     </div>
     """
   end
@@ -152,15 +156,18 @@ defmodule FeedexWeb.TreeComponent do
   # ----- event handlers -----
 
   def handle_event("view_all", _payload, socket) do
-    IO.puts "VIEW_ALL"
-    new_state = %{
-      mode: "view",
-      # mode: nil,
-      usr_id: socket.assigns.uistate.usr_id,
-      reg_id: nil,
-      fld_id: nil,
-      pst_id: nil
-    } |> IO.inspect(label: "NEW STATE")
+    IO.puts("VIEW_ALL")
+
+    new_state =
+      %{
+        mode: "view",
+        # mode: nil,
+        usr_id: socket.assigns.uistate.usr_id,
+        reg_id: nil,
+        fld_id: nil,
+        pst_id: nil
+      }
+      |> IO.inspect(label: "NEW STATE")
 
     send(self(), {"set_uistate", %{uistate: new_state}})
 
@@ -205,5 +212,4 @@ defmodule FeedexWeb.TreeComponent do
 
     {:noreply, assign(socket, %{treemap: treemap, counts: counts})}
   end
-
 end

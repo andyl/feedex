@@ -24,9 +24,9 @@ defmodule Feedex.Util.Treemap do
   end
 
   defp find_register(treemap, register_id) do
-      treemap
-      |> Enum.map(& &1[:registers])
-      |> List.flatten()
-      |> Enum.find(%{}, &(&1.id == register_id))
+    treemap
+    |> Enum.map(& &1[:registers])
+    |> List.flatten()
+    |> Enum.find(%{}, &(&1.id == register_id))
   end
 end

@@ -1,5 +1,4 @@
 defmodule FeedexWeb.IconHelpers do
-
   @moduledoc """
   Helpers for SVG Icons.
   """
@@ -8,6 +7,7 @@ defmodule FeedexWeb.IconHelpers do
 
   def check_svg, do: check_svg("")
   def check_svg(:raw), do: check_svg() |> raw()
+
   def check_svg(klas) do
     """
     <svg class="#{klas}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -15,10 +15,12 @@ defmodule FeedexWeb.IconHelpers do
     </svg>
     """
   end
+
   def check_svg(klas, :raw), do: check_svg(klas) |> raw()
 
   def check_circle_svg, do: check_circle_svg("")
   def check_circle_svg(:raw), do: check_circle_svg() |> raw()
+
   def check_circle_svg(klas) do
     """
     <svg class="#{klas}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -26,10 +28,12 @@ defmodule FeedexWeb.IconHelpers do
     </svg>
     """
   end
+
   def check_circle_svg(klas, :raw), do: check_circle_svg(klas) |> raw()
 
   def plus_circle_svg, do: plus_circle_svg("")
   def plus_circle_svg(:raw), do: plus_circle_svg() |> raw()
+
   def plus_circle_svg(klas) do
     """
     <svg class="#{klas}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -37,10 +41,12 @@ defmodule FeedexWeb.IconHelpers do
     </svg>
     """
   end
+
   def plus_circle_svg(klas, :raw), do: plus_circle_svg(klas) |> raw()
 
   def refresh_svg, do: refresh_svg("")
   def refresh_svg(:raw), do: refresh_svg() |> raw()
+
   def refresh_svg(klas) do
     """
     <svg class="#{klas}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -48,10 +54,12 @@ defmodule FeedexWeb.IconHelpers do
     </svg>
     """
   end
+
   def refresh_svg(klas, :raw), do: refresh_svg(klas) |> raw()
 
   def pencil_alt_svg, do: pencil_alt_svg("")
   def pencil_alt_svg(:raw), do: pencil_alt_svg() |> raw()
+
   def pencil_alt_svg(klas) do
     """
     <svg class="#{klas}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -60,6 +68,6 @@ defmodule FeedexWeb.IconHelpers do
     </svg>
     """
   end
-  def pencil_alt_svg(klas, :raw), do: pencil_alt_svg(klas) |> raw()
 
+  def pencil_alt_svg(klas, :raw), do: pencil_alt_svg(klas) |> raw()
 end

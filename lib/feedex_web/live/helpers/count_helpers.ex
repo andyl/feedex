@@ -1,5 +1,4 @@
 defmodule FeedexWeb.CountHelpers do
-
   @moduledoc """
   HTML helpers for live views.
   """
@@ -29,5 +28,4 @@ defmodule FeedexWeb.CountHelpers do
   def unread(id, unread_count, :raw) do
     unread(id, unread_count) |> raw()
   end
-
 end

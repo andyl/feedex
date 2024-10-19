@@ -25,9 +25,11 @@ defmodule Feedex.Ctx.AccountTest do
       attr = %{name: "asdf", email: "qwer.com"}
       clear_all(User)
       assert Account.count(User) == 0
+
       assert_raise Postgrex.Error, fn ->
         Account.user_add(attr)
       end
+
       assert Account.count(User) == 0
     end
   end

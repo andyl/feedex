@@ -64,5 +64,4 @@ defmodule FeedexWeb.Cache.UiState do
       :prod -> %{filepath: "/tmp/uistate_prod.dat", tablekey: :uistate_prod}
     end
   end
-
 end

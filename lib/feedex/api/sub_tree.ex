@@ -40,6 +40,7 @@ defmodule Feedex.Api.SubTree do
   """
   def rawtree(user_id) do
     uid = user_id
+
     rq =
       from(r in Register,
         order_by: r.name,
@@ -61,7 +62,7 @@ defmodule Feedex.Api.SubTree do
   end
 
   def import_tree(user_id, data) do
-    data |> Enum.map(fn({fname, flist}) -> import_folder(user_id, fname, flist) end)
+    data |> Enum.map(fn {fname, flist} -> import_folder(user_id, fname, flist) end)
   end
 
   def import_folder(user_id, folder_name, feed_list) when is_list(feed_list) do

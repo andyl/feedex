@@ -1,21 +1,25 @@
-<h3 class='pt-10 mb-5'><b>SUBSCRIPTIONS</b></h3> 
-<div class='mb-5'>
-  <.alink href={~p"/users/settings/subs.json"}>JSON</.alink> | 
-  <.alink href="/users/settings/sub_import">IMPORT</.alink> | 
-  <.alink href="/users/settings/sub_clear">CLEAR</.alink> | 
-  <.alink href="/users/settings/backup">BACKUP</.alink>  <br/> 
+<h3 class="pt-10 mb-5"><b>SUBSCRIPTIONS</b></h3>
+<div class="mb-5">
+  <.alink href={~p"/users/settings/subs.json"}>JSON</.alink>
+  |
+  <.alink href="/users/settings/sub_import">IMPORT</.alink>
+  |
+  <.alink href="/users/settings/sub_clear">CLEAR</.alink>
+  |
+  <.alink href="/users/settings/backup">BACKUP</.alink>
+  <br />
 </div>
 
 <style>
-span { display: inline-block; width: 180px;}
+  span { display: inline-block; width: 180px;}
 </style>
 
-<div class='text-monospace'>
+<div class="text-monospace">
   <%= for folder <- Map.keys(@subs) do %>
-  <div style="height: 10px;"></div>
-  <%= folder %><br/>
-  <%= for feed <- @subs[folder] do %>
-    <span>-> <%= feed.feed_name %></span><%= feed.feed_url %><br/>
-  <% end %>
+    <div style="height: 10px;"></div>
+    <%= folder %><br />
+    <%= for feed <- @subs[folder] do %>
+      <span>-> <%= feed.feed_name %></span><%= feed.feed_url %><br />
+    <% end %>
   <% end %>
 </div>

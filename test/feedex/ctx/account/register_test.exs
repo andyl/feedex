@@ -1,5 +1,6 @@
 defmodule Feedex.Ctx.Account.RegisterTest do
-  use ExUnit.Case # , async: true
+  # , async: true
+  use ExUnit.Case
   use Feedex.DataCase
 
   test "greet the world" do
@@ -74,12 +75,14 @@ defmodule Feedex.Ctx.Account.RegisterTest do
   describe "folder association" do
     test "finds the folder from the register" do
       clear_all(Register)
+
       fusr =
         from(f in "registers",
           join: u in "folders",
           on: [id: f.folder_id],
           select: {f.name, u.name}
         )
+
       insert(:register)
       result = Repo.all(fusr)
       assert Enum.count(result) == 1
@@ -87,12 +90,14 @@ defmodule Feedex.Ctx.Account.RegisterTest do
 
     test "finds the register from the folder" do
       clear_all(Register)
+
       ufold =
         from(u in "folders",
           join: f in "registers",
           on: u.id == f.folder_id,
           select: {f.name, u.name}
         )
+
       insert(:register)
       result = Repo.all(ufold)
       assert Enum.count(result) == 1

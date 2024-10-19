@@ -26,12 +26,16 @@ defmodule FeedexWeb.SubTreeLive do
       <h1>IMPORT</h1>
       Paste JSON Text here
       <form phx-submit="save">
-        <textarea type="textarea" name="json" class="border-2 border-gray-900 form-textarea h-50" rows="10"></textarea>
+        <textarea
+          type="textarea"
+          name="json"
+          class="border-2 border-gray-900 form-textarea h-50"
+          rows="10"
+        ></textarea>
         <button type="submit" class="block">Submit</button>
       </form>
 
-      <div class="mt-10">
-      </div>
+      <div class="mt-10"></div>
     </div>
     """
   end
@@ -49,14 +53,14 @@ defmodule FeedexWeb.SubTreeLive do
     user = socket.assigns.current_user
     json = session["json"]
 
-    result = try do
-      Feedex.Api.SubTree.import_tree_json(user.id, json)
-      "SUCCESS"
-    rescue
-      _ -> "ERROR BAD DATA"
-    end
+    result =
+      try do
+        Feedex.Api.SubTree.import_tree_json(user.id, json)
+        "SUCCESS"
+      rescue
+        _ -> "ERROR BAD DATA"
+      end
 
     {:noreply, assign(socket, :result, result)}
   end
-
 end

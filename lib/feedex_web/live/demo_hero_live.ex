@@ -32,34 +32,29 @@ defmodule FeedexWeb.DemoHeroLive do
         <.demonav current_path={@current_path} />
       </div>
       <div class="orangebox">
-        } <Heroicons.cake class="inline-block w-8 h-8" /> base<br />
-        } <Heroicons.cake solid class="inline-block w-8 h-8" /> solid<br />
-        } <Heroicons.cake mini class="inline-block w-8 h-8" /> mini<br />
-        } <Heroicons.cake micro class="inline-block w-8 h-8" /> micro<br />
+        } <Heroicons.cake class="inline-block w-8 h-8" /> base<br /> }
+        <Heroicons.cake solid class="inline-block w-8 h-8" /> solid<br /> }
+        <Heroicons.cake mini class="inline-block w-8 h-8" /> mini<br /> }
+        <Heroicons.cake micro class="inline-block w-8 h-8" /> micro<br />
       </div>
       <div class="orangebox">
-        } <Icon.cake class="inline-block w-8 h-8" /> base<br />
-        } <Icon.cake solid class="inline-block w-8 h-8" /> solid<br />
-        } <Icon.cake mini class="inline-block w-8 h-8" /> mini<br />
-        } <Icon.cake micro class="inline-block w-8 h-8" /> micro<br />
+        } <Icon.cake class="inline-block w-8 h-8" /> base<br /> }
+        <Icon.cake solid class="inline-block w-8 h-8" /> solid<br /> }
+        <Icon.cake mini class="inline-block w-8 h-8" /> mini<br /> }
+        <Icon.cake micro class="inline-block w-8 h-8" /> micro<br />
       </div>
       <div class="orangebox">
-        } <Icon.cake class="icon-4" /> base<br />
-        } <Icon.cake solid class="icon-4" /> solid<br />
-        } <Icon.cake mini class="icon-4" /> mini<br />
-        } <Icon.cake micro class="icon-4" /> micro<br />
+        } <Icon.cake class="icon-4" /> base<br /> } <Icon.cake solid class="icon-4" /> solid<br /> }
+        <Icon.cake mini class="icon-4" /> mini<br /> } <Icon.cake micro class="icon-4" /> micro<br />
       </div>
       <div class="orangebox">
-        } <.cake class="icon-8" /> base<br />
-        } <.cake solid class="icon-8" /> solid<br />
-        } <.cake mini class="icon-8" /> mini<br />
-        } <.cake micro class="icon-8" /> micro<br />
+        } <.cake class="icon-8" /> base<br /> } <.cake solid class="icon-8" /> solid<br /> }
+        <.cake mini class="icon-8" /> mini<br /> } <.cake micro class="icon-8" /> micro<br />
       </div>
       <div class="orangebox">
-        } <.command_line class="icon-6" /> base<br />
-        } <.command_line solid class="icon-6" /> solid<br />
-        } <.command_line mini class="icon-6" /> mini<br />
-        } <.command_line micro class="icon-6" /> micro<br />
+        } <.command_line class="icon-6" /> base<br /> } <.command_line solid class="icon-6" />
+        solid<br /> } <.command_line mini class="icon-6" /> mini<br /> }
+        <.command_line micro class="icon-6" /> micro<br />
       </div>
       <div class="">
         done

@@ -12,12 +12,14 @@ defmodule Feedex.Seeds do
     Logger.info("------------------------------------------------------")
     qry = from u in "users", select: u.id
     num = Repo.all(qry) |> length
+
     if num == 0 do
       Logger.info("----- No users - loading seeds...")
       load()
     else
       Logger.info("----- Users exist - skipping seeds...")
     end
+
     Logger.info("------------------------------------------------------")
   end
 
@@ -40,9 +42,9 @@ defmodule Feedex.Seeds do
             %Register{
               name: "Plataformatec",
               feed: %Feed{url: "http://blog.plataformatec.com.br/tag/elixir/feed"}
-            },
+            }
           ]
-        },
+        }
       ]
     })
 

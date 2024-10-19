@@ -1,5 +1,4 @@
 defmodule FeedexWeb.Metrics.InfluxReporter do
-
   use GenServer
   require Logger
 
@@ -39,8 +38,9 @@ defmodule FeedexWeb.Metrics.InfluxReporter do
   defp handle_event(event_name, measurements, _metadata, _action_pair) do
     pkg = %{
       event_name: event_name,
-      measurements: measurements,
+      measurements: measurements
     }
+
     dispatch(FcTesla.tsdb_dbhost(), pkg)
   end
 
@@ -50,7 +50,7 @@ defmodule FeedexWeb.Metrics.InfluxReporter do
   defp dispatch(_dbhost, pkg) do
     metric = pkg.event_name |> metric_name()
     values = pkg.measurements |> value()
-    line="#{metric} #{values}"
+    line = "#{metric} #{values}"
     FcTesla.metrics_post(line)
   end
 
@@ -62,8 +62,7 @@ defmodule FeedexWeb.Metrics.InfluxReporter do
 
   defp value(measurements) do
     measurements
-    |> Enum.map(fn({k, v}) -> "#{k}=#{v}" end)
+    |> Enum.map(fn {k, v} -> "#{k}=#{v}" end)
     |> Enum.join(",")
   end
-
 end

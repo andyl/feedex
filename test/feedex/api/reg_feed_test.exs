@@ -1,11 +1,11 @@
 defmodule Feedex.Api.RegFeedTest do
-  use ExUnit.Case # , async: true
+  # , async: true
+  use ExUnit.Case
   use Feedex.DataCase
 
   alias Feedex.Api
 
   describe "#find_or_create_regfeed" do
-
     test "with no precursors" do
       clear_all([Feed, Register, Folder])
       fld = insert(:folder)
@@ -31,7 +31,5 @@ defmodule Feedex.Api.RegFeedTest do
       assert count(Register) == 1
       assert count(Folder) == 1
     end
-
   end
-
 end

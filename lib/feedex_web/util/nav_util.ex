@@ -28,6 +28,4 @@ defmodule FeedexWeb.NavUtil do
   def normal_klas do
     "nav-link active"
   end
-
 end
-

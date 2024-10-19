@@ -6,8 +6,10 @@ defmodule FeedexWeb.UserSettingsLive do
   def render(assigns) do
     ~H"""
     <.header>Links</.header>
-    <.alink href={~p"/users/settings/subs"}>Subscriptions</.alink> |
-    <.alink href="/dev/dashboard">Dashboard</.alink> |
+    <.alink href={~p"/users/settings/subs"}>Subscriptions</.alink>
+    |
+    <.alink href="/dev/dashboard">Dashboard</.alink>
+    |
     <.alink href="/dev/mailbox">Mailbox</.alink>
     <div class="mb-5"></div>
 

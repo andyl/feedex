@@ -1,5 +1,4 @@
 defmodule Feedex.Ctx.Account do
-
   @moduledoc """
   Affordances for Account Resources
   """
@@ -109,19 +108,22 @@ defmodule Feedex.Ctx.Account do
   def mark_all_for(usrid, fld_id: fldid) do
     from([pst, log, fee, reg, fld] in mark_all_qry(usrid),
       where: fld.id == ^fldid
-    ) |> create_read_logs()
+    )
+    |> create_read_logs()
   end
 
   def mark_all_for(usrid, reg_id: regid) do
     from([pst, log, fee, reg, fld] in mark_all_qry(usrid),
       where: reg.id == ^regid
-    ) |> create_read_logs()
+    )
+    |> create_read_logs()
   end
 
   def mark_all_for(usrid, pst_id: pstid) do
     from([pst, log, fee, reg, fld] in mark_all_qry(usrid),
       where: pst.id == ^pstid
-    ) |> create_read_logs()
+    )
+    |> create_read_logs()
   end
 
   # ----- mark_all utility functions -----
@@ -129,7 +131,7 @@ defmodule Feedex.Ctx.Account do
   defp create_read_logs(list) do
     list
     |> Repo.all()
-    |> Enum.map(&(create_read_log(&1)))
+    |> Enum.map(&create_read_log(&1))
   end
 
   defp create_read_log(record) do
@@ -140,10 +142,14 @@ defmodule Feedex.Ctx.Account do
 
   defp mark_all_qry(userid) do
     from(pst in Post,
-      left_join: log in ReadLog, on: pst.id == log.post_id,
-      join:  fee in Feed       , on: pst.feed_id == fee.id,
-      join:  reg in Register   , on: reg.feed_id == fee.id,
-      join:  fld in Folder     , on: reg.folder_id == fld.id,
+      left_join: log in ReadLog,
+      on: pst.id == log.post_id,
+      join: fee in Feed,
+      on: pst.feed_id == fee.id,
+      join: reg in Register,
+      on: reg.feed_id == fee.id,
+      join: fld in Folder,
+      on: reg.folder_id == fld.id,
       where: fld.user_id == ^userid,
       where: is_nil(log.id),
       select: %{

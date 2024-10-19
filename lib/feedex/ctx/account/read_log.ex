@@ -9,10 +9,10 @@ defmodule Feedex.Ctx.Account.ReadLog do
   import Ecto.Changeset
 
   schema "read_logs" do
-    belongs_to :user    , Account.User
-    belongs_to :folder  , Account.Folder
+    belongs_to :user, Account.User
+    belongs_to :folder, Account.Folder
     belongs_to :register, Account.Register
-    belongs_to :post    , News.Post
+    belongs_to :post, News.Post
   end
 
   def changeset(read_log, attrs) do

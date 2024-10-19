@@ -1,5 +1,4 @@
 defmodule FeedexWeb.Cache.PushState do
-
   alias FeedexWeb.Cache.UiState
 
   @moduledoc """
@@ -64,15 +63,16 @@ defmodule FeedexWeb.Cache.PushState do
   def purge_old do
     sig()
     |> Pets.all()
-    |> Enum.filter(&(&1))
-    |> Enum.each(&(Pets.delete(sig(), elem(&1, 0))))
+    |> Enum.filter(& &1)
+    |> Enum.each(&Pets.delete(sig(), elem(&1, 0)))
+
     :ok
   end
 
   @env Mix.env()
   defp sig do
     case @env do
-      :dev ->  %{filepath: "/tmp/pushstate_dev.dat" , tablekey: :pushstate_dev}
+      :dev -> %{filepath: "/tmp/pushstate_dev.dat", tablekey: :pushstate_dev}
       :test -> %{filepath: "/tmp/pushstate_test.dat", tablekey: :pushstate_test}
       :prod -> %{filepath: "/tmp/pushstate_prod.dat", tablekey: :pushstate_prod}
     end

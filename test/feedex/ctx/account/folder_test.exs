@@ -1,5 +1,6 @@
 defmodule Feedex.Ctx.Account.FolderTest do
-  use ExUnit.Case # , async: true
+  # , async: true
+  use ExUnit.Case
   use Feedex.DataCase
 
   describe "changesets" do
@@ -91,12 +92,14 @@ defmodule Feedex.Ctx.Account.FolderTest do
   describe "user association" do
     test "finds the user from the folder" do
       clear_all([User, Folder])
+
       fusr =
         from(f in "folders",
           join: u in "users",
           on: [id: f.user_id],
           select: {f.name, u.name}
         )
+
       insert(:folder)
       result = Repo.all(fusr)
       assert Enum.count(result) == 1
@@ -104,12 +107,14 @@ defmodule Feedex.Ctx.Account.FolderTest do
 
     test "finds the folder from the user" do
       clear_all([User, Folder])
+
       ufold =
         from(u in "users",
           join: f in "folders",
           on: u.id == f.user_id,
           select: {f.name, u.name}
         )
+
       insert(:folder)
       result = Repo.all(ufold)
       assert Enum.count(result) == 1

@@ -14,9 +14,9 @@ defmodule Feedex.Ctx.Account.User do
     timestamps(type: :utc_datetime)
 
     has_many(:read_logs, Account.ReadLog)
-    has_many(:folders,   Account.Folder)
+    has_many(:folders, Account.Folder)
     has_many(:registers, through: [:folders, :registers])
-    has_many(:feeds,     through: [:folders, :registers, :feeds])
+    has_many(:feeds, through: [:folders, :registers, :feeds])
   end
 
   def changeset(user, attrs) do

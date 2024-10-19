@@ -33,7 +33,13 @@ defmodule FeedexWeb.BodyAddFolderComponent do
     <div>
       <div class="font-bold">Create a new Folder</div>
       <div>
-        <.simple_form :let={f} for={@changeset} phx-target={@myself} phx-change="validate" phx-submit="save">
+        <.simple_form
+          :let={f}
+          for={@changeset}
+          phx-target={@myself}
+          phx-change="validate"
+          phx-submit="save"
+        >
           <.input field={{f, :name}} label="Folder Name" />
           <:actions>
             <%= if @changeset.valid? do %>
@@ -52,7 +58,6 @@ defmodule FeedexWeb.BodyAddFolderComponent do
 
   @impl true
   def handle_event("validate", payload, socket) do
-
     changeset =
       %{name: payload["folder"]["name"]}
       |> Api.Folder.folder_validation_changeset()

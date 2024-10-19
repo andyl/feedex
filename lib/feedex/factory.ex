@@ -23,6 +23,7 @@ defmodule Feedex.Factory do
 
   def user_factory do
     pwd = "welcome"
+
     %User{
       name: sequence(:name, &"user_#{&1}"),
       email: sequence(:email, &"user_#{&1}@test_domain.com"),

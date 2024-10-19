@@ -1,5 +1,4 @@
 defmodule FeedexWeb.Cache.UiParams do
-
   @moduledoc """
   Tools to manipulate UI params.any()
 
@@ -42,7 +41,7 @@ defmodule FeedexWeb.Cache.UiParams do
   end
 
   defp drop_nil_values(map) do
-    Map.filter(map, fn({_, value}) -> value != nil end)
+    Map.filter(map, fn {_, value} -> value != nil end)
   end
 
   defp sanitize_params(params) do
@@ -69,7 +68,7 @@ defmodule FeedexWeb.Cache.UiParams do
   end
 
   defp drop_view_mode(map) do
-    Map.filter(map, fn({_, value}) -> value != "view" end)
+    Map.filter(map, fn {_, value} -> value != "view" end)
     # map
   end
 
@@ -77,8 +76,9 @@ defmodule FeedexWeb.Cache.UiParams do
     newmap = %{
       fld_id: map[:fld_id] |> numify(),
       reg_id: map[:reg_id] |> numify(),
-      pst_id: map[:pst_id] |> numify(),
+      pst_id: map[:pst_id] |> numify()
     }
+
     Map.merge(map, newmap)
   end
 
@@ -94,5 +94,4 @@ defmodule FeedexWeb.Cache.UiParams do
     map
     |> Map.new(fn {k, v} -> {String.to_atom(k), v} end)
   end
-
 end

@@ -8,7 +8,7 @@ defmodule Feedex.MixProject do
     [
       app: :feedex,
       version: @version,
-      elixir: "~> 1.15",
+      elixir: "~> 1.17",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -59,7 +59,7 @@ defmodule Feedex.MixProject do
       {:phoenix_live_dashboard, "~> 0.7"},
       {:phoenix_html, "~> 4.0"},
       # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
-      {:phoenix_live_view, "~> 1.0.0-rc.6", override: true},
+      {:phoenix_live_view, "~> 1.0.0-rc.7", override: true},
       {:phoenix_live_reload, "~> 1.5", only: :dev},
       {:heroicons, "~> 0.5"},
       {:gettext, "~> 0.20"},
@@ -69,12 +69,12 @@ defmodule Feedex.MixProject do
       # Testing
       {:ex_machina, "~> 2.7"},
       {:floki, ">= 0.30.0", only: :test},
-      {:mix_test_interactive, "~> 3.0", only: :dev, runtime: false},
+      {:mix_test_interactive, "~> 4.1", only: [:dev, :test], runtime: false},
       # Documentation
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:git_ops, "~> 2.6", only: :dev},
       # Util
-      {:bcrypt_elixir, "~> 3.0"},
+      {:bcrypt_elixir, "~> 3.2"},
       {:pbkdf2_elixir, "~> 2.0"},
       {:json, "~> 1.4"},
       {:modex, github: "andyl/modex"},

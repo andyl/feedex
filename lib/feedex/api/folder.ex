@@ -29,5 +29,4 @@ defmodule Feedex.Api.Folder do
   defdelegate register_count(folder), to: Account.Folder
   defdelegate delete_folder(folder), to: Account.Folder
   defdelegate by_id(folder_id), to: Account.Folder
-
 end

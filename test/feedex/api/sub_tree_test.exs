@@ -1,9 +1,9 @@
 defmodule Feedex.Api.SubTreeTest do
-  use ExUnit.Case # , async: true
+  # , async: true
+  use ExUnit.Case
   use Feedex.DataCase
 
   alias Feedex.Api.SubTree
-
 
   describe "#rawtree" do
     test "returns a value" do
@@ -62,10 +62,12 @@ defmodule Feedex.Api.SubTreeTest do
       clear_all([User, Folder, Feed, Register])
       user = insert(:user)
       fld_name = "fld_name"
+
       reg_data = [
         %{"feed_name" => "aaa", "feed_url" => "http://aaa.com"},
         %{"feed_name" => "bbb", "feed_url" => "http://bbb.com"}
       ]
+
       assert count(User) == 1
       assert count(Folder) == 0
       assert count(Feed) == 0
@@ -81,10 +83,12 @@ defmodule Feedex.Api.SubTreeTest do
       clear_all([User, Folder, Feed, Register])
       user = insert(:user)
       fld_name = "fld_name"
+
       reg_data = [
         %{"feed_name" => "aaa", "feed_url" => "http://aaa.com"},
         %{"feed_name" => "bbb", "feed_url" => "http://bbb.com"}
       ]
+
       assert SubTree.import_folder(user.id, fld_name, reg_data)
       assert SubTree.import_folder(user.id, fld_name, reg_data)
       assert count(User) == 1
@@ -95,7 +99,6 @@ defmodule Feedex.Api.SubTreeTest do
   end
 
   describe "#import_register" do
-
     test "basic input" do
       clear_all([Folder, User, Feed, Register])
       fld = insert(:folder)
@@ -124,24 +127,24 @@ defmodule Feedex.Api.SubTreeTest do
       assert count(Feed) == 1
       assert count(Register) == 1
     end
-
   end
-
 
   describe "#import_tree" do
     test "basic input" do
       clear_all([Folder, User, Feed, Register])
       user = insert(:user)
+
       data = %{
         "BASE1" => [
-        %{"feed_name" => "AAA", "feed_url" => "http://aaa.com"},
-        %{"feed_name" => "BBB", "feed_url" => "http://bbb.com"}
-      ],
+          %{"feed_name" => "AAA", "feed_url" => "http://aaa.com"},
+          %{"feed_name" => "BBB", "feed_url" => "http://bbb.com"}
+        ],
         "BASE2" => [
-        %{"feed_name" => "CCC", "feed_url" => "http://ccc.com"},
-        %{"feed_name" => "DDD", "feed_url" => "http://ddd.com"}
+          %{"feed_name" => "CCC", "feed_url" => "http://ccc.com"},
+          %{"feed_name" => "DDD", "feed_url" => "http://ddd.com"}
         ]
       }
+
       assert SubTree.import_tree(user.id, data)
       assert count(User) == 1
       assert count(Folder) == 2
@@ -152,16 +155,18 @@ defmodule Feedex.Api.SubTreeTest do
     test "idempotency" do
       clear_all([Folder, User, Feed, Register])
       user = insert(:user)
+
       data = %{
         "BASE1" => [
-        %{"feed_name" => "AAA", "feed_url" => "http://aaa.com"},
-        %{"feed_name" => "BBB", "feed_url" => "http://bbb.com"}
-      ],
+          %{"feed_name" => "AAA", "feed_url" => "http://aaa.com"},
+          %{"feed_name" => "BBB", "feed_url" => "http://bbb.com"}
+        ],
         "BASE2" => [
-        %{"feed_name" => "CCC", "feed_url" => "http://ccc.com"},
-        %{"feed_name" => "DDD", "feed_url" => "http://ddd.com"}
+          %{"feed_name" => "CCC", "feed_url" => "http://ccc.com"},
+          %{"feed_name" => "DDD", "feed_url" => "http://ddd.com"}
         ]
       }
+
       assert SubTree.import_tree(user.id, data)
       assert SubTree.import_tree(user.id, data)
       assert count(User) == 1
@@ -175,6 +180,7 @@ defmodule Feedex.Api.SubTreeTest do
     test "basic input" do
       clear_all([Folder, User, Feed, Register])
       user = insert(:user)
+
       json = """
       {
         "BASE1" : [
@@ -187,13 +193,13 @@ defmodule Feedex.Api.SubTreeTest do
         ]
       }
       """
+
       assert SubTree.import_tree_json(user.id, json)
       assert count(User) == 1
       assert count(Folder) == 2
       assert count(Feed) == 4
       assert count(Register) == 4
     end
-
   end
 
   defp gentree do

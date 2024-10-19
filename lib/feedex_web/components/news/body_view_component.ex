@@ -41,28 +41,29 @@ defmodule FeedexWeb.BodyViewComponent do
               <td><b><%= id_link(post.id, @myself) %></b></td>
               <td>
                 <b>
-                <.alink href={post.link} {%{target: "_blank"}}>
-                <%= time_ago(post.updated_at) %><%= post.title %>
-                </.alink>
+                  <.alink href={post.link} {%{target: "_blank"}}>
+                    <%= time_ago(post.updated_at) %><%= post.title %>
+                  </.alink>
                 </b>
-                </td>
+              </td>
             </tr>
             <tr class="bg-slate-300">
-            <td></td><td></td>
-            <td>
-              <small>
-              <%= byline(post) %> <%= HTML.raw post.body %>
-              </small>
-            </td>
+              <td></td>
+              <td></td>
+              <td>
+                <small>
+                  <%= byline(post) %> <%= HTML.raw(post.body) %>
+                </small>
+              </td>
             </tr>
           <% else %>
             <tr class="border-b decoration-slate-300">
               <td>
-              <%= if post.read_log, do: check_svg("inline px-1 h-3", :raw) %>
+                <%= if post.read_log, do: check_svg("inline px-1 h-3", :raw) %>
               </td>
               <td class="align-top"><%= id_link(post.id, @myself) %></td>
-              <td class=''>
-              <%= time_ago(post.updated_at) %><%= post.title %>
+              <td class="">
+                <%= time_ago(post.updated_at) %><%= post.title %>
               </td>
             </tr>
           <% end %>
@@ -109,13 +110,9 @@ defmodule FeedexWeb.BodyViewComponent do
 
   def byline(post) do
     """
-    <a href='#' class='bluelink' phx-click='fld-clk' phx-value-fldid=#{post.fld_id}>#{
-      post.fld_name
-    }</a>
+    <a href='#' class='bluelink' phx-click='fld-clk' phx-value-fldid=#{post.fld_id}>#{post.fld_name}</a>
     >
-    <a href='#' phx-click='reg-clk' phx-value-regid=#{post.reg_id}>#{post.reg_name}</a> (#{
-      host_for(post)
-    })
+    <a href='#' phx-click='reg-clk' phx-value-regid=#{post.reg_id}>#{post.reg_name}</a> (#{host_for(post)})
     """
     |> HTML.raw()
   end

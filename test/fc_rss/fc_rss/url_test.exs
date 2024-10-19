@@ -11,7 +11,6 @@ defmodule FcRss.UrlTest do
   end
 
   describe "#pull/1" do
-
     test "with invalid url" do
       url_string = "asdf"
       url_struct = Url.pull(url_string)
@@ -41,6 +40,5 @@ defmodule FcRss.UrlTest do
         refute url_struct.data == %{}
       end
     end
-
   end
 end

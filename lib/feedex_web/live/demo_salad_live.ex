@@ -17,7 +17,6 @@ defmodule FeedexWeb.DemoSaladLive do
 
   # ----- HEEX -----
 
-
   @impl true
   def render(assigns) do
     ~H"""
@@ -37,5 +36,4 @@ defmodule FeedexWeb.DemoSaladLive do
     </div>
     """
   end
-
 end

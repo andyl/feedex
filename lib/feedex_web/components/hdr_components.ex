@@ -13,20 +13,20 @@ defmodule FeedexWeb.HdrComponents do
     ~H"""
     <div class="navbar bg-neutral text-neutral-content">
       <div class="flex-1">
-        <img src="/images/rss.png"/>
+        <img src="/images/rss.png" />
         <a class="btn btn-ghost normal-case text-xl" href="/">Feedex</a>
       </div>
       <div class="flex-none">
         <ul class="menu menu-horizontal p-0">
-        <%= if @current_user do %>
-          <.navbtn><%= @current_user.email %></.navbtn>
-          <.navbtn href="/news">News</.navbtn>
-          <.navbtn href="/users/settings">Settings</.navbtn>
-          <.navbtn href="/users/log_out" method="delete">Log out</.navbtn>
-        <% else %>
-          <.navbtn href="/users/register">Register</.navbtn>
-          <.navbtn href="/users/log_in">Log in</.navbtn>
-        <% end %>
+          <%= if @current_user do %>
+            <.navbtn><%= @current_user.email %></.navbtn>
+            <.navbtn href="/news">News</.navbtn>
+            <.navbtn href="/users/settings">Settings</.navbtn>
+            <.navbtn href="/users/log_out" method="delete">Log out</.navbtn>
+          <% else %>
+            <.navbtn href="/users/register">Register</.navbtn>
+            <.navbtn href="/users/log_in">Log in</.navbtn>
+          <% end %>
         </ul>
       </div>
     </div>

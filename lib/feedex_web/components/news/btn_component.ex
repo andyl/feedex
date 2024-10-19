@@ -27,8 +27,8 @@ defmodule FeedexWeb.BtnComponent do
   def fbtn(assigns) do
     ~H"""
     <div class="py-1">
-      <a class='text-sm' phx-click={@action} phx-target={@myself} href='#'>
-        <%= raw plus_circle_svg("up-12 h-5 inline") %> <%= @label %><br/>
+      <a class="text-sm" phx-click={@action} phx-target={@myself} href="#">
+        <%= raw(plus_circle_svg("up-12 h-5 inline")) %> <%= @label %><br />
       </a>
     </div>
     """
@@ -75,5 +75,4 @@ defmodule FeedexWeb.BtnComponent do
 
     {:noreply, assign(socket, %{uistate: new_state})}
   end
-
 end

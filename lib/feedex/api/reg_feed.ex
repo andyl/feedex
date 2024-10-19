@@ -41,9 +41,10 @@ defmodule Feedex.Api.RegFeed do
   end
 
   def create_reg(feed_id, folder_id, reg_name) do
-    {:ok, reg} = %Register{name: reg_name, feed_id: feed_id, folder_id: folder_id}
-                 |> Repo.insert()
+    {:ok, reg} =
+      %Register{name: reg_name, feed_id: feed_id, folder_id: folder_id}
+      |> Repo.insert()
+
     reg
   end
-
 end

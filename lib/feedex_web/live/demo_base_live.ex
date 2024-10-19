@@ -37,5 +37,4 @@ defmodule FeedexWeb.DemoBaseLive do
     </div>
     """
   end
-
 end

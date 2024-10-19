@@ -5,6 +5,4 @@ defmodule FcTeslaTest do
   test "greets the world" do
     assert FcTesla.hello() == :world
   end
-
 end
-

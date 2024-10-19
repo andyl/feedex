@@ -27,7 +27,7 @@ defmodule FeedexWeb.ClearTreeLive do
       <p class="action-warn">WARNING DANGER</p>
       <button class="big-button" phx-click="clear">CLICK TO DELETE ALL FEEDS</button>
       <p class="action-warn">WARNING DANGER</p>
-      <hr class="m-10"/>
+      <hr class="m-10" />
     </div>
     """
   end

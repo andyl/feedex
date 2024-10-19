@@ -8,7 +8,6 @@ defmodule FcRssTest do
   end
 
   describe "#scan/1" do
-
     test "valid resp valid data" do
       use_cassette "scan_valid_resp_valid_data" do
         url_string = "http://reddit.com/r/elixir.rss"

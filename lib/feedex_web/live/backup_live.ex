@@ -34,8 +34,10 @@ defmodule FeedexWeb.BackupLive do
 
       <div>
         <.alink phx-click="export" href="#">EXPORT</.alink>
-        <span :if={@file_exists}> |
-          <.alink phx-click="view" href="#">VIEW</.alink> |
+        <span :if={@file_exists}>
+          |
+          <.alink phx-click="view" href="#">VIEW</.alink>
+          |
           <.alink phx-click="import" href="#">IMPORT</.alink>
         </span>
       </div>
@@ -62,6 +64,7 @@ defmodule FeedexWeb.BackupLive do
       message: "EXPORTED",
       file_exists: true
     }
+
     {:noreply, assign(socket, results)}
   end
 
@@ -78,14 +81,14 @@ defmodule FeedexWeb.BackupLive do
     user = socket.assigns.current_user
     json = socket.assigns.file_path |> File.read!()
 
-    result = try do
-      Feedex.Api.SubTree.import_tree_json(user.id, json)
-      "SUCCESS"
-    rescue
-      _ -> "ERROR BAD DATA"
-    end
+    result =
+      try do
+        Feedex.Api.SubTree.import_tree_json(user.id, json)
+        "SUCCESS"
+      rescue
+        _ -> "ERROR BAD DATA"
+      end
 
     {:noreply, assign(socket, :message, result)}
   end
-
 end

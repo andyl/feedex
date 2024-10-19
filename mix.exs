@@ -119,7 +119,9 @@ defmodule Feedex.MixProject do
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       seed: ["run priv/repo/seeds.exs"],
       "assets.setup": ["tailwind.install --if-missing"],
-      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"],
+      release: "git_ops.release",
+      deploy: "compile"
     ]
   end
 end

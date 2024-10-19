@@ -17,6 +17,7 @@ defmodule FcTesla do
 
   def fc_get(url, opt \\ []) do
     result = FcTesla.Base.get(url, opt)
+
     case result do
       {:ok, resp} -> resp
       alt -> alt
@@ -34,5 +35,4 @@ defmodule FcTesla do
   def hello do
     :world
   end
-
 end

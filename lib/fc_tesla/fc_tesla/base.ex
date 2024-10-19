@@ -7,10 +7,11 @@ defmodule FcTesla.Base do
 
   plug Tesla.Middleware.FollowRedirects
 
-  adapter Tesla.Adapter.Finch, name: Feedex.Finch
+  adapter(Tesla.Adapter.Finch, name: Feedex.Finch)
 
   def fc_post(url, opt \\ []) do
     result = post(url, opt) |> IO.inspect(label: "FC_POST")
+
     case result do
       {:ok, response} -> response
       error -> error
@@ -19,6 +20,7 @@ defmodule FcTesla.Base do
 
   def fc_get(url, opt \\ []) do
     result = get(url, opt) |> IO.inspect(label: "FC_GET")
+
     case result do
       {:ok, response} -> response
       error -> error

@@ -6,12 +6,12 @@ defmodule FcTesla.InfluxV1 do
   use Tesla
 
   plug Tesla.Middleware.FormUrlencoded
-  plug Tesla.Middleware.BasicAuth,
-    username: tsdb_username(), password: tsdb_password()
+  plug Tesla.Middleware.BasicAuth, username: tsdb_username(), password: tsdb_password()
 
   def influx_post(db, line) do
     body = line
-    url  = "http://localhost:8086/write?db=#{db}&time_precision=s"
+    url = "http://localhost:8086/write?db=#{db}&time_precision=s"
+
     case post(url, body) do
       {:ok, response} -> response
       error -> error
@@ -20,7 +20,8 @@ defmodule FcTesla.InfluxV1 do
 
   def metrics_post(line) do
     body = line
-    url  = "http://#{tsdb_host()}:8086/write?db=#{tsdb_db()}&time_precision=s"
+    url = "http://#{tsdb_host()}:8086/write?db=#{tsdb_db()}&time_precision=s"
+
     case post(url, body) do
       {:ok, response} -> response
       error -> error

@@ -33,22 +33,34 @@ defmodule FeedexWeb.BodyComponent do
 
     case uistate.mode do
       "view" ->
-        ~H"<.live_component module={BodyViewComponent} counts={@counts} uistate={@uistate} id=\"view\" />"
+        ~H"""
+        <.live_component module={BodyViewComponent} counts={@counts} uistate={@uistate} id="view" />
+        """
 
       "add_feed" ->
-        ~H"<.live_component module={BodyAddFeedComponent} counts={@counts} uistate={@uistate} id=\"afee\" />"
+        ~H"""
+        <.live_component module={BodyAddFeedComponent} counts={@counts} uistate={@uistate} id="afee" />
+        """
 
       "add_folder" ->
-        ~H"<.live_component module={BodyAddFolderComponent} counts={@counts} uistate={@uistate} id=\"afol\" />"
+        ~H"""
+        <.live_component module={BodyAddFolderComponent} counts={@counts} uistate={@uistate} id="afol" />
+        """
 
       "edit_feed" ->
-        ~H"<.live_component module={BodyEditFeedComponent} counts={@counts} uistate={@uistate} id=\"efee\" />"
+        ~H"""
+        <.live_component module={BodyEditFeedComponent} counts={@counts} uistate={@uistate} id="efee" />
+        """
 
       "edit_folder" ->
-        ~H"<.live_component module={BodyEditFolderComponent} counts={@counts} uistate={@uistate} id=\"efol\" />"
+        ~H"""
+        <.live_component module={BodyEditFolderComponent} counts={@counts} uistate={@uistate} id="efol" />
+        """
 
       _ ->
-        ~H"<.live_component module={BodyViewComponent} counts={@counts} uistate={@uistate} id=\"view\" />"
+        ~H"""
+        <.live_component module={BodyViewComponent} counts={@counts} uistate={@uistate} id="view" />
+        """
     end
   end
 

@@ -16,6 +16,7 @@ defmodule FcRss.Url do
   """
   def pull(input_url) do
     valid_url? = FcRss.UrlCheck.valid_url?(input_url)
+
     input_url
     |> download(valid_url?)
     |> parse()
@@ -37,6 +38,7 @@ defmodule FcRss.Url do
 
   defp parse(url_data) do
     result = ElixirFeedParser.parse(url_data.resp.body)
+
     case result do
       {:ok, data} -> %{url_data | valid_data: true, data: data}
       {:error, _} -> url_data

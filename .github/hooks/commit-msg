@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# This script validates that the commit message complies with the 
+# "Conventional Commits" standard.
+
+# Get the current branch name
+current_branch=$(git symbolic-ref --short HEAD)
+
+# --------------------------------------------------------------------
+# Check for valid commit message 
+# --------------------------------------------------------------------
+
+commit_msg_file=$1
+commit_msg=$(cat "$commit_msg_file")
+
+# Check if the commit message follows the Conventional Commits standard
+# The description must start with a lowercase letter
+
+commit_types=(build chore ci docs feat fix perf refactor revert style test) 
+valid_types=$(IFS="|"; echo "${commit_types[*]}")
+
+if ! echo "$commit_msg" | grep -qE "^(${valid_types})(\(.+\))?!?: [a-z]"; then
+  echo "Error: Commit message does not follow the Conventional Commits standard."
+  echo "Use the format: <type>[(optional scope)]: <description>"
+  echo "Description must start with a lowercase letter."
+  echo "Valid types: [${commit_types[*]}]"
+  exit 1
+else
+  echo "VALID COMMIT MESSAGE [$commit_msg]"
+fi
+
+# --------------------------------------------------------------------
+# Check for passing tests 
+# --------------------------------------------------------------------
+
+if mix test > /dev/null 2>&1; then
+  echo "ALL TESTS PASS"
+else
+  echo "Error: Some tests failed" 
+  echo "run 'mix test' to confirm"
+  exit 1
+fi
+
+# --------------------------------------------------------------------
+# Check for formatted code
+# --------------------------------------------------------------------
+
+if mix format --check-formatted > /dev/null 2>&1; then
+  echo "FILES ARE FORMATTED"
+else
+  echo "Error: Some files are not formatted" 
+  echo "run 'mix format' to fix"
+  exit 1
+fi
+
+exit 0

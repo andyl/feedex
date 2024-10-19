@@ -21,6 +21,10 @@
             <td><%= @attributes["commit_hash"] %></td>
           </tr>
           <tr>
+            <td class="text-right">APP_VERSION:</td>
+            <td><%= Application.spec(:feedex, :vsn) |> to_string() %></td>
+          </tr>
+          <tr>
             <td class="text-right">GIT_BRANCH:</td>
             <td><%= @attributes["git_branch"] %></td>
           </tr>
@@ -32,12 +36,10 @@
         <tbody>
           <tr>
             <td class="text-right">RUNTIME_HOST:</td>
-
             <td><%= Application.fetch_env!(:feedex, :linux_host) %></td>
           </tr>
           <tr>
             <td class="text-right">DOCKER_IMAGE:</td>
-
             <td><%= Application.fetch_env!(:feedex, :docker_img) %></td>
           </tr>
         </tbody>

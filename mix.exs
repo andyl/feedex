@@ -18,6 +18,10 @@ defmodule Feedex.MixProject do
       name: "Feedex",
       source_url: @source_url,
       homepage_url: "http://TBD",
+      preferred_cli_env: [
+        "test.info": :test,
+        "test.quick": :test
+      ],
       docs: [
         main: "Feedex",
         logo: "priv/static/images/rss-4-32.png",
@@ -116,11 +120,18 @@ defmodule Feedex.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       compile: ["build"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       seed: ["run priv/repo/seeds.exs"],
       "assets.setup": ["tailwind.install --if-missing"],
       "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"],
-      gorel: "git_ops.release"
+      gorel: "git_ops.release",
+      tinq: "test.interactive --task test.quick",
+      "test.clear": &clear_in_test/1
     ]
+  end
+
+  defp clear_in_test(_) do
+    IO.puts("HHHH")
+    Mix.env(:test)
+    Mix.Task.run("run", ["-e", "Feedex.Seeds.clear_all()"])
   end
 end

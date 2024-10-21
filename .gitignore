@@ -12,4 +12,5 @@ npm-debug.log
 /assets/node_modules/
 /data/
 /priv/.build_info.yml
+/priv/.last_fulltest_run
 .aider*

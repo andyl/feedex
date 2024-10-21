@@ -27,7 +27,7 @@ defmodule FeedexWeb.DemoBaseLive do
         </h1>
         <.demonav current_path={@current_path} />
       </div>
-      <div class="mt-2 mb-2 p-2 border-solid border-orange-500 border">
+      <div class="mt-2 mb-2 p-2 border-solid border-purple-600 border">
         Border demo<br />
         <.alink href="http://google.com">GOOGLE</.alink>
       </div>

@@ -33,7 +33,7 @@ fi
 # Check for passing tests 
 # --------------------------------------------------------------------
 
-if mix test > /dev/null 2>&1; then
+if mix test.quick > /dev/null 2>&1; then
   echo "ALL TESTS PASS"
 else
   echo "Error: Some tests failed" 

@@ -1,18 +1,18 @@
 # Hooks README
 
-This repo is configured to validate Pull Requests. See the `.github/workflows`
-directory for configurations settings.  
+This repo is configured to validate Pull Requests. See `.github/workflows`
+for configurations settings.  We validate that:
 
-- commit messages comply with the Conventional Commits standard
+- commit messages comply with Conventional Commits standard
 - all code is formatted (with `mix format`) 
-- all tests must pass 
+- all tests pass 
 
 To perform checks locally before making a commit:  
 
 1. Use the pre-commit script `commit-msg`, and the setup
-   script `.github/hooks/EnableGitHooks.sh`.
+   script `.github/hooks/GitHooksEnable.sh`.
 2. Or use the tooling found in [pre-commit.com](https://pre-commit.com).
-3. Or your own favorite solution
+3. Or use your own favorite pre-commit solution
 
 | Resource             | URL                                                             |
 |----------------------|-----------------------------------------------------------------|

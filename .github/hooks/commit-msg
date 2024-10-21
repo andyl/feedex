@@ -16,7 +16,7 @@ commit_msg=$(cat "$commit_msg_file")
 # Check if the commit message follows the Conventional Commits standard
 # The description must start with a lowercase letter
 
-commit_types=(build chore ci docs feat fix perf refactor revert style test) 
+commit_types=(build chore ci docs feat fix improvement perf refactor revert style test) 
 valid_types=$(IFS="|"; echo "${commit_types[*]}")
 
 if ! echo "$commit_msg" | grep -qE "^(${valid_types})(\(.+\))?!?: [a-z]"; then
